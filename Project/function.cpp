@@ -1,13 +1,15 @@
 #include <iostream>
 #include <string.h>
+
 #include "function.h"
+#include "someBasicStruct.h"
 
 //Implemention of Student class
 
 
-void Student::displayInfo() const {
-	std::cout << "StudentID: " << studentID << "\tName: " << name << std::endl;
-}
+//void Student::displayInfo() const {
+//	std::cout << "StudentID: " << studentID << "\tName: " << name << std::endl;
+//}
 
 
 
