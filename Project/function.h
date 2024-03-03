@@ -10,7 +10,7 @@ struct Name {
 	std::string lastName;
 };
 
-
+// STUDENT
 
 //infor of student...need to add more
 class Student {
@@ -39,22 +39,71 @@ public:
 };
 
 //Linked list of Student to create on each Course...
-class studentNode {
+class studentList {
 public:
 	Student student;
-	studentNode* next;
+	studentList* next;
 
-	studentNode(const Student& s);
+	studentList(const Student& s);
 };
+
+//CLASSES
+
+//create list of class
+class classList {
+private:
+	std::string className;
+
+	studentList* headStudent;
+
+	classList* next;
+	classList* prev;
+
+public:
+};
+
+
+
+//COURSES
 
 //create Course Linked List
 class courseList {
 private:
-	int courseCode;
-	studentNode* head;
+	std::string courseName;
+	std::string courseCode;
+
+	classList* headClass;
+
+	courseList* next;
+	courseList* prev;
+
 public:
 	courseList();
 	void enrollStudent(const std::string& courseName, const Student& student);
 	void displayCourse() const;
 	~courseList();
+};
+
+
+//SEMESTER
+
+//create Seme
+class semester {
+private:
+	int numberOfSemester;
+	Date startDate, endDate;
+
+public:
+
+};
+
+//SCHOOL YEAR
+class schoolYear {
+private:
+	int yearBegin;
+	int yearEnd;
+	semester first, second, third;
+
+public:
+
 };

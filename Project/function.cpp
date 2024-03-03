@@ -15,12 +15,12 @@
 
 
 //Implemention of StudentNode class
-studentNode::studentNode(const Student& s) :student(s), next(nullptr) {}
+studentList::studentList(const Student& s) :student(s), next(nullptr) {}
 
 
 
 //Implemention of CourseList class
-courseList::courseList() :head(nullptr) {};
+courseList::courseList() :headClass(nullptr) {};
 
 void courseList::enrollStudent(const std::string& courseName, const Student& student) {
 
