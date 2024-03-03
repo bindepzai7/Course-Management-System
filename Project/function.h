@@ -10,7 +10,12 @@ struct Name {
 	std::string lastName;
 };
 
-// STUDENT
+struct dateList {
+	Date d;
+	dateList* next;
+};
+
+// STUDENTS
 
 //infor of student...need to add more
 class Student {
@@ -20,7 +25,7 @@ private:
 	std::string studentID;
 	Name name;
 	std::string password;
-	bool studentGender;//0 is male, 1 is female
+	bool studentGender;        //0 is male, 1 is female
 	Date birthDay;
 	std::string socialID;
 
@@ -69,8 +74,12 @@ public:
 //create Course Linked List
 class courseList {
 private:
-	std::string courseName;
+	std::string courseID;
 	std::string courseCode;
+	int numberOfCredits;
+	Name teacherName;
+	int maxStudent;
+	dateList* dayOfWeek;
 
 	classList* headClass;
 
@@ -85,13 +94,15 @@ public:
 };
 
 
-//SEMESTER
+//SEMESTERS
 
 //create Seme
 class semester {
 private:
 	int numberOfSemester;
 	Date startDate, endDate;
+
+	courseList* headCourse;
 
 public:
 
