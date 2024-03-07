@@ -134,6 +134,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="function.h" />
+    <ClInclude Include="Textbox.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="function.cpp" />
