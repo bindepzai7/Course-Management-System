@@ -10,7 +10,7 @@
 #define Enter_key 13
 #define ESC_key 27
 
-class Textbox
+class TextBox
 {
 private:
 	//feature of textbox
@@ -43,10 +43,10 @@ private:
 
 	}
 public:
-	Textbox(int size, sf::Color color, bool sel)
+	TextBox (int size, sf::Color color, bool sel)
 	{
 		textbox.setCharacterSize(size);
-		textbox.setColor(color);
+		textbox.setFillColor(color);
 		isSelected=sel;
 		//check if textbox is selected to create symbol
 		if (isSelected)

@@ -18,7 +18,10 @@
     <ClInclude Include="function.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Textbox.h">
+    <ClInclude Include="textbox.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="displayfunction.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -27,6 +30,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="function.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="loginfunction.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
