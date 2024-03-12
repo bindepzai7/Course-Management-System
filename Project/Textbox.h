@@ -18,16 +18,13 @@ private:
 	std::string text;
 
 	bool isSelected = false;
-	bool haslimit = false;
-	int limit;
 	//delete character
 	void deletelastcharacter()
 	{
-		std::string t=text;
-		t.pop_back();
+		text.pop_back();
 		textbox.setString(text + "_");
 	}
-	void inputlogically(int chartyped)
+	void inputlogically(sf::Uint32 chartyped)
 	{
 		if (chartyped != Backspace_key && chartyped != Enter_key && chartyped != ESC_key)
 		{
@@ -40,7 +37,6 @@ private:
 			deletelastcharacter();
 		}
 		textbox.setString(text +"_");
-
 	}
 public:
 	TextBox (int size, sf::Color color, bool sel)
@@ -62,24 +58,14 @@ public:
 	{
 		textbox.setPosition(point);
 	}
-	//set textbox limit
-	void setlimit(bool toF)
-	{
-		haslimit = toF;
-	}
-	void setlimit(bool toF, int lim)
-	{
-		haslimit = toF;
-		limit = lim;
-	}
 	//change selected state
 	void setselected(bool sel)
 	{
 		isSelected = sel;
 		//if not selected remove the'_' at the end
-		if (!isSelected)
+		if (isSelected==false)
 		{
-			text.pop_back();
+			//text.pop_back();
 			textbox.setString(text);
 		}
 
@@ -94,26 +80,13 @@ public:
 	}
 	void typedText(sf::Event e)
 	{
-		int chartyped = e.text.unicode;
+		sf::Uint32 chartyped = e.text.unicode;
 		if (chartyped < 128)
 		{
 			{
-				if (haslimit)
-				{
-					//if it has limit exist, go two function
-					if (text.size()<= limit)
-						inputlogically(chartyped);
-					else if (text.size() > limit && chartyped == Backspace_key)
-						deletelastcharacter();
-				}
-				else
-					//if no limit run this function
-				{
-					inputlogically(chartyped);
-				}
+			    inputlogically(chartyped);
 			}
 		}
 	}
 };
-
 #endif
