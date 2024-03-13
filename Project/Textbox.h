@@ -45,7 +45,7 @@ public:
 		textbox.setFillColor(color);
 		isSelected=sel;
 		//check if textbox is selected to create symbol
-		if (isSelected)
+		if (isSelected==true)
 			textbox.setString("_");
 		else
 			textbox.setString("");
@@ -62,13 +62,18 @@ public:
 	void setselected(bool sel)
 	{
 		isSelected = sel;
+		textbox.setString(text+"_");
 		//if not selected remove the'_' at the end
 		if (isSelected==false)
 		{
-			//text.pop_back();
-			textbox.setString(text);
+			/*text.pop_back();*/
+			textbox.setString(text+"");
 		}
 
+	}
+	bool isselectedbox()
+	{
+		return isSelected;
 	}
 	std::string getText()
 	{
