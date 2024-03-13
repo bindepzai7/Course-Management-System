@@ -19,6 +19,9 @@ private:
 
 	bool isSelected = false;
 	bool isencode = false;
+	//set limit of textbox
+	bool haslimit = false;
+	int limit = 0;
 	//delete character
 	void deletelastcharacter()
 	{
@@ -90,6 +93,16 @@ public:
 		}
 
 	}
+	void setlimit(bool islim)
+	{
+		haslimit = islim;
+	}
+	void setlimit(bool islim, int lim)
+	{
+		haslimit = islim;
+		limit = lim - 1;
+	}
+
 	bool isselectedbox()
 	{
 		return isSelected;
@@ -119,6 +132,17 @@ public:
 		sf::Uint32 chartyped = e.text.unicode;
 		if (chartyped < 128)
 		{
+			if (haslimit)
+			{
+				//if text is not reach limit of box continue to type
+				if (text.size() <= limit)
+				{
+					inputlogically(chartyped);
+				}
+				else if (text.size() > limit && chartyped == Backspace_key)
+					deletelastcharacter();
+			}
+			else
 			{
 			    inputlogically(chartyped);
 			}
