@@ -82,15 +82,16 @@ void loginWindow(sf::RenderWindow& window, bool role)
                             password.setselected(false);
                             acc.isselectedpassword = false;
                         }
+                        password.settextencode(true);
                         username.setselected(true);
                         acc.isselectedusername = true;
                     }
                     else if (y_coor > 675 && y_coor < 755) {
                         if (username.isselectedbox() == true) {
-
                             acc.isselectedusername = false;
                             username.setselected(false);
                         }
+                        password.settextencode(true);
                         password.setselected(true);
                         acc.isselectedpassword = true;
                     }
@@ -114,6 +115,7 @@ void loginWindow(sf::RenderWindow& window, bool role)
                 {
                     password.setselected(false);
                     acc.isselectedpassword = false;
+                    password.settextencode(true);
                 }
                 else
                 {

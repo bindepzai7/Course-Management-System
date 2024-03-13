@@ -18,6 +18,7 @@ private:
 	std::string text;
 
 	bool isSelected = false;
+	bool isencode = false;
 	//delete character
 	void deletelastcharacter()
 	{
@@ -36,7 +37,16 @@ private:
 			if(text.size()>0)
 			deletelastcharacter();
 		}
+		if(isencode==false)
 		textbox.setString(text +"_");
+		else {
+			std::string text_encode;
+			for (int i = 0; i < text.size(); i++)
+			{
+				text_encode += "*";
+			}
+		textbox.setString(text_encode+"_");
+		}
 	}
 public:
 	TextBox (int size, sf::Color color, bool sel)
@@ -62,7 +72,16 @@ public:
 	void setselected(bool sel)
 	{
 		isSelected = sel;
+		if(isencode==false)
 		textbox.setString(text+"_");
+		else {
+			std::string text_encode;
+			for (int i = 0; i < text.size(); i++)
+			{
+				text_encode += "*";
+			}
+			textbox.setString(text_encode + "_");
+		}
 		//if not selected remove the'_' at the end
 		if (isSelected==false)
 		{
@@ -82,6 +101,18 @@ public:
 	void drawTextbox(sf::RenderWindow& window)
 	{
 		window.draw(textbox);
+	}
+	void settextencode(bool encode)
+	{
+		isencode = encode;
+		std::string text_encode;
+		if (isencode == true){
+			for (int i = 0; i < text.size(); i++)
+			{
+				text_encode += "*";
+			}
+		}
+		textbox.setString(text_encode);
 	}
 	void typedText(sf::Event e)
 	{

@@ -1,5 +1,5 @@
 #pragma once
-#include <string.h>
+#include <string>
 //	SOME BASIC STRUCTURE
 struct Date {
 	int day, month, year;

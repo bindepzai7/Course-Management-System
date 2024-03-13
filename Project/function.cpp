@@ -1,5 +1,5 @@
 #include <iostream>
-#include <string.h>
+#include <string>
 
 #include "function.h"
 #include "someBasicStruct.h"
