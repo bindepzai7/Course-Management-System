@@ -56,9 +56,9 @@ void loginWindow(sf::RenderWindow& window, bool role)
     s_loginscreen.setTexture(loginscreen);
     sf::Font rokkitfont;
     rokkitfont.loadFromFile("Font/Rokkitt-VariableFont.ttf");
-    TextBox username(24, sf::Color::White, false);
+    TextBox username(30, sf::Color::White, false);
     username.setfont(rokkitfont);
-    TextBox password(24, sf::Color::White, false);
+    TextBox password(30, sf::Color::White, false);
     password.setfont(rokkitfont);
     while (window.isOpen())
     {
@@ -77,11 +77,20 @@ void loginWindow(sf::RenderWindow& window, bool role)
                 {
                     //choose username input box
                     if (y_coor > 545 && y_coor < 625) {
-                      
+                        if (password.isselectedbox() == true)
+                        {
+                            password.setselected(false);
+                            acc.isselectedpassword = false;
+                        }
                         username.setselected(true);
                         acc.isselectedusername = true;
                     }
                     else if (y_coor > 675 && y_coor < 755) {
+                        if (username.isselectedbox() == true) {
+
+                            acc.isselectedusername = false;
+                            username.setselected(false);
+                        }
                         password.setselected(true);
                         acc.isselectedpassword = true;
                     }
@@ -115,9 +124,9 @@ void loginWindow(sf::RenderWindow& window, bool role)
         }
         window.clear();
         window.draw(s_loginscreen);
-        username.setTextPosition(sf::Vector2f(500, 580));
+        username.setTextPosition(sf::Vector2f(500, 570));
         username.drawTextbox(window);
-        password.setTextPosition(sf::Vector2f(500, 710));
+        password.setTextPosition(sf::Vector2f(500, 700));
         password.drawTextbox(window);
         window.display();
     }
