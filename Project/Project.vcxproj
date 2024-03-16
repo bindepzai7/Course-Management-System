@@ -133,7 +133,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="function.h" />
+    <ClInclude Include="Class.h" />
+    <ClInclude Include="Course.h" />
+    <ClInclude Include="LinkedList.h" />
+    <ClInclude Include="Semester.h" />
+    <ClInclude Include="Student.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="function.cpp" />

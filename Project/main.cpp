@@ -1,10 +1,10 @@
-#include "function.h"
+#include "LinkedList.h"
+#include "Student.h"
 
 int main() {
     LinkedList<Student> studentList;
-    studentList.insert(Student("23125021", "Tuan"));
-    studentList.insert(Student("23120000", "nguyen"));
-    studentList.insert(Student("23120001", "uyen"));
+    Student s = Student("23125021", Name("Duc", "Tuan"), "290705", 0, Date(29, 7, 2005), "000090");
+    /*studentList.insert(Student("23125021", Name("Duc", "Tuan"), "290705", 0, Date(29,7,2005), "000090"));*/
     Node<Student>* curr = studentList.head;
     while (curr) {
         std::cout << curr->data.studentID << std::endl;
