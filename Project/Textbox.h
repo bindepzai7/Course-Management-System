@@ -63,6 +63,10 @@ public:
 		else
 			textbox.setString("");
 	}
+	~TextBox()
+	{
+		std::cout << "object being delete"<<std::endl;
+	}
 	void setfont(sf::Font& font)
 	{
 		textbox.setFont(font);

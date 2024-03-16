@@ -70,27 +70,50 @@ public:
 
 
 //COURSES
+struct Course
+{
+	std::string courseID;
+	int numberOfCredits;
+	Name teacherName;
+	int maxStudent;
+	dateList* dayOfWeek;
+	classList* headClass;
+};
 
 //create Course Linked List
 class courseList {
 private:
+	/*Course data;
 	std::string courseID;
 	std::string courseCode;
 	int numberOfCredits;
 	Name teacherName;
 	int maxStudent;
 	dateList* dayOfWeek;
-
 	classList* headClass;
-
 	courseList* next;
-	courseList* prev;
-
+	courseList* prev;*/
+	Course data;
+	courseList* next;
 public:
-	courseList();
-	void enrollStudent(const std::string& courseName, const Student& student);
+	courseList(Course data, courseList* next = nullptr)
+	{
+		this->data = data;
+		this->next = next;
+	}
+	//void enrollStudent(const std::string& courseName, const Student& student);
+	Course getData() {
+		return this->data;
+	}
+	courseList* getNext() {
+		return this->next;
+	}
+	void setNext(courseList* next)
+	{
+		this->next = next;
+	}
 	void displayCourse() const;
-	~courseList();
+	//~courseList();
 };
 
 
@@ -105,7 +128,24 @@ private:
 	courseList* headCourse;
 
 public:
-
+	semester(int numSemester, Date start, Date end)
+	{
+		numberOfSemester = numSemester;
+		startDate = start;
+		endDate = end;
+		this->headCourse = nullptr;
+	}
+	//destructor
+	~semester()
+	{
+		while (this->headCourse != nullptr) popCourse();
+	}
+	//using stack to add new course at begin list
+	void pushCourse(Course Data);
+	//pop course
+	void popCourse();
+	//remove any course
+	void removeCourse(Course Data);
 };
 
 //SCHOOL YEAR
@@ -113,8 +153,20 @@ class schoolYear {
 private:
 	int yearBegin;
 	int yearEnd;
-	semester first, second, third;
+	//semester first, second, third;
 
 public:
-
+	/*schoolYear(int start, int end)
+	{
+		yearBegin = start;
+		yearEnd = end;
+	}*/
+	int getBeginYear()
+	{
+		return yearBegin;
+	}
+	int getEndYear()
+	{
+		return yearEnd;
+	}
 };

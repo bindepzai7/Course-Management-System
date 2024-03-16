@@ -20,19 +20,17 @@ studentList::studentList(const Student& s) :student(s), next(nullptr) {}
 
 
 //Implemention of CourseList class
-courseList::courseList() :headClass(nullptr) {};
-
-void courseList::enrollStudent(const std::string& courseName, const Student& student) {
-
-}
+//void courseList::enrollStudent(const std::string& courseName, const Student& student) {
+//
+//}
 
 void courseList::displayCourse() const {
 
 }
 
-courseList::~courseList() {
-
-}
+//courseList::~courseList() {
+//
+//}
 
 
 
