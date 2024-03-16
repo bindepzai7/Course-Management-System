@@ -5,7 +5,8 @@ int main() {
     studentList.insert(Student("23125021", "Tuan"));
     studentList.insert(Student("23120000", "nguyen"));
     studentList.insert(Student("23120001", "uyen"));
-    Node<Student>* curr = studentList.head;
+    studentList.removedatafromfirst();
+    Node<Student>* curr = studentList.getlist();
     while (curr) {
         std::cout << curr->data.studentID << std::endl;
         curr = curr->next;

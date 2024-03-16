@@ -1,5 +1,5 @@
-#pragma once
-
+#ifndef FUNCTION_H
+#define FUNCTION_H
 #include <iostream>
 
 
@@ -9,12 +9,15 @@ class Node {
 public:
     T data;
     Node* next;
+
+
 };
 
 template <class T>
 class LinkedList {
-public:
+private:
     Node<T>* head;
+public:
 
     LinkedList() {
         head = nullptr;
@@ -45,13 +48,32 @@ public:
         }
     }
 
-    void display() {
+    /*void display() {
         Node<T>* temp = head;
         while (temp) {
             std::cout << temp->data << " ";
             temp = temp->next;
         }
         std::cout << std::endl;
+    }*/
+
+    Node<T>* getlist()
+    {
+        return head;
+    }
+    T getdata()
+    {
+        return head->data;
+    }
+    void removedatafromfirst()
+    {
+        if (head)
+        {
+            Node<T>* tmp = head;
+            head = head->next;
+            delete tmp;
+            return;
+        }
     }
 };
 
@@ -167,5 +189,5 @@ private:
 public:
 
 };
-
+#endif
 //SCHOOL YEAR
