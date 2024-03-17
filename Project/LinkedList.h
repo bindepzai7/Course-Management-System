@@ -55,7 +55,7 @@ public:
                 head = newNode;
             }
             else if (data == head->data) return;
-            else {
+            else{
                 Node<T>* curr = head;
                 while (curr->next != nullptr && curr->next->data < data) {
                     curr = curr->next;
@@ -74,6 +74,18 @@ public:
             temp = temp->next;
         }
         std::cout << std::endl;
+    }
+
+    bool findXData(T data) {
+        if (head == nullptr) return false;
+        if (!(head->data != data)) return true;
+        Node<T>* cur = head;
+        while (cur)
+        {
+            if (!(cur->data != data)) return true;
+            cur = cur->next;
+        }
+        return false;
     }
 };
 
