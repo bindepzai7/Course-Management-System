@@ -133,10 +133,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="AddCourse.h" />
     <ClInclude Include="displayfunction.h" />
     <ClInclude Include="textbox.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="AddCourse.cpp" />
     <ClCompile Include="function.cpp" />
     <ClCompile Include="loginfunction.cpp" />
     <ClCompile Include="main.cpp" />
