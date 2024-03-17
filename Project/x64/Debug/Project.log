@@ -1,6 +1,2 @@
 ﻿  main.cpp
-C:\labwork - CS 162\group_project\Group_project_Cs162_2\Project\main.cpp(6,24): error C2440: '<function-style-cast>': cannot convert from 'initializer list' to 'Student'
-C:\labwork - CS 162\group_project\Group_project_Cs162_2\Project\main.cpp(6,24): message : 'Student::Student': no overloaded function could convert all the argument types
-C:\labwork - CS 162\group_project\Group_project_Cs162_2\Project\Student.h(33,2): message : could be 'Student::Student(std::string &,Name &,std::string &,bool &,Date &,std::string &)'
-C:\labwork - CS 162\group_project\Group_project_Cs162_2\Project\main.cpp(6,24): message : 'Student::Student(std::string &,Name &,std::string &,bool &,Date &,std::string &)': cannot convert argument 1 from 'const char [9]' to 'std::string &'
-C:\labwork - CS 162\group_project\Group_project_Cs162_2\Project\main.cpp(6,24): message : while trying to match the argument list '(const char [9], Name, const char [7], int, Date, const char [7])'
+  Project.vcxproj -> C:\labwork - CS 162\group_project\Group_project_Cs162_2\Project\x64\Debug\Project.exe

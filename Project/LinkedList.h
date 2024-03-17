@@ -27,7 +27,7 @@ public:
         }
     }
 
-    void insert(T data) {
+    void addNodeAtFront(T data) {
         Node<T>* newNode = new Node<T>;
         newNode->data = data;
         newNode->next = nullptr;
@@ -36,11 +36,32 @@ public:
             head = newNode;
         }
         else {
-            Node<T>* temp = head;
-            while (temp->next) {
-                temp = temp->next;
+            newNode->next = head;
+            head = newNode;
+        }
+    }
+
+    void addNodeInAscending(T data) {
+        Node<T>* newNode = new Node<T>;
+        newNode->data = data;
+        newNode->next = nullptr;
+
+        if (head == nullptr) {
+            head = newNode;
+        }
+        else {
+            if (data < head->data) {
+                newNode->next = head;
+                head = newNode;
             }
-            temp->next = newNode;
+            else {
+                Node<T>* curr = head;
+                while (curr->next != nullptr && curr->next->data < data) {
+                    curr = curr->next;
+                }
+                newNode->next = curr->next;
+                curr->next = newNode;
+            }
         }
     }
 
