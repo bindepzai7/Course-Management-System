@@ -54,11 +54,13 @@ public:
                 newNode->next = head;
                 head = newNode;
             }
+            else if (data == head->data) return;
             else {
                 Node<T>* curr = head;
                 while (curr->next != nullptr && curr->next->data < data) {
                     curr = curr->next;
                 }
+                if (curr->next && curr->next->data == data) return;
                 newNode->next = curr->next;
                 curr->next = newNode;
             }
