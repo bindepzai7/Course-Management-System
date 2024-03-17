@@ -29,13 +29,13 @@ void chooseRole(sf::RenderWindow& window)
                 bool role;//0 is student, 1 is teacher
                 int x_coor = event.mouseButton.x;
                 int y_coor = event.mouseButton.y;
-                if (y_coor > 625 && y_coor < 690)
+                if (y_coor > 470 && y_coor < 515)
                 {
-                    if (x_coor > 40 && x_coor < 165) {
+                    if (x_coor > 25 && x_coor < 125) {
                         role = 0;
                         loginWindow(window, role);//if enter student button move to login window with student role
                     }
-                    else if (x_coor > 232 && x_coor < 347) {
+                    else if (x_coor > 170 && x_coor < 260) {
                         role = 1;
                         loginWindow(window, role);
                     }
@@ -55,13 +55,13 @@ void loginWindow(sf::RenderWindow& window, bool role)
     sf::Sprite s_loginscreen;
     s_loginscreen.setTexture(loginscreen);
     sf::Font rokkitfont;
-    rokkitfont.loadFromFile("Font/Rokkitt-VariableFont.ttf");
-    TextBox username(30, sf::Color::Black, false);
+    rokkitfont.loadFromFile("Font/Palatino.ttf");
+    TextBox username(20, sf::Color::Black, false);
     username.setfont(rokkitfont);
-    username.setlimit(true, 20);
-    TextBox password(30, sf::Color::Black, false);
+    username.setlimit(true, 25);
+    TextBox password(24, sf::Color::Black, false);
     password.setfont(rokkitfont);
-    password.setlimit(true, 20);
+    password.setlimit(true, 25);
     while (window.isOpen())
     {
         sf::Event event;
@@ -75,10 +75,10 @@ void loginWindow(sf::RenderWindow& window, bool role)
             {
                 int x_coor = event.mouseButton.x;
                 int y_coor = event.mouseButton.y;
-                if (x_coor > 60 && x_coor < 360)
+                if (x_coor > 40 && x_coor < 270)
                 {
                     //choose username input box
-                    if (y_coor > 505 && y_coor < 590) {
+                    if (y_coor > 380 && y_coor < 440) {
                         if (password.isselectedbox() == true)
                         {
                             password.setselected(false);
@@ -88,7 +88,7 @@ void loginWindow(sf::RenderWindow& window, bool role)
                         username.setselected(true);
                         acc.isselectedusername = true;
                     }
-                    else if (y_coor > 645 && y_coor < 730) {
+                    else if (y_coor > 490 && y_coor < 550) {
                         if (username.isselectedbox() == true) {
                             acc.isselectedusername = false;
                             username.setselected(false);
@@ -128,9 +128,9 @@ void loginWindow(sf::RenderWindow& window, bool role)
         }
         window.clear();
         window.draw(s_loginscreen);
-        username.setTextPosition(sf::Vector2f(60, 530));
+        username.setTextPosition(sf::Vector2f(40, 395));
         username.drawTextbox(window);
-        password.setTextPosition(sf::Vector2f(60, 670));
+        password.setTextPosition(sf::Vector2f(40, 505));
         password.drawTextbox(window);
         window.display();
     }

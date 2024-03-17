@@ -3,7 +3,7 @@
 
 int main()
 {
-    sf::RenderWindow window(sf::VideoMode(1728, 1117), "SFML works!");
+    sf::RenderWindow window(sf::VideoMode(1296, 838), "SFML works!");
 
     while (window.isOpen())
     {
