@@ -13,13 +13,22 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Course Function">
+      <UniqueIdentifier>{59975d30-f20b-436f-9158-6ec3b6329a4b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="function.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
     <ClInclude Include="textbox.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="displayfunction.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="AddCourse.h">
+      <Filter>Course Function</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -31,6 +40,9 @@
     </ClCompile>
     <ClCompile Include="loginfunction.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="AddCourse.cpp">
+      <Filter>Course Function</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
