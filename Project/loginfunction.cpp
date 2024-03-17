@@ -7,7 +7,7 @@ void chooseRole(sf::RenderWindow& window)
 {
     
     sf::Texture roletexture;
-    roletexture.loadFromFile("App Design/[Design 3] Login 1.jpg");
+    roletexture.loadFromFile("Design UI/Login 1.jpg");
     roletexture.setSmooth(true);
     sf::Sprite s_roletexture;
     s_roletexture.setTexture(roletexture);
@@ -29,13 +29,13 @@ void chooseRole(sf::RenderWindow& window)
                 bool role;//0 is student, 1 is teacher
                 int x_coor = event.mouseButton.x;
                 int y_coor = event.mouseButton.y;
-                if (y_coor > 630 && y_coor < 690)
+                if (y_coor > 625 && y_coor < 690)
                 {
-                    if (x_coor > 47 && x_coor < 162) {
+                    if (x_coor > 40 && x_coor < 165) {
                         role = 0;
                         loginWindow(window, role);//if enter student button move to login window with student role
                     }
-                    else if (x_coor > 232 && y_coor < 347) {
+                    else if (x_coor > 232 && x_coor < 347) {
                         role = 1;
                         loginWindow(window, role);
                     }
@@ -50,7 +50,7 @@ void loginWindow(sf::RenderWindow& window, bool role)
 {
     account acc;
     sf::Texture loginscreen;
-    loginscreen.loadFromFile("App Design/[Design 3] Login 2.jpg");
+    loginscreen.loadFromFile("Design UI/Login 2.jpg");
     loginscreen.setSmooth(true);
     sf::Sprite s_loginscreen;
     s_loginscreen.setTexture(loginscreen);
@@ -78,7 +78,7 @@ void loginWindow(sf::RenderWindow& window, bool role)
                 if (x_coor > 60 && x_coor < 360)
                 {
                     //choose username input box
-                    if (y_coor > 500 && y_coor < 580) {
+                    if (y_coor > 505 && y_coor < 590) {
                         if (password.isselectedbox() == true)
                         {
                             password.setselected(false);
@@ -88,7 +88,7 @@ void loginWindow(sf::RenderWindow& window, bool role)
                         username.setselected(true);
                         acc.isselectedusername = true;
                     }
-                    else if (y_coor > 640 && y_coor < 720) {
+                    else if (y_coor > 645 && y_coor < 730) {
                         if (username.isselectedbox() == true) {
                             acc.isselectedusername = false;
                             username.setselected(false);

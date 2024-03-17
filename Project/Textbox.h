@@ -26,7 +26,17 @@ private:
 	void deletelastcharacter()
 	{
 		text.pop_back();
-		textbox.setString(text + "_");
+		if (isencode == false)
+			textbox.setString(text + "_");
+		else {
+			std::string text_encode;
+			for (int i = 0; i < text.size(); i++)
+			{
+				text_encode += "*";
+			}
+			textbox.setString(text_encode + "_");
+		}
+		
 	}
 	void inputlogically(sf::Uint32 chartyped)
 	{
