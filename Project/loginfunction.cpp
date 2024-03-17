@@ -58,10 +58,10 @@ void loginWindow(sf::RenderWindow& window, bool role)
     rokkitfont.loadFromFile("Font/Palatino.ttf");
     TextBox username(20, sf::Color::Black, false);
     username.setfont(rokkitfont);
-    username.setlimit(true, 25);
+    username.setlimit(true, 24);
     TextBox password(24, sf::Color::Black, false);
     password.setfont(rokkitfont);
-    password.setlimit(true, 25);
+    password.setlimit(true, 24);
     while (window.isOpen())
     {
         sf::Event event;
