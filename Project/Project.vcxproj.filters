@@ -27,6 +27,9 @@
     <ClInclude Include="AddCourse.h">
       <Filter>Course Function</Filter>
     </ClInclude>
+    <ClInclude Include="ManageAddCourse.h">
+      <Filter>Course Function</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -39,6 +42,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="AddCourse.cpp">
+      <Filter>Course Function</Filter>
+    </ClCompile>
+    <ClCompile Include="ManageAddCourse.cpp">
       <Filter>Course Function</Filter>
     </ClCompile>
   </ItemGroup>

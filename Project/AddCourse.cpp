@@ -3,71 +3,7 @@
 #include "AddCourse.h"
 
 
-template <class T>
-class Node {
-public:
-    T data;
-    Node* next;
-};
 
-template <class T>
-class LinkedList {
-public:
-    Node<T>* head;
-
-    LinkedList() {
-        head = nullptr;
-    }
-
-    ~LinkedList() {
-        while (head) {
-            Node<T>* temp = head;
-            head = head->next;
-            delete temp;
-        }
-    }
-
-    void push_tail(T data) {
-        Node<T>* newNode = new Node<T>;
-        newNode->data = data;
-        newNode->next = nullptr;
-
-        if (!head) {
-            head = newNode;
-        }
-        else {
-            Node<T>* temp = head;
-            while (temp->next) {
-                temp = temp->next;
-            }
-            temp->next = newNode;
-        }
-    }
-    void push_head(T data) {
-        Node<T>* newNode = new Node<T>;
-        newNode->data = data;
-        newNode->next = head;
-        head = newNode;
-    }
-
-    void display() {
-        Node<T>* temp = head;
-        while (temp) {
-            std::cout << temp->data << " ";
-            temp = temp->next;
-        }
-        std::cout << std::endl;
-    }
-
-    void print(ofstream& fout) {
-        Node<T>* temp = head;
-        while (temp) {
-            fout << temp->data << " ";
-            temp = temp->next;
-        }
-        fout << std::endl;
-    }
-};
 
 bool AddCourse::writeData2File() {
     std::ifstream fin("Data/" + this->schoolYear + "/" + this->semester + "CourseDates.txt");
@@ -93,7 +29,11 @@ bool AddCourse::writeData2File() {
 
         //print all the data to text file
         std::ofstream fout("Data/" + this->schoolYear + "/" + this->semester + "CourseDates.txt");
-        line.print(fout);
+        while (line.head) {
+            std::string data;
+            line.pop_head(data);
+            fout << data << std::endl;
+        }
         fout.close();
         return success;
     }
@@ -121,6 +61,11 @@ AddCourse::AddCourse(const std::string& schoolYear, const std::string& semester,
     this->courseID = courseID;
     this->startDate = startDate;
     this->endDate = endDate;
+}
+
+bool AddCourse::checkValidEnroll() {
+    Date today = Date::getCurrentDate();
+    return (today < startDate);
 }
 
 void AddCourse::createCourse(const std::string& schoolYear, const std::string& semester) {

@@ -135,6 +135,7 @@
   <ItemGroup>
     <ClInclude Include="AddCourse.h" />
     <ClInclude Include="displayfunction.h" />
+    <ClInclude Include="ManageAddCourse.h" />
     <ClInclude Include="textbox.h" />
   </ItemGroup>
   <ItemGroup>
@@ -142,6 +143,7 @@
     <ClCompile Include="function.cpp" />
     <ClCompile Include="loginfunction.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="ManageAddCourse.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

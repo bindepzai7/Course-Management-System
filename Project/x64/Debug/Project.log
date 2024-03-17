@@ -1,9 +1,2 @@
-<<<<<<< Updated upstream
-﻿  loginfunction.cpp
-  Project.vcxproj -> D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\x64\Debug\Project.exe
-=======
-﻿  AddCourse.cpp
-  main.cpp
-  Generating Code...
+﻿  ManageAddCourse.cpp
   Project.vcxproj -> C:\Users\uyenn\source\repos\STUDY\[CS162] Course Management System\Group_project_Cs162_2\Project\x64\Debug\Project.exe
->>>>>>> Stashed changes
