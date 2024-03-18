@@ -133,8 +133,10 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="AddCourse.h" />
     <ClInclude Include="Class.h" />
     <ClInclude Include="Course.h" />
+    <ClInclude Include="displayfunction.h" />
     <ClInclude Include="LinkedList.h" />
     <ClInclude Include="Semester.h" />
     <ClInclude Include="Staff.h" />
@@ -142,6 +144,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="function.cpp" />
+    <ClCompile Include="loginfunction.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
