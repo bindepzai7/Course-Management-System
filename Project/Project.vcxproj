@@ -133,16 +133,16 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="AddCourse.h" />
-    <ClInclude Include="displayfunction.h" />
-    <ClInclude Include="ManageAddCourse.h" />
-    <ClInclude Include="textbox.h" />
+    <ClInclude Include="Class.h" />
+    <ClInclude Include="Course.h" />
+    <ClInclude Include="LinkedList.h" />
+    <ClInclude Include="Semester.h" />
+    <ClInclude Include="Staff.h" />
+    <ClInclude Include="Student.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="AddCourse.cpp" />
-    <ClCompile Include="loginfunction.cpp" />
+    <ClCompile Include="function.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="ManageAddCourse.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

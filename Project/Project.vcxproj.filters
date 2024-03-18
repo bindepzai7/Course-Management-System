@@ -13,36 +13,33 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="Course Function">
-      <UniqueIdentifier>{779cedb8-2cb6-488a-9903-1a997ad8eca0}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="textbox.h">
+    <ClInclude Include="LinkedList.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="displayfunction.h">
+    <ClInclude Include="Class.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="AddCourse.h">
-      <Filter>Course Function</Filter>
+    <ClInclude Include="Student.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="ManageAddCourse.h">
-      <Filter>Course Function</Filter>
+    <ClInclude Include="Semester.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Course.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Staff.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="loginfunction.cpp">
+    <ClCompile Include="function.cpp">
       <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="AddCourse.cpp">
-      <Filter>Course Function</Filter>
-    </ClCompile>
-    <ClCompile Include="ManageAddCourse.cpp">
-      <Filter>Course Function</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
