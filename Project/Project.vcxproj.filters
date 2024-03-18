@@ -45,9 +45,6 @@
     <ClInclude Include="ManageAddCourse.h">
       <Filter>Course Function</Filter>
     </ClInclude>
-    <ClInclude Include="someBasicStruct.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="LinkedList.h">
       <Filter>Data Structure</Filter>
     </ClInclude>
@@ -58,6 +55,9 @@
       <Filter>Graphics</Filter>
     </ClInclude>
     <ClInclude Include="Course.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="AdditionalStruct.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -71,14 +71,14 @@
     <ClCompile Include="ManageAddCourse.cpp">
       <Filter>Course Function</Filter>
     </ClCompile>
-    <ClCompile Include="SinglyLinkedList.cpp">
-      <Filter>Data Structure</Filter>
-    </ClCompile>
     <ClCompile Include="loginfunction.cpp">
       <Filter>Graphics</Filter>
     </ClCompile>
     <ClCompile Include="main.cpp">
       <Filter>main</Filter>
+    </ClCompile>
+    <ClCompile Include="LinkedList.cpp">
+      <Filter>Data Structure</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

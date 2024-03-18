@@ -1,3 +1,8 @@
-﻿  loginfunction.cpp
-  LINK : D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\x64\Debug\Project.exe not found or not built by the last incremental link; performing full link
-  Project.vcxproj -> D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\x64\Debug\Project.exe
+﻿  AddCourse.cpp
+  function.cpp
+  LinkedList.cpp
+  ManageAddCourse.cpp
+  Generating Code...
+AddCourse.obj : error LNK2019: unresolved external symbol "public: __cdecl LinkedList<class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > >::LinkedList<class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > >(void)" (??0?$LinkedList@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@@QEAA@XZ) referenced in function "private: bool __cdecl AddCourse::writeData2File(void)" (?writeData2File@AddCourse@@AEAA_NXZ)
+AddCourse.obj : error LNK2019: unresolved external symbol "public: __cdecl LinkedList<class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > >::~LinkedList<class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > >(void)" (??1?$LinkedList@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@@QEAA@XZ) referenced in function "private: bool __cdecl AddCourse::writeData2File(void)" (?writeData2File@AddCourse@@AEAA_NXZ)
+C:\Users\uyenn\source\repos\STUDY\[CS162] Course Management System\Group_project_Cs162_2\Project\x64\Debug\Project.exe : fatal error LNK1120: 2 unresolved externals

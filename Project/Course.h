@@ -10,7 +10,7 @@ class Course {
     LinkedList<Class> classList;
 
     std::string courseID;
-    std::string courseCode;
+    std::string courseName;
     int numberOfCredits;
     Name techerName;
     int maxStudent;

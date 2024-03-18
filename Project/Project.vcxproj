@@ -134,13 +134,13 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="AddCourse.h" />
+    <ClInclude Include="AdditionalStruct.h" />
     <ClInclude Include="Class.h" />
     <ClInclude Include="Course.h" />
     <ClInclude Include="displayfunction.h" />
     <ClInclude Include="LinkedList.h" />
     <ClInclude Include="ManageAddCourse.h" />
     <ClInclude Include="Semester.h" />
-    <ClInclude Include="someBasicStruct.h" />
     <ClInclude Include="Staff.h" />
     <ClInclude Include="Student.h" />
     <ClInclude Include="Textbox.h" />
@@ -148,10 +148,10 @@
   <ItemGroup>
     <ClCompile Include="AddCourse.cpp" />
     <ClCompile Include="function.cpp" />
+    <ClCompile Include="LinkedList.cpp" />
     <ClCompile Include="loginfunction.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="ManageAddCourse.cpp" />
-    <ClCompile Include="SinglyLinkedList.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
