@@ -13,11 +13,20 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Course Function">
+      <UniqueIdentifier>{e67e746b-08bf-4bdd-b103-d0c9b6a401ec}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Data Structure">
+      <UniqueIdentifier>{bf658a79-d2d6-44da-82b5-d5b403383ba5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Graphics">
+      <UniqueIdentifier>{5cd89a0e-777c-43c9-8978-536988c8ecd1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="main">
+      <UniqueIdentifier>{6c579f06-b5bc-4ef0-bbf7-7682d0082ad0}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="LinkedList.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Class.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -27,28 +36,49 @@
     <ClInclude Include="Semester.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Course.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Staff.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="AddCourse.h">
+      <Filter>Course Function</Filter>
+    </ClInclude>
+    <ClInclude Include="ManageAddCourse.h">
+      <Filter>Course Function</Filter>
+    </ClInclude>
+    <ClInclude Include="someBasicStruct.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="LinkedList.h">
+      <Filter>Data Structure</Filter>
+    </ClInclude>
+    <ClInclude Include="Textbox.h">
+      <Filter>Graphics</Filter>
+    </ClInclude>
     <ClInclude Include="displayfunction.h">
+      <Filter>Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="Course.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="main.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="function.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="AddCourse.cpp">
+      <Filter>Course Function</Filter>
+    </ClCompile>
+    <ClCompile Include="ManageAddCourse.cpp">
+      <Filter>Course Function</Filter>
+    </ClCompile>
+    <ClCompile Include="SinglyLinkedList.cpp">
+      <Filter>Data Structure</Filter>
+    </ClCompile>
     <ClCompile Include="loginfunction.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp">
+      <Filter>main</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
