@@ -140,7 +140,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AddCourse.cpp" />
-    <ClCompile Include="function.cpp" />
     <ClCompile Include="loginfunction.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="ManageAddCourse.cpp" />
