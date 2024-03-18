@@ -80,5 +80,8 @@
     <ClCompile Include="LinkedList.cpp">
       <Filter>Data Structure</Filter>
     </ClCompile>
+    <ClCompile Include="Course.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
