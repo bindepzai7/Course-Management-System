@@ -163,4 +163,45 @@ public:
 		}
 	}
 };
+
+class OutputTextBox
+{
+public:
+	//feature of textbox
+	sf::Text o_textbox;
+	std::string text;
+	OutputTextBox(int size, sf::Color color, std::string input_text)
+	{
+		o_textbox.setCharacterSize(size);
+		o_textbox.setFillColor(color);
+		o_textbox.setString(input_text);
+		
+	}
+	~OutputTextBox()
+	{
+		std::cout << "object being delete" << std::endl;
+	}
+	void setfont(sf::Font& font)
+	{
+		o_textbox.setFont(font);
+	}
+	void setTextPosition(sf::Vector2f point)
+	{
+		o_textbox.setPosition(point);
+	}
+	void setStyleBold()
+	{
+		o_textbox.setStyle(sf::Text::Bold);
+	}
+	//change selected state
+	
+	std::string getText()
+	{
+		return text;
+	}
+	void drawTextbox(sf::RenderWindow& window)
+	{
+		window.draw(o_textbox);
+	}
+};
 #endif
