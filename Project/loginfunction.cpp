@@ -1,7 +1,11 @@
 #include"displayfunction.h"
 #include"textbox.h"
+#include"LinkedList.h"
+#include"Student.h"
+#include"Staff.h"
 #include<iostream>
 #include<SFML/Graphics.hpp>
+#include<Windows.h>
 
 void chooseRole(sf::RenderWindow& window)
 {
@@ -54,14 +58,17 @@ void loginWindow(sf::RenderWindow& window, bool role)
     loginscreen.setSmooth(true);
     sf::Sprite s_loginscreen;
     s_loginscreen.setTexture(loginscreen);
-    sf::Font rokkitfont;
-    rokkitfont.loadFromFile("Font/Palatino.ttf");
+    sf::Font Palatino;
+    Palatino.loadFromFile("Font/Palatino.ttf");
     TextBox username(20, sf::Color::Black, false);
-    username.setfont(rokkitfont);
+    username.setfont(Palatino);
     username.setlimit(true, 24);
     TextBox password(24, sf::Color::Black, false);
-    password.setfont(rokkitfont);
+    password.setfont(Palatino);
     password.setlimit(true, 24);
+    OutputTextBox wrongaccount(16, sf::Color::Red, "Username or password incorrect!\n Please try again!");
+    wrongaccount.setfont(Palatino);
+    wrongaccount.setStyleBold();
     while (window.isOpen())
     {
         sf::Event event;
@@ -98,6 +105,35 @@ void loginWindow(sf::RenderWindow& window, bool role)
                         acc.isselectedpassword = true;
                     }
                 }
+                if (x_coor > 75 && x_coor < 235 && y_coor>610 && y_coor < 655) {
+                    if (role == 0) {
+                        LinkedList<Student> studentlist;
+                        studentlist.addNodeInAscending(Student("23125087", "nguyen"));
+                        if (studentlist.isXDatainlist(Student(username.getText(), password.getText()))) {
+                            acc.iswrongaccount = false;
+                            window.close();
+                            Sleep(500);
+                            studenthome();
+                        }
+                        else
+                        {
+                            std::cout << "wrong";
+                            acc.iswrongaccount = true;
+                        }
+                    }
+                    else {
+                        LinkedList<Staff> stafflist;
+                        if (stafflist.isXDatainlist(Staff(username.getText(), password.getText()))) {
+                            acc.iswrongaccount = false;
+                            window.close();
+                            Sleep(500);
+                            staffhome();
+                        }
+                        else {
+                            acc.iswrongaccount = true;
+                        }
+                    }
+                }
             }
         }
         if (event.type == sf::Event::TextEntered){
@@ -128,6 +164,10 @@ void loginWindow(sf::RenderWindow& window, bool role)
         }
         window.clear();
         window.draw(s_loginscreen);
+        if (acc.iswrongaccount == true) {
+            wrongaccount.setTextPosition(sf::Vector2f(35, 556));
+            wrongaccount.drawTextbox(window);
+        }
         username.setTextPosition(sf::Vector2f(40, 395));
         username.drawTextbox(window);
         password.setTextPosition(sf::Vector2f(40, 505));
