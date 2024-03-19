@@ -8,7 +8,7 @@
 void readCSVofStudent(LinkedList<Student>& s, std::ifstream& fin) {
 
 	fin.open("23TT2.csv");
-	std::string studentID, firstname, lastname, socialID, gender, username, password;
+	std::string No,studentID, firstname, lastname, socialID, gender, username, password;
 	std::string dob;
 	Date dateofbirth;
 	int count = 0;
@@ -20,6 +20,7 @@ void readCSVofStudent(LinkedList<Student>& s, std::ifstream& fin) {
 				count = 1;
 			}
 			else {
+				getline(fin, No, ',');
 				getline(fin, studentID, ',');
 				getline(fin, lastname, ',');
 				getline(fin, firstname, ',');

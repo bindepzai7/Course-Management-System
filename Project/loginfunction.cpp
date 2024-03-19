@@ -3,6 +3,7 @@
 #include"LinkedList.h"
 #include"Student.h"
 #include"Staff.h"
+#include"ReadCSVfile.h"
 #include<iostream>
 #include<SFML/Graphics.hpp>
 #include<Windows.h>
@@ -108,7 +109,10 @@ void loginWindow(sf::RenderWindow& window, bool role)
                 if (x_coor > 75 && x_coor < 235 && y_coor>610 && y_coor < 655) {
                     if (role == 0) {
                         LinkedList<Student> studentlist;
-                        studentlist.addNodeInAscending(Student("23125087", "nguyen"));
+                        std::ifstream fin;
+                        readCSVofStudent(studentlist,fin);
+                        Node<Student>* cur = studentlist.head;
+                        std::cout << cur->data.studentID;
                         if (studentlist.isXDatainlist(Student(username.getText(), password.getText()))) {
                             acc.iswrongaccount = false;
                             window.close();
