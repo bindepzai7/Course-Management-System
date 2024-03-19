@@ -6,9 +6,12 @@ struct account
 {
 	bool isselectedusername = false;
 	bool isselectedpassword = false;
+	bool iswrongaccount = false;
 };
 void chooseRole(sf::RenderWindow& window);
 void loginWindow(sf::RenderWindow& window, bool role);
+void staffhome();
+void studenthome();
 
 
 
