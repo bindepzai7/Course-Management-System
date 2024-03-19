@@ -112,7 +112,6 @@ void loginWindow(sf::RenderWindow& window, bool role)
                         if (studentlist.isXDatainlist(Student(username.getText(), password.getText()))) {
                             acc.iswrongaccount = false;
                             window.close();
-                            Sleep(500);
                             studenthome();
                         }
                         else
@@ -126,7 +125,6 @@ void loginWindow(sf::RenderWindow& window, bool role)
                         if (stafflist.isXDatainlist(Staff(username.getText(), password.getText()))) {
                             acc.iswrongaccount = false;
                             window.close();
-                            Sleep(500);
                             staffhome();
                         }
                         else {
