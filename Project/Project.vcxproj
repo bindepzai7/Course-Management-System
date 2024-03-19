@@ -135,14 +135,19 @@
   <ItemGroup>
     <ClInclude Include="Class.h" />
     <ClInclude Include="Course.h" />
+    <ClInclude Include="displayfunction.h" />
     <ClInclude Include="LinkedList.h" />
     <ClInclude Include="Semester.h" />
     <ClInclude Include="Staff.h" />
     <ClInclude Include="Student.h" />
+    <ClInclude Include="Textbox.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="function.cpp" />
+    <ClCompile Include="loginfunction.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="staffview.cpp" />
+    <ClCompile Include="studentview.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

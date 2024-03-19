@@ -76,7 +76,7 @@ public:
         std::cout << std::endl;
     }
 
-    bool findXData(T data) {
+    bool isXDatainlist(T data) {
         if (head == nullptr) return false;
         if (!(head->data != data)) return true;
         Node<T>* cur = head;
