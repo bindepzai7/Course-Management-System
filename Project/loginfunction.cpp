@@ -66,9 +66,8 @@ void loginWindow(sf::RenderWindow& window, bool role)
     TextBox password(24, sf::Color::Black, false);
     password.setfont(Palatino);
     password.setlimit(true, 24);
-    OutputTextBox wrongaccount(16, sf::Color::Red, "Username or password incorrect!\n Please try again!");
+    OutputTextBox wrongaccount(14, sf::Color::Red, "Username or password incorrect!\nPlease try again!");
     wrongaccount.setfont(Palatino);
-    wrongaccount.setStyleBold();
     while (window.isOpen())
     {
         sf::Event event;
@@ -116,7 +115,6 @@ void loginWindow(sf::RenderWindow& window, bool role)
                         }
                         else
                         {
-                            std::cout << "wrong";
                             acc.iswrongaccount = true;
                         }
                     }

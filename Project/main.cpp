@@ -4,7 +4,7 @@
 
 
 int main() {
-    sf::RenderWindow window(sf::VideoMode(1296, 838), "Login window");
+    sf::RenderWindow window(sf::VideoMode(1296, 838), "Login window",sf::Style::Close);
 
     while (window.isOpen())
     {

@@ -57,7 +57,7 @@ bool Course::updateCourse() {
 	case 4:
 		//HELP HOW TO FIX THIS
 		std::cout << "Please enter first name of teacher: ";
-		getline(std::cin, s1);
+		getline(std::cin, s1); 
 		getline(std::cin, s2);
 		this->techerName = Name(s1, s2);
 		break;
