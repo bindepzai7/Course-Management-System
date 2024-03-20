@@ -42,3 +42,28 @@ void readCSVofStudent(LinkedList<Student>& s, std::ifstream& fin) {
 	}
 	fin.close();
 }
+
+void readCSVofStudentUser(LinkedList<Student>& s, std::ifstream& fin) {
+
+	fin.open("studentuser.csv");
+	std::string No, studentID, firstname, lastname, socialID, gender, username, password;
+	std::string dob;
+	Date dateofbirth;
+	int count = 0;
+	if (fin.is_open()) {
+		while (!fin.eof()) {
+			if (count == 0) {
+				std::string temp;
+				getline(fin, temp);
+				count = 1;
+			}
+			else {
+				getline(fin, No, ',');
+				getline(fin, studentID, ',');
+				getline(fin, password);
+				s.addNodeInAscending(Student(studentID, password));
+			}
+		}
+	}
+	fin.close();
+}

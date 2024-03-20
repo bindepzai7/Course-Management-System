@@ -10,7 +10,6 @@
 
 void chooseRole(sf::RenderWindow& window)
 {
-    
     sf::Texture roletexture;
     roletexture.loadFromFile("Design UI/Login 1.jpg");
     roletexture.setSmooth(true);
@@ -108,15 +107,12 @@ void loginWindow(sf::RenderWindow& window, bool role)
                 }
                 if (x_coor > 75 && x_coor < 235 && y_coor>610 && y_coor < 655) {
                     if (role == 0) {
-                        LinkedList<Student> studentlist;
+                        LinkedList<Student> userlist;
                         std::ifstream fin;
-                        readCSVofStudent(studentlist,fin);
-                        Node<Student>* cur = studentlist.head;
-                        std::cout << cur->data.studentID;
-                        if (studentlist.isXDatainlist(Student(username.getText(), password.getText()))) {
+                        readCSVofStudentUser(userlist, fin);
+                        if (userlist.isXDatainlist(Student(username.getText(), password.getText()))) {
                             acc.iswrongaccount = false;
-                            window.close();
-                            studenthome();
+                            studenthome(window);
                         }
                         else
                         {
@@ -128,8 +124,7 @@ void loginWindow(sf::RenderWindow& window, bool role)
                         LinkedList<Staff> stafflist;
                         if (stafflist.isXDatainlist(Staff(username.getText(), password.getText()))) {
                             acc.iswrongaccount = false;
-                            window.close();
-                            staffhome();
+                            staffhome(window);
                         }
                         else {
                             acc.iswrongaccount = true;

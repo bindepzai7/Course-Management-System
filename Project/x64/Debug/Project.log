@@ -1,8 +1,59 @@
-﻿  AddCourse.cpp
-  Course.cpp
-  ManageAddCourse.cpp
-  loginfunction.cpp
+<<<<<<< HEAD
+<<<<<<< HEAD
+﻿  loginfunction.cpp
+  main.cpp
   staffview.cpp
   studentview.cpp
   Generating Code...
-  Project.vcxproj -> C:\Users\uyenn\source\repos\STUDY\[CS162] Course Management System\Group_project_Cs162_2\Project\x64\Debug\Project.exe
+  Project.vcxproj -> D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\x64\Debug\Project.exe
+=======
+﻿  AddCourse.cpp
+  Course.cpp
+C:\Users\uyenn\source\repos\STUDY\[CS162] Course Management System\Group_project_Cs162_2\Project\AdditionalStruct.h(76,20): error C2079: 's' uses undefined class 'std::basic_stringstream<char,std::char_traits<char>,std::allocator<char>>'
+C:\Users\uyenn\source\repos\STUDY\[CS162] Course Management System\Group_project_Cs162_2\Project\AdditionalStruct.h(76,21): error C2440: 'initializing': cannot convert from 'std::string' to 'int'
+C:\Users\uyenn\source\repos\STUDY\[CS162] Course Management System\Group_project_Cs162_2\Project\AdditionalStruct.h(76,21): message : No user-defined-conversion operator available that can perform this conversion, or the operator cannot be called
+C:\Users\uyenn\source\repos\STUDY\[CS162] Course Management System\Group_project_Cs162_2\Project\AdditionalStruct.h(78,4): warning C4552: '>>': result of expression not used
+C:\Users\uyenn\source\repos\STUDY\[CS162] Course Management System\Group_project_Cs162_2\Project\AdditionalStruct.h(80,4): warning C4552: '>>': result of expression not used
+C:\Users\uyenn\source\repos\STUDY\[CS162] Course Management System\Group_project_Cs162_2\Project\Course.cpp(80,2): error C2059: syntax error: '}'
+  LinkedList.cpp
+C:\Users\uyenn\source\repos\STUDY\[CS162] Course Management System\Group_project_Cs162_2\Project\LinkedList.cpp(82,1): error C2059: syntax error: '}'
+C:\Users\uyenn\source\repos\STUDY\[CS162] Course Management System\Group_project_Cs162_2\Project\LinkedList.cpp(82,1): error C2143: syntax error: missing ';' before '}'
+  loginfunction.cpp
+C:\Users\uyenn\source\repos\STUDY\[CS162] Course Management System\Group_project_Cs162_2\Project\AdditionalStruct.h(76,20): error C2079: 's' uses undefined class 'std::basic_stringstream<char,std::char_traits<char>,std::allocator<char>>'
+C:\Users\uyenn\source\repos\STUDY\[CS162] Course Management System\Group_project_Cs162_2\Project\AdditionalStruct.h(76,21): error C2440: 'initializing': cannot convert from 'std::string' to 'int'
+C:\Users\uyenn\source\repos\STUDY\[CS162] Course Management System\Group_project_Cs162_2\Project\AdditionalStruct.h(76,21): message : No user-defined-conversion operator available that can perform this conversion, or the operator cannot be called
+C:\Users\uyenn\source\repos\STUDY\[CS162] Course Management System\Group_project_Cs162_2\Project\AdditionalStruct.h(78,4): warning C4552: '>>': result of expression not used
+C:\Users\uyenn\source\repos\STUDY\[CS162] Course Management System\Group_project_Cs162_2\Project\AdditionalStruct.h(80,4): warning C4552: '>>': result of expression not used
+  ManageAddCourse.cpp
+  staffview.cpp
+C:\Users\uyenn\source\repos\STUDY\[CS162] Course Management System\Group_project_Cs162_2\Project\AdditionalStruct.h(76,20): error C2079: 's' uses undefined class 'std::basic_stringstream<char,std::char_traits<char>,std::allocator<char>>'
+C:\Users\uyenn\source\repos\STUDY\[CS162] Course Management System\Group_project_Cs162_2\Project\AdditionalStruct.h(76,21): error C2440: 'initializing': cannot convert from 'std::string' to 'int'
+C:\Users\uyenn\source\repos\STUDY\[CS162] Course Management System\Group_project_Cs162_2\Project\AdditionalStruct.h(76,21): message : No user-defined-conversion operator available that can perform this conversion, or the operator cannot be called
+C:\Users\uyenn\source\repos\STUDY\[CS162] Course Management System\Group_project_Cs162_2\Project\AdditionalStruct.h(78,4): warning C4552: '>>': result of expression not used
+C:\Users\uyenn\source\repos\STUDY\[CS162] Course Management System\Group_project_Cs162_2\Project\AdditionalStruct.h(80,4): warning C4552: '>>': result of expression not used
+  studentview.cpp
+C:\Users\uyenn\source\repos\STUDY\[CS162] Course Management System\Group_project_Cs162_2\Project\AdditionalStruct.h(76,20): error C2079: 's' uses undefined class 'std::basic_stringstream<char,std::char_traits<char>,std::allocator<char>>'
+C:\Users\uyenn\source\repos\STUDY\[CS162] Course Management System\Group_project_Cs162_2\Project\AdditionalStruct.h(76,21): error C2440: 'initializing': cannot convert from 'std::string' to 'int'
+C:\Users\uyenn\source\repos\STUDY\[CS162] Course Management System\Group_project_Cs162_2\Project\AdditionalStruct.h(76,21): message : No user-defined-conversion operator available that can perform this conversion, or the operator cannot be called
+C:\Users\uyenn\source\repos\STUDY\[CS162] Course Management System\Group_project_Cs162_2\Project\AdditionalStruct.h(78,4): warning C4552: '>>': result of expression not used
+C:\Users\uyenn\source\repos\STUDY\[CS162] Course Management System\Group_project_Cs162_2\Project\AdditionalStruct.h(80,4): warning C4552: '>>': result of expression not used
+  Generating Code...
+>>>>>>> 1de07e6aceac9adab9ad25c7417d2f1b3c1db366
+=======
+﻿  Course.cpp
+AddCourse.obj : error LNK2019: unresolved external symbol "public: __cdecl LinkedList<class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > >::LinkedList<class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > >(void)" (??0?$LinkedList@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@@QEAA@XZ) referenced in function "private: bool __cdecl AddCourse::writeData2File(void)" (?writeData2File@AddCourse@@AEAA_NXZ)
+Course.obj : error LNK2001: unresolved external symbol "public: __cdecl LinkedList<class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > >::LinkedList<class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > >(void)" (??0?$LinkedList@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@@QEAA@XZ)
+AddCourse.obj : error LNK2019: unresolved external symbol "public: __cdecl LinkedList<class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > >::~LinkedList<class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > >(void)" (??1?$LinkedList@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@@QEAA@XZ) referenced in function "private: bool __cdecl AddCourse::writeData2File(void)" (?writeData2File@AddCourse@@AEAA_NXZ)
+Course.obj : error LNK2001: unresolved external symbol "public: __cdecl LinkedList<class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > >::~LinkedList<class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > >(void)" (??1?$LinkedList@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@@QEAA@XZ)
+Course.obj : error LNK2019: unresolved external symbol "public: __cdecl LinkedList<class Class>::LinkedList<class Class>(void)" (??0?$LinkedList@VClass@@@@QEAA@XZ) referenced in function "public: __cdecl Course::Course(void)" (??0Course@@QEAA@XZ)
+Course.obj : error LNK2019: unresolved external symbol "public: __cdecl LinkedList<class Class>::~LinkedList<class Class>(void)" (??1?$LinkedList@VClass@@@@QEAA@XZ) referenced in function "int `public: __cdecl Course::Course(void)'::`1'::dtor$0" (?dtor$0@?0???0Course@@QEAA@XZ@4HA)
+Course.obj : error LNK2019: unresolved external symbol "public: __cdecl LinkedList<struct Course::ScoreStudent>::LinkedList<struct Course::ScoreStudent>(void)" (??0?$LinkedList@UScoreStudent@Course@@@@QEAA@XZ) referenced in function "public: __cdecl Course::Course(void)" (??0Course@@QEAA@XZ)
+loginfunction.obj : error LNK2019: unresolved external symbol "public: __cdecl LinkedList<class Student>::LinkedList<class Student>(void)" (??0?$LinkedList@VStudent@@@@QEAA@XZ) referenced in function "void __cdecl loginWindow(class sf::RenderWindow &,bool)" (?loginWindow@@YAXAEAVRenderWindow@sf@@_N@Z)
+loginfunction.obj : error LNK2019: unresolved external symbol "public: __cdecl LinkedList<class Student>::~LinkedList<class Student>(void)" (??1?$LinkedList@VStudent@@@@QEAA@XZ) referenced in function "void __cdecl loginWindow(class sf::RenderWindow &,bool)" (?loginWindow@@YAXAEAVRenderWindow@sf@@_N@Z)
+loginfunction.obj : error LNK2019: unresolved external symbol "public: void __cdecl LinkedList<class Student>::addNodeInAscending(class Student)" (?addNodeInAscending@?$LinkedList@VStudent@@@@QEAAXVStudent@@@Z) referenced in function "void __cdecl readCSVofStudent(class LinkedList<class Student> &,class std::basic_ifstream<char,struct std::char_traits<char> > &)" (?readCSVofStudent@@YAXAEAV?$LinkedList@VStudent@@@@AEAV?$basic_ifstream@DU?$char_traits@D@std@@@std@@@Z)
+loginfunction.obj : error LNK2019: unresolved external symbol "public: bool __cdecl LinkedList<class Student>::isXDatainlist(class Student)" (?isXDatainlist@?$LinkedList@VStudent@@@@QEAA_NVStudent@@@Z) referenced in function "void __cdecl loginWindow(class sf::RenderWindow &,bool)" (?loginWindow@@YAXAEAVRenderWindow@sf@@_N@Z)
+loginfunction.obj : error LNK2019: unresolved external symbol "public: __cdecl LinkedList<class Staff>::LinkedList<class Staff>(void)" (??0?$LinkedList@VStaff@@@@QEAA@XZ) referenced in function "void __cdecl loginWindow(class sf::RenderWindow &,bool)" (?loginWindow@@YAXAEAVRenderWindow@sf@@_N@Z)
+loginfunction.obj : error LNK2019: unresolved external symbol "public: __cdecl LinkedList<class Staff>::~LinkedList<class Staff>(void)" (??1?$LinkedList@VStaff@@@@QEAA@XZ) referenced in function "void __cdecl loginWindow(class sf::RenderWindow &,bool)" (?loginWindow@@YAXAEAVRenderWindow@sf@@_N@Z)
+loginfunction.obj : error LNK2019: unresolved external symbol "public: bool __cdecl LinkedList<class Staff>::isXDatainlist(class Staff)" (?isXDatainlist@?$LinkedList@VStaff@@@@QEAA_NVStaff@@@Z) referenced in function "void __cdecl loginWindow(class sf::RenderWindow &,bool)" (?loginWindow@@YAXAEAVRenderWindow@sf@@_N@Z)
+C:\Users\uyenn\source\repos\STUDY\[CS162] Course Management System\Group_project_Cs162_2\Project\x64\Debug\Project.exe : fatal error LNK1120: 12 unresolved externals
+>>>>>>> f70acd8176c504fec40f273d94ba904dec2d7d26

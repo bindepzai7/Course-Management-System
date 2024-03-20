@@ -10,8 +10,8 @@ struct account
 };
 void chooseRole(sf::RenderWindow& window);
 void loginWindow(sf::RenderWindow& window, bool role);
-void staffhome();
-void studenthome();
+void staffhome(sf::RenderWindow &window);
+void studenthome(sf::RenderWindow &window);
 
 
 

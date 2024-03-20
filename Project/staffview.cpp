@@ -6,8 +6,7 @@
 #include<iostream>
 #include<SFML/Graphics.hpp>
 
-void staffhome() {
-    sf::RenderWindow window(sf::VideoMode(1296, 838), "Staff view");
+void staffhome(sf::RenderWindow &window) {
     sf::Texture Staffhometexture;
     Staffhometexture.loadFromFile("Design UI/[Staff] Home.jpg");
     Staffhometexture.setSmooth(true);
