@@ -79,4 +79,3 @@ bool LinkedList<T>::isXDatainlist(T data) {
     }
     return false;
 }
-};

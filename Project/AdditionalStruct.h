@@ -72,6 +72,7 @@ struct Name {
     Name(const std::string& s1 = "", const std::string& s2 = "") : firstName(s1), lastName(s2) {} // Constructor with default parameters
 };
 
+/*
 int getTimeInMinute(std::string time) {
 	std::stringstream s(time);
 	int hour, minute;
@@ -80,4 +81,5 @@ int getTimeInMinute(std::string time) {
 	s >> minute;
 	minute += hour * 60;
 	return minute;
-}
+};
+*/

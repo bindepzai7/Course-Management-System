@@ -149,7 +149,6 @@
   <ItemGroup>
     <ClCompile Include="AddCourse.cpp" />
     <ClCompile Include="Course.cpp" />
-    <ClCompile Include="function.cpp" />
     <ClCompile Include="LinkedList.cpp" />
     <ClCompile Include="loginfunction.cpp" />
     <ClCompile Include="main.cpp" />
