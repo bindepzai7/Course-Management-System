@@ -4,10 +4,10 @@
 
 Course::Course() {
 	maxStudent = 50;
-
+	numberOfCredits = 0;
 	//on going
 }
-
+/*
 std::pair<std::string, std::pair<int, int> > Course::getDayAndSession() const {
 
 	//stringSession ex: TUE, 7:30-10:30
@@ -22,7 +22,7 @@ std::pair<std::string, std::pair<int, int> > Course::getDayAndSession() const {
 	endTime = getTimeInMinute(time);
 	return std::make_pair(day, std::make_pair(startTime, endTime));
 };
-
+*/
 
 bool Course::updateCourse() {
 	int option;
@@ -76,7 +76,6 @@ bool Course::updateCourse() {
 		std::cout << "Please enter day and session: Ex: TUE, 7:30";
 		getline(std::cin, this->session);
 		break;
-	default:
 	}
 	return true;
 };
