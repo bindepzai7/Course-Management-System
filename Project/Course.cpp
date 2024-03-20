@@ -7,6 +7,7 @@ Course::Course() {
 	numberOfCredits = 0;
 	//on going
 }
+
 /*
 std::pair<std::string, std::pair<int, int> > Course::getDayAndSession() const {
 
@@ -23,6 +24,7 @@ std::pair<std::string, std::pair<int, int> > Course::getDayAndSession() const {
 	return std::make_pair(day, std::make_pair(startTime, endTime));
 };
 */
+
 
 bool Course::updateCourse() {
 	int option;
