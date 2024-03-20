@@ -104,6 +104,10 @@ void loginWindow(sf::RenderWindow& window, bool role)
                         acc.isselectedpassword = true;
                     }
                 }
+                if (x_coor > 25 && x_coor < 125 && y_coor>40 && y_coor < 80) {
+                    Sleep(200);
+                    chooseRole(window);
+                }
                 if (x_coor > 75 && x_coor < 235 && y_coor>610 && y_coor < 655) {
                     if (role == 0) {
                         LinkedList<Student> userlist;
