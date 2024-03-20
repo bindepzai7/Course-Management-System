@@ -1,2 +1,31 @@
-﻿  loginfunction.cpp
-  Project.vcxproj -> D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\x64\Debug\Project.exe
+﻿  AddCourse.cpp
+  Course.cpp
+C:\Users\uyenn\source\repos\STUDY\[CS162] Course Management System\Group_project_Cs162_2\Project\AdditionalStruct.h(76,20): error C2079: 's' uses undefined class 'std::basic_stringstream<char,std::char_traits<char>,std::allocator<char>>'
+C:\Users\uyenn\source\repos\STUDY\[CS162] Course Management System\Group_project_Cs162_2\Project\AdditionalStruct.h(76,21): error C2440: 'initializing': cannot convert from 'std::string' to 'int'
+C:\Users\uyenn\source\repos\STUDY\[CS162] Course Management System\Group_project_Cs162_2\Project\AdditionalStruct.h(76,21): message : No user-defined-conversion operator available that can perform this conversion, or the operator cannot be called
+C:\Users\uyenn\source\repos\STUDY\[CS162] Course Management System\Group_project_Cs162_2\Project\AdditionalStruct.h(78,4): warning C4552: '>>': result of expression not used
+C:\Users\uyenn\source\repos\STUDY\[CS162] Course Management System\Group_project_Cs162_2\Project\AdditionalStruct.h(80,4): warning C4552: '>>': result of expression not used
+C:\Users\uyenn\source\repos\STUDY\[CS162] Course Management System\Group_project_Cs162_2\Project\Course.cpp(80,2): error C2059: syntax error: '}'
+  LinkedList.cpp
+C:\Users\uyenn\source\repos\STUDY\[CS162] Course Management System\Group_project_Cs162_2\Project\LinkedList.cpp(82,1): error C2059: syntax error: '}'
+C:\Users\uyenn\source\repos\STUDY\[CS162] Course Management System\Group_project_Cs162_2\Project\LinkedList.cpp(82,1): error C2143: syntax error: missing ';' before '}'
+  loginfunction.cpp
+C:\Users\uyenn\source\repos\STUDY\[CS162] Course Management System\Group_project_Cs162_2\Project\AdditionalStruct.h(76,20): error C2079: 's' uses undefined class 'std::basic_stringstream<char,std::char_traits<char>,std::allocator<char>>'
+C:\Users\uyenn\source\repos\STUDY\[CS162] Course Management System\Group_project_Cs162_2\Project\AdditionalStruct.h(76,21): error C2440: 'initializing': cannot convert from 'std::string' to 'int'
+C:\Users\uyenn\source\repos\STUDY\[CS162] Course Management System\Group_project_Cs162_2\Project\AdditionalStruct.h(76,21): message : No user-defined-conversion operator available that can perform this conversion, or the operator cannot be called
+C:\Users\uyenn\source\repos\STUDY\[CS162] Course Management System\Group_project_Cs162_2\Project\AdditionalStruct.h(78,4): warning C4552: '>>': result of expression not used
+C:\Users\uyenn\source\repos\STUDY\[CS162] Course Management System\Group_project_Cs162_2\Project\AdditionalStruct.h(80,4): warning C4552: '>>': result of expression not used
+  ManageAddCourse.cpp
+  staffview.cpp
+C:\Users\uyenn\source\repos\STUDY\[CS162] Course Management System\Group_project_Cs162_2\Project\AdditionalStruct.h(76,20): error C2079: 's' uses undefined class 'std::basic_stringstream<char,std::char_traits<char>,std::allocator<char>>'
+C:\Users\uyenn\source\repos\STUDY\[CS162] Course Management System\Group_project_Cs162_2\Project\AdditionalStruct.h(76,21): error C2440: 'initializing': cannot convert from 'std::string' to 'int'
+C:\Users\uyenn\source\repos\STUDY\[CS162] Course Management System\Group_project_Cs162_2\Project\AdditionalStruct.h(76,21): message : No user-defined-conversion operator available that can perform this conversion, or the operator cannot be called
+C:\Users\uyenn\source\repos\STUDY\[CS162] Course Management System\Group_project_Cs162_2\Project\AdditionalStruct.h(78,4): warning C4552: '>>': result of expression not used
+C:\Users\uyenn\source\repos\STUDY\[CS162] Course Management System\Group_project_Cs162_2\Project\AdditionalStruct.h(80,4): warning C4552: '>>': result of expression not used
+  studentview.cpp
+C:\Users\uyenn\source\repos\STUDY\[CS162] Course Management System\Group_project_Cs162_2\Project\AdditionalStruct.h(76,20): error C2079: 's' uses undefined class 'std::basic_stringstream<char,std::char_traits<char>,std::allocator<char>>'
+C:\Users\uyenn\source\repos\STUDY\[CS162] Course Management System\Group_project_Cs162_2\Project\AdditionalStruct.h(76,21): error C2440: 'initializing': cannot convert from 'std::string' to 'int'
+C:\Users\uyenn\source\repos\STUDY\[CS162] Course Management System\Group_project_Cs162_2\Project\AdditionalStruct.h(76,21): message : No user-defined-conversion operator available that can perform this conversion, or the operator cannot be called
+C:\Users\uyenn\source\repos\STUDY\[CS162] Course Management System\Group_project_Cs162_2\Project\AdditionalStruct.h(78,4): warning C4552: '>>': result of expression not used
+C:\Users\uyenn\source\repos\STUDY\[CS162] Course Management System\Group_project_Cs162_2\Project\AdditionalStruct.h(80,4): warning C4552: '>>': result of expression not used
+  Generating Code...
