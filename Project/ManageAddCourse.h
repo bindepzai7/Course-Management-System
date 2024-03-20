@@ -4,8 +4,9 @@
 #include <string>
 #include <fstream>
 #include <iostream>
-
+#include "LinkedList.h"
 #include "AddCourse.h"
+
 
 class ManageAddCourse {
 private:

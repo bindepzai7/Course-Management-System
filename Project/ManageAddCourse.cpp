@@ -1,5 +1,4 @@
 
-
 #include "ManageAddCourse.h"
 
 void ManageAddCourse::createManageAddCourse(const std::string& schoolYear, const std::string& semester) {
@@ -10,7 +9,7 @@ void ManageAddCourse::createManageAddCourse(const std::string& schoolYear, const
 bool ManageAddCourse::saveCreatedCourse(const std::string& path) const {
 	std::ofstream fout;
 	fout.open(path);
-	
+
 	fout.close();
 
 

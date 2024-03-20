@@ -1,9 +1,7 @@
 
 
+
 #include "AddCourse.h"
-
-
-
 
 bool AddCourse::writeData2File() {
     std::ifstream fin("Data/" + this->schoolYear + "/" + this->semester + "CourseDates.txt");

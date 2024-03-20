@@ -133,10 +133,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="AddCourse.h" />
+    <ClInclude Include="AdditionalStruct.h" />
     <ClInclude Include="Class.h" />
     <ClInclude Include="Course.h" />
     <ClInclude Include="displayfunction.h" />
     <ClInclude Include="LinkedList.h" />
+    <ClInclude Include="ManageAddCourse.h" />
     <ClInclude Include="ReadCSVfile.h" />
     <ClInclude Include="Semester.h" />
     <ClInclude Include="Staff.h" />
@@ -144,9 +147,13 @@
     <ClInclude Include="Textbox.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="AddCourse.cpp" />
+    <ClCompile Include="Course.cpp" />
     <ClCompile Include="function.cpp" />
+    <ClCompile Include="LinkedList.cpp" />
     <ClCompile Include="loginfunction.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="ManageAddCourse.cpp" />
     <ClCompile Include="staffview.cpp" />
     <ClCompile Include="studentview.cpp" />
   </ItemGroup>
