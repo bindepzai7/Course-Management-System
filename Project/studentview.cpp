@@ -6,8 +6,7 @@
 #include<iostream>
 #include<SFML/Graphics.hpp>
 
-void studenthome() {
-    sf::RenderWindow window(sf::VideoMode(1296, 838), "Student view");
+void studenthome(sf::RenderWindow &window) {
     sf::Texture Studenthometexture;
     Studenthometexture.loadFromFile("Design UI/[Student] Home.jpg");
     Studenthometexture.setSmooth(true);
