@@ -17,6 +17,9 @@ public:
 	Semester(const std::string season, const Date& d1, const Date& d2)
 		: season(season), startDay(d1), endDay(d2) {}
 
+	void addCourse(const Course& course) {
+		courseList.addNodeAtFront(course);
+	}
 };
 
 
