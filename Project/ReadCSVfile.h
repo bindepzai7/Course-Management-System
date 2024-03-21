@@ -44,7 +44,6 @@ void readCSVofStudent(LinkedList<Student>& s, std::ifstream& fin) {
 }
 
 void readCSVofStudentUser(LinkedList<Student>& s, std::ifstream& fin) {
-
 	fin.open("studentuser.csv");
 	std::string No, studentID, firstname, lastname, socialID, gender, username, password;
 	std::string dob;

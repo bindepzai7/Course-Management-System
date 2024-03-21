@@ -5,18 +5,23 @@
 #include "LinkedList.h"
 class SchoolYear {
 private:
-    int year;
-    Date startDate;
-    Date endDate;
+    int yearstart;
+    int yearend;
     LinkedList<Semester> semesterList;
 
 public:
-    SchoolYear() :year(0), startDate(Date()), endDate(Date()) {}
+    SchoolYear() :yearstart(0), yearend(0) {}
     // Constructor
-    SchoolYear(const int& year, const Date startDate,const Date endDate)
-        : year(year), startDate(startDate), endDate(endDate) {}
+    SchoolYear(const int& yearstart, const int& yearend)
+        : yearstart(yearstart), yearend(yearend) {}
 
     void addSemester(const Semester& smt){
         semesterList.addNodeAtFront(smt);
+    }
+    int getyearstart() {
+        return yearstart;
+    }
+    int getyearend() {
+        return yearend;
     }
 };

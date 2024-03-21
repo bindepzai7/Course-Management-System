@@ -153,6 +153,7 @@
     <ClCompile Include="loginfunction.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="ManageAddCourse.cpp" />
+    <ClCompile Include="Staff.cpp" />
     <ClCompile Include="staffview.cpp" />
     <ClCompile Include="studentview.cpp" />
   </ItemGroup>
