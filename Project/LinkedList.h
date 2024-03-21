@@ -2,12 +2,13 @@
 #define FUNCTION_H
 #include <iostream>
 
+#include <functional>
 
 template <class T>
 class Node {
 public:
     T data;
-    Node* next;
+    Node* next = nullptr;
 };
 
 template <class T>
@@ -26,7 +27,6 @@ public:
         }
     }
 
-
     void addNodeAtFront(T data) {
         Node<T>* newNode = new Node<T>;
         newNode->data = data;
@@ -40,7 +40,6 @@ public:
             head = newNode;
         }
     }
-
 
     //Additional functional NTU's made (please delete unwanted ones)
     /////////////////////////////////////////////////////////////
@@ -108,6 +107,13 @@ public:
         }
     }
 
+    void empty() {
+        while (head) {
+            Node<T>* temp = head;
+            head = head->next;
+            delete temp;
+        }
+    }
     ///////////////////////////////////////////////////////
 
 
@@ -158,6 +164,20 @@ public:
         return false;
     }
 
+    //functional header used
+    int findIndexOfPartialData(std::function<bool(T)> compareEquation) {
+        Node<T>* cur = head;
+        int index = 0;
+        while (cur) {
+            if (compareEquation(cur->data)) return index;
+            cur = cur->next;
+            ++index;
+        }
+        return -1;
+    }
+
+
+
     void removeNodeByData(T data) {
         if (head == nullptr) return;
         if (head->data == data) {
@@ -168,7 +188,7 @@ public:
         else {
             Node<T>* prev = nullptr;
             Node<T>* curr = head;
-            while (curr->next && !(curr->next->data == data)) {
+            while (prev && curr->next && !(curr->next->data == data)) {
                 prev = curr;
                 curr = curr->next;
             }
@@ -181,8 +201,8 @@ public:
             }
         }
     }
-};
 
+};
 
 
 #endif;

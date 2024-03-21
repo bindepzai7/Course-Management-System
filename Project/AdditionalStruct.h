@@ -1,3 +1,7 @@
+
+#ifndef ADDITIONALSTRUCT_H
+#define ADDITIONALSTRUCT_H
+
 #include <iostream>
 #include <sstream>
 #include <string>
@@ -18,6 +22,7 @@ struct Date {
 		year = y;
 	}
 
+	//checked correct
 	static Date getCurrentDate()
 	{
 		time_t t = time(0);
@@ -27,8 +32,19 @@ struct Date {
 		int month = now.tm_mon + 1;
 		int year = now.tm_year + 1900;
 		return Date(day, month, year);
+
 	}
 
+	//checked correct
+	int getTimeInMinute(std::string time) {
+		std::stringstream s(time);
+		int hour, minute;
+		s >> hour;
+		s.ignore(100, ':');
+		s >> minute;
+		minute += hour * 60;
+		return minute;
+	}
 
 	friend bool operator==(const Date& d1, const Date& d2)
 	{
@@ -70,18 +86,20 @@ struct Name {
     Name(const std::string& s1 = "", const std::string& s2 = "") : firstName(s1), lastName(s2) {} // Constructor with default parameters
 };
 
-/*
-int getTimeInMinute(std::string time) {
-	std::stringstream s(time);
-	int hour, minute;
-	s >> hour;
-	s.ignore(100, ':');
-	s >> minute;
-	minute += hour * 60;
-	return minute;
-};
-*/
+//Checked correct
+static void standardizeString(std::string& s) {
+	if (!s.empty()) {
+		for (int i = 0; s[i + 1] != '\0'; ++i) {
+			if (s[i] == ' ' and s[i + 1] == ' ') {
+				s.erase(i, 1);
+				--i;
+			}
+		}
+	}
+	if (!s.empty() and s[0] == ' ') s.erase(0, 1);
+	if (!s.empty() and isspace(s.back())) s.erase(0, 1);
+}
 
-
+#endif
 
 
