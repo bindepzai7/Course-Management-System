@@ -17,4 +17,6 @@ public:
 	void removeStudent(Student& s) {
 		studentList->removeNodeByData(s);
 	}
+
+
 };

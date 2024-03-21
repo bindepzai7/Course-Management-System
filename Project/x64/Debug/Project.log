@@ -1,9 +1,2 @@
-﻿  AddCourse.cpp
-  Course.cpp
-  LinkedList.cpp
-  ManageAddCourse.cpp
-  loginfunction.cpp
-  staffview.cpp
-  studentview.cpp
-  Generating Code...
+﻿  Course.cpp
   Project.vcxproj -> C:\labwork - CS 162\group_project\Group_project_Cs162_2\Project\x64\Debug\Project.exe
