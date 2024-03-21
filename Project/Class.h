@@ -8,4 +8,13 @@ class Class {
 	Name teacherName;
 
 	LinkedList<Student>* studentList;
+
+public:
+	void addStudent(Student s) {
+		studentList->addNodeInAscending(s);
+	}
+
+	void removeStudent(Student& s) {
+		studentList->removeNodeByData(s);
+	}
 };

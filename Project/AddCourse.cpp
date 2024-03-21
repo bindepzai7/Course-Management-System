@@ -1,6 +1,3 @@
-
-
-
 #include "AddCourse.h"
 
 bool AddCourse::writeData2File() {

@@ -34,7 +34,7 @@ public:
         return studentID < s2.studentID;
     }
     bool operator!=(const Student& s2) const {
-        return studentID != s2.studentID||password!=s2.password;
+        return studentID != s2.studentID || password!=s2.password;
     }
 
 };

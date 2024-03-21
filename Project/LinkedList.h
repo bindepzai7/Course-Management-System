@@ -157,8 +157,32 @@ public:
         }
         return false;
     }
+
+    void removeNodeByData(T data) {
+        if (head == nullptr) return;
+        if (head->data == data) {
+            Node<T>* temp = head;
+            head = head->next;
+            delete temp;
+        }
+        else {
+            Node<T>* prev = nullptr;
+            Node<T>* curr = head;
+            while (curr->next && !(curr->next->data == data)) {
+                prev = curr;
+                curr = curr->next;
+            }
+            if (curr == nullptr) {
+                std::cout << "Don't exist this data" << std::endl;
+            }
+            else {
+                prev->next = curr->next;
+                delete curr;
+            }
+        }
+    }
 };
 
 
 
-#endif
+#endif;
