@@ -1,3 +1,6 @@
+#ifndef ADDCOURSE_H
+#define ADDCOURSE_H
+
 #include <string>
 #include <fstream>
 #include <iostream>
@@ -42,3 +45,5 @@ public:
 
 
 };
+
+#endif

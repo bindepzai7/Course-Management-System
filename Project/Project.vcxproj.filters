@@ -86,9 +86,6 @@
     <ClCompile Include="loginfunction.cpp">
       <Filter>Graphics</Filter>
     </ClCompile>
-    <ClCompile Include="LinkedList.cpp">
-      <Filter>Data Structure</Filter>
-    </ClCompile>
     <ClCompile Include="main.cpp">
       <Filter>Main</Filter>
     </ClCompile>

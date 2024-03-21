@@ -4,7 +4,7 @@
 #include "Student.h"
 #include "LinkedList.h"
 #include "Class.h"
-
+#include <fstream>
 
 #include <sstream>
 
@@ -23,30 +23,37 @@ private:
 
 public:
 
-    LinkedList<Class> classList;
-    LinkedList<std::string> sessions;
+    LinkedList<CourseStudent> students;
     std::string courseID, courseName, session;
-    int numberOfCredits;
-    Name techerName;
-    int maxStudent;
-    LinkedList<ScoreStudent> scoreStudents;
+    int No, credits, maxStudent;
+    Name teacherName;
+   
+
+
     Course();
+
+    bool readCourseFromCsvFile(std::ifstream& fin);
+
+    void loadCourseStudentsFromCsvFile(const std::string& schoolYear, const std::string& semester);
+
+    void saveCourseStudents2CsvFile(const std::string& schoolYear, const std::string& semester);
 
     bool updateCourse();
 
     //get session data as a string (MON, TUE, ...) and an int (time in minutes)
     std::pair<std::string, std::pair<int, int>> getDayAndSession() const;
 
-    //What is this?
-    void saveCourseStudents();
+    bool delStudentOfThisCourse(const std::string& studentID);
 
+    bool updateStudentOfThisCourse(const std::string& studentID, const Name& name);
 
-    void deleteCourseStudents(const std::string ID);
+    void loadScoreCourseStudents(const std::string& schoolYear, const std::string& semester);
 
+    std::string getFinScoreOfStudent(const std::string& schoolYear, const std::string& semester, const std::string& studentID);
 
 
 };
 
-
+\
 
 #endif
