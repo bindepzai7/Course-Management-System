@@ -1,6 +1,4 @@
-﻿  AddCourse.cpp
-  Course.cpp
-  ManageAddCourse.cpp
+﻿  Course.cpp
   loginfunction.cpp
   staffview.cpp
   studentview.cpp

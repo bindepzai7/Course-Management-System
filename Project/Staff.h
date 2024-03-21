@@ -19,6 +19,8 @@ public:
 	bool operator!=(const Staff& s2) const {
 		return username != s2.username || password != s2.password;
 	}
+	
+
 };
 
 

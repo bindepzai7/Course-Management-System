@@ -141,6 +141,7 @@
     <ClInclude Include="LinkedList.h" />
     <ClInclude Include="ManageAddCourse.h" />
     <ClInclude Include="ReadCSVfile.h" />
+    <ClInclude Include="SchoolYear.h" />
     <ClInclude Include="Semester.h" />
     <ClInclude Include="Staff.h" />
     <ClInclude Include="Student.h" />

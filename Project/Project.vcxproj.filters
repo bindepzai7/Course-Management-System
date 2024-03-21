@@ -63,6 +63,9 @@
     <ClInclude Include="LinkedList.h">
       <Filter>Data Structure</Filter>
     </ClInclude>
+    <ClInclude Include="SchoolYear.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Course.cpp">

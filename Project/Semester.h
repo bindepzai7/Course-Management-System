@@ -10,7 +10,7 @@ class Semester{
 	std::string season;
 	Date startDay;
 	Date endDay;
-
+public:
 	//default constructor
 	Semester() :season(""), startDay(Date(0, 0, 0)), endDay(Date(0, 0, 0)) {}
 	//constructor with parameters
@@ -18,7 +18,6 @@ class Semester{
 		: season(season), startDay(d1), endDay(d2) {}
 
 };
-
 
 
 
