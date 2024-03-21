@@ -47,13 +47,13 @@ public:
 
     bool updateStudentOfThisCourse(const std::string& studentID, const Name& name);
 
-    void loadScoreCourseStudents(const std::string& schoolYear, const std::string& semester);
+    void loadScoreCourseStudentsFromCvsFile(const std::string& schoolYear, const std::string& semester);
 
     std::string getFinScoreOfStudent(const std::string& schoolYear, const std::string& semester, const std::string& studentID);
 
 
 };
 
-\
+
 
 #endif

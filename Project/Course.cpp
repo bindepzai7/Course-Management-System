@@ -34,12 +34,11 @@ void Course::loadCourseStudentsFromCsvFile(const std::string& schoolYear, const 
 		while (!fin.eof()) {
 			CourseStudent student;
 			getline(fin, input, ',');
-			if (input == " ") return;
-			student.StudentID;
+			if (input == "") return;
+			getline(fin, student.StudentID, ',');
 			getline(fin, student.name.lastName, ',');
-			getline(fin, student.name.lastName, '\n');
+			getline(fin, student.name.firstName, '\n');
 		}
-
 	}
 	fin.close();
 }
@@ -130,6 +129,7 @@ bool Course::updateCourse() {
 
 //   [&] capture lambda expression external variables by reference
 bool Course::delStudentOfThisCourse(const std::string& studentID) {
+	//Find the index of student with StudentID inputted, return -1 if false
 	int index = students.findIndexOfPartialData([&](CourseStudent list) {return list.StudentID == studentID; });
 	if (index == -1) return false;
 	students.deleteAt(index);
@@ -147,3 +147,27 @@ bool Course::updateStudentOfThisCourse(const std::string& studentID, const Name&
 	cur->data.name = name;
 	return true;
 }
+
+
+void Course::loadScoreCourseStudentsFromCvsFile(const std::string& schoolYear, const std::string& semester) {
+	std::ifstream fin("Data/" + schoolYear + "/" + semester + "scoreOfEachCourse" + courseID + ".cvs");
+	if (fin.is_open()) {
+		std::string input = "";
+		getline(fin, input);
+		while (!fin.eof()) {
+			ScoreStudent student;
+			getline(fin, input, ',');
+			if (input == "") return;
+			getline(fin, student.StudentID, ',');
+			getline(fin, student.name.lastName, ',');
+			getline(fin, student.name.firstName, ',');
+			getline(fin, student.midScore, ','); 
+			getline(fin, student.finScore, ','); 
+			getline(fin, student.otherScore, ',');
+			getline(fin, student.totalScore, '\n');
+		}
+
+	}
+	fin.close();
+}
+
