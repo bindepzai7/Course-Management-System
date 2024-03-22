@@ -44,6 +44,8 @@ public:
 
 	void readAllSchoolyear(std::ifstream fin);
 	void writeSchoolyear2file(std::ofstream fout);
+	void readAllClassinSchoolYear(std::ifstream fin);
+	void writeClasstoFile(std::ofstream fout);
 };
 
 

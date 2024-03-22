@@ -167,10 +167,10 @@ public:
 class OutputTextBox
 {
 private:
+	//feature of textbox
 	sf::Text o_textbox;
 	std::string text;
 public:
-	//feature of textbox
 	
 	OutputTextBox(int size, sf::Color color, std::string input_text)
 	{

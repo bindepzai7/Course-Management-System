@@ -135,6 +135,7 @@
   <ItemGroup>
     <ClInclude Include="AddCourse.h" />
     <ClInclude Include="AdditionalStruct.h" />
+    <ClInclude Include="Button.h" />
     <ClInclude Include="Class.h" />
     <ClInclude Include="Course.h" />
     <ClInclude Include="displayfunction.h" />
