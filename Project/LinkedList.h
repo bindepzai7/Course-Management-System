@@ -195,7 +195,7 @@ public:
             if (curr == nullptr) {
                 std::cout << "Don't exist this data" << std::endl;
             }
-            else {
+            else if (!curr->next) {
                 prev->next = curr->next;
                 delete curr;
             }

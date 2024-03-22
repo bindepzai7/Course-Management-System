@@ -34,7 +34,7 @@ private:
     };
 
 public:
-
+    LinkedList<ScoreStudent> scoreStudents;
     LinkedList<CourseStudent> students;
     std::string courseID, courseName, session;
     int No, credits, maxStudent;
@@ -61,11 +61,10 @@ public:
 
     void loadScoreCourseStudentsFromCvsFile(const std::string& schoolYear, const std::string& semester);
 
-    std::string getFinScoreOfStudent(const std::string& schoolYear, const std::string& semester, const std::string& studentID);
+    void saveStudentScore2CsvFile(const std::string& schoolYear, const std::string& semester);
 
 
 };
-
 
 
 #endif

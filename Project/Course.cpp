@@ -38,6 +38,7 @@ void Course::loadCourseStudentsFromCsvFile(const std::string& schoolYear, const 
 			getline(fin, student.StudentID, ',');
 			getline(fin, student.name.lastName, ',');
 			getline(fin, student.name.firstName, '\n');
+			students.push_tail(student);
 		}
 	}
 	fin.close();
@@ -126,7 +127,6 @@ bool Course::updateCourse() {
 };
 
 
-
 //   [&] capture lambda expression external variables by reference
 bool Course::delStudentOfThisCourse(const std::string& studentID) {
 	//Find the index of student with StudentID inputted, return -1 if false
@@ -149,6 +149,7 @@ bool Course::updateStudentOfThisCourse(const std::string& studentID, const Name&
 }
 
 
+
 void Course::loadScoreCourseStudentsFromCvsFile(const std::string& schoolYear, const std::string& semester) {
 	std::ifstream fin("Data/" + schoolYear + "/" + semester + "scoreOfEachCourse" + courseID + ".cvs");
 	if (fin.is_open()) {
@@ -165,9 +166,26 @@ void Course::loadScoreCourseStudentsFromCvsFile(const std::string& schoolYear, c
 			getline(fin, student.finScore, ','); 
 			getline(fin, student.otherScore, ',');
 			getline(fin, student.totalScore, '\n');
+			scoreStudents.push_tail(student);
 		}
 
 	}
 	fin.close();
 }
 
+
+void Course::saveStudentScore2CsvFile(const std::string& schoolYear, const std::string& semester) {
+	std::ofstream fout("Data/" + schoolYear + "/" + semester + "scoreOfEachCourse" + courseID + ".cvs");
+	if (fout.is_open()) {
+		Node<ScoreStudent>* cur = scoreStudents.head;
+		int i = 0;
+		fout << "No,studentID,lastName,firstName,midScore,finScore,otherScore,totalScore\n";
+		while (cur) {
+			fout << ++i << "," << cur->data.StudentID << "," << cur->data.name.lastName << "," << cur->data.name.firstName
+				<< "," << cur->data.midScore << cur->data.finScore << cur->data.otherScore << cur->data.totalScore << '\n';
+			cur = cur->next;
+		}
+	}
+	fout.close();
+
+}
