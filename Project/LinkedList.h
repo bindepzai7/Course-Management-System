@@ -1,5 +1,5 @@
-#ifndef FUNCTION_H
-#define FUNCTION_H
+#ifndef LINKEDLIST_H
+#define LINKEDLIST_H
 #include <iostream>
 
 #include <functional>

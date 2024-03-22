@@ -1,10 +1,10 @@
 ﻿  AddCourse.cpp
   Course.cpp
-  ManageAddCourse.cpp
-  Staff.cpp
   loginfunction.cpp
   main.cpp
+  ManageAddCourse.cpp
+  Staff.cpp
   staffview.cpp
   studentview.cpp
   Generating Code...
-  Project.vcxproj -> D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\x64\Debug\Project.exe
+  Project.vcxproj -> C:\labwork - CS 162\group_project\Group_project_Cs162_2\Project\x64\Debug\Project.exe

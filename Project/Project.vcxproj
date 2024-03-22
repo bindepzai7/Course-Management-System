@@ -147,6 +147,7 @@
     <ClInclude Include="Staff.h" />
     <ClInclude Include="Student.h" />
     <ClInclude Include="Textbox.h" />
+    <ClInclude Include="User.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AddCourse.cpp" />
