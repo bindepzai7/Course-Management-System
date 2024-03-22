@@ -15,6 +15,17 @@ public:
     SchoolYear(const int& yearstart, const int& yearend)
         : yearstart(yearstart), yearend(yearend) {}
 
+    bool operator==(const SchoolYear& s2) const {
+        return yearstart == s2.yearstart;
+    }
+
+    bool operator>(const SchoolYear& s2) const {
+        return yearstart > s2.yearstart;
+    }
+    bool operator<(const SchoolYear& s2) const {
+        return yearstart < s2.yearstart;
+    }
+
     void addSemester(const Semester& smt){
         semesterList.addNodeAtFront(smt);
     }

@@ -166,10 +166,12 @@ public:
 
 class OutputTextBox
 {
-public:
-	//feature of textbox
+private:
 	sf::Text o_textbox;
 	std::string text;
+public:
+	//feature of textbox
+	
 	OutputTextBox(int size, sf::Color color, std::string input_text)
 	{
 		o_textbox.setCharacterSize(size);

@@ -19,6 +19,18 @@ public:
 
 	//function...
 
+	bool operator==(const Class& cl2) const {
+		return classCode == cl2.classCode/*&&password==s2.password*/;
+	}
+
+	bool operator>(const Class& cl2) const {
+		return classCode > cl2.classCode;
+	}
+
+	bool operator<(const Class& cl2) const {
+		return classCode < cl2.classCode;
+	}
+
 	void addStudent(Student s) {
 		studentList.addNodeInAscending(s);
 	}

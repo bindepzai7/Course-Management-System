@@ -14,6 +14,18 @@ private:
     struct CourseStudent {
         std::string StudentID;
         Name name;
+
+        bool operator==(const CourseStudent& s2) const {
+            return StudentID == s2.StudentID;
+        }
+
+        bool operator>(const CourseStudent& s2) const {
+            return StudentID > s2.StudentID;
+        }
+
+        bool operator<(const CourseStudent& s2) const {
+            return StudentID < s2.StudentID;
+        }
     };
     struct ScoreStudent {
         std::string StudentID;

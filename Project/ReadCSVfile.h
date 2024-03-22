@@ -1,4 +1,6 @@
-#pragma once
+#ifndef READCSVFILE_H
+#define READCSVFILE_H
+
 #include "LinkedList.h"
 #include "Student.h"
 #include <iostream>
@@ -6,7 +8,6 @@
 #include <fstream>
 #include <sstream>
 void readCSVofStudent(LinkedList<Student>& s, std::ifstream& fin) {
-
 	fin.open("23TT2.csv");
 	std::string No,studentID, firstname, lastname, socialID, gender, username, password;
 	std::string dob;
@@ -66,3 +67,5 @@ void readCSVofStudentUser(LinkedList<Student>& s, std::ifstream& fin) {
 	}
 	fin.close();
 }
+
+#endif
