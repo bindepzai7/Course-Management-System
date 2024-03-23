@@ -136,6 +136,13 @@ bool Course::delStudentOfThisCourse(const std::string& studentID) {
 	return true;
 }
 
+void Course::addStudentToThisCourse(const std::string& studentID, const Name& name) {
+	CourseStudent courseStudent;
+	courseStudent.StudentID = studentID;
+	courseStudent.name = name;
+	students.addNodeInAscending(courseStudent);
+}
+
 bool Course::updateStudentOfThisCourse(const std::string& studentID, const Name& name) {
 	int index = students.findIndexOfPartialData([&](CourseStudent list) {return list.StudentID == studentID; });
 	if (index == -1) return false;
@@ -148,9 +155,14 @@ bool Course::updateStudentOfThisCourse(const std::string& studentID, const Name&
 	return true;
 }
 
+bool Course::findStudentOfThisCourse(const std::string& studentID) {
+	int i = students.findIndexOfPartialData([&](CourseStudent list) {return list.StudentID == studentID; });
+	if (int i = -1) return false;
+	else return true;
+}
 
 
-void Course::loadScoreCourseStudentsFromCvsFile(const std::string& schoolYear, const std::string& semester) {
+void Course::loadStudentScoreFromCvsFile(const std::string& schoolYear, const std::string& semester) {
 	std::ifstream fin("Data/" + schoolYear + "/" + semester + "scoreOfEachCourse" + courseID + ".cvs");
 	if (fin.is_open()) {
 		std::string input = "";
@@ -166,13 +178,12 @@ void Course::loadScoreCourseStudentsFromCvsFile(const std::string& schoolYear, c
 			getline(fin, student.finScore, ','); 
 			getline(fin, student.otherScore, ',');
 			getline(fin, student.totalScore, '\n');
-			scoreStudents.push_tail(student);
+			scoreStudents.push_head(student);
 		}
 
 	}
 	fin.close();
 }
-
 
 void Course::saveStudentScore2CsvFile(const std::string& schoolYear, const std::string& semester) {
 	std::ofstream fout("Data/" + schoolYear + "/" + semester + "scoreOfEachCourse" + courseID + ".cvs");
@@ -187,5 +198,16 @@ void Course::saveStudentScore2CsvFile(const std::string& schoolYear, const std::
 		}
 	}
 	fout.close();
+}
 
+void Course::createBlankScoreFile(const std::string& schoolYear, const std::string& semester) {
+	std::ofstream fout("Data/" + schoolYear + "/" + semester + "/" + "scoreOfEachCourse" + courseID + ".csv");
+	if (fout.is_open()) {
+		fout << "No,studentID,lastName,firstName,midScore,finScore,otherScore,totalScore\n";
+		int i = 1;
+		Node<CourseStudent>* cur = students.head;
+		fout << i++ << cur->data.StudentID << "," << cur->data.name.lastName << "," << cur->data.name.firstName << '\n';
+		cur = cur->next;
+	}
+	fout.close();
 }

@@ -164,6 +164,7 @@ public:
         return false;
     }
 
+
     //functional header used
     int findIndexOfPartialData(std::function<bool(T)> compareEquation) {
         Node<T>* cur = head;

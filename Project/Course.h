@@ -57,12 +57,17 @@ public:
 
     bool delStudentOfThisCourse(const std::string& studentID);
 
+    void addStudentToThisCourse(const std::string& studentID, const Name& name);
+
+    bool findStudentOfThisCourse(const std::string& studentID);
+
     bool updateStudentOfThisCourse(const std::string& studentID, const Name& name);
 
-    void loadScoreCourseStudentsFromCvsFile(const std::string& schoolYear, const std::string& semester);
+    void loadStudentScoreFromCvsFile(const std::string& schoolYear, const std::string& semester);
 
     void saveStudentScore2CsvFile(const std::string& schoolYear, const std::string& semester);
 
+    void createBlankScoreFile(const std::string& schoolYear, const std::string& semester);
 
 };
 
