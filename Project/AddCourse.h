@@ -15,19 +15,17 @@ class AddCourse {
 private:
 	std::string schoolYear, semester, courseID;
 	Date startDate, endDate;
-	bool writeData2File(); //return true if write to file successfully
+	
 public:
-
 	//Constructors
-	AddCourse();
-	AddCourse(const std::string& schoolYear, const std::string& semester, const std::string& courseID);
 	AddCourse(const std::string& schoolYear, const std::string& semester, const std::string& courseID, const Date& startDate, const Date& endDate);
-
 
 	//Function:
 
+	bool writeData2File(); //return true if write to file successfully
+
 		//Check if we can enrolled in course
-		bool checkValidEnroll();
+		bool checkValid();
 
 		//create an empty course
 		void createCourse(const std::string& schoolYear, const std::string& semester);
