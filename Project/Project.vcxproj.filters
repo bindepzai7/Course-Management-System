@@ -51,9 +51,6 @@
     <ClInclude Include="AddCourse.h">
       <Filter>Course Function</Filter>
     </ClInclude>
-    <ClInclude Include="ManageAddCourse.h">
-      <Filter>Course Function</Filter>
-    </ClInclude>
     <ClInclude Include="Textbox.h">
       <Filter>Graphics</Filter>
     </ClInclude>
@@ -78,9 +75,6 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="AddCourse.cpp">
-      <Filter>Course Function</Filter>
-    </ClCompile>
-    <ClCompile Include="ManageAddCourse.cpp">
       <Filter>Course Function</Filter>
     </ClCompile>
     <ClCompile Include="studentview.cpp">

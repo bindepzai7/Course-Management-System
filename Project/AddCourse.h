@@ -15,6 +15,7 @@ class AddCourse {
 private:
 	std::string schoolYear, semester, courseID;
 	Date startDate, endDate;
+
 	
 public:
 	//Constructors

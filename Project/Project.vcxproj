@@ -140,7 +140,6 @@
     <ClInclude Include="Course.h" />
     <ClInclude Include="displayfunction.h" />
     <ClInclude Include="LinkedList.h" />
-    <ClInclude Include="ManageCourse.h" />
     <ClInclude Include="ReadCSVfile.h" />
     <ClInclude Include="SchoolYear.h" />
     <ClInclude Include="Semester.h" />
