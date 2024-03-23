@@ -27,9 +27,10 @@ bool AddCourse::writeData2File() {
         while (courseList.head) {
             std::string data;
             courseList.pop_head(data);
-            fout << data << std::endl;
+            fout << data << '\n';
         }
         fout.close();
+        fin.close();
         return success;
     }
     fin.close();

@@ -31,18 +31,26 @@ private:
         std::string StudentID;
         Name name;
         std::string totalScore, finScore, midScore, otherScore;
+        ScoreStudent() {
+            StudentID = "";
+            totalScore = "";
+            finScore = "";
+            midScore = "";
+            otherScore = "";
+        }
     };
 
 public:
     LinkedList<ScoreStudent> scoreStudents;
     LinkedList<CourseStudent> students;
     std::string courseID, courseName, session;
-    int No, credits, maxStudent;
+    int credits, maxStudent;
     Name teacherName;
    
 
-
     Course();
+
+    Course(const std::string& courseID, const std::string& courseName, const std::string& session, const int& credits, const int& maxStudent, const Name& teacherName);
 
     bool readCourseFromCsvFile(std::ifstream& fin);
 
@@ -68,6 +76,10 @@ public:
     void saveStudentScore2CsvFile(const std::string& schoolYear, const std::string& semester);
 
     void createBlankScoreFile(const std::string& schoolYear, const std::string& semester);
+
+    ScoreStudent findAStudentScoreOfThisCourse(const std::string& studentID);
+
+    bool updateAStudentScoreOfThisCourse(const std::string& studentID, const std::string& totalScore, const std::string& finScore, const std::string& midScore, const std::string& otherScore);
 
 };
 

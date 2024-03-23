@@ -2,14 +2,25 @@
 #include "Course.h"
 
 Course::Course() {
-	maxStudent = 50;
-	No = 0;
-	credits = 0;
+	this->maxStudent = 50;
+	this->credits = 0;
+	this->courseID = "";
+}
+
+Course::Course(const std::string& courseID, const std::string& courseName, const std::string& session, const int& credits, const int& maxStudent, const Name& teacherName) {
+	if (maxStudent == NULL) {
+		this->maxStudent = 50;
+	}
+	else this->maxStudent = maxStudent;
+	this->courseID = courseID;
+	this->courseName = courseName;
+	this->teacherName = teacherName;
+	this->session = session;
+	this->credits = credits;
 }
 
 bool Course::readCourseFromCsvFile(std::ifstream& fin) {
-	if (fin >> No) {
-		getline(fin, courseID, ',');
+	if (getline(fin, courseID, ',')) {
 		standardizeString(courseID);
 		getline(fin, courseName, ',');
 		standardizeString(courseName);
@@ -200,8 +211,44 @@ void Course::saveStudentScore2CsvFile(const std::string& schoolYear, const std::
 	fout.close();
 }
 
+Course::ScoreStudent Course::findAStudentScoreOfThisCourse(const std::string& studentID) {
+	int index = students.findIndexOfPartialData([&](CourseStudent list) {return list.StudentID == studentID; });
+	if (index == -1) {
+		ScoreStudent scoreStudent;
+		return scoreStudent;
+	}
+	Node<ScoreStudent>* cur = scoreStudents.head;
+	for (int i = 0; i < index; ++i) {
+		cur = cur->next;
+	}
+	return cur->data;
+}
+
+bool Course::updateAStudentScoreOfThisCourse(const std::string& studentID, const std::string& totalScore, const std::string& finScore, const std::string& midScore, const std::string& otherScore) {
+	int index = students.findIndexOfPartialData([&](CourseStudent list) {return list.StudentID == studentID; });
+	if (index == -1) return false;
+	Node<ScoreStudent>* cur = scoreStudents.head;
+	for (int i = 0; i < index; ++i) {
+		cur = cur->next;
+	}
+	if (midScore != cur->data.midScore) {
+		cur->data.midScore = midScore;
+	}
+	if (finScore != cur->data.finScore) {
+		cur->data.finScore = finScore;
+	}
+	if (otherScore != cur->data.otherScore) {
+		cur->data.otherScore = otherScore;
+	}
+	if (totalScore != cur->data.totalScore) {
+		cur->data.totalScore = totalScore;
+	}
+	return true;
+}
+
 void Course::createBlankScoreFile(const std::string& schoolYear, const std::string& semester) {
-	std::ofstream fout("Data/" + schoolYear + "/" + semester + "/" + "scoreOfEachCourse" + courseID + ".csv");
+	std::ofstream fout;
+	fout.open("Data/" + schoolYear + "/" + semester + "/" + "scoreOfEachCourse" + courseID + ".csv");
 	if (fout.is_open()) {
 		fout << "No,studentID,lastName,firstName,midScore,finScore,otherScore,totalScore\n";
 		int i = 1;
