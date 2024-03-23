@@ -18,6 +18,7 @@ public:
 	Semester(const std::string schoolYear, const Date& d1, const Date& d2)
 		: schoolYear(schoolYear), startDay(d1), endDay(d2) {}
 
+	/*
 	//New course without any property
 	void addCourse(const std::string& schoolYear, const std::string& semester, const std::string courseID, const Date& startDate, const Date& endDate) {
 		AddCourse addCourse(schoolYear, semester, courseID, startDate, endDate);
@@ -44,6 +45,8 @@ public:
 	void viewCourse() {
 
 	}
+	*/
+	
 };
 
 
