@@ -55,11 +55,22 @@ public:
     }
 
     void deleteAt(int index) {
+        if (!this->head) return;
         Node<T>* cur = this->head;
-        for (int i = 1; i < index && cur->next != NULL; ++i) {
-            cur = cur->next;
+        for (int i = 1; i < index ; ++i) {
+            if (cur->next != NULL) {
+                cur = cur->next;
+            }
+            else return;
         }
-        if (cur->next != NULL) {
+
+        if (index == 0) {
+            this->head = this->head->next;
+            delete cur;
+            return;
+        }
+
+        if (cur and cur->next != NULL) {
             Node<T>* temp = cur->next;
             cur->next = cur->next->next;
             delete temp;

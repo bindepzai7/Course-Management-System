@@ -1,7 +1,7 @@
 
 #include "Course.h"
 
-
+//Sua th neu head rong het tat ca cac ham
 
 
 //								Basic constructor
@@ -10,6 +10,7 @@ Course::Course() {
 	this->maxStudent = 50;
 	this->credits = 0;
 	this->courseID = "";
+	this->validSlot = maxStudent;
 }
 
 Course::Course(const std::string& courseID, const std::string& courseName, const std::string& session, const int& credits, const int& maxStudent, const Name& teacherName) {
@@ -20,6 +21,7 @@ Course::Course(const std::string& courseID, const std::string& courseName, const
 	this->courseID = courseID;
 	this->courseName = courseName;
 	this->teacherName = teacherName;
+	this->validSlot = maxStudent;
 	this->session = session;
 	this->credits = credits;
 }
@@ -45,6 +47,7 @@ bool Course::readACourseFromFileCourseList(std::ifstream& fin) {
 		fin >> (credits);
 		fin.ignore(1000, ',');
 		fin >> (maxStudent);
+		this->validSlot = maxStudent;
 		fin.ignore(1000, ',');
 		getline(fin, session, '\n');
 		return true;
@@ -71,47 +74,34 @@ int Course::getCredit() {
 int Course::getMaxStudent() {
 	return this->maxStudent;
 }
+int Course::getValidSlot() {
+	return this->validSlot;
+}
 
-bool Course::updateCourseInfo(int option) {
-	//This function should be call after the UI get the option
-	//Update Course Info
-	std::string lastName, firstName;
-	int a = maxStudent;
-	switch (option) {
-	case 1:
-		std::cin >> (this->courseID);
-		break;
-	case 2:
-		getline(std::cin, this->courseName);
-		break;
-	case 3:
-
-		getline(std::cin, lastName);
-		getline(std::cin, firstName);
-		this->teacherName = Name(lastName, firstName);
-		break;
-	case 4:
-		while (!std::cin >> this->credits or this->credits <= 0) {}
-		break;
-	case 5:
-		if (!std::cin >> this->maxStudent or this->maxStudent <= 0)
-			maxStudent = a;
-		break;
-	case 6:
-		getline(std::cin, this->session);
-		break;
-	}
+bool Course::updateCourseInfo(const std::string& courseID, const std::string& courseName, const Name& teacher, const int& MaxStudent, const int& credits, const std::string& session) {
+	int a = this->maxStudent - MaxStudent;
+	if (this->validSlot - a < 0) return false;
+	this->validSlot -= a;
+	this->session = session;
+	this->courseID = courseID;
+	this->courseName = courseName;
+	this->teacherName.firstName = teacher.firstName;
+	this->teacherName.lastName = teacher.lastName;
+	this->maxStudent = MaxStudent;
 	return true;
+	
 };
 
-
+void Course::saveACourseToFileCourseList(std::ofstream& fout) {
+	fout << this->courseID << "," << this->courseName << "," << this->teacherName.lastName << ',' << this->teacherName.firstName << ','
+		<< this->credits << "," << this->maxStudent << ',' << this->session << '\n';
+}
 
 
 
 //								About students in this course
 
-void Course::loadStudentsFromCsvFileStaffUpload(const std::string& schoolYear, const std::string& semester) {
-
+bool Course::loadStudentsFromCsvFileStaffUpload(const std::string& schoolYear, const std::string& semester) {
 	/*
 	These files should be the ones that staffs upload.
 	Staff will upload this file and it will go to the studentOfEachCourse folder.
@@ -126,28 +116,32 @@ void Course::loadStudentsFromCsvFileStaffUpload(const std::string& schoolYear, c
 		std::string input = "";
 		getline(fin, input); //ignore the first line
 
-		while (!fin.eof()) {
+		while (!fin.eof() and validSlot!=0) {
 			//Read each student one by one 
 			Student student;
 			getline(fin, input, ',');
-			if (input == "") return; //If there isn't No(1,2,3,4...) then there is no more student
-
+			if (input == "") break; //If there isn't No(1,2,3,4...) then there is no more student
 			getline(fin, student.StudentID, ',');
 			getline(fin, student.name.lastName, ',');
 			getline(fin, student.name.firstName, '\n');
 			studentsInThisCourse.addNodeInAscending(student);
+			validSlot--;
 		}
 	}
 	fin.close();
+	if (validSlot == 0 and !fin.eof()) return false;
+	return true;
 }
-		//We dont need to save back to the file staff uploaded because we will import and store student data on the Score csv file
-
+		//We dont need to save back to the file staffs uploaded because we will store students data in the Score csv file
+		//Or is it?
 bool Course::deleteStudentFromThisCourse(const std::string& studentID) {
 	Node<Student>* cur = studentsInThisCourse.head;
 	int index = 0;
 	while (cur) {
 		if (cur->data.StudentID == studentID) {
 			studentsInThisCourse.deleteAt(index); 
+			++validSlot;
+			
 			return true;
 		}
 		cur = cur->next;
@@ -161,6 +155,7 @@ void Course::addStudentToThisCourse(const std::string& studentID, const Name& na
 	student.StudentID = studentID;
 	student.name = name;
 	studentsInThisCourse.addNodeInAscending(student);
+	--validSlot;
 }
 
 bool Course::updateStudentOfThisCourse(const std::string& studentID, const Name& name) {
@@ -189,9 +184,6 @@ bool Course::findIfStudentIsInThisCourse(const std::string& studentID) {
 
 
 
-
-
-
 //								About this course's students' score
 
 void Course::createBlankScoreFile(const std::string& schoolYear, const std::string& semester) {
@@ -215,7 +207,7 @@ void Course::loadScoreFromCsvScoresFile(const std::string& schoolYear, const std
 		while (!fin.eof()) {
 			Student student;
 			getline(fin, input, ',');
-			if (input == "") return;
+			if (input == "") break;
 			getline(fin, student.StudentID, ',');
 			getline(fin, student.name.lastName, ',');
 			getline(fin, student.name.firstName, ',');
@@ -280,3 +272,13 @@ void Course::saveScore2CsvScoresFile(const std::string& schoolYear, const std::s
 	fout.close();
 }
 
+std::string Course::getFinScoreOfAStudent(std::string studentID) {
+	Node<Student>* cur = studentsInThisCourse.head;
+	while (cur) {
+		if (cur->data.StudentID == studentID) {
+			return cur->data.finScore;
+		}
+		cur = cur->next;
+	}
+	return "";
+}
