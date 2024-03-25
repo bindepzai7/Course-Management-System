@@ -133,7 +133,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="AddCourse.h" />
     <ClInclude Include="AdditionalStruct.h" />
     <ClInclude Include="Button.h" />
     <ClInclude Include="Class.h" />
@@ -150,7 +149,6 @@
     <ClInclude Include="User.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="AddCourse.cpp" />
     <ClCompile Include="Course.cpp" />
     <ClCompile Include="loginfunction.cpp" />
     <ClCompile Include="main.cpp" />

@@ -44,30 +44,7 @@ public:
     //Additional functional NTU's made (please delete unwanted ones)
     /////////////////////////////////////////////////////////////
 
-    void push_head(T data) {
-        Node<T>* newNode = new Node<T>;
-        newNode->data = data;
-        newNode->next = head;
-        head = newNode;
-    }
-
-    //the following function is called in AddCourse.cpp
-    void push_tail(T data) {
-        Node<T>* newNode = new Node<T>;
-        newNode->data = data;
-        newNode->next = nullptr;
-
-        if (!head) {
-            head = newNode;
-        }
-        else {
-            Node<T>* temp = head;
-            while (temp->next) {
-                temp = temp->next;
-            }
-            temp->next = newNode;
-        }
-    }
+    
 
     void pop_head(T& data) {
         if (!head) return;
@@ -75,24 +52,6 @@ public:
         Node<T>* temp = head;
         head = head->next;
         delete temp;
-    }
-
-    void pop_tail(T& data) {
-        if (!head) return;
-        Node<T>* temp = head;
-        while (temp->next and temp->next->next) {
-            temp = temp->next;
-        }
-        if (!temp->next) {
-            data = temp->data;
-            head = nullptr;
-            delete temp;
-        }
-        else {
-            data = temp->next->data;
-            delete temp->next;
-            temp->next = nullptr;
-        }
     }
 
     void deleteAt(int index) {
@@ -163,21 +122,6 @@ public:
         }
         return false;
     }
-
-
-    //functional header used
-    int findIndexOfPartialData(std::function<bool(T)> compareEquation) {
-        Node<T>* cur = head;
-        int index = 0;
-        while (cur) {
-            if (compareEquation(cur->data)) return index;
-            cur = cur->next;
-            ++index;
-        }
-        return -1;
-    }
-
-
 
     void removeNodeByData(T data) {
         if (head == nullptr) return;
