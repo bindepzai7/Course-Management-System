@@ -139,6 +139,7 @@
     <ClInclude Include="Class.h" />
     <ClInclude Include="Course.h" />
     <ClInclude Include="displayfunction.h" />
+    <ClInclude Include="dropdownlist.h" />
     <ClInclude Include="LinkedList.h" />
     <ClInclude Include="ReadCSVfile.h" />
     <ClInclude Include="SchoolYear.h" />

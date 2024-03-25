@@ -202,7 +202,16 @@ public:
             }
         }
     }
-
+    
+    int sizeoflist() {
+        int n = 0;
+        Node<T>* cur = head;
+        while (cur) {
+            cur = cur->next;
+            n++;
+        }
+        return n;
+    }
 };
 
 
