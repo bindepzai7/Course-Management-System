@@ -46,12 +46,13 @@ public:
 
     
 
-    void pop_head(T& data) {
-        if (!head) return;
+    bool pop_head(T& data) {
+        if (!head) return false;
         data = head->data;
         Node<T>* temp = head;
         head = head->next;
         delete temp;
+        return true;
     }
 
     void deleteAt(int index) {

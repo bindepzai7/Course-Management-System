@@ -1,8 +1,9 @@
 
 #include "Course.h"
 
-//Sua th neu head rong het tat ca cac ham
-
+//Add truong hop head rong
+//Do sth with valid spot
+//Check if there is already a course like that
 
 //								Basic constructor
 
