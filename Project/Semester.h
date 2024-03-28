@@ -14,76 +14,41 @@ class Semester{
 	Date endDay;
 public:
 	//default constructor
-	Semester() :schoolYear(""), startDay(Date(0, 0, 0)), endDay(Date(0, 0, 0)) {}
+	Semester() : semester(""), schoolYear(""), startDay(Date(0, 0, 0)), endDay(Date(0, 0, 0)) {}
 	//constructor with parameters
-	Semester(const std::string schoolYear, const Date& d1, const Date& d2) : schoolYear(schoolYear), startDay(d1), endDay(d2) {}
+	Semester(const std::string& semester, const std::string& schoolYear, const Date& startDate, const Date& endDate) : semester(semester), schoolYear(schoolYear), startDay(startDate), endDay(endDate) {}
 
 
-
-
-	void loadCourseListFromFileCourseList() {
-		std::ifstream fin;
-		fin.open("Data/" + schoolYear + "/" + semester + "/CourseList.csv");
-		if (fin.is_open()) {
-			Course c;
-			while (c.readACourseFromFileCourseList(fin)) {
-				courseList.addNodeAtFront(c);
-			}
-		}
-		fin.close();
+	std::string getSemester() {
+		return this->semester;
 	}
+	std::string getSchoolYear() {
+		return this->schoolYear;
+	}
+	Date getStartDate() {
+		return this->startDay;
+	}
+	Date getEndDAte() {
+		return this->endDay;
+	}
+
+	void loadCourseListFromFileCourseList();
 	
-	void saveCourseListToFileCourseList() {
-		std::ofstream fout;
-		fout.open("Data/" + schoolYear + "/" + semester + "/CourseList.csv");
-		if (fout.is_open()) {
-			Course c;
-			courseList.pop_head(c);
-			c.saveACourseToFileCourseList(fout);
-		}
-		fout.close();
-	}
+	void saveCourseListToFileCourseList();
 
-	bool checkIfThereIsAlreadyACourse(std::string CourseID) {
-		Node<Course>* cur = courseList.head;
-		while (cur) {
-			if (cur->data.getCourseID() == CourseID) return true;
-			cur = cur->next;
-		}
-		return false;
-	}
+	bool checkIfThereIsAlreadyACourse(std::string CourseID);
 
-	bool updateACourseOfCourseList(std::string destCourseID, const std::string& modiCourseID, const std::string& courseName, const Name& teacher, const int& MaxStudent, const int& credits, const std::string& session) {
-		Node<Course>* cur = courseList.head;
-		while (cur) {
-			if (cur->data.getCourseID() == destCourseID) {
-				cur->data.updateCourseInfo(modiCourseID, courseName, teacher, MaxStudent, credits, session);
-			}
-			cur = cur->next;
-		}
-		return false;
-	}
+	bool updateACourseOfCourseList(std::string destCourseID, const std::string& modiCourseID, const std::string& courseName, const Name& teacher, const int& MaxStudent, const int& credits, const std::string& session);
 
-	bool addACourseToCourseList(const std::string& courseID, const std::string& courseName, const std::string& session, const int& credits, const int& maxStudent, const Name& teacherName) {
-		Course c(courseID, courseName, session, credits, maxStudent, teacherName);
-		courseList.addNodeAtFront(c);
-	}
+	void addACourseToCourseList(const std::string& courseID, const std::string& courseName, const std::string& session, const int& credits, const int& maxStudent, const Name& teacherName);
 
-	bool deleteACourseFromCourseList(std::string courseID) {
-		Node<Course>* cur = courseList.head;
-		int i = 0;
-		while (cur) {
-			if (cur->data.getCourseID() == courseID) {
-				courseList.deleteAt(i);
-				return true;
-			}
-			cur = cur->next;
-			++i;
-		}
-		return false;
-	}
+	bool deleteACourseFromCourseList(const std::string& courseID);
 
+	bool readASemesterFromCsvFile(std::ifstream& fin);
 
+	void saveASemesterToCsvFile(std::ofstream& fout);
+
+	void updateSemesterInfo(const std::string& newSemester, const std::string& schoolYear, const Date& startDate, const Date& endDate);
 
 };
 
