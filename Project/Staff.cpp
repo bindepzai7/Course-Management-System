@@ -19,9 +19,9 @@ void Staff::writeSchoolyear2file(std::ofstream fout) {
 	if (fout.is_open()) {
 		Node<SchoolYear>* cur = schoolyearlist.head;
 		while (cur) {
-			fout << cur->data.getyearstart();
+			fout << cur->data.getStartYear();
 			fout << "-";
-			fout << cur->data.getyearend();
+			fout << cur->data.getEndYear();
 		}
 	}
 
