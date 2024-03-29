@@ -4,6 +4,7 @@
 //Add truong hop head rong
 //Do sth with valid spot
 //Check if there is already a course like that
+//sua lai ham delete dung delete node at data
 
 //								Basic constructor
 
@@ -142,7 +143,6 @@ bool Course::deleteStudentFromThisCourse(const std::string& studentID) {
 		if (cur->data.StudentID == studentID) {
 			studentsInThisCourse.deleteAt(index); 
 			++validSlot;
-			
 			return true;
 		}
 		cur = cur->next;

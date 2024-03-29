@@ -14,13 +14,14 @@ private:
     int yStart;
     int yEnd;
     std::string schoolYear;
+    LinkedList<std::string> schoolYearList;
     LinkedList<Semester> semesterList;
 
 public:
-    SchoolYear() :yStart(0), yEnd(0) {}
+    SchoolYear() :yStart(0), yEnd(0), schoolYear("") {}
     // Constructor
     SchoolYear(const int& yStart, const int& yEnd)
-        : yStart(yStart), yEnd(yEnd) {}
+        : yStart(yStart), yEnd(yEnd), schoolYear(yStart+"-"+yEnd) {}
 
     bool operator==(const SchoolYear& s2) const {
         return yStart == s2.yStart;
@@ -39,7 +40,9 @@ public:
     int getEndYear() {
         return yEnd;
     }
-
+    std::string getSchoolYear() {
+        return schoolYear;
+    }
 
     bool loadSemesterListFromSemesterList() {
         std::ifstream fin;
@@ -82,13 +85,56 @@ public:
         }
         return false;
     }
-    void addSemester(const std::string semester, const std::string schoolYear, const Date& startDate, const Date& endDate) {
-    //check if there is already that existing
 
 
+    bool addSemester(const std::string& semester, const std::string& schoolYear, const Date& startDate, const Date& endDate) {
+        if (!checkExistence(semester)) {
+            Semester s(semester, schoolYear, startDate, endDate);
+            semesterList.addNodeAtFront(s);
+            return true;
+        }
+        return false;
     }
-    void deleteSemester() {}
-    void getCurrentSemester() {}
+
+
+    bool deleteSemester(const std::string& semester) {
+        Node<Semester>* cur = semesterList.head;
+        int index = 0;
+        while (cur) {
+            if (cur->data.getSemester() == semester) {
+                semesterList.deleteAt(index);
+                return true;
+            }
+            cur = cur->next;
+            ++index;
+        }
+        return false;
+    }
+
+    bool checkExistence(const std::string semester) {
+        Node<Semester>* cur = semesterList.head;
+        while (cur) {
+            if (cur->data.getSemester() == semester) {
+                return true;
+            }
+            cur = cur->next;
+        }
+        return false;
+    }
+
+    bool getCurrentSemester() {
+        std::ifstream fin;
+        fin.open("Data/CurrentSemester.txt");
+        if (fin.is_open()) {
+         
+
+
+            fin.close();
+            return true;
+        }
+        fin.close();
+        return false;
+    }
     void setCurrentSemester() {}
 
 
