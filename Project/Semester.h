@@ -5,6 +5,8 @@
 
 #include "LinkedList.h"
 #include "Course.h"
+#include <filesystem>
+using namespace std::filesystem;
 
 class Semester{
 	LinkedList<Course> courseList;
@@ -19,6 +21,7 @@ public:
 	Semester(const std::string& semester, const std::string& schoolYear, const Date& startDate, const Date& endDate) : semester(semester), schoolYear(schoolYear), startDay(startDate), endDay(endDate) {}
 
 
+
 	std::string getSemester() {
 		return this->semester;
 	}
@@ -31,6 +34,9 @@ public:
 	Date getEndDAte() {
 		return this->endDay;
 	}
+
+	bool addNewSemesterFolder(const std::string& schoolYear, const std::string& newSemester);
+
 
 	void loadCourseListFromFileCourseList();
 	

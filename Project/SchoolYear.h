@@ -7,10 +7,13 @@
 #include "Semester.h"
 #include "LinkedList.h"
 
-
+//Make schoolyear a struct and SchoolYear a list of schoolYear
 
 class SchoolYear {
 private:
+    struct schoolYear {
+
+    };
     int yStart;
     int yEnd;
     std::string schoolYear;
@@ -43,6 +46,33 @@ public:
     std::string getSchoolYear() {
         return schoolYear;
     }
+
+    bool getSchoolYearList() {}
+
+    bool saveSchoolYearList() {}
+
+    bool updateSchoolYearList() {}
+
+    bool deleteSchoolYear() {}
+
+    bool addSchoolYear(){}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     bool loadSemesterListFromSemesterList() {
         std::ifstream fin;
@@ -90,12 +120,14 @@ public:
     bool addSemester(const std::string& semester, const std::string& schoolYear, const Date& startDate, const Date& endDate) {
         if (!checkExistence(semester)) {
             Semester s(semester, schoolYear, startDate, endDate);
-            semesterList.addNodeAtFront(s);
-            return true;
+            if (s.addNewSemesterFolder(schoolYear, semester)) {
+                semesterList.addNodeAtFront(s);
+                return true;
+            }
+           
         }
         return false;
     }
-
 
     bool deleteSemester(const std::string& semester) {
         Node<Semester>* cur = semesterList.head;

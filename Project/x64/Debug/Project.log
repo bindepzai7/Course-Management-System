@@ -1,5 +1,8 @@
-﻿  Staff.cpp
+﻿  Course.cpp
   loginfunction.cpp
+  main.cpp
+  Semester.cpp
+  Staff.cpp
   staffview.cpp
   studentview.cpp
   Generating Code...

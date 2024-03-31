@@ -26,6 +26,14 @@ void Semester::updateSemesterInfo(const std::string& newSemester, const std::str
 	this->endDay.setDate(endDate.day, endDate.month, endDate.year);
 }
 
+bool Semester::addNewSemesterFolder(const std::string& schoolYear, const std::string& newSemester) {
+	if (!exists("Data/" + schoolYear + "/" + semester)) {
+		create_directory("Data/" + schoolYear + "/" + semester);
+		return true;
+	}
+	return false;
+}
+
 
 void Semester::loadCourseListFromFileCourseList() {
 	std::ifstream fin;

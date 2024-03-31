@@ -7,6 +7,7 @@
 #include <sstream>
 
 
+
 class Course {
 private:
 
@@ -63,6 +64,7 @@ public:
     int getCredit();
     int getMaxStudent();
     int getValidSlot();
+
 
     bool updateCourseInfo(const std::string& courseID, const std::string& courseName, const Name& teacher, const int& MaxStudent, const int& credits, const std::string& session);
 
