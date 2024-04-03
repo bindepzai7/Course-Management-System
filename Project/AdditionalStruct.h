@@ -73,7 +73,7 @@ struct Date {
 struct Name {
     std::string firstName;
     std::string lastName;
-    Name(const std::string& s1 = "", const std::string& s2 = "") : firstName(s1), lastName(s2) {} // Constructor with default parameters
+    Name(const std::string& s1 = "", const std::string& s2 = "") : lastName(s1), firstName(s2) {} // Constructor with default parameters
 };
 
 

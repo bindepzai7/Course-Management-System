@@ -35,16 +35,11 @@ Course::Course(const std::string& courseID, const std::string& courseName, const
 //								About this course's info
 
 bool Course::readACourseFromFileCourseList(std::ifstream& fin) {
-	/*
-	File: CourseList.csv
-	This File should Have the format:
-	courseID,courseName,teacherlastName,teacherfirstName,credits,maxStudent,session
-	This function will read only one course
-	if there is no more course to read it will return false
-	*/
-	if (getline(fin,this->courseID, ',')) {
+	std::string No;
+	if (getline(fin, No, ',')) {
+		getline(fin, this->courseID, ',');
 		getline(fin, this->courseName, ',');
-		getline(fin, this->teacherName.lastName, ',');
+		getline(fin, this->teacherName.lastName, ' ');
 		getline(fin, this->teacherName.firstName, ',');
 		fin >> (credits);
 		fin.ignore(1000, ',');
@@ -58,7 +53,7 @@ bool Course::readACourseFromFileCourseList(std::ifstream& fin) {
 }
 
 std::string Course::getSession() {
-	//stringSession ex: TUE, 7:30-10:30
+	//stringSession ex: TUE 7:30-10:30
 	return this->session;
 };
 std::string Course::getCourseID() {
@@ -87,6 +82,7 @@ bool Course::updateCourseInfo(const std::string& courseID, const std::string& co
 	this->session = session;
 	this->courseID = courseID;
 	this->courseName = courseName;
+	this->credits = credits;
 	this->teacherName.firstName = teacher.firstName;
 	this->teacherName.lastName = teacher.lastName;
 	this->maxStudent = MaxStudent;
@@ -95,7 +91,7 @@ bool Course::updateCourseInfo(const std::string& courseID, const std::string& co
 };
 
 void Course::saveACourseToFileCourseList(std::ofstream& fout) {
-	fout << this->courseID << "," << this->courseName << "," << this->teacherName.lastName << ',' << this->teacherName.firstName << ','
+	fout << this->courseID << "," << this->courseName << "," << this->teacherName.lastName << ' ' << this->teacherName.firstName << ','
 		<< this->credits << "," << this->maxStudent << ',' << this->session << '\n';
 }
 

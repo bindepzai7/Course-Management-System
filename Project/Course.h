@@ -55,18 +55,28 @@ public:
 
 
     //About this course's info
-    bool readACourseFromFileCourseList(std::ifstream& fin);
 
-    std::string getSession();
-    std::string getCourseID();
-    std::string getCourseName();
-    Name getTeacherName();
-    int getCredit();
-    int getMaxStudent();
-    int getValidSlot();
+                /*
+                File: CourseList.csv
+                This File should Have the format:
+                courseID,courseName,teacherlastName teacherfirstName,credits,maxStudent,session
+                This function will read only one course
+                if there is no more course to read it will return false
+
+                 If used, must read the first line out first
+                */
+                bool readACourseFromFileCourseList(std::ifstream& fin); //checked
+
+             std::string getSession(); //checked
+             std::string getCourseID(); //checked
+             std::string getCourseName(); //checked
+             Name getTeacherName(); //checked
+             int getCredit(); //checked
+             int getMaxStudent(); //checked
+             int getValidSlot();
 
 
-    bool updateCourseInfo(const std::string& courseID, const std::string& courseName, const Name& teacher, const int& MaxStudent, const int& credits, const std::string& session);
+    bool updateCourseInfo(const std::string& courseID, const std::string& courseName, const Name& teacher, const int& MaxStudent, const int& credits, const std::string& session);  //checked
 
     void saveACourseToFileCourseList(std::ofstream& fout);
 
