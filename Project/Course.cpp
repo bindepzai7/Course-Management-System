@@ -5,6 +5,10 @@
 //Do sth with valid spot
 //Check if there is already a course like that
 //sua lai ham delete dung delete node at data
+//Dung ham adjust string to standardize it
+//Lam 1 button de co the chon luu thay doi
+//update khi delete add hocj sinh scorefile
+
 
 //								Basic constructor
 
@@ -34,12 +38,13 @@ Course::Course(const std::string& courseID, const std::string& courseName, const
 
 //								About this course's info
 
+
 bool Course::readACourseFromFileCourseList(std::ifstream& fin) {
 	std::string No;
 	if (getline(fin, No, ',')) {
 		getline(fin, this->courseID, ',');
 		getline(fin, this->courseName, ',');
-		getline(fin, this->teacherName.lastName, ' ');
+		getline(fin, this->teacherName.lastName, ',');
 		getline(fin, this->teacherName.firstName, ',');
 		fin >> (credits);
 		fin.ignore(1000, ',');
@@ -62,8 +67,8 @@ std::string Course::getCourseID() {
 std::string Course::getCourseName() {
 	return this->courseName;
 }
-Name Course::getTeacherName() {
-	return (this->teacherName.lastName + "," + this->teacherName.firstName);
+std::string Course::getTeacherName() {
+	return (this->teacherName.lastName + " " + this->teacherName.firstName);
 }
 int Course::getCredit() {
 	return this->credits;
@@ -76,9 +81,9 @@ int Course::getValidSlot() {
 }
 
 bool Course::updateCourseInfo(const std::string& courseID, const std::string& courseName, const Name& teacher, const int& MaxStudent, const int& credits, const std::string& session) {
-	int a = this->maxStudent - MaxStudent;
-	if (this->validSlot - a < 0) return false;
-	this->validSlot -= a;
+	int a = MaxStudent - this->maxStudent;
+	if (this->validSlot + a < 0) return false;
+	this->validSlot += a;
 	this->session = session;
 	this->courseID = courseID;
 	this->courseName = courseName;
@@ -91,7 +96,7 @@ bool Course::updateCourseInfo(const std::string& courseID, const std::string& co
 };
 
 void Course::saveACourseToFileCourseList(std::ofstream& fout) {
-	fout << this->courseID << "," << this->courseName << "," << this->teacherName.lastName << ' ' << this->teacherName.firstName << ','
+	fout << this->courseID << "," << this->courseName << "," << this->teacherName.lastName << ',' << this->teacherName.firstName << ','
 		<< this->credits << "," << this->maxStudent << ',' << this->session << '\n';
 }
 
@@ -108,28 +113,32 @@ bool Course::loadStudentsFromCsvFileStaffUpload(const std::string& schoolYear, c
 	studentsInThisCourse.empty(); //If we already load students from another course
 
 	std::ifstream fin;
-	fin.open ("Data/" + schoolYear + "/" + semester + "studentOfEachCourse" + courseID + ".cvs");
+	fin.open("Data/" + schoolYear + "/" + semester + "/studentOfEachCourse/" + this->courseID + ".csv");
+	if (!fin.is_open()) {
+		fin.close();
+		return false;
+	}
+	std::string input = "";
+	getline(fin, input); //ignore the first line
 
-	if (fin.is_open()) {
-		std::string input = "";
-		getline(fin, input); //ignore the first line
-
-		while (!fin.eof() and validSlot!=0) {
-			//Read each student one by one 
-			Student student;
-			getline(fin, input, ',');
-			if (input == "") break; //If there isn't No(1,2,3,4...) then there is no more student
-			getline(fin, student.StudentID, ',');
-			getline(fin, student.name.lastName, ',');
-			getline(fin, student.name.firstName, '\n');
-			studentsInThisCourse.addNodeInAscending(student);
-			validSlot--;
-		}
+	while (!fin.eof() and validSlot != 0) {
+		//Read each student one by one 
+		Student student;
+		getline(fin, input, ',');
+		if (input == "") break; //If there isn't No(1,2,3,4...) then there is no more student
+		getline(fin, student.StudentID, ',');
+		getline(fin, student.name.lastName, ',');
+		getline(fin, student.name.firstName, '\n');
+		studentsInThisCourse.addNodeInAscending(student);
+		validSlot--;
 	}
 	fin.close();
 	if (validSlot == 0 and !fin.eof()) return false;
 	return true;
 }
+
+
+
 		//We dont need to save back to the file staffs uploaded because we will store students data in the Score csv file
 		//Or is it?
 bool Course::deleteStudentFromThisCourse(const std::string& studentID) {
@@ -155,11 +164,13 @@ void Course::addStudentToThisCourse(const std::string& studentID, const Name& na
 	--validSlot;
 }
 
-bool Course::updateStudentOfThisCourse(const std::string& studentID, const Name& name) {
+bool Course::updateStudentOfThisCourse(const std::string& studentID, const std::string& newID, const Name& name) {
 	Node<Student>* cur = studentsInThisCourse.head;
 	while (cur) {
 		if (cur->data.StudentID == studentID) {
-			cur->data.StudentID = studentID;
+			if (newID != "") {
+				cur->data.StudentID = studentID;
+			}
 			cur->data.name = name;
 			return true;
 		}
@@ -185,19 +196,21 @@ bool Course::findIfStudentIsInThisCourse(const std::string& studentID) {
 
 void Course::createBlankScoreFile(const std::string& schoolYear, const std::string& semester) {
 	std::ofstream fout;
-	fout.open("Data/" + schoolYear + "/" + semester + "/" + "scoreOfEachCourse" + courseID + ".csv");
+	fout.open("Data/" + schoolYear + "/" + semester + "/scoreOfEachCourse/" + this->courseID + ".csv");
 	if (fout.is_open()) {
 		fout << "No,studentID,lastName,firstName,midScore,finScore,otherScore,totalScore\n";
 		int i = 1;
 		Node<Student>* cur = studentsInThisCourse.head;
-		fout << i++ << cur->data.StudentID << "," << cur->data.name.lastName << "," << cur->data.name.firstName << '\n';
-		cur = cur->next;
+		while (cur) {
+			fout << i++ << "," << cur->data.StudentID << "," << cur->data.name.lastName << "," << cur->data.name.firstName << '\n';
+			cur = cur->next;
+		}
 	}
 	fout.close();
 }
 
 void Course::loadScoreFromCsvScoresFile(const std::string& schoolYear, const std::string& semester) {
-	std::ifstream fin("Data/" + schoolYear + "/" + semester + "scoreOfEachCourse" + courseID + ".cvs");
+	std::ifstream fin("Data/" + schoolYear + "/" + semester + "/scoreOfEachCourse/" + this->courseID + ".cvs");
 	if (fin.is_open()) {
 		std::string input = "";
 		getline(fin, input); //Ignore the fisrt line
@@ -255,7 +268,7 @@ bool Course::updateAStudentScoreOfThisCourse(const std::string& studentID, const
 }
 
 void Course::saveScore2CsvScoresFile(const std::string& schoolYear, const std::string& semester) {
-	std::ofstream fout("Data/" + schoolYear + "/" + semester + "scoreOfEachCourse" + courseID + ".cvs");
+	std::ofstream fout("Data/" + schoolYear + "/" + semester + "/scoreOfEachCourse/" + this->courseID + ".cvs");
 	if (fout.is_open()) {
 		Node<Student>* cur = studentsInThisCourse.head;
 		int i = 0;

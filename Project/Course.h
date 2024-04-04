@@ -59,18 +59,18 @@ public:
                 /*
                 File: CourseList.csv
                 This File should Have the format:
-                courseID,courseName,teacherlastName teacherfirstName,credits,maxStudent,session
-                This function will read only one course
-                if there is no more course to read it will return false
+                 courseID,courseName,teacherlastName,teacherfirstName,credits,maxStudent,session
+                 This function will read only one course
+                  if there is no more course to read it will return false
 
                  If used, must read the first line out first
-                */
+                 */
                 bool readACourseFromFileCourseList(std::ifstream& fin); //checked
 
              std::string getSession(); //checked
              std::string getCourseID(); //checked
              std::string getCourseName(); //checked
-             Name getTeacherName(); //checked
+             std::string getTeacherName(); //checked
              int getCredit(); //checked
              int getMaxStudent(); //checked
              int getValidSlot();
@@ -78,23 +78,23 @@ public:
 
     bool updateCourseInfo(const std::string& courseID, const std::string& courseName, const Name& teacher, const int& MaxStudent, const int& credits, const std::string& session);  //checked
 
-    void saveACourseToFileCourseList(std::ofstream& fout);
+    void saveACourseToFileCourseList(std::ofstream& fout);   //checked
 
 
     //About students in this course
-    bool loadStudentsFromCsvFileStaffUpload(const std::string& schoolYear, const std::string& semester);
+    bool loadStudentsFromCsvFileStaffUpload(const std::string& schoolYear, const std::string& semester);    //checked
    
-    bool deleteStudentFromThisCourse(const std::string& studentID);
+    bool deleteStudentFromThisCourse(const std::string& studentID);   //checked
 
-    void addStudentToThisCourse(const std::string& studentID, const Name& name);
+    void addStudentToThisCourse(const std::string& studentID, const Name& name);    //checked
 
-    bool findIfStudentIsInThisCourse(const std::string& studentID);
+    bool findIfStudentIsInThisCourse(const std::string& studentID);    //checked
 
-    bool updateStudentOfThisCourse(const std::string& studentID, const Name& name);
+    bool updateStudentOfThisCourse(const std::string& studentID, const std::string& newID, const Name& name); //checked
 
     //About this course's students' score
 
-    void createBlankScoreFile(const std::string& schoolYear, const std::string& semester);
+    void createBlankScoreFile(const std::string& schoolYear, const std::string& semester);  //checked
 
     void loadScoreFromCsvScoresFile(const std::string& schoolYear, const std::string& semester);
 
