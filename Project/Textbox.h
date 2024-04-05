@@ -162,6 +162,22 @@ public:
 			}
 		}
 	}
+	bool isClick(sf::Event event,int Posx,int Posy,int Posxmax,int Posymax) {
+		if (event.type == sf::Event::MouseButtonPressed) {
+			if (event.mouseButton.button == sf::Mouse::Left)
+			{
+				//coordinate of window 
+				int x_coor = event.mouseButton.x;
+				int y_coor = event.mouseButton.y;
+				
+				if (x_coor > Posx && x_coor<Posxmax &&
+					y_coor>Posy && y_coor < Posymax) {
+					return true;
+				}
+			}
+		}
+		return false;
+	}
 };
 
 class OutputTextBox
