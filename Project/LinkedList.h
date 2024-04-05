@@ -158,6 +158,24 @@ public:
             }
         }
     }
+    //function use for dropdownlist (if its needed)
+    void push_tail(const T &data) {
+        Node<T>* newNode = new Node<T>;
+        newNode->data = data;
+        newNode->next = nullptr;
+
+        if (!head) {
+            head = newNode;
+        }
+        else {
+            Node<T>* temp = head;
+            while (temp->next) {
+                temp = temp->next;
+            }
+            temp->next = newNode;
+        }
+    }
+
     
     int sizeoflist() {
         int n = 0;

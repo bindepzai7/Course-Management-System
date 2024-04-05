@@ -4,6 +4,7 @@
 #include"Student.h"
 #include"Staff.h"
 #include"ReadCSVfile.h"
+#include"User.h"
 #include<iostream>
 #include<SFML/Graphics.hpp>
 #include<Windows.h>
@@ -33,13 +34,13 @@ void chooseRole(sf::RenderWindow& window)
                 bool role;//0 is student, 1 is teacher
                 int x_coor = event.mouseButton.x;
                 int y_coor = event.mouseButton.y;
-                if (y_coor > 470 && y_coor < 515)
+                if (y_coor > 550 && y_coor < 610)
                 {
-                    if (x_coor > 25 && x_coor < 125) {
+                    if (x_coor > 30 && x_coor < 140) {
                         role = 0;
                         loginWindow(window, role);//if enter student button move to login window with student role
                     }
-                    else if (x_coor > 170 && x_coor < 260) {
+                    else if (x_coor > 190 && x_coor < 300) {
                         role = 1;
                         loginWindow(window, role);
                     }
@@ -66,7 +67,7 @@ void loginWindow(sf::RenderWindow& window, bool role)
     TextBox password(24, sf::Color::Black, false);
     password.setfont(Palatino);
     password.setlimit(true, 24);
-    OutputTextBox wrongaccount(14, sf::Color::Red, "Username or password incorrect!\nPlease try again!");
+    OutputTextBox wrongaccount(16, sf::Color::Red, "Username or password incorrect!\nPlease try again!");
     wrongaccount.setfont(Palatino);
     while (window.isOpen())
     {
@@ -81,10 +82,10 @@ void loginWindow(sf::RenderWindow& window, bool role)
             {
                 int x_coor = event.mouseButton.x;
                 int y_coor = event.mouseButton.y;
-                if (x_coor > 40 && x_coor < 270)
+                if (x_coor > 50 && x_coor < 300)
                 {
                     //choose username input box
-                    if (y_coor > 380 && y_coor < 440) {
+                    if (y_coor > 380 && y_coor < 455) {
                         if (password.isselectedbox() == true)
                         {
                             password.setselected(false);
@@ -94,7 +95,7 @@ void loginWindow(sf::RenderWindow& window, bool role)
                         username.setselected(true);
                         acc.isselectedusername = true;
                     }
-                    else if (y_coor > 490 && y_coor < 550) {
+                    else if (y_coor > 500 && y_coor < 575) {
                         if (username.isselectedbox() == true) {
                             acc.isselectedusername = false;
                             username.setselected(false);
@@ -104,33 +105,22 @@ void loginWindow(sf::RenderWindow& window, bool role)
                         acc.isselectedpassword = true;
                     }
                 }
-                if (x_coor > 25 && x_coor < 125 && y_coor>40 && y_coor < 80) {
+                if (x_coor > 45 && x_coor < 85 && y_coor>50 && y_coor < 90) {
                     Sleep(200);
                     chooseRole(window);
                 }
-                if (x_coor > 75 && x_coor < 235 && y_coor>610 && y_coor < 655) {
-                    if (role == 0) {
-                        LinkedList<Student> userlist;
-                        std::ifstream fin;
-                        readCSVofStudentUser(userlist, fin);
-                        if (userlist.isXDatainlist(Student(username.getText(), password.getText()))) {
-                            acc.iswrongaccount = false;
+                if (x_coor > 90 && x_coor < 270 && y_coor>640 && y_coor < 695) {
+                    LinkedList<User> userlist = readUserFromCSV("useraccount.txt");
+                    if (/*check_login(userlist,username.getText(),password.getText())*/true) {
+                        acc.iswrongaccount = false;
+                        if (role == 0)
                             studenthome(window);
-                        }
                         else
-                        {
-                            acc.iswrongaccount = true;
-                        }
-                    }
-                    else {
-                        LinkedList<Staff> stafflist;
-                        if (stafflist.isXDatainlist(Staff(username.getText(), password.getText()))) {
-                            acc.iswrongaccount = false;
                             staffhome(window);
-                        }
-                        else {
-                            acc.iswrongaccount = true;
-                        }
+                    }
+                    else
+                    {
+                        acc.iswrongaccount = true;
                     }
                 }
             }
@@ -164,13 +154,33 @@ void loginWindow(sf::RenderWindow& window, bool role)
         window.clear();
         window.draw(s_loginscreen);
         if (acc.iswrongaccount == true) {
-            wrongaccount.setTextPosition(sf::Vector2f(35, 556));
+            wrongaccount.setTextPosition(sf::Vector2f(45, 590));
             wrongaccount.drawTextbox(window);
         }
-        username.setTextPosition(sf::Vector2f(40, 395));
+        username.setTextPosition(sf::Vector2f(60, 405));
         username.drawTextbox(window);
-        password.setTextPosition(sf::Vector2f(40, 505));
+        password.setTextPosition(sf::Vector2f(60, 535));
         password.drawTextbox(window);
+        window.display();
+    }
+}
+void abousUs(sf::RenderWindow& window) {
+    sf::Texture AboutUstexture;
+    AboutUstexture.loadFromFile("Design UI/About us.jpg");
+    AboutUstexture.setSmooth(true);
+    sf::Sprite s_AboutUstexture;
+    s_AboutUstexture.setTexture(AboutUstexture);
+    while (window.isOpen())
+    {
+        sf::Event event;
+        while (window.pollEvent(event))
+        {
+            if (event.type == sf::Event::Closed)
+                window.close();
+        }
+
+        window.clear();
+        window.draw(s_AboutUstexture);
         window.display();
     }
 }

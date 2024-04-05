@@ -4,7 +4,7 @@
 
 
 int main() {
-    sf::RenderWindow window(sf::VideoMode(1728, 1117), "Login window",sf::Style::Close);
+    sf::RenderWindow window(sf::VideoMode(1470, 950), "Login window",sf::Style::Close);
 
     while (window.isOpen())
     {
@@ -16,7 +16,8 @@ int main() {
         }
 
         window.clear();
-        chooseRole(window);
+        //chooseRole(window);
+        staffhome(window);
         window.display();
     }
     return 0;
