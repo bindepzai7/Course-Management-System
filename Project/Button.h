@@ -35,7 +35,7 @@ public:
 		recbutton.setPosition(point);
 
 		float x_coor = (point.x + recbutton.getLocalBounds().width / 2) - (textbox.getLocalBounds().width / 2);
-		float y_coor = (point.y + recbutton.getLocalBounds().height / 2) - (textbox.getLocalBounds().height);
+		float y_coor = (point.y + recbutton.getLocalBounds().height / 2) - (textbox.getLocalBounds().height/3*2);
 		textbox.setPosition(sf::Vector2f(x_coor, y_coor));
 	}
 	void setButposition(sf::Vector2f point) {
@@ -74,9 +74,9 @@ public:
 				float PosXbutton = recbutton.getPosition().x;
 				float PosYbutton = recbutton.getPosition().y;
 				//coordinate of button with width and height
-				float PoxXbuttonmax = recbutton.getPosition().x + recbutton.getLocalBounds().width;
+				float PosXbuttonmax = recbutton.getPosition().x + recbutton.getLocalBounds().width;
 				float PosYbuttonmax = recbutton.getPosition().y + recbutton.getLocalBounds().height;
-				if (x_coor > PosXbutton && x_coor<PosYbuttonmax &&
+				if (x_coor > PosXbutton && x_coor<PosXbuttonmax &&
 					y_coor>PosYbutton && y_coor < PosYbuttonmax) {
 					/*if (isClicked == false)
 						isClicked = true;
@@ -89,17 +89,17 @@ public:
 	}
 	bool isonMousecursor(sf::Event event) {
 		//coordinate of cursor on window
-		float x_coor = event.mouseMove.x;
-		float y_coor = event.mouseMove.y;
+		float x_coor = event.mouseMove.x*1.0f;
+		float y_coor = event.mouseMove.y*1.0f;
 		//coordinate of button 
 		float PosXbutton = recbutton.getPosition().x;
 		float PosYbutton = recbutton.getPosition().y;
 		//coordinate of button with width and height
-		float PoxXbuttonmax = recbutton.getPosition().x + recbutton.getLocalBounds().width;
+		float PosXbuttonmax = recbutton.getPosition().x + recbutton.getLocalBounds().width;
 		float PosYbuttonmax = recbutton.getPosition().y + recbutton.getLocalBounds().height;
 
-		if (x_coor > PosXbutton && x_coor<PosYbuttonmax &&
-			y_coor>PosYbutton && y_coor < PosYbuttonmax) {
+		if (x_coor >= PosXbutton && x_coor<=PosXbuttonmax &&
+			y_coor>=PosYbutton && y_coor <= PosYbuttonmax) {
 
 			return true;
 		}
@@ -118,4 +118,6 @@ public:
 };
 
 #endif // !BUTTON_H
+
+
 
