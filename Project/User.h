@@ -17,12 +17,12 @@ public:
 		:username(username), password(password) {}
 };
 
-std::string string_hashing(const std::string& s) {
+std::string string_hashing(const std::string& s);/* {
 	std::hash<std::string> hasher;
 	return std::to_string(hasher(s));
-}
+}*/
 
-void changePassword(LinkedList<User>& userList, const std::string& username, const std::string& new_password) {
+void changePassword(LinkedList<User>& userList, const std::string& username, const std::string& new_password); /*{
 	Node<User>* curr = userList.head;
 	if (curr == nullptr) return;
 	while (curr && curr->data.username != username)
@@ -34,9 +34,9 @@ void changePassword(LinkedList<User>& userList, const std::string& username, con
 	}
 	curr->data.password = string_hashing(new_password);
 	return;
-}
+}*/
 
-LinkedList<User> readUserFromCSV(const std::string& filename) {
+LinkedList<User> readUserFromCSV(const std::string& filename); /*{
 	LinkedList<User> user;
 
 	std::ifstream fin(filename);
@@ -56,9 +56,9 @@ LinkedList<User> readUserFromCSV(const std::string& filename) {
 
 	fin.close();
 	return user;
-}
+}*/
 
-bool check_login(const LinkedList<User>& users, const std::string& username, const std::string& password) {
+bool check_login(const LinkedList<User>& users, const std::string& username, const std::string& password);/* {
 	Node<User>* head = users.head;
 	while (head && head->data.username != username) {
 		head = head->next;
@@ -69,9 +69,9 @@ bool check_login(const LinkedList<User>& users, const std::string& username, con
 		if (hash_string == head->data.password) return true;
 		return false;
 	}
-}
+}*/
 
-void updateUser2CSVfile(const std::string& filename, const LinkedList<User>& userList) {
+void updateUser2CSVfile(const std::string& filename, const LinkedList<User>& userList); /*{
 	std::ofstream fout(filename);
 	if (!fout.is_open()) {
 		std::cout << "Failed to open file: " << filename << std::endl;
@@ -85,6 +85,12 @@ void updateUser2CSVfile(const std::string& filename, const LinkedList<User>& use
 	}
 
 	fout.close();
-}
+}*/
 
-#endif
+
+#endif // !USER_H
+
+
+
+
+

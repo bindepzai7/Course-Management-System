@@ -157,6 +157,7 @@
     <ClCompile Include="Staff.cpp" />
     <ClCompile Include="staffview.cpp" />
     <ClCompile Include="studentview.cpp" />
+    <ClCompile Include="User.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

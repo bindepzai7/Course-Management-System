@@ -47,11 +47,13 @@ public:
         return schoolYear;
     }
 
-    bool getSchoolYearList() {}
+    Node<std::string>* getSchoolYearList() {
+    }
 
     bool saveSchoolYearList() {}
 
-    bool updateSchoolYearList() {}
+    bool updateSchoolYearList() {
+    }
 
     bool deleteSchoolYear() {}
 

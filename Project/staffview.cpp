@@ -1,5 +1,6 @@
 #include"displayfunction.h"
 #include"dropdownlist.h"
+#include"Textbox.h"
 #include"LinkedList.h"
 #include"Staff.h"
 #include"Student.h"
@@ -8,7 +9,8 @@
 #include<SFML/Graphics.hpp>
 
 
-void staffhome(sf::RenderWindow &window) {
+void staffhome(sf::RenderWindow &window, LinkedList<User>& userlist,Staff &userstaff) {
+
     sf::Texture Staffhometexture;
     Staffhometexture.loadFromFile("Design UI/[Staff] Home.jpg");
     Staffhometexture.setSmooth(true);
@@ -33,11 +35,11 @@ void staffhome(sf::RenderWindow &window) {
             if (event.type == sf::Event::Closed)
                 window.close();
             if (staffhomebuttonlist.isClickedKOrder(event, 1))
-                staffmanageschoolyeardisplay(window);
+                staffmanageschoolyeardisplay(window, userstaff);
             if (staffhomebuttonlist.isClickedKOrder(event, 2))
-                staffmanagesemesterdisplay(window);
+                staffmanagesemesterdisplay(window, userstaff);
             if (staffhomebuttonlist.isClickedKOrder(event, 3))
-                staffmanagecourse(window);
+                staffmanagecourse(window, userstaff);
             if (staffhomebuttonlist.isClickedKOrder(event, 4))
                 abousUs(window);
         }
@@ -48,7 +50,7 @@ void staffhome(sf::RenderWindow &window) {
         window.display();
     }
 }
-void staffmanageschoolyeardisplay(sf::RenderWindow& window) {
+void staffmanageschoolyeardisplay(sf::RenderWindow& window, Staff &userstaff) {
     sf::Texture Schoolyeartexture;
     Schoolyeartexture.loadFromFile("Design UI/[Staff] school year.jpg");
     Schoolyeartexture.setSmooth(true);
@@ -62,6 +64,8 @@ void staffmanageschoolyeardisplay(sf::RenderWindow& window) {
     textstaffhomebutton.push_tail("manage course");
     textstaffhomebutton.push_tail("about us");
     dropdownlist staffhomebuttonlist(sf::Color(168, 158, 146), sf::Vector2f(300, 50), false, sf::Color(239, 233, 222), textstaffhomebutton, 24, Palatino);
+    LinkedList<OutputTextBox> SchoolyearTextBox;
+
     while (window.isOpen())
     {
         sf::Event event;
@@ -70,11 +74,11 @@ void staffmanageschoolyeardisplay(sf::RenderWindow& window) {
             if (event.type == sf::Event::Closed)
                 window.close();
             if (staffhomebuttonlist.isClickedKOrder(event, 1))
-                staffmanageschoolyeardisplay(window);
+                staffmanageschoolyeardisplay(window,userstaff);
             if (staffhomebuttonlist.isClickedKOrder(event, 2))
-                staffmanagesemesterdisplay(window);
+                staffmanagesemesterdisplay(window,userstaff);
             if (staffhomebuttonlist.isClickedKOrder(event, 3))
-                staffmanagecourse(window);
+                staffmanagecourse(window,userstaff);
             if (staffhomebuttonlist.isClickedKOrder(event, 4))
                 abousUs(window);
         }
@@ -85,7 +89,7 @@ void staffmanageschoolyeardisplay(sf::RenderWindow& window) {
         window.display();
     }
 }
-void staffmanagesemesterdisplay(sf::RenderWindow& window) {
+void staffmanagesemesterdisplay(sf::RenderWindow& window, Staff &userstaff) {
     sf::Texture Semestertexture;
     Semestertexture.loadFromFile("Design UI/[Staff] semester.jpg");
     Semestertexture.setSmooth(true);
@@ -107,11 +111,11 @@ void staffmanagesemesterdisplay(sf::RenderWindow& window) {
             if (event.type == sf::Event::Closed)
                 window.close();
             if (staffhomebuttonlist.isClickedKOrder(event, 1))
-                staffmanageschoolyeardisplay(window);
+                staffmanageschoolyeardisplay(window, userstaff);
             if (staffhomebuttonlist.isClickedKOrder(event, 2))
-                staffmanagesemesterdisplay(window);
+                staffmanagesemesterdisplay(window, userstaff);
             if (staffhomebuttonlist.isClickedKOrder(event, 3))
-                staffmanagecourse(window);
+                staffmanagecourse(window, userstaff);
             if (staffhomebuttonlist.isClickedKOrder(event, 4))
                 abousUs(window);
         }
@@ -122,7 +126,7 @@ void staffmanagesemesterdisplay(sf::RenderWindow& window) {
         window.display();
     }
 }
-void staffmanagecourse(sf::RenderWindow& window) {
+void staffmanagecourse(sf::RenderWindow& window, Staff &userstaff) {
     sf::Texture Coursetexture;
     Coursetexture.loadFromFile("Design UI/[Staff] course.jpg");
     Coursetexture.setSmooth(true);
@@ -144,11 +148,11 @@ void staffmanagecourse(sf::RenderWindow& window) {
             if (event.type == sf::Event::Closed)
                 window.close();
             if (staffhomebuttonlist.isClickedKOrder(event, 1))
-                staffmanageschoolyeardisplay(window);
+                staffmanageschoolyeardisplay(window, userstaff);
             if (staffhomebuttonlist.isClickedKOrder(event, 2))
-                staffmanagesemesterdisplay(window);
+                staffmanagesemesterdisplay(window, userstaff);
             if (staffhomebuttonlist.isClickedKOrder(event, 3))
-                staffmanagecourse(window);
+                staffmanagecourse(window, userstaff);
             if (staffhomebuttonlist.isClickedKOrder(event, 4))
                 abousUs(window);
         }

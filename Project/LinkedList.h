@@ -1,7 +1,7 @@
 #ifndef LINKEDLIST_H
 #define LINKEDLIST_H
 #include <iostream>
-
+#include<string>
 #include <functional>
 
 template <class T>
@@ -134,6 +134,8 @@ public:
         }
         return false;
     }
+    //get data from list based on Username
+    
 
     void removeNodeByData(T data) {
         if (head == nullptr) return;

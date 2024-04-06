@@ -115,8 +115,12 @@ void loginWindow(sf::RenderWindow& window, bool role)
                         acc.iswrongaccount = false;
                         if (role == 0)
                             studenthome(window);
-                        else
-                            staffhome(window);
+                        else {
+                            LinkedList<Staff> Stafflist;
+                            Staff userstaff;
+                            getDataStafffromlist(Stafflist, username.getText(), userstaff);
+                            staffhome(window, userlist,userstaff);
+                        }
                     }
                     else
                     {

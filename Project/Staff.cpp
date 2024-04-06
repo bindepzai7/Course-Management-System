@@ -19,10 +19,22 @@ void Staff::writeSchoolyear2file(std::ofstream fout) {
 	if (fout.is_open()) {
 		Node<SchoolYear>* cur = schoolyearlist.head;
 		while (cur) {
-			fout << cur->data.getStartYear();
-			fout << "-";
-			fout << cur->data.getEndYear();
+			fout << cur->data.getSchoolYear();
 		}
 	}
 
+}
+
+void LoadDataofStaff(LinkedList<Staff>& s, std::ifstream fin) {
+	 
+}
+
+bool getDataStafffromlist(LinkedList<Staff>s, std::string username, Staff &userstaff) {
+	Node<Staff>* cur = s.head;
+	while (cur && cur->data.getStaffID() != username) {
+		cur = cur->next;
+	}
+	if (!cur) return false;
+	userstaff = cur->data;
+	return true;
 }

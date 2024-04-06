@@ -11,30 +11,34 @@ class Staff {
 private:
 	LinkedList<SchoolYear> schoolyearlist;
 	LinkedList<Class> classlist;
-	std::string username;
-	std::string password;
-	std::string staffID;
+	std::string StaffID;
+	//std::string password;
+	std::string socialID;
 	Name staffName;
     
 public:
-	Staff(const std::string& username, const std::string& password) : username(username), password(password) {}
-	Staff(const std::string& username, const std::string& password, const std::string& staffID, const Name& staffName)
-		: username(username), password(password), staffID(staffID), staffName(staffName) {}
+	Staff() : StaffID(""), socialID(""),staffName("") {}
+	Staff(const std::string& StaffID, const std::string& socialID, const Name& staffName)
+		: StaffID(StaffID), socialID(socialID), staffName(staffName) {}
 	
 	bool operator ==(const Staff& s2) const {
-		return staffID == s2.staffID;
+		return StaffID == s2.StaffID;
 	}
 	bool operator>(const Staff& s2) const {
-		return staffID > s2.staffID;
+		return StaffID > s2.StaffID;
 	}
 
 	bool operator<(const Staff& s2) const {
-		return staffID < s2.staffID;
+		return StaffID < s2.StaffID;
 	}
 
-	bool operator!=(const Staff& s2) const {
-		return username != s2.username || password != s2.password;
+	std::string getStaffID() {
+		return StaffID;
 	}
+
+	//bool operator!=(const Staff& s2) const {
+	//	return username != s2.username || password != s2.password;
+	//}
 	void addNewSchoolyear(SchoolYear& newschoolyear) {
 		schoolyearlist.addNodeInAscending(newschoolyear);
 	}
@@ -49,6 +53,7 @@ public:
 };
 
 
-
+void LoadDataofStaff(LinkedList<Staff>& s, std::ifstream fin);
+bool getDataStafffromlist(LinkedList<Staff>s, std::string username, Staff& userstaff);
 
 #endif

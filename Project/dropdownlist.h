@@ -60,6 +60,7 @@ public:
 			curbut = curbut->next;
 		}
 	}
+	//drawTextboxwithNotchangeColor
 	bool isClickedKOrder(sf::Event event, int k) {
 		if (k > buttonlist.sizeoflist()) return false;
 		int i = 1;
@@ -74,6 +75,16 @@ public:
 
 		}
 		return false;
+	}
+	std::string getKoderButtonText(int k) {
+		if (k > buttonlist.sizeoflist()) return "";
+		int i = 1;
+		Node<Button>* curbut = buttonlist.head;
+		while (i < k) {
+			curbut = curbut->next;
+			i++;
+		}
+		return curbut->data.getText();
 	}
 };
 #endif // !1

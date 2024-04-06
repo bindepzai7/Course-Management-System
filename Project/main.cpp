@@ -16,8 +16,7 @@ int main() {
         }
 
         window.clear();
-        //chooseRole(window);
-        staffhome(window);
+        chooseRole(window);
         window.display();
     }
     return 0;
