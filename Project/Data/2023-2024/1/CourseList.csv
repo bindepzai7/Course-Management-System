@@ -1,5 +1,5 @@
-No,courseID,courseName,teacher,credits,max_student,dayAndSession
-1,CS161,Introduction to Computer Science I,Dinh Ba Tien,4,50,WED 7:30-9:10
-2,PH211,General Physics I,Vu Thi Hanh Thu,4,50,THU 9:30-11:10
-3,MTH251,Calculus I,Phan Thi My Duyen,4,50,WED 13:30-15:10
-4,CM102,Critical Thinking,Duong Nguyen Vu,4,100,MON 13:30-15:10
+No,courseID,courseName,teacher_lastName,teacher_firstName,credits,max_student,dayAndSession
+1,CS161,Introduction to Computer Science I,Dinh Ba,Tien,4,50,WED 7:30-9:10
+2,PH211,General Physics I,Vu Thi Hanh,Thu,4,50,THU 9:30-11:10
+3,MTH251,Calculus I,Phan Thi My,Duyen,4,50,WED 13:30-15:10
+4,CM102,Critical Thinking,Duong Nguyen,Vu,4,100,MON 13:30-16:30
