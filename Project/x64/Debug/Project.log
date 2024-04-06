@@ -1,2 +1,6 @@
-﻿  loginfunction.cpp
+﻿  staffview.cpp
+D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\button.h(71,18): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\button.h(72,18): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+  studentview.cpp
+  Generating Code...
   Project.vcxproj -> D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\x64\Debug\Project.exe

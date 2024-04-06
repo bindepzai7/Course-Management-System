@@ -1,7 +1,9 @@
 #include"Staff.h"
+#include<iostream>
 
-void Staff::readAllSchoolyear(std::ifstream fin) {
-	fin.open("Schoolyear.txt");
+void Staff::readAllSchoolyear() {
+	std::ifstream fin;
+	fin.open("AllSchoolYear.txt");
 	int yearstart, yearend;
 	char dash;
 	if (fin.is_open()) {
@@ -13,13 +15,16 @@ void Staff::readAllSchoolyear(std::ifstream fin) {
 		}
 	}
 	fin.close();
+	
 }
-void Staff::writeSchoolyear2file(std::ofstream fout) {
-	fout.open("Schoolyear.txt");
+void Staff::writeSchoolyear2file() {
+	std::ofstream fout;
+	fout.open("AllSchoolyear.txt");
 	if (fout.is_open()) {
 		Node<SchoolYear>* cur = schoolyearlist.head;
 		while (cur) {
 			fout << cur->data.getSchoolYear();
+			cur = cur->next;
 		}
 	}
 

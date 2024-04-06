@@ -24,7 +24,7 @@ public:
     SchoolYear() :yStart(0), yEnd(0), schoolYear("") {}
     // Constructor
     SchoolYear(const int& yStart, const int& yEnd)
-        : yStart(yStart), yEnd(yEnd), schoolYear(yStart+"-"+yEnd) {}
+        : yStart(yStart), yEnd(yEnd), schoolYear(std::to_string(yStart)+"-"+std::to_string(yEnd)) {}
 
     bool operator==(const SchoolYear& s2) const {
         return yStart == s2.yStart;
@@ -47,8 +47,6 @@ public:
         return schoolYear;
     }
 
-    Node<std::string>* getSchoolYearList() {
-    }
 
     bool saveSchoolYearList() {}
 

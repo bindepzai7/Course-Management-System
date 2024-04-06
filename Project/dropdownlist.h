@@ -27,11 +27,11 @@ public:
 		}
 	}
 
-	//position of button without textbox
-	void drawButwithoutTextbox(sf::RenderWindow& window, sf::Event event, float Posx, float Posy, int i, float size,sf::Color color) {
+	//draw button without change color textbox when on mouse cursor
+	void drawButwithoutchangeTextboxcolor(sf::RenderWindow& window, sf::Event event, float Posx, float Posy, int i, float size,sf::Color color) {
 		Node<Button>* curbut = buttonlist.head;
 		while (curbut) {
-			curbut->data.setButposition(sf::Vector2f(Posx, Posy + size * i));
+			curbut->data.setposition(sf::Vector2f(Posx, Posy + size * i));
 			if (curbut->data.isonMousecursor(event)) {
 				curbut->data.changecolor(color);
 			}
@@ -42,7 +42,7 @@ public:
 			curbut = curbut->next;
 		}
 	}
-	//position of button with textbox
+	//draw button with textbox and change button and textbox color on mouse cursor
 	void drawButwithTextbox(sf::RenderWindow& window, sf::Event event, float Posx, float Posy, int i, float size, sf::Color color,sf::Color txtcolor) {
 		Node<Button>* curbut = buttonlist.head;
 		while (curbut) {
