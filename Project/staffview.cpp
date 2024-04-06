@@ -126,7 +126,8 @@ void staffmanageschoolyeardisplay(Staff &userstaff) {
                     int newsendyear = std::stoi(newschoolyeartext.substr(5, 8));
                     userstaff.addNewSchoolyear(SchoolYear(newstartyear, newsendyear));
                     window.close();
-                    userstaff.writeSchoolyear2file();
+                    LinkedList<std::string> schoolyearstext2 = userstaff.getschoolyearstext();
+                    userstaff.writeSchoolyear2file(schoolyearstext2);
                     staffmanageschoolyeardisplay(userstaff);
                 }
         }

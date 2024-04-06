@@ -3,7 +3,7 @@
 
 void Staff::readAllSchoolyear() {
 	std::ifstream fin;
-	fin.open("AllSchoolYear.txt");
+	fin.open("Data/AllSchoolYear.txt");
 	int yearstart, yearend;
 	char dash;
 	if (fin.is_open()) {
@@ -17,13 +17,14 @@ void Staff::readAllSchoolyear() {
 	fin.close();
 	
 }
-void Staff::writeSchoolyear2file() {
+void Staff::writeSchoolyear2file(LinkedList<std::string> schoolyearstext) {
 	std::ofstream fout;
-	fout.open("AllSchoolyear.txt");
+	fout.open("Data/AllSchoolyear.txt");
 	if (fout.is_open()) {
-		Node<SchoolYear>* cur = schoolyearlist.head;
+		Node<std::string>* cur = schoolyearstext.head;
 		while (cur) {
-			fout << cur->data.getSchoolYear();
+			fout << cur->data;
+			fout << " ";
 			cur = cur->next;
 		}
 	}

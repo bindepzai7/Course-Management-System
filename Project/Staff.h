@@ -56,7 +56,7 @@ public:
 	}
 
 	void readAllSchoolyear();
-	void writeSchoolyear2file();
+	void writeSchoolyear2file(LinkedList<std::string> schoolyearstext);
 	void readAllClassinSchoolYear(std::ifstream fin);
 	void writeClasstoFile(std::ofstream fout);
 };
