@@ -35,6 +35,17 @@ struct Date {
 
 	}
 
+	std::string convert(int sth) {
+		std::stringstream s;
+		std::string result;
+		s << sth;
+		s >> result;
+		return result;
+	}
+	std::string getDate() {
+		std::string s = convert(this->day) + " / " + convert(this->month) + " / " + convert(this->year);
+		return s;
+	}
 
 	friend bool operator==(const Date& d1, const Date& d2)
 	{
@@ -73,7 +84,16 @@ struct Date {
 struct Name {
     std::string firstName;
     std::string lastName;
+
+
     Name(const std::string& s1 = "", const std::string& s2 = "") : lastName(s1), firstName(s2) {} // Constructor with default parameters
+	
+
+	bool operator=(Name n) {
+		this->firstName = n.firstName;
+		this->lastName = n.lastName;
+		return true;
+	}
 };
 
 
