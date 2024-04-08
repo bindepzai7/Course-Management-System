@@ -44,7 +44,12 @@ public:
     //Additional functional NTU's made (please delete unwanted ones)
     /////////////////////////////////////////////////////////////
 
-    
+    void push_head(T data) {
+        Node<T>* newNode = new Node<T>;
+        newNode->data = data;
+        newNode->next = head;
+        head = newNode;
+    }
 
     bool pop_head(T& data) {
         if (!head) return false;

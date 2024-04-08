@@ -10,13 +10,13 @@
 
 class Course {
 private:
-
-        //Course basic information
+    //Course basic information
     std::string courseID, courseName, session;
     int credits, maxStudent, validSlot;
     Name teacherName;
 
-        //Course's students' info and score struct
+public:
+    //Course's students' info and score struct
     struct Student {
         std::string StudentID;
         Name name;
@@ -27,6 +27,16 @@ private:
             finScore = "";
             midScore = "";
             otherScore = "";
+        }
+        bool operator=(const Student& s) {
+            this->finScore = s.finScore;
+            this->midScore = s.midScore;
+            this->StudentID = s.StudentID;
+            this->totalScore = s.totalScore;
+            this->otherScore = s.otherScore;
+            this->name.firstName = s.name.firstName;
+            this->name.lastName = s.name.lastName;
+            return true;
         }
         bool operator==(const Student& s2) const {
             return StudentID == s2.StudentID;
@@ -39,8 +49,28 @@ private:
         bool operator<(const Student& s2) const {
             return StudentID < s2.StudentID;
         }
+
+        std::string getStudentID() {
+            return this->StudentID;
+        }
+        std::string getName() {
+            return (this->name.lastName + " " + this->name.firstName);
+        }
+        std::string getTotalScore() {
+            return this->totalScore;
+        }
+        std::string getMidScore() {
+            return this->midScore;
+        }
+        std::string getFinalScore() {
+            return this->finScore;
+        }
+        std::string getOtherScore() {
+            return this->otherScore;
+        }
     };
-    //Course's student list
+
+private:
     LinkedList<Student> studentsInThisCourse;
 public:
 
@@ -49,6 +79,16 @@ public:
     Course(const std::string& courseID, const std::string& courseName, const std::string& session, const int& credits, const int& maxStudent, const Name& teacherName);
 
     //operator
+    bool operator=(Course c) {
+        this->courseID = c.courseID;
+        this->courseName = c.courseName;
+        this->credits = c.credits;
+        this->maxStudent = c.maxStudent;
+        this->validSlot = c.validSlot;
+        this->teacherName = c.teacherName;
+        this->session = c.session;
+        return true;
+    }
     bool operator==(std::string courseID) {
         return (this->courseID == courseID);
     }
@@ -65,7 +105,7 @@ public:
 
                  If used, must read the first line out first
                  */
-                bool readACourseFromFileCourseList(std::ifstream& fin); //checked
+    bool readACourseFromFileCourseList(std::ifstream& fin); //checked
 
              std::string getSession(); //checked
              std::string getCourseID(); //checked
@@ -86,7 +126,7 @@ public:
    
     bool deleteStudentFromThisCourse(const std::string& studentID);   //checked
 
-    void addStudentToThisCourse(const std::string& studentID, const Name& name);    //checked
+    bool addStudentToThisCourse(const std::string& studentID, const Name& name);    //checked
 
     bool findIfStudentIsInThisCourse(const std::string& studentID);    //checked
 
@@ -96,15 +136,14 @@ public:
 
     void createBlankScoreFile(const std::string& schoolYear, const std::string& semester);  //checked
 
-    void loadScoreFromCsvScoresFile(const std::string& schoolYear, const std::string& semester);
+    void loadScoreFromCsvScoresFile(const std::string& schoolYear, const std::string& semester);    //checked
 
-    Student findAStudentScoreOfThisCourse(const std::string& studentID);
+    bool findAStudentOfThisCourse(const std::string& studentID, Student& s);    //checked
 
-    bool updateAStudentScoreOfThisCourse(const std::string& studentID, const std::string& totalScore, const std::string& finScore, const std::string& midScore, const std::string& otherScore);
+    bool updateAStudentScoreOfThisCourse(const std::string& studentID, const std::string& totalScore, const std::string& finScore, const std::string& midScore, const std::string& otherScore);  //checked
 
-    void saveScore2CsvScoresFile(const std::string& schoolYear, const std::string& semester);
+    void saveScore2CsvScoresFile(const std::string& schoolYear, const std::string& semester);    //checked
 
-    std::string getFinScoreOfAStudent(std::string studentID);
 
    
 };
