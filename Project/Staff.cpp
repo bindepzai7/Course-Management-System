@@ -24,7 +24,7 @@ void Staff::writeSchoolyear2file(LinkedList<std::string> schoolyearstext) {
 		Node<std::string>* cur = schoolyearstext.head;
 		while (cur) {
 			fout << cur->data;
-			fout << " ";
+			fout << std::endl;
 			cur = cur->next;
 		}
 	}

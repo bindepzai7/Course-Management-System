@@ -18,7 +18,7 @@ public:
 		}
 	}
 	dropdownlist(sf::Color color, sf::Vector2f size, bool isClicked,
-		sf::Color textColor, LinkedList<std::string>& textlist, int txtsize, sf::Font& font)
+		sf::Color textColor, LinkedList<std::string> &textlist, int txtsize, sf::Font& font)
 	{
 		Node<std::string>* cur = textlist.head;
 		while (cur) {
@@ -26,27 +26,47 @@ public:
 			cur = cur->next;
 		}
 	}
-
-	//draw button without change color textbox when on mouse cursor
-	void drawButwithoutchangeTextboxcolor(sf::RenderWindow& window, sf::Event event, float Posx, float Posy, int i, float size,sf::Color color) {
+	void setpostionlistbutton(float Posx, float Posy, int i,float size) {
 		Node<Button>* curbut = buttonlist.head;
 		while (curbut) {
-			curbut->data.setposition(sf::Vector2f(Posx, Posy + size * i));
+			curbut->data.setposition(sf::Vector2f(Posx, Posy + size* i));
+			curbut = curbut->next;
+			i++;
+		}
+	}
+	//setpositon with limit view
+	void setpostionlistbuttonwithlimit(float Posx, float Posy, int i, float size,float Posylimabove,float Posylimunder,float jumpsize) {
+		Node<Button>* curbut = buttonlist.head;
+		while (curbut) {
+			float newPosy = Posy + size * i;
+			if (newPosy <= Posylimabove) newPosy = newPosy - jumpsize;
+			if (newPosy >= Posylimunder) newPosy = newPosy + jumpsize;
+			curbut->data.setposition(sf::Vector2f(Posx, newPosy));
+			curbut = curbut->next;
+			i++;
+		}
+	}
+
+
+	//draw button without change color textbox when on mouse cursor
+	void drawButwithoutchangeTextboxcolor(sf::RenderWindow& window, sf::Event event,sf::Color color) {
+		Node<Button>* curbut = buttonlist.head;
+		while (curbut) {
+			/*curbut->data.setposition(sf::Vector2f(Posx, Posy + size * i));*/
 			if (curbut->data.isonMousecursor(event)) {
 				curbut->data.changecolor(color);
 			}
 			else
 				curbut->data.changecolor(sf::Color::Transparent);
 			curbut->data.drawbutton(window);
-			i++;
 			curbut = curbut->next;
 		}
 	}
 	//draw button with textbox and change button and textbox color on mouse cursor
-	void drawButwithTextbox(sf::RenderWindow& window, sf::Event event, float Posx, float Posy, int i, float size, sf::Color color,sf::Color txtcolor) {
+	void drawButwithTextbox(sf::RenderWindow& window, sf::Event event, sf::Color color,sf::Color txtcolor) {
 		Node<Button>* curbut = buttonlist.head;
 		while (curbut) {
-			curbut->data.setposition(sf::Vector2f(Posx, Posy + size * i));
+			/*curbut->data.setposition(sf::Vector2f(Posx, Posy + size * i));*/
 			if (curbut->data.isonMousecursor(event)) {
 				curbut->data.changecolor(color);
 				curbut->data.changeTextColor(txtcolor);
@@ -56,7 +76,6 @@ public:
 				curbut->data.changeTextColor(sf::Color::Transparent);
 			}
 			curbut->data.drawbutton(window);
-			i++;
 			curbut = curbut->next;
 		}
 	}

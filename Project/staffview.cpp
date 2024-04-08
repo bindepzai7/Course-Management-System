@@ -25,6 +25,7 @@ void staffhome(sf::RenderWindow &window, LinkedList<User>& userlist,Staff &users
     textstaffhomebutton.push_tail("manage course");
     textstaffhomebutton.push_tail("about us");
     dropdownlist staffhomebuttonlist(sf::Color(168, 158,146), sf::Vector2f(300, 50), false,sf::Color(239,233,222),textstaffhomebutton,24,Palatino);
+    staffhomebuttonlist.setpostionlistbutton(30, 140, 0, 60);
     //list of button for new
 
     while (window.isOpen())
@@ -52,7 +53,7 @@ void staffhome(sf::RenderWindow &window, LinkedList<User>& userlist,Staff &users
 
         window.clear();
         window.draw(s_Staffhometexture);
-        staffhomebuttonlist.drawButwithTextbox(window, event, 30, 140, 0, 60, sf::Color(168, 158, 146),sf::Color(239, 233, 222));
+        staffhomebuttonlist.drawButwithTextbox(window, event, sf::Color(168, 158, 146),sf::Color(239, 233, 222));
         window.display();
     }
 }
@@ -71,11 +72,20 @@ void staffmanageschoolyeardisplay(Staff &userstaff) {
     textstaffhomebutton.push_tail("manage course");
     textstaffhomebutton.push_tail("about us");
     dropdownlist staffhomebuttonlist(sf::Color(168, 158, 146), sf::Vector2f(300, 50), false, sf::Color(239, 233, 222), textstaffhomebutton, 24, Palatino);
+    staffhomebuttonlist.setpostionlistbutton(30, 140, 0, 60);
+
     userstaff.readAllSchoolyear();
     LinkedList<std::string> schoolyearstext = userstaff.getschoolyearstext();
     dropdownlist schoolyears(sf::Color(168, 158, 146), sf::Vector2f(300, 50), false, sf::Color::Black, schoolyearstext, 30, Palatino);
+    schoolyears.setpostionlistbuttonwithlimit(475, 320, 0, 65,310,830,500);
+
+
     TextBox addschoolyearbox(24, sf::Color::Black, false);
     addschoolyearbox.setfont(Palatino);
+   // std::cout << schoolyearstext.sizeoflist();
+
+    //init newposy of list school years button
+    float newposy = 320;
     while (window.isOpen())
     {
         sf::Event event;
@@ -85,6 +95,7 @@ void staffmanageschoolyeardisplay(Staff &userstaff) {
             {
                 window.close();
             }
+            //menu button
             if (staffhomebuttonlist.isClickedKOrder(event, 1)) {
                 window.close();
                 staffmanageschoolyeardisplay(userstaff);
@@ -99,6 +110,13 @@ void staffmanageschoolyeardisplay(Staff &userstaff) {
             }
             if (staffhomebuttonlist.isClickedKOrder(event, 4))
                 abousUs(window);
+            //list of year button
+            for (int i = 1; i <= schoolyearstext.sizeoflist(); i++) {
+                if (schoolyears.isClickedKOrder(event, i))
+                std::cout << schoolyears.getKoderButtonText(i);
+            }
+
+
             if (addschoolyearbox.isClick(event, 940, 505, 1350, 545)) {
                 addschoolyearbox.setselected(true);
             }
@@ -115,6 +133,14 @@ void staffmanageschoolyeardisplay(Staff &userstaff) {
                     }
                 }
             }
+
+
+            //wheel scrool
+            if (event.type == event.MouseWheelScrolled) {
+                newposy = newposy + event.mouseWheelScroll.delta * 10.0f;
+                schoolyears.setpostionlistbuttonwithlimit(475, newposy, 0, 65, 310,830, 500);
+            }
+
         }
         if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
                 int x_coor = event.mouseButton.x;
@@ -133,9 +159,9 @@ void staffmanageschoolyeardisplay(Staff &userstaff) {
         }
         window.clear();
         window.draw(s_Schoolyeartexture);
-        staffhomebuttonlist.drawButwithTextbox(window, event, 30, 140, 0, 60, sf::Color(168, 158, 146), sf::Color(239, 233, 222));
-        schoolyears.drawButwithoutchangeTextboxcolor(window, event, 460, 320, 0, 60, sf::Color(168, 158, 146));
-        addschoolyearbox.setTextPosition(sf::Vector2f(950, 500));
+        staffhomebuttonlist.drawButwithTextbox(window, event, sf::Color(168, 158, 146), sf::Color(239, 233, 222));
+        schoolyears.drawButwithoutchangeTextboxcolor(window, event, sf::Color(168, 158, 146));
+        addschoolyearbox.setTextPosition(sf::Vector2f(950, 515));
         addschoolyearbox.drawTextbox(window);
         window.display();
     }
@@ -155,7 +181,7 @@ void staffmanagesemesterdisplay( Staff &userstaff) {
     textstaffhomebutton.push_tail("manage course");
     textstaffhomebutton.push_tail("about us");
     dropdownlist staffhomebuttonlist(sf::Color(168, 158, 146), sf::Vector2f(300, 50), false, sf::Color(239, 233, 222), textstaffhomebutton, 24, Palatino);
-    
+    staffhomebuttonlist.setpostionlistbutton(30, 140, 0, 60);
     while (window.isOpen())
     {
         sf::Event event;
@@ -181,7 +207,7 @@ void staffmanagesemesterdisplay( Staff &userstaff) {
 
         window.clear();
         window.draw(s_Semestertexture);
-        staffhomebuttonlist.drawButwithTextbox(window, event, 30, 140, 0, 60, sf::Color(168, 158, 146), sf::Color(239, 233, 222));
+        staffhomebuttonlist.drawButwithTextbox(window, event, sf::Color(168, 158, 146), sf::Color(239, 233, 222));
         
         window.display();
     }
@@ -201,6 +227,8 @@ void staffmanagecourse(Staff &userstaff) {
     textstaffhomebutton.push_tail("manage course");
     textstaffhomebutton.push_tail("about us");
     dropdownlist staffhomebuttonlist(sf::Color(168, 158, 146), sf::Vector2f(300, 50), false, sf::Color(239, 233, 222), textstaffhomebutton, 24, Palatino);
+    staffhomebuttonlist.setpostionlistbutton(30, 140, 0, 60);
+
     while (window.isOpen())
     {
         sf::Event event;
@@ -226,7 +254,7 @@ void staffmanagecourse(Staff &userstaff) {
 
         window.clear();
         window.draw(s_Coursetexture);
-        staffhomebuttonlist.drawButwithTextbox(window, event, 30, 140, 0, 60, sf::Color(168, 158, 146), sf::Color(239, 233, 222));
+        staffhomebuttonlist.drawButwithTextbox(window, event, sf::Color(168, 158, 146), sf::Color(239, 233, 222));
         window.display();
     }
 }
