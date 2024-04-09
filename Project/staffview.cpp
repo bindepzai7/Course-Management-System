@@ -142,6 +142,7 @@ void staffmanageschoolyeardisplay(Staff &userstaff) {
             }
 
         }
+        //add school button is Press
         if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
                 int x_coor = event.mouseButton.x;
                 int y_coor = event.mouseButton.y;
@@ -182,6 +183,7 @@ void staffmanagesemesterdisplay( Staff &userstaff) {
     textstaffhomebutton.push_tail("about us");
     dropdownlist staffhomebuttonlist(sf::Color(168, 158, 146), sf::Vector2f(300, 50), false, sf::Color(239, 233, 222), textstaffhomebutton, 24, Palatino);
     staffhomebuttonlist.setpostionlistbutton(30, 140, 0, 60);
+
     while (window.isOpen())
     {
         sf::Event event;
