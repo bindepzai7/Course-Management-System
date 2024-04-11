@@ -35,7 +35,7 @@ public:
 		recbutton.setPosition(point);
 
 		float x_coor = (point.x + recbutton.getLocalBounds().width / 2) - (textbox.getLocalBounds().width / 2);
-		float y_coor = (point.y + recbutton.getLocalBounds().height / 2) - (textbox.getLocalBounds().height/3*2);
+		float y_coor = (point.y + recbutton.getLocalBounds().height / 2) - (textbox.getLocalBounds().height*3/4);
 		textbox.setPosition(sf::Vector2f(x_coor, y_coor));
 	}
 	void setButposition(sf::Vector2f point) {
