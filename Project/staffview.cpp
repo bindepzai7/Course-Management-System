@@ -112,8 +112,13 @@ void staffmanageschoolyeardisplay(Staff &userstaff) {
                 abousUs(window);
             //list of year button
             for (int i = 1; i <= schoolyearstext.sizeoflist(); i++) {
-                if (schoolyears.isClickedKOrder(event, i))
-                std::cout << schoolyears.getKoderButtonText(i);
+                if (schoolyears.isClickedKOrder(event, i)) {
+                    /*std::string textofbutton=schoolyears.getKoderButtonText(i);
+                    std::cout << textofbutton;*/
+                    //std::cout << schoolyears.getpositionofKbut(i).y;
+                    std::cout << i;
+                    staffmanageschoolyear2display(window, userstaff, i);
+                }
             }
 
 
@@ -167,6 +172,98 @@ void staffmanageschoolyeardisplay(Staff &userstaff) {
         window.display();
     }
 }
+
+void staffmanageschoolyear2display(sf::RenderWindow& window, Staff& userstaff, int Korderofbut) {
+    const int limitnumsofbutton = 8;//limit of number of button that display wiht schoolyear 
+    sf::Texture Schoolyeartexture;
+    Schoolyeartexture.loadFromFile("Design UI/[Staff] school year 2.jpg");
+    Schoolyeartexture.setSmooth(true);
+    sf::Sprite s_Schoolyeartexture;
+    s_Schoolyeartexture.setTexture(Schoolyeartexture);
+    sf::Font Palatino;
+    Palatino.loadFromFile("Font/Palatino.ttf");
+    LinkedList<std::string> textstaffhomebutton;
+    textstaffhomebutton.push_tail("manage school year");
+    textstaffhomebutton.push_tail("manage semester");
+    textstaffhomebutton.push_tail("manage course");
+    textstaffhomebutton.push_tail("about us");
+    dropdownlist staffhomebuttonlist(sf::Color(168, 158, 146), sf::Vector2f(300, 50), false, sf::Color(239, 233, 222), textstaffhomebutton, 24, Palatino);
+    staffhomebuttonlist.setpostionlistbutton(30, 140, 0, 60);
+
+    //userstaff.readAllSchoolyear();
+    LinkedList<std::string> schoolyearstext = userstaff.getschoolyearstext();
+    dropdownlist schoolyears(sf::Color(168, 158, 146), sf::Vector2f(300, 50), false, sf::Color::Black, schoolyearstext, 30, Palatino);
+    schoolyears.setpostionlistbuttonwithlimit(475, 320, 0, 65, 310, 830, 500);
+
+    sf::Vector2f Posofschoolyearclicked = schoolyears.getpositionofKbut(Korderofbut);
+    std::cout << Posofschoolyearclicked.y;
+    std::string textofbutton = schoolyears.getKoderButtonText(Korderofbut);
+
+    Button schoolyearclickbutton(sf::Color(192, 200, 184), sf::Vector2f(300, 50), false, sf::Color::Black, textofbutton, 30, Palatino);//Nen lay mau gi??
+    schoolyearclickbutton.setposition(sf::Vector2f(Posofschoolyearclicked.x, Posofschoolyearclicked.y));
+   
+     //init newposy of list school years button
+    float newposy = 320;
+    float newposyofschoolyearclicked = Posofschoolyearclicked.y;
+    if (Korderofbut > limitnumsofbutton)  newposyofschoolyearclicked = newposyofschoolyearclicked - 500.f;
+    while (window.isOpen())
+    {
+        sf::Event event;
+        while (window.pollEvent(event))
+        {
+            if (event.type == sf::Event::Closed)
+            {
+                window.close();
+            }
+            //menu button
+            if (staffhomebuttonlist.isClickedKOrder(event, 1)) {
+                window.close();
+                staffmanageschoolyeardisplay(userstaff);
+            }
+            if (staffhomebuttonlist.isClickedKOrder(event, 2)) {
+                window.close();
+                staffmanagesemesterdisplay(userstaff);
+            }
+            if (staffhomebuttonlist.isClickedKOrder(event, 3)) {
+                window.close();
+                staffmanagecourse(userstaff);
+            }
+            if (staffhomebuttonlist.isClickedKOrder(event, 4))
+                abousUs(window);
+            //list of year button
+            for (int i = 1; i <= schoolyearstext.sizeoflist(); i++) {
+                if (schoolyears.isClickedKOrder(event, i)) {
+                    staffmanageschoolyear2display(window, userstaff, i);
+                }
+            }
+
+
+            //wheel scrool
+            if (event.type == event.MouseWheelScrolled) {
+                newposy = newposy + event.mouseWheelScroll.delta * 10.0f;
+                newposyofschoolyearclicked = newposyofschoolyearclicked + event.mouseWheelScroll.delta * 10.0f;
+                schoolyears.setpostionlistbuttonwithlimit(475, newposy, 0, 65, 310, 830, 500);
+                schoolyearclickbutton.setpositiontwithbuttonlimit(Posofschoolyearclicked.x, newposyofschoolyearclicked, 310, 830, 500);
+            }
+
+        }
+        //add school button is Press
+       
+        window.clear();
+        window.draw(s_Schoolyeartexture);
+        staffhomebuttonlist.drawButwithTextbox(window, event, sf::Color(168, 158, 146), sf::Color(239, 233, 222));
+        schoolyears.drawButwithoutchangeTextboxcolor(window, event, sf::Color(168, 158, 146));
+        schoolyearclickbutton.drawbutton(window);
+        window.display();
+    }
+}
+
+
+
+
+
+
+
 void staffmanagesemesterdisplay( Staff &userstaff) {
     sf::RenderWindow window(sf::VideoMode(1470, 950), "Login window", sf::Style::Close);
     sf::Texture Semestertexture;

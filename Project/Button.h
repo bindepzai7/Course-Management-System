@@ -44,6 +44,16 @@ public:
 	void setTextboxposition(sf::Vector2f point) {
 		textbox.setPosition(point);
 	}
+	//set position when scrolled
+	void setpositiontwithbuttonlimit(float Posx, float newPosy, float Posylimabove, float Posylimunder, float jumpsize) {
+		if (newPosy <= Posylimabove) newPosy = newPosy - jumpsize;
+		if (newPosy >= Posylimunder) newPosy = newPosy + jumpsize;
+		recbutton.setPosition(sf::Vector2f(Posx, newPosy));
+
+		float x_coor = (Posx + recbutton.getLocalBounds().width / 2) - (textbox.getLocalBounds().width / 2);
+		float y_coor = (newPosy + recbutton.getLocalBounds().height / 2) - (textbox.getLocalBounds().height * 3 / 4);
+		textbox.setPosition(sf::Vector2f(x_coor, y_coor));
+	}
 	void settexture(sf::Texture* texture) {
 		recbutton.setTexture(texture);
 	}
@@ -114,6 +124,10 @@ public:
 	}
 	std::string getText() {
 		return textbox.getString();
+	}
+
+	sf::Vector2f getpositionofbutton() {
+		return recbutton.getPosition();
 	}
 };
 

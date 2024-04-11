@@ -105,5 +105,15 @@ public:
 		}
 		return curbut->data.getText();
 	}
+	sf::Vector2f getpositionofKbut(int k) {
+		if (k > buttonlist.sizeoflist()) return sf::Vector2f(0,0);
+		int i = 1;
+		Node<Button>* curbut = buttonlist.head;
+		while (i < k) {
+			curbut = curbut->next;
+			i++;
+		}
+		return curbut->data.getpositionofbutton();
+	}
 };
 #endif // !1
