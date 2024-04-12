@@ -1,5 +1,7 @@
 #include"Staff.h"
 #include<iostream>
+#include <sys/stat.h> // For mkdir function
+#include <sys/types.h>
 
 void Staff::readAllSchoolyear() {
 	std::ifstream fin;
@@ -32,6 +34,17 @@ void Staff::writeSchoolyear2file(LinkedList<std::string> &schoolyearstext) {
 }
 
 void Staff::readAllClassinSchoolYear(std::string schoolyear) {
+	std::wstring folderPath = L"Data/" + std::wstring(schoolyear.begin(), schoolyear.end());
+	struct _stat info;
+	if (_wstat(folderPath.c_str(), &info) != 0) {
+		// Folder doesn't exist, create it
+		if (_wmkdir(folderPath.c_str()) != 0) {
+			// Failed to create folder
+			std::cout << "Failed to create school year folder " << std::endl;
+			return;
+		}
+	}
+
 	std::ifstream fin;
 	fin.open("Data/"+schoolyear+"/classList.txt");
 	std::string classcode;
