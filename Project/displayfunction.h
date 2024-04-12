@@ -15,8 +15,9 @@ void loginWindow(sf::RenderWindow& window, bool role);
 void staffhome(sf::RenderWindow &window,LinkedList<User> &userlist,Staff &userstaff);
 void staffmanageschoolyeardisplay(Staff &userstaff);
 void staffmanageschoolyear2display(sf::RenderWindow &window,Staff& userstaff,int Korderofbut);//schoolyear with button to add class or view semester;
-
 void staffaddclasses(sf::RenderWindow& window, Staff& userstaff, std::string schoolyear);
+void staffaddfirstyearstudent(sf::RenderWindow& window, Staff& userstaff, std::string addtoclass);
+
 void staffmanagesemesterdisplay(Staff &userstaff);
 void staffmanagecourse(Staff &userstaff);
 void abousUs(sf::RenderWindow& window);

@@ -28,6 +28,13 @@ void staffhome(sf::RenderWindow &window, LinkedList<User>& userlist,Staff &users
     staffhomebuttonlist.setpostionlistbutton(30, 140, 0, 60);
     //list of button for new
 
+
+
+
+    //log out button
+    Button logoutbut(sf::Color(192, 200, 184), sf::Vector2f(90, 30), false, sf::Color::Black, "Log out", 20, Palatino);
+    logoutbut.setposition(sf::Vector2f(227, 895));
+
     while (window.isOpen())
     {
         sf::Event event;
@@ -49,11 +56,25 @@ void staffhome(sf::RenderWindow &window, LinkedList<User>& userlist,Staff &users
             }
             if (staffhomebuttonlist.isClickedKOrder(event, 4))
                 abousUs(window);
+
+            //click logout button
+            if (logoutbut.isClick(event)) chooseRole(window);
+
+            //change color button when on cursor
+            if (logoutbut.isonMousecursor(event)) {
+                logoutbut.changecolor(sf::Color(192, 200, 184));
+                logoutbut.changeTextColor(sf::Color::Black);
+            }
+            else {
+                logoutbut.changecolor(sf::Color::Transparent);
+                logoutbut.changeTextColor(sf::Color::Transparent);
+            }
         }
 
         window.clear();
         window.draw(s_Staffhometexture);
         staffhomebuttonlist.drawButwithTextbox(window, event, sf::Color(168, 158, 146),sf::Color(239, 233, 222));
+        logoutbut.drawbutton(window);
         window.display();
     }
 }
@@ -73,6 +94,10 @@ void staffmanageschoolyeardisplay(Staff &userstaff) {
     textstaffhomebutton.push_tail("about us");
     dropdownlist staffhomebuttonlist(sf::Color(168, 158, 146), sf::Vector2f(300, 50), false, sf::Color(239, 233, 222), textstaffhomebutton, 24, Palatino);
     staffhomebuttonlist.setpostionlistbutton(30, 140, 0, 60);
+
+    //log out button
+    Button logoutbut(sf::Color(192, 200, 184), sf::Vector2f(90, 30), false, sf::Color::Black, "Log out", 20, Palatino);
+    logoutbut.setposition(sf::Vector2f(227, 895));
 
     userstaff.readAllSchoolyear();
     LinkedList<std::string> schoolyearstext = userstaff.getschoolyearstext();
@@ -110,6 +135,21 @@ void staffmanageschoolyeardisplay(Staff &userstaff) {
             }
             if (staffhomebuttonlist.isClickedKOrder(event, 4))
                 abousUs(window);
+
+            //click logout button
+            if (logoutbut.isClick(event)) chooseRole(window);
+
+            //change color button when on cursor
+            if (logoutbut.isonMousecursor(event)) {
+                logoutbut.changecolor(sf::Color(192, 200, 184));
+                logoutbut.changeTextColor(sf::Color::Black);
+            }
+            else {
+                logoutbut.changecolor(sf::Color::Transparent);
+                logoutbut.changeTextColor(sf::Color::Transparent);
+            }
+
+
             //list of year button
             for (int i = 1; i <= schoolyearstext.sizeoflist(); i++) {
                 if (schoolyears.isClickedKOrder(event, i)) {
@@ -166,6 +206,7 @@ void staffmanageschoolyeardisplay(Staff &userstaff) {
         window.clear();
         window.draw(s_Schoolyeartexture);
         staffhomebuttonlist.drawButwithTextbox(window, event, sf::Color(168, 158, 146), sf::Color(239, 233, 222));
+        logoutbut.drawbutton(window);
         schoolyears.drawButwithoutchangeTextboxcolor(window, event, sf::Color(168, 158, 146));
         addschoolyearbox.setTextPosition(sf::Vector2f(950, 515));
         addschoolyearbox.drawTextbox(window);
@@ -189,6 +230,10 @@ void staffmanageschoolyear2display(sf::RenderWindow& window, Staff& userstaff, i
     textstaffhomebutton.push_tail("about us");
     dropdownlist staffhomebuttonlist(sf::Color(168, 158, 146), sf::Vector2f(300, 50), false, sf::Color(239, 233, 222), textstaffhomebutton, 24, Palatino);
     staffhomebuttonlist.setpostionlistbutton(30, 140, 0, 60);
+
+    //log out button
+    Button logoutbut(sf::Color(192, 200, 184), sf::Vector2f(90, 30), false, sf::Color::Black, "Log out", 20, Palatino);
+    logoutbut.setposition(sf::Vector2f(227, 895));
 
     //userstaff.readAllSchoolyear();
     LinkedList<std::string> schoolyearstext = userstaff.getschoolyearstext();
@@ -234,6 +279,20 @@ void staffmanageschoolyear2display(sf::RenderWindow& window, Staff& userstaff, i
             }
             if (staffhomebuttonlist.isClickedKOrder(event, 4))
                 abousUs(window);
+
+            //click logout button
+            if (logoutbut.isClick(event)) chooseRole(window);
+
+            //change color button when on cursor
+            if (logoutbut.isonMousecursor(event)) {
+                logoutbut.changecolor(sf::Color(192, 200, 184));
+                logoutbut.changeTextColor(sf::Color::Black);
+            }
+            else {
+                logoutbut.changecolor(sf::Color::Transparent);
+                logoutbut.changeTextColor(sf::Color::Transparent);
+            }
+
             //list of year button
             for (int i = 1; i <= schoolyearstext.sizeoflist(); i++) {
                 if (schoolyears.isClickedKOrder(event, i)) {
@@ -260,30 +319,30 @@ void staffmanageschoolyear2display(sf::RenderWindow& window, Staff& userstaff, i
                         staffaddclasses(window, userstaff, textofbutton);
                     }
                     if (x_coor > 910 and x_coor < 1385 and y_coor >545 and y_coor < 645) {
-
+                        window.close();
+                        staffmanagesemesterdisplay(userstaff);
                     }
                 }
             }
 
         }
-        //add school button is Press
        
         window.clear();
         window.draw(s_Schoolyeartexture);
         staffhomebuttonlist.drawButwithTextbox(window, event, sf::Color(168, 158, 146), sf::Color(239, 233, 222));
+        logoutbut.drawbutton(window);
         schoolyears.drawButwithoutchangeTextboxcolor(window, event, sf::Color(168, 158, 146));
         schoolyearclickbutton.drawbutton(window);
-        //addfirstyearbutton.drawbutton(window);
         window.display();
     }
 }
 
 void staffaddclasses(sf::RenderWindow& window, Staff& userstaff, std::string schoolyear) {
-    sf::Texture Staffhometexture;
-    Staffhometexture.loadFromFile("Design UI/[Staff] add classes.jpg");
-    Staffhometexture.setSmooth(true);
-    sf::Sprite s_Staffhometexture;
-    s_Staffhometexture.setTexture(Staffhometexture);
+    sf::Texture Staffaddclasstexture;
+    Staffaddclasstexture.loadFromFile("Design UI/[Staff] add classes.jpg");
+    Staffaddclasstexture.setSmooth(true);
+    sf::Sprite s_Staffaddclasstexture;
+    s_Staffaddclasstexture.setTexture(Staffaddclasstexture);
     sf::Font Palatino;
     Palatino.loadFromFile("Font/Palatino.ttf");
     //list of button manage
@@ -294,8 +353,12 @@ void staffaddclasses(sf::RenderWindow& window, Staff& userstaff, std::string sch
     textstaffhomebutton.push_tail("about us");
     dropdownlist staffhomebuttonlist(sf::Color(168, 158, 146), sf::Vector2f(300, 50), false, sf::Color(239, 233, 222), textstaffhomebutton, 24, Palatino);
     staffhomebuttonlist.setpostionlistbutton(30, 140, 0, 60);
-    //school year current textbox
 
+    //log out button
+    Button logoutbut(sf::Color(192, 200, 184), sf::Vector2f(90, 30), false, sf::Color::Black, "Log out", 20, Palatino);
+    logoutbut.setposition(sf::Vector2f(227, 895));
+
+    //school year current textbox
     OutputTextBox cur_schoolyeartextbox(28, sf::Color::Black, schoolyear);
     cur_schoolyeartextbox.setfont(Palatino);
     cur_schoolyeartextbox.setTextPosition(sf::Vector2f(1040.f, 362.f));
@@ -335,10 +398,24 @@ void staffaddclasses(sf::RenderWindow& window, Staff& userstaff, std::string sch
             if (staffhomebuttonlist.isClickedKOrder(event, 4))
                 abousUs(window);
 
+            //click logout button
+            if (logoutbut.isClick(event)) chooseRole(window);
+
+            //change color button when on cursor
+            if (logoutbut.isonMousecursor(event)) {
+                logoutbut.changecolor(sf::Color(192, 200, 184));
+                logoutbut.changeTextColor(sf::Color::Black);
+            }
+            else {
+                logoutbut.changecolor(sf::Color::Transparent);
+                logoutbut.changeTextColor(sf::Color::Transparent);
+            }
+
             //click class button
             for (int i = 1; i <= classestext.sizeoflist(); i++) {
                 if (classesbutton.isClickedKOrder(event, i)) { 
-                    std::cout << i;
+                    std::string addtoclass=classesbutton.getKoderButtonText(i);
+                    staffaddfirstyearstudent(window, userstaff, addtoclass);
                 }
             }
 
@@ -377,8 +454,9 @@ void staffaddclasses(sf::RenderWindow& window, Staff& userstaff, std::string sch
         }
 
         window.clear();
-        window.draw(s_Staffhometexture);
+        window.draw(s_Staffaddclasstexture);
         staffhomebuttonlist.drawButwithTextbox(window, event, sf::Color(168, 158, 146), sf::Color(239, 233, 222));
+        logoutbut.drawbutton(window);
         classesbutton.drawButwithoutchangeTextboxcolor(window, event, sf::Color(168, 158, 146));
         cur_schoolyeartextbox.drawTextbox(window);
         addclasstxtbox.drawTextbox(window);
@@ -387,18 +465,15 @@ void staffaddclasses(sf::RenderWindow& window, Staff& userstaff, std::string sch
 }
 
 
-
-
-
-void staffmanagesemesterdisplay( Staff &userstaff) {
-    sf::RenderWindow window(sf::VideoMode(1470, 950), "Login window", sf::Style::Close);
-    sf::Texture Semestertexture;
-    Semestertexture.loadFromFile("Design UI/[Staff] semester.jpg");
-    Semestertexture.setSmooth(true);
-    sf::Sprite s_Semestertexture;
-    s_Semestertexture.setTexture(Semestertexture);
+void staffaddfirstyearstudent(sf::RenderWindow& window, Staff& userstaff, std::string addtoclass) {
+    sf::Texture add1styearstudenttexture;
+    add1styearstudenttexture.loadFromFile("Design UI/[Staff] add 1st year students.jpg");
+    add1styearstudenttexture.setSmooth(true);
+    sf::Sprite s_add1styearstudenttexture;
+    s_add1styearstudenttexture.setTexture(add1styearstudenttexture);
     sf::Font Palatino;
     Palatino.loadFromFile("Font/Palatino.ttf");
+    //list of button manage
     LinkedList<std::string> textstaffhomebutton;
     textstaffhomebutton.push_tail("manage school year");
     textstaffhomebutton.push_tail("manage semester");
@@ -406,6 +481,17 @@ void staffmanagesemesterdisplay( Staff &userstaff) {
     textstaffhomebutton.push_tail("about us");
     dropdownlist staffhomebuttonlist(sf::Color(168, 158, 146), sf::Vector2f(300, 50), false, sf::Color(239, 233, 222), textstaffhomebutton, 24, Palatino);
     staffhomebuttonlist.setpostionlistbutton(30, 140, 0, 60);
+
+    //log out button
+    Button logoutbut(sf::Color(192, 200, 184), sf::Vector2f(90, 30), false, sf::Color::Black, "Log out", 20, Palatino);
+    logoutbut.setposition(sf::Vector2f(227, 895));
+
+    //class current textbox
+    OutputTextBox cur_classtextbox(28, sf::Color::Black, addtoclass);
+    cur_classtextbox.setfont(Palatino);
+    cur_classtextbox.setTextPosition(sf::Vector2f(1070.f, 216.f));
+
+    //add student with information 
 
     while (window.isOpen())
     {
@@ -428,12 +514,92 @@ void staffmanagesemesterdisplay( Staff &userstaff) {
             }
             if (staffhomebuttonlist.isClickedKOrder(event, 4))
                 abousUs(window);
+
+            //click logout button
+            if (logoutbut.isClick(event)) chooseRole(window);
+
+            //change color button when on cursor
+            if (logoutbut.isonMousecursor(event)) {
+                logoutbut.changecolor(sf::Color(192, 200, 184));
+                logoutbut.changeTextColor(sf::Color::Black);
+            }
+            else {
+                logoutbut.changecolor(sf::Color::Transparent);
+                logoutbut.changeTextColor(sf::Color::Transparent);
+            }
+        }
+
+        window.clear();
+        window.draw(s_add1styearstudenttexture);
+        staffhomebuttonlist.drawButwithTextbox(window, event, sf::Color(168, 158, 146), sf::Color(239, 233, 222));
+        logoutbut.drawbutton(window);
+        cur_classtextbox.drawTextbox(window);
+        window.display();
+    }
+}
+
+
+void staffmanagesemesterdisplay( Staff &userstaff) {
+    sf::RenderWindow window(sf::VideoMode(1470, 950), "Login window", sf::Style::Close);
+    sf::Texture Semestertexture;
+    Semestertexture.loadFromFile("Design UI/[Staff] semester.jpg");
+    Semestertexture.setSmooth(true);
+    sf::Sprite s_Semestertexture;
+    s_Semestertexture.setTexture(Semestertexture);
+    sf::Font Palatino;
+    Palatino.loadFromFile("Font/Palatino.ttf");
+    LinkedList<std::string> textstaffhomebutton;
+    textstaffhomebutton.push_tail("manage school year");
+    textstaffhomebutton.push_tail("manage semester");
+    textstaffhomebutton.push_tail("manage course");
+    textstaffhomebutton.push_tail("about us");
+    dropdownlist staffhomebuttonlist(sf::Color(168, 158, 146), sf::Vector2f(300, 50), false, sf::Color(239, 233, 222), textstaffhomebutton, 24, Palatino);
+    staffhomebuttonlist.setpostionlistbutton(30, 140, 0, 60);
+
+    //log out button
+    Button logoutbut(sf::Color(192, 200, 184), sf::Vector2f(90, 30), false, sf::Color::Black, "Log out", 20, Palatino);
+    logoutbut.setposition(sf::Vector2f(227, 895));
+
+    while (window.isOpen())
+    {
+        sf::Event event;
+        while (window.pollEvent(event))
+        {
+            if (event.type == sf::Event::Closed)
+                window.close();
+            if (staffhomebuttonlist.isClickedKOrder(event, 1)) {
+                window.close();
+                staffmanageschoolyeardisplay(userstaff);
+            }
+            if (staffhomebuttonlist.isClickedKOrder(event, 2)) {
+                window.close();
+                staffmanagesemesterdisplay(userstaff);
+            }
+            if (staffhomebuttonlist.isClickedKOrder(event, 3)) {
+                window.close();
+                staffmanagecourse(userstaff);
+            }
+            if (staffhomebuttonlist.isClickedKOrder(event, 4))
+                abousUs(window);
+
+            //click logout button
+            if (logoutbut.isClick(event)) chooseRole(window);
+
+            //change color button when on cursor
+            if (logoutbut.isonMousecursor(event)) {
+                logoutbut.changecolor(sf::Color(192, 200, 184));
+                logoutbut.changeTextColor(sf::Color::Black);
+            }
+            else {
+                logoutbut.changecolor(sf::Color::Transparent);
+                logoutbut.changeTextColor(sf::Color::Transparent);
+            }
         }
 
         window.clear();
         window.draw(s_Semestertexture);
         staffhomebuttonlist.drawButwithTextbox(window, event, sf::Color(168, 158, 146), sf::Color(239, 233, 222));
-        
+        logoutbut.drawbutton(window);
         window.display();
     }
 }
@@ -454,6 +620,10 @@ void staffmanagecourse(Staff &userstaff) {
     dropdownlist staffhomebuttonlist(sf::Color(168, 158, 146), sf::Vector2f(300, 50), false, sf::Color(239, 233, 222), textstaffhomebutton, 24, Palatino);
     staffhomebuttonlist.setpostionlistbutton(30, 140, 0, 60);
 
+    //log out button
+    Button logoutbut(sf::Color(192, 200, 184), sf::Vector2f(90, 30), false, sf::Color::Black, "Log out", 20, Palatino);
+    logoutbut.setposition(sf::Vector2f(227, 895));
+
     while (window.isOpen())
     {
         sf::Event event;
@@ -475,11 +645,25 @@ void staffmanagecourse(Staff &userstaff) {
             }
             if (staffhomebuttonlist.isClickedKOrder(event, 4))
                 abousUs(window);
+
+            //click logout button
+            if (logoutbut.isClick(event)) chooseRole(window);
+
+            //change color button when on cursor
+            if (logoutbut.isonMousecursor(event)) {
+                logoutbut.changecolor(sf::Color(192, 200, 184));
+                logoutbut.changeTextColor(sf::Color::Black);
+            }
+            else {
+                logoutbut.changecolor(sf::Color::Transparent);
+                logoutbut.changeTextColor(sf::Color::Transparent);
+            }
         }
 
         window.clear();
         window.draw(s_Coursetexture);
         staffhomebuttonlist.drawButwithTextbox(window, event, sf::Color(168, 158, 146), sf::Color(239, 233, 222));
+        logoutbut.drawbutton(window);
         window.display();
     }
 }

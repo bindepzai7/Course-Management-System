@@ -5,6 +5,7 @@
 #include"Staff.h"
 #include"ReadCSVfile.h"
 #include"User.h"
+#include"Button.h"
 #include<iostream>
 #include<SFML/Graphics.hpp>
 #include<Windows.h>
@@ -174,6 +175,13 @@ void abousUs(sf::RenderWindow& window) {
     AboutUstexture.setSmooth(true);
     sf::Sprite s_AboutUstexture;
     s_AboutUstexture.setTexture(AboutUstexture);
+    sf::Font Palatino;
+    Palatino.loadFromFile("Font/Palatino.ttf");
+
+    //log out button
+    Button logoutbut(sf::Color(192, 200, 184), sf::Vector2f(90, 30), false, sf::Color::Black, "Log out", 20, Palatino);
+    logoutbut.setposition(sf::Vector2f(227, 895));
+
     while (window.isOpen())
     {
         sf::Event event;
@@ -181,10 +189,25 @@ void abousUs(sf::RenderWindow& window) {
         {
             if (event.type == sf::Event::Closed)
                 window.close();
+
+            //click logout button
+            if (logoutbut.isClick(event)) chooseRole(window);
+
+            //change color button when on cursor
+            if (logoutbut.isonMousecursor(event)) {
+                logoutbut.changecolor(sf::Color(192, 200, 184));
+                logoutbut.changeTextColor(sf::Color::Black);
+            }
+            else {
+                logoutbut.changecolor(sf::Color::Transparent);
+                logoutbut.changeTextColor(sf::Color::Transparent);
+            }
         }
 
         window.clear();
         window.draw(s_AboutUstexture);
+        logoutbut.drawbutton(window);
         window.display();
+      
     }
 }
