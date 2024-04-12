@@ -14,13 +14,14 @@ class Class {
 public:
 	Class()//default constructor
 		:className(""),classCode(""),teacherName(Name()),schedule(""){}
+	Class(const std::string &cC): classCode(cC){}
 	Class(const std::string& cN, const std::string& cC, const Name& n, std::string &schedule)//with parameter
 		:className(cN), classCode(cC), teacherName(n), schedule(schedule) {}
-
+	~Class() {};
 	//function...
 
 	bool operator==(const Class& cl2) const {
-		return classCode == cl2.classCode/*&&password==s2.password*/;
+		return classCode == cl2.classCode;
 	}
 
 	bool operator>(const Class& cl2) const {
@@ -36,6 +37,10 @@ public:
 	}
 	void removeStudent(Student& s) {
 		studentList.removeNodeByData(s);
+	}
+
+	std::string getclasscode() {
+		return classCode;
 	}
 };
 

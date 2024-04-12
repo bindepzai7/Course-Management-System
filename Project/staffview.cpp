@@ -206,6 +206,10 @@ void staffmanageschoolyear2display(sf::RenderWindow& window, Staff& userstaff, i
     float newposy = 320;
     float newposyofschoolyearclicked = Posofschoolyearclicked.y;
     if (Korderofbut > limitnumsofbutton)  newposyofschoolyearclicked = newposyofschoolyearclicked - 500.f;
+
+    //view semester butotn
+
+
     while (window.isOpen())
     {
         sf::Event event;
@@ -246,6 +250,21 @@ void staffmanageschoolyear2display(sf::RenderWindow& window, Staff& userstaff, i
                 schoolyearclickbutton.setpositiontwithbuttonlimit(Posofschoolyearclicked.x, newposyofschoolyearclicked, 310, 830, 500);
             }
 
+
+            if (event.type == sf::Event::MouseButtonPressed) {
+                if (event.mouseButton.button == sf::Mouse::Left)
+                {
+                    int x_coor = event.mouseButton.x;
+                    int y_coor = event.mouseButton.y;
+                    if (x_coor > 910 and x_coor < 1385 and y_coor >390 and y_coor < 490) {
+                        staffaddclasses(window, userstaff, textofbutton);
+                    }
+                    if (x_coor > 910 and x_coor < 1385 and y_coor >545 and y_coor < 645) {
+
+                    }
+                }
+            }
+
         }
         //add school button is Press
        
@@ -254,11 +273,118 @@ void staffmanageschoolyear2display(sf::RenderWindow& window, Staff& userstaff, i
         staffhomebuttonlist.drawButwithTextbox(window, event, sf::Color(168, 158, 146), sf::Color(239, 233, 222));
         schoolyears.drawButwithoutchangeTextboxcolor(window, event, sf::Color(168, 158, 146));
         schoolyearclickbutton.drawbutton(window);
+        //addfirstyearbutton.drawbutton(window);
         window.display();
     }
 }
 
+void staffaddclasses(sf::RenderWindow& window, Staff& userstaff, std::string schoolyear) {
+    sf::Texture Staffhometexture;
+    Staffhometexture.loadFromFile("Design UI/[Staff] add classes.jpg");
+    Staffhometexture.setSmooth(true);
+    sf::Sprite s_Staffhometexture;
+    s_Staffhometexture.setTexture(Staffhometexture);
+    sf::Font Palatino;
+    Palatino.loadFromFile("Font/Palatino.ttf");
+    //list of button manage
+    LinkedList<std::string> textstaffhomebutton;
+    textstaffhomebutton.push_tail("manage school year");
+    textstaffhomebutton.push_tail("manage semester");
+    textstaffhomebutton.push_tail("manage course");
+    textstaffhomebutton.push_tail("about us");
+    dropdownlist staffhomebuttonlist(sf::Color(168, 158, 146), sf::Vector2f(300, 50), false, sf::Color(239, 233, 222), textstaffhomebutton, 24, Palatino);
+    staffhomebuttonlist.setpostionlistbutton(30, 140, 0, 60);
+    //school year current textbox
 
+    OutputTextBox cur_schoolyeartextbox(28, sf::Color::Black, schoolyear);
+    cur_schoolyeartextbox.setfont(Palatino);
+    cur_schoolyeartextbox.setTextPosition(sf::Vector2f(1040.f, 362.f));
+
+    //list of class at current schoolyear
+
+    userstaff.readAllClassinSchoolYear(schoolyear);
+    LinkedList<std::string> classestext = userstaff.getclassescode();
+    dropdownlist classesbutton(sf::Color(168, 158, 146), sf::Vector2f(300, 50), false, sf::Color::Black, classestext, 30, Palatino);
+    classesbutton.setpostionlistbuttonwithlimit(475, 320, 0, 65, 310, 830, 500);
+
+    TextBox addclasstxtbox(24, sf::Color::Black, false);
+    addclasstxtbox.setfont(Palatino);
+    addclasstxtbox.setTextPosition(sf::Vector2f(950, 515));
+     //init newposy of list classes button
+    float newposy = 320;
+
+    while (window.isOpen())
+    {
+        sf::Event event;
+        while (window.pollEvent(event))
+        {
+            if (event.type == sf::Event::Closed)
+                window.close();
+            if (staffhomebuttonlist.isClickedKOrder(event, 1)) {
+                window.close();
+                staffmanageschoolyeardisplay(userstaff);
+            }
+            if (staffhomebuttonlist.isClickedKOrder(event, 2)) {
+                window.close();
+                staffmanagesemesterdisplay(userstaff);
+            }
+            if (staffhomebuttonlist.isClickedKOrder(event, 3)) {
+                window.close();
+                staffmanagecourse(userstaff);
+            }
+            if (staffhomebuttonlist.isClickedKOrder(event, 4))
+                abousUs(window);
+
+            //click class button
+            for (int i = 1; i <= classestext.sizeoflist(); i++) {
+                if (classesbutton.isClickedKOrder(event, i)) { 
+                    std::cout << i;
+                }
+            }
+
+
+            //wheel scrool
+            if (event.type == event.MouseWheelScrolled) {
+                newposy = newposy + event.mouseWheelScroll.delta * 10.0f;
+                classesbutton.setpostionlistbuttonwithlimit(475, newposy, 0, 65, 310, 830, 500);
+            }
+
+
+            if (addclasstxtbox.isClick(event, 950, 505, 1350, 545)) {
+                addclasstxtbox.setselected(true);
+            }
+            if (event.type == sf::Event::TextEntered) {
+                if (addclasstxtbox.isselectedbox()) {
+                    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Return))
+                        addclasstxtbox.setselected(false);
+                    else
+                        addclasstxtbox.typedText(event);
+                }
+            }
+        }
+        //add class button is Press
+        if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
+            int x_coor = event.mouseButton.x;
+            int y_coor = event.mouseButton.y;
+            if (x_coor > 1150 && x_coor < 1350 && y_coor>575 && y_coor < 615) {
+                std::cout << "c";
+                std::string newschoolyeartext = addclasstxtbox.getText();
+                userstaff.addClassforNewSchoolYear(Class(newschoolyeartext));
+                LinkedList<std::string> classestext2 = userstaff.getclassescode();
+                userstaff.writeClasstoFile(schoolyear,classestext2);
+                staffaddclasses(window, userstaff, schoolyear);
+            }
+        }
+
+        window.clear();
+        window.draw(s_Staffhometexture);
+        staffhomebuttonlist.drawButwithTextbox(window, event, sf::Color(168, 158, 146), sf::Color(239, 233, 222));
+        classesbutton.drawButwithoutchangeTextboxcolor(window, event, sf::Color(168, 158, 146));
+        cur_schoolyeartextbox.drawTextbox(window);
+        addclasstxtbox.drawTextbox(window);
+        window.display();
+    }
+}
 
 
 

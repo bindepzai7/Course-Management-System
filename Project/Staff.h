@@ -45,20 +45,30 @@ public:
 		}
 		return schoolyearstext;
 	}
+
+	LinkedList<std::string> getclassescode() {
+		Node<Class>* cur = classlist.head;
+		LinkedList<std::string> classescode;
+		while (cur) {
+			classescode.addNodeAtFront(cur->data.getclasscode());
+			cur = cur->next;
+		}
+		return classescode;
+	}
 	//bool operator!=(const Staff& s2) const {
 	//	return username != s2.username || password != s2.password;
 	//}
 	void addNewSchoolyear(SchoolYear newschoolyear) {
 		schoolyearlist.addNodeInAscending(newschoolyear);
 	}
-	void addClassforNewSchoolYear(Class& newclass) {
+	void addClassforNewSchoolYear(Class newclass) {
 		classlist.addNodeInAscending(newclass);
 	}
 
 	void readAllSchoolyear();
-	void writeSchoolyear2file(LinkedList<std::string> schoolyearstext);
-	void readAllClassinSchoolYear(std::ifstream fin);
-	void writeClasstoFile(std::ofstream fout);
+	void writeSchoolyear2file(LinkedList<std::string> &schoolyearstext);
+	void readAllClassinSchoolYear(std::string schoolyear);
+	void writeClasstoFile(std::string schoolyear, LinkedList<std::string> &classestext);
 };
 
 

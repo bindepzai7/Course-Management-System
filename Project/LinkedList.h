@@ -31,7 +31,7 @@ public:
         Node<T>* newNode = new Node<T>;
         newNode->data = data;
         newNode->next = nullptr;
-
+        Node<T>* cur = head;
         if (!head) {
             head = newNode;
         }

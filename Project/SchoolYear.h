@@ -25,6 +25,7 @@ public:
     // Constructor
     SchoolYear(const int& yStart, const int& yEnd)
         : yStart(yStart), yEnd(yEnd), schoolYear(std::to_string(yStart)+"-"+std::to_string(yEnd)) {}
+    ~SchoolYear() {};
 
     bool operator==(const SchoolYear& s2) const {
         return yStart == s2.yStart;
