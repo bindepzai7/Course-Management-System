@@ -38,6 +38,7 @@ public:
 	void removeStudent(Student& s) {
 		studentList.removeNodeByData(s);
 	}
+	void addStudentfromCSV(std::string schoolyear, std::string classcode);
 
 	std::string getclasscode() {
 		return classCode;

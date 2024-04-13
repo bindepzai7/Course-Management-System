@@ -18,7 +18,7 @@ public:
     //Constructor with studentID and password
     Student(const std::string& studentID, const std::string& password) : studentID(studentID), name(Name()), studentGender(false), birthDay(Date()), socialID("") {}
     // Constructor with parameters
-    Student(const std::string& studentID, const Name& name, const std::string& password, bool studentGender, const Date& birthday, const std::string& socailID)
+    Student(const std::string& studentID, const Name& name, bool studentGender, const Date& birthday, const std::string& socailID)
         : studentID(studentID), name(name), studentGender(studentGender), birthDay(birthday), socialID(socialID) {}
 
 

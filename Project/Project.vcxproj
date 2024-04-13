@@ -150,9 +150,11 @@
     <ClInclude Include="User.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Class.cpp" />
     <ClCompile Include="Course.cpp" />
     <ClCompile Include="loginfunction.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="ReadCSVfile.cpp" />
     <ClCompile Include="Semester.cpp" />
     <ClCompile Include="Staff.cpp" />
     <ClCompile Include="staffview.cpp" />

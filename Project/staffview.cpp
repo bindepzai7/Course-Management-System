@@ -40,8 +40,9 @@ void staffhome(sf::RenderWindow &window, LinkedList<User>& userlist,Staff &users
         sf::Event event;
         while (window.pollEvent(event))
         {
-            if (event.type == sf::Event::Closed)
+            if (event.type == sf::Event::Closed) {
                 window.close();
+            }
             if (staffhomebuttonlist.isClickedKOrder(event, 1)){
                 window.close();
                 staffmanageschoolyeardisplay(userstaff);
@@ -123,14 +124,17 @@ void staffmanageschoolyeardisplay(Staff &userstaff) {
             //menu button
             if (staffhomebuttonlist.isClickedKOrder(event, 1)) {
                 window.close();
+                userstaff.~Staff();
                 staffmanageschoolyeardisplay(userstaff);
             }
             if (staffhomebuttonlist.isClickedKOrder(event, 2)) {
                 window.close();
+                userstaff.~Staff();
                 staffmanagesemesterdisplay(userstaff);
             }
             if (staffhomebuttonlist.isClickedKOrder(event, 3)) {
                 window.close();
+                userstaff.~Staff();
                 staffmanagecourse(userstaff);
             }
             if (staffhomebuttonlist.isClickedKOrder(event, 4))
@@ -241,8 +245,9 @@ void staffmanageschoolyear2display(sf::RenderWindow& window, Staff& userstaff, i
     schoolyears.setpostionlistbuttonwithlimit(475, 320, 0, 65, 310, 830, 500);
 
     sf::Vector2f Posofschoolyearclicked = schoolyears.getpositionofKbut(Korderofbut);
-    std::cout << Posofschoolyearclicked.y;
+    std::cout << Korderofbut;
     std::string textofbutton = schoolyears.getKoderButtonText(Korderofbut);
+    std::cout << textofbutton;
 
     Button schoolyearclickbutton(sf::Color(192, 200, 184), sf::Vector2f(300, 50), false, sf::Color::Black, textofbutton, 30, Palatino);//Nen lay mau gi??
     schoolyearclickbutton.setposition(sf::Vector2f(Posofschoolyearclicked.x, Posofschoolyearclicked.y));
@@ -263,18 +268,22 @@ void staffmanageschoolyear2display(sf::RenderWindow& window, Staff& userstaff, i
             if (event.type == sf::Event::Closed)
             {
                 window.close();
+                userstaff.~Staff();
             }
             //menu button
             if (staffhomebuttonlist.isClickedKOrder(event, 1)) {
                 window.close();
+                userstaff.~Staff();
                 staffmanageschoolyeardisplay(userstaff);
             }
             if (staffhomebuttonlist.isClickedKOrder(event, 2)) {
                 window.close();
+                userstaff.~Staff();
                 staffmanagesemesterdisplay(userstaff);
             }
             if (staffhomebuttonlist.isClickedKOrder(event, 3)) {
                 window.close();
+                userstaff.~Staff();
                 staffmanagecourse(userstaff);
             }
             if (staffhomebuttonlist.isClickedKOrder(event, 4))
@@ -385,14 +394,17 @@ void staffaddclasses(sf::RenderWindow& window, Staff& userstaff, std::string sch
                 window.close();
             if (staffhomebuttonlist.isClickedKOrder(event, 1)) {
                 window.close();
+                userstaff.~Staff();
                 staffmanageschoolyeardisplay(userstaff);
             }
             if (staffhomebuttonlist.isClickedKOrder(event, 2)) {
                 window.close();
+                userstaff.~Staff();
                 staffmanagesemesterdisplay(userstaff);
             }
             if (staffhomebuttonlist.isClickedKOrder(event, 3)) {
                 window.close();
+                userstaff.~Staff();
                 staffmanagecourse(userstaff);
             }
             if (staffhomebuttonlist.isClickedKOrder(event, 4))
@@ -449,7 +461,7 @@ void staffaddclasses(sf::RenderWindow& window, Staff& userstaff, std::string sch
                 userstaff.addClassforNewSchoolYear(Class(newschoolyeartext));
                 LinkedList<std::string> classestext2 = userstaff.getclassescode();
                 userstaff.writeClasstoFile(schoolyear,classestext2);
-                staffaddclasses(window, userstaff, schoolyear);
+                //staffaddclasses(window, userstaff, schoolyear);
             }
         }
 
@@ -466,6 +478,15 @@ void staffaddclasses(sf::RenderWindow& window, Staff& userstaff, std::string sch
 
 
 void staffaddfirstyearstudent(sf::RenderWindow& window, Staff& userstaff, std::string addtoclass) {
+    //inti class
+    Class curclass(addtoclass);
+    std::string studentID;
+    Name name;
+    bool studentGender; // 0 is male, 1 is female
+    Date birthDay;
+    std::string socialID;
+
+
     sf::Texture add1styearstudenttexture;
     add1styearstudenttexture.loadFromFile("Design UI/[Staff] add 1st year students.jpg");
     add1styearstudenttexture.setSmooth(true);
@@ -492,6 +513,30 @@ void staffaddfirstyearstudent(sf::RenderWindow& window, Staff& userstaff, std::s
     cur_classtextbox.setTextPosition(sf::Vector2f(1070.f, 216.f));
 
     //add student with information 
+    TextBox addStudentID(24, sf::Color::Black, false);
+    addStudentID.setfont(Palatino);
+    addStudentID.setTextPosition(sf::Vector2f(450, 390));
+
+    TextBox addFirstname(24, sf::Color::Black, false);
+    addFirstname.setfont(Palatino);
+    addFirstname.setTextPosition(sf::Vector2f(450, 497));
+
+    TextBox addLastname(24, sf::Color::Black, false);
+    addLastname.setfont(Palatino);
+    addLastname.setTextPosition(sf::Vector2f(450, 604));
+
+    TextBox addGender(24, sf::Color::Black, false);
+    addGender.setfont(Palatino);
+    addGender.setTextPosition(sf::Vector2f(970, 390));
+
+    TextBox adddayofbirth(24, sf::Color::Black, false);
+    adddayofbirth.setfont(Palatino);
+    adddayofbirth.setTextPosition(sf::Vector2f(970,497));
+
+    TextBox addSocialID(24, sf::Color::Black, false);
+    addSocialID.setfont(Palatino);
+    addSocialID.setTextPosition(sf::Vector2f(970, 604));
+
 
     while (window.isOpen())
     {
@@ -502,14 +547,17 @@ void staffaddfirstyearstudent(sf::RenderWindow& window, Staff& userstaff, std::s
                 window.close();
             if (staffhomebuttonlist.isClickedKOrder(event, 1)) {
                 window.close();
+                userstaff.~Staff();
                 staffmanageschoolyeardisplay(userstaff);
             }
             if (staffhomebuttonlist.isClickedKOrder(event, 2)) {
                 window.close();
+                userstaff.~Staff();
                 staffmanagesemesterdisplay(userstaff);
             }
             if (staffhomebuttonlist.isClickedKOrder(event, 3)) {
                 window.close();
+                userstaff.~Staff();
                 staffmanagecourse(userstaff);
             }
             if (staffhomebuttonlist.isClickedKOrder(event, 4))
@@ -518,7 +566,7 @@ void staffaddfirstyearstudent(sf::RenderWindow& window, Staff& userstaff, std::s
             //click logout button
             if (logoutbut.isClick(event)) chooseRole(window);
 
-            //change color button when on cursor
+            //change color logout button when on cursor
             if (logoutbut.isonMousecursor(event)) {
                 logoutbut.changecolor(sf::Color(192, 200, 184));
                 logoutbut.changeTextColor(sf::Color::Black);
@@ -527,13 +575,142 @@ void staffaddfirstyearstudent(sf::RenderWindow& window, Staff& userstaff, std::s
                 logoutbut.changecolor(sf::Color::Transparent);
                 logoutbut.changeTextColor(sf::Color::Transparent);
             }
+
+
+            //click to add student to class
+
+            if (addStudentID.isClick(event, 450, 380, 815, 420)) {
+                addStudentID.setselected(true);
+                addFirstname.setselected(false);
+                addLastname.setselected(false);
+                addGender.setselected(false);
+                adddayofbirth.setselected(false);
+                addSocialID.setselected(false);
+            }
+            else if (addFirstname.isClick(event, 450, 487, 815, 527)) {
+                addStudentID.setselected(false);
+                addFirstname.setselected(true);
+                addLastname.setselected(false);
+                addGender.setselected(false);
+                adddayofbirth.setselected(false);
+                addSocialID.setselected(false);
+            }
+            else  if (addLastname.isClick(event, 450, 594, 815, 634)) {
+                addStudentID.setselected(false);
+                addFirstname.setselected(false);
+                addLastname.setselected(true);
+                addGender.setselected(false);
+                adddayofbirth.setselected(false);
+                addSocialID.setselected(false);
+            }
+            else if (addGender.isClick(event, 970, 380, 1335, 420)) {
+                addStudentID.setselected(false);
+                addFirstname.setselected(false);
+                addLastname.setselected(false);
+                addGender.setselected(true);
+                adddayofbirth.setselected(false);
+                addSocialID.setselected(false);
+            }
+            else if (adddayofbirth.isClick(event, 970, 487, 1335, 527)) {
+                addStudentID.setselected(false);
+                addFirstname.setselected(false);
+                addLastname.setselected(false);
+                addGender.setselected(false);
+                adddayofbirth.setselected(true);
+                addSocialID.setselected(false);
+            }
+            else if (addSocialID.isClick(event, 970, 594, 1335, 634)) {
+                addStudentID.setselected(false);
+                addFirstname.setselected(false);
+                addLastname.setselected(false);
+                addGender.setselected(false);
+                adddayofbirth.setselected(false);
+                addSocialID.setselected(true);
+            }
+            if (event.type == sf::Event::TextEntered) {
+                if (addStudentID.isselectedbox()) {
+                    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Return))
+                        addStudentID.setselected(false);
+                    else
+                        addStudentID.typedText(event);
+                }
+                else if (addFirstname.isselectedbox()) {
+                    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Return))
+                        addFirstname.setselected(false);
+                    else
+                        addFirstname.typedText(event);
+                }
+                else if (addLastname.isselectedbox()) {
+                    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Return))
+                        addLastname.setselected(false);
+                    else
+                        addLastname.typedText(event);
+                }
+                else if (addGender.isselectedbox()) {
+                    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Return))
+                        addGender.setselected(false);
+                    else
+                        addGender.typedText(event);
+                }
+                else if (adddayofbirth.isselectedbox()) {
+                    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Return))
+                        adddayofbirth.setselected(false);
+                    else
+                        adddayofbirth.typedText(event);
+                }
+                else if (addSocialID.isselectedbox()) {
+                    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Return))
+                        addSocialID.setselected(false);
+                    else
+                        addSocialID.typedText(event);
+                }
+            }
+            //add student button is Press
+            if (event.type == sf::Event::MouseButtonPressed) {
+                if (event.mouseButton.button == sf::Mouse::Left) {
+                    int x_coor = event.mouseButton.x;
+                    int y_coor = event.mouseButton.y;
+                    if (x_coor > 1150 && x_coor < 1350 && y_coor>666 && y_coor < 706) {
+                        std::cout << "c";
+                        studentID = addStudentID.getText();
+                        name.firstName = addFirstname.getText();
+                        name.lastName = addLastname.getText();
+                        if (addGender.getText() == "Male" || addGender.getText() == "male")
+                            studentGender = false;
+                        else
+                            studentGender = true;
+                        std::string dayofbirth = adddayofbirth.getText();
+                         int i = 0;
+                         while (dayofbirth[i] != 47 && dayofbirth[i] != 45&&i<dayofbirth.size())
+                             i++;
+                         birthDay.day = std::stoi(dayofbirth.substr(0, i));
+                         std::cout << birthDay.day;
+                         int j = i+1;
+                         while (dayofbirth[j] != 47 && dayofbirth[j] != 45&&j<dayofbirth.size())
+                             j++;
+                         birthDay.month = std::stoi(dayofbirth.substr(i + 1, j - 1));
+                         std::cout << birthDay.month;
+                         birthDay.year = std::stoi(dayofbirth.substr(j + 1, dayofbirth.size()-1));
+                         std::cout << birthDay.year;
+                         socialID = addSocialID.getText();
+                         curclass.addStudent(Student(studentID, name, studentGender, birthDay, socialID));
+                    }
+                }
+            }
         }
+      
 
         window.clear();
         window.draw(s_add1styearstudenttexture);
         staffhomebuttonlist.drawButwithTextbox(window, event, sf::Color(168, 158, 146), sf::Color(239, 233, 222));
         logoutbut.drawbutton(window);
         cur_classtextbox.drawTextbox(window);
+        addStudentID.drawTextbox(window);
+        addFirstname.drawTextbox(window);
+        addLastname.drawTextbox(window);
+        addGender.drawTextbox(window);
+        adddayofbirth.drawTextbox(window);
+        addSocialID.drawTextbox(window);
         window.display();
     }
 }
@@ -569,14 +746,17 @@ void staffmanagesemesterdisplay( Staff &userstaff) {
                 window.close();
             if (staffhomebuttonlist.isClickedKOrder(event, 1)) {
                 window.close();
+                userstaff.~Staff();
                 staffmanageschoolyeardisplay(userstaff);
             }
             if (staffhomebuttonlist.isClickedKOrder(event, 2)) {
                 window.close();
+                userstaff.~Staff();
                 staffmanagesemesterdisplay(userstaff);
             }
             if (staffhomebuttonlist.isClickedKOrder(event, 3)) {
                 window.close();
+                userstaff.~Staff();
                 staffmanagecourse(userstaff);
             }
             if (staffhomebuttonlist.isClickedKOrder(event, 4))
@@ -633,14 +813,17 @@ void staffmanagecourse(Staff &userstaff) {
                 window.close();
             if (staffhomebuttonlist.isClickedKOrder(event, 1)) {
                 window.close();
+                userstaff.~Staff();
                 staffmanageschoolyeardisplay(userstaff);
             }
             if (staffhomebuttonlist.isClickedKOrder(event, 2)) {
                 window.close();
+                userstaff.~Staff();
                 staffmanagesemesterdisplay(userstaff);
             }
             if (staffhomebuttonlist.isClickedKOrder(event, 3)) {
                 window.close();
+                userstaff.~Staff();
                 staffmanagecourse(userstaff);
             }
             if (staffhomebuttonlist.isClickedKOrder(event, 4))

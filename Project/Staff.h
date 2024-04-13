@@ -20,6 +20,7 @@ public:
 	Staff() : StaffID(""), socialID(""),staffName("") {}
 	Staff(const std::string& StaffID, const std::string& socialID, const Name& staffName)
 		: StaffID(StaffID), socialID(socialID), staffName(staffName) {}
+	~Staff() {};
 	
 	bool operator ==(const Staff& s2) const {
 		return StaffID == s2.StaffID;
