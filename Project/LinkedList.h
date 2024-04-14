@@ -184,6 +184,7 @@ public:
     }
 
     
+    
     int sizeoflist() {
         int n = 0;
         Node<T>* cur = head;

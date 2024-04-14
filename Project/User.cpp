@@ -29,6 +29,7 @@ LinkedList<User> readUserFromCSV(const std::string& filename) {
 	}
 
 	std::string line;
+	std::getline(fin, line);
 	while (std::getline(fin, line)) {
 		std::stringstream ss(line);
 		std::string username, password;
@@ -63,8 +64,7 @@ void updateUser2CSVfile(const std::string& filename, const LinkedList<User>& use
 
 	Node<User>* head = userList.head;
 	file << "username" << ',' << "password" << std::endl;
-	head = head->next;
-	while (head) {
+	while (head != nullptr) {
 		file << head->data.username << ',' << head->data.password << std::endl;
 		head = head->next;
 	}
