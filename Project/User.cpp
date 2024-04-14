@@ -55,17 +55,18 @@ bool check_login(const LinkedList<User>& users, const std::string& username, con
 }
 
 void updateUser2CSVfile(const std::string& filename, const LinkedList<User>& userList) {
-	std::ofstream fout(filename);
-	if (!fout.is_open()) {
+	std::ofstream file(filename);
+	if (!file.is_open()) {
 		std::cout << "Failed to open file: " << filename << std::endl;
 		return;
 	}
 
 	Node<User>* head = userList.head;
+	file << "username" << ',' << "password" << std::endl;
+	head = head->next;
 	while (head) {
-		fout << head->data.username << ',' << head->data.password;
+		file << head->data.username << ',' << head->data.password << std::endl;
 		head = head->next;
 	}
-
-	fout.close();
+	file.close();
 }

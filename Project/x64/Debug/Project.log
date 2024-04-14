@@ -1,1 +1,2 @@
-﻿sfml-graphics-d.lib(sfml-graphics-d-2.dll) : fatal error LNK1318: Unexpected PDB error; OK (0) ''
+﻿  main.cpp
+  Project.vcxproj -> C:\labwork - CS 162\group_project\Group_project_Cs162_2\Project\x64\Debug\Project.exe
