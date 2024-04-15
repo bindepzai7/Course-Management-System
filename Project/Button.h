@@ -12,7 +12,9 @@ private:
 
 	bool isClicked;
 public:
-	Button() {}
+	Button() {
+		isClicked = false;
+	}
 	//constructer button without Text
 	Button(sf::Color color, sf::Vector2f size, bool isClicked) {
 		recbutton.setSize(size);

@@ -66,6 +66,9 @@
     <ClInclude Include="dropdownlist.h">
       <Filter>Graphics</Filter>
     </ClInclude>
+    <ClInclude Include="staffview.h">
+      <Filter>Graphics</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Course.cpp">
