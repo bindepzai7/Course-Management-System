@@ -15,6 +15,7 @@ public:
 	User() :username(""), password("") {}
 	User(const std::string& username, const std::string& password)
 		:username(username), password(password) {}
+	~User(){}
 };
 
 std::string string_hashing(const std::string& s);/* {

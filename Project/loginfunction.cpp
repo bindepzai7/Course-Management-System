@@ -111,22 +111,28 @@ void loginWindow(sf::RenderWindow& window, bool role)
                     chooseRole(window);
                 }
                 if (x_coor > 90 && x_coor < 270 && y_coor>640 && y_coor < 695) {
-                    LinkedList<User> userlist = readUserFromCSV("useraccount.txt");
-                    if (/*check_login(userlist,username.getText(),password.getText())*/true) {
-                        acc.iswrongaccount = false;
-                        if (role == 0)
-                            studenthome(window);
-                        else {
-                            LinkedList<Staff> Stafflist;
-                            Staff userstaff;
-                            getDataStafffromlist(Stafflist, username.getText(), userstaff);
-                            staffhome(window, userlist,userstaff);
+                        if (role == 0) {
+                            LinkedList<User> userlist = readUserFromCSV("Data/studentuser.csv");
+                            if (check_login(userlist, username.getText(), password.getText())) {
+                                acc.iswrongaccount = false;
+                                Student studentuser;
+                                studenthome(window, studentuser);
+                            }
+                            else
+                                acc.iswrongaccount = true;
                         }
-                    }
-                    else
-                    {
-                        acc.iswrongaccount = true;
-                    }
+                        else {
+                            LinkedList<User> userlist = readUserFromCSV("Data/staffuser.csv");
+                            if (check_login(userlist, username.getText(), password.getText())) {
+                                acc.iswrongaccount = false;
+                                LinkedList<Staff> Stafflist;
+                                Staff userstaff;
+                                //getDataStafffromlist(Stafflist, username.getText(), userstaff);
+                                staffhome(window, userstaff);
+                            }
+                            else
+                                acc.iswrongaccount = true;
+                        }
                 }
             }
         }
@@ -167,47 +173,5 @@ void loginWindow(sf::RenderWindow& window, bool role)
         password.setTextPosition(sf::Vector2f(60, 535));
         password.drawTextbox(window);
         window.display();
-    }
-}
-void abousUs(sf::RenderWindow& window) {
-    sf::Texture AboutUstexture;
-    AboutUstexture.loadFromFile("Design UI/About us.jpg");
-    AboutUstexture.setSmooth(true);
-    sf::Sprite s_AboutUstexture;
-    s_AboutUstexture.setTexture(AboutUstexture);
-    sf::Font Palatino;
-    Palatino.loadFromFile("Font/Palatino.ttf");
-
-    //log out button
-    Button logoutbut(sf::Color(192, 200, 184), sf::Vector2f(90, 30), false, sf::Color::Black, "Log out", 20, Palatino);
-    logoutbut.setposition(sf::Vector2f(227, 895));
-
-    while (window.isOpen())
-    {
-        sf::Event event;
-        while (window.pollEvent(event))
-        {
-            if (event.type == sf::Event::Closed)
-                window.close();
-
-            //click logout button
-            if (logoutbut.isClick(event)) chooseRole(window);
-
-            //change color button when on cursor
-            if (logoutbut.isonMousecursor(event)) {
-                logoutbut.changecolor(sf::Color(192, 200, 184));
-                logoutbut.changeTextColor(sf::Color::Black);
-            }
-            else {
-                logoutbut.changecolor(sf::Color::Transparent);
-                logoutbut.changeTextColor(sf::Color::Transparent);
-            }
-        }
-
-        window.clear();
-        window.draw(s_AboutUstexture);
-        logoutbut.drawbutton(window);
-        window.display();
-      
     }
 }

@@ -6,7 +6,7 @@
 #include<iostream>
 #include<SFML/Graphics.hpp>
 
-void studenthome(sf::RenderWindow &window) {
+void studenthome(sf::RenderWindow &window,Student&studentuser) {
     sf::Texture Studenthometexture;
     Studenthometexture.loadFromFile("Design UI/[Student] Home.jpg");
     Studenthometexture.setSmooth(true);

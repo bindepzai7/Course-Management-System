@@ -7,10 +7,10 @@
 #include <fstream>
 #include <sstream>
 
-void Class::addStudentfromCSV(std::string schoolyear, std::string classcode) {
+void Class::loadStudentfromCSV(std::string filename) {
 	std::ifstream fin;
-	fin.open("Data/" + schoolyear + "/" + classcode);
-	std::string No, studentID, firstname, lastname, socialID, gender, username, password;
+	fin.open(filename);
+	std::string No, studentID, firstname, lastname, socialID, gender, username;
 	std::string dob;
 	Date dateofbirth;
 	int count = 0;
@@ -42,4 +42,19 @@ void Class::addStudentfromCSV(std::string schoolyear, std::string classcode) {
 		}
 	}
 	fin.close();
+}
+void Class::saveStudent(std::string schoolyear) {
+	std::ofstream fout;
+	fout.open("Data/" + schoolyear + "/" + classCode+".csv");
+	if (!fout.is_open()) {
+		Node<Student>* cur = studentList.head;
+		int i = 0;
+		fout << "No,studentID,lastName,firstName,dayOfBirth,gender,socialID\n";
+		while (cur) {
+			fout << ++i << "," << cur->data.studentID << "," << cur->data.name.lastName << "," << cur->data.name.firstName
+				<< ","<<cur->data.birthDay.day<<"/"<< cur->data.birthDay.month << "/"<<cur->data.birthDay.year << "," << cur->data.studentGender << "," << cur->data.socialID << '\n';
+			cur = cur->next;
+		}
+	}
+	fout.close();
 }
