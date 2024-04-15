@@ -20,10 +20,16 @@ int main() {
         window.display();
     }
     return 0;*/
+
+
+
     std::string filename = "studentuser.csv";
     LinkedList<User> userList = readUserFromCSV(filename);
     Node<User>* head = userList.head;
+
+    //need to update 2 times
     updateUser2CSVfile(filename, userList);
-    if (check_login(userList, "23125021", "123456789")) std::cout << "Login successfully" << std::endl;
+    updateUser2CSVfile(filename, userList);
+    if (check_login(userList, "23125021", "12345678")) std::cout << "Login successfully" << std::endl;
     else std::cout << "password or username wrong" << std::endl;
 }
