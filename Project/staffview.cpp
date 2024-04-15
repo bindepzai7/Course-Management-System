@@ -76,6 +76,7 @@ void staffhome(sf::RenderWindow &window, Staff &userstaff) {
         window.display();
     }
 }
+
 void staffmanageschoolyeardisplay(sf::RenderWindow& window, Staff &userstaff) {
     sf::Texture Schoolyeartexture;
     Schoolyeartexture.loadFromFile("Design UI/[Staff] school year.jpg");
@@ -709,7 +710,7 @@ void staffaddfirstyearstudent(sf::RenderWindow& window, Staff& userstaff,std::st
 }
 
 std::string filenametoimport() {
-    sf::RenderWindow window(sf::VideoMode(800, 300), "enter filname", sf::Style::Close);
+    sf::RenderWindow window(sf::VideoMode(800, 300), "Enter Filename", sf::Style::Close);
     sf::Font Palatino;
     Palatino.loadFromFile("Font/Palatino.ttf");
 
@@ -720,12 +721,12 @@ std::string filenametoimport() {
     framebut.setOutlineThickness(1.0f);
     framebut.setPosition(sf::Vector2f(200, 150));
 
-    OutputTextBox tilte(32, sf::Color::Black, "Enter file name to import !");
+    OutputTextBox tilte(32, sf::Color::Black, "Enter filename to import!");
     tilte.setfont(Palatino);
     tilte.setStyleBold();
     tilte.setTextPosition(sf::Vector2f(200, 30));
 
-    OutputTextBox filenametxt(26, sf::Color::Black, "File name: ");
+    OutputTextBox filenametxt(26, sf::Color::Black, "Filename: ");
     filenametxt.setfont(Palatino);
     filenametxt.setStyleBold();
     filenametxt.setTextPosition(sf::Vector2f(60, 100));
@@ -841,7 +842,7 @@ void staffmanagesemesterdisplay(sf::RenderWindow& window, Staff &userstaff) {
 void staffmanagecourse(sf::RenderWindow& window,Staff &userstaff) {
     
     sf::Texture Coursetexture;
-    Coursetexture.loadFromFile("Design UI/[Staff] course.jpg");
+    Coursetexture.loadFromFile("Design UI/[Staff] view course.jpg");
     Coursetexture.setSmooth(true);
     sf::Sprite s_Coursetexture;
     s_Coursetexture.setTexture(Coursetexture);
