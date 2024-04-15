@@ -19,47 +19,69 @@ void Semester::saveASemesterToCsvFile(std::ofstream& fout) {
 		<< this->endDay.day << " " << this->endDay.month << " " << this->endDay.year << '\n';
 }
 
-void Semester::updateSemesterInfo(const std::string& newSemester, const std::string& schoolYear, const Date& startDate, const Date& endDate) {
+void Semester::updateSemesterInfo(const std::string& newSemester, const Date& startDate, const Date& endDate) {
 	this->semester = newSemester;
-	this->schoolYear = schoolYear;
 	this->startDay.setDate(startDate.day, startDate.month, startDate.year);
 	this->endDay.setDate(endDate.day, endDate.month, endDate.year);
 }
 
+
 bool Semester::addNewSemesterFolder(const std::string& schoolYear, const std::string& newSemester) {
-	if (!exists("Data/" + schoolYear + "/" + semester)) {
-		create_directory("Data/" + schoolYear + "/" + semester);
+	if (!exists("Data/" + schoolYear + "/" + newSemester)) {
+		create_directory("Data/" + schoolYear + "/" + newSemester);
+		create_directory("Data/" + schoolYear + "/" + newSemester + "/scoreOfEachCourse");
+		create_directory("Data/" + schoolYear + "/" + newSemester + "/studentOfEachCourse");
 		return true;
 	}
 	return false;
 }
 
 
-void Semester::loadCourseListFromFileCourseList() {
+bool Semester::deleteSemesterFolder(const std::string& schoolYear, const std::string& semester) {
+	if (exists("Data/" + schoolYear + "/" + semester)) {
+		remove_all("Data/" + schoolYear + "/" + semester);
+		return true;
+	}
+	return false;
+}
+
+
+bool Semester::loadCourseListFromFileCourseList(const std::string& schoolYear) {
 	std::ifstream fin;
 	fin.open("Data/" + schoolYear + "/" + semester + "/CourseList.csv");
 	if (fin.is_open()) {
+		std::string s;
+		getline(fin, s);  //ignore the first line
 		Course c;
 		while (c.readACourseFromFileCourseList(fin)) {
 			courseList.addNodeAtFront(c);
 		}
+		fin.close();
+		return true;
 	}
 	fin.close();
+	return false;
 }
 
-void Semester::saveCourseListToFileCourseList() {
+bool Semester::saveCourseListToFileCourseList(const std::string& schoolYear) {
 	std::ofstream fout;
 	fout.open("Data/" + schoolYear + "/" + semester + "/CourseList.csv");
 	if (fout.is_open()) {
+		fout << "No,courseID,courseNam,teacher_lastName,teacher_firstName,credits,max_student,dayAndSession\n";
 		Course c;
+		int i = 1;
 		while (courseList.pop_head(c)) {
+			fout << i++ << ',';
 			c.saveACourseToFileCourseList(fout);
 		}
+		fout.close();
+		return true;
 	}
 	fout.close();
+	return false;
 }
 
-bool Semester::checkIfThereIsAlreadyACourse(std::string CourseID) {
+bool Semester::checkIfThereIsAlreadyACourse(const std::string& CourseID) {
 	Node<Course>* cur = courseList.head;
 	while (cur) {
 		if (cur->data.getCourseID() == CourseID) return true;
@@ -68,20 +90,37 @@ bool Semester::checkIfThereIsAlreadyACourse(std::string CourseID) {
 	return false;
 }
 
-bool Semester::updateACourseOfCourseList(std::string destCourseID, const std::string& modiCourseID, const std::string& courseName, const Name& teacher, const int& MaxStudent, const int& credits, const std::string& session) {
+bool Semester::findACourseInCourseList(const std::string& courseID, Course& c) {
 	Node<Course>* cur = courseList.head;
 	while (cur) {
-		if (cur->data.getCourseID() == destCourseID) {
-			cur->data.updateCourseInfo(modiCourseID, courseName, teacher, MaxStudent, credits, session);
+		if (cur->data.getCourseID() == courseID) {
+			c = cur->data;
+			return true;
 		}
 		cur = cur->next;
 	}
 	return false;
 }
 
-void Semester::addACourseToCourseList(const std::string& courseID, const std::string& courseName, const std::string& session, const int& credits, const int& maxStudent, const Name& teacherName) {
-	Course c(courseID, courseName, session, credits, maxStudent, teacherName);
-	courseList.addNodeAtFront(c);
+bool Semester::updateACourseOfCourseList(const std::string& destCourseID, const std::string& modiCourseID, const std::string& courseName, const Name& teacher, const int& MaxStudent, const int& credits, const std::string& session) {
+	Node<Course>* cur = courseList.head;
+	while (cur) {
+		if (cur->data.getCourseID() == destCourseID) {
+			cur->data.updateCourseInfo(modiCourseID, courseName, teacher, MaxStudent, credits, session);
+			return true;
+		}
+		cur = cur->next;
+	}
+	return false;
+}
+
+bool Semester::addACourseToCourseList(const std::string& courseID, const std::string& courseName, const std::string& session, const int& credits, const int& maxStudent, const Name& teacherName) {
+	if (!checkIfThereIsAlreadyACourse(courseID)) {
+		Course c(courseID, courseName, session, credits, maxStudent, teacherName);
+		courseList.push_head(c);
+		return true;
+	}
+	return false;
 }
 
 bool Semester::deleteACourseFromCourseList(const std::string& courseID) {

@@ -8,6 +8,7 @@
 #include "LinkedList.h"
 
 //Make schoolyear a struct and SchoolYear a list of schoolYear
+//Change the semester school year or course schoolyear right away
 
 class SchoolYear {
 private:
@@ -24,8 +25,7 @@ public:
     SchoolYear() :yStart(0), yEnd(0), schoolYear("") {}
     // Constructor
     SchoolYear(const int& yStart, const int& yEnd)
-        : yStart(yStart), yEnd(yEnd), schoolYear(std::to_string(yStart)+"-"+std::to_string(yEnd)) {}
-    ~SchoolYear() {};
+        : yStart(yStart), yEnd(yEnd), schoolYear(std::to_string(yStart) + "-" + std::to_string(yEnd)) {}
 
     bool operator==(const SchoolYear& s2) const {
         return yStart == s2.yStart;
@@ -56,7 +56,7 @@ public:
 
     bool deleteSchoolYear() {}
 
-    bool addSchoolYear(){}
+    bool addSchoolYear() {}
 
 
 
@@ -75,9 +75,10 @@ public:
 
 
 
-    bool loadSemesterListFromSemesterList() {
+    bool loadSemesterListFromSemesterList(const std::string& schoolYear) {
+        semesterList.empty();
         std::ifstream fin;
-        fin.open("Data/" + schoolYear + "/semesterStartAndEndDate.txt"); 
+        fin.open("Data/" + schoolYear + "/semesterStartAndEndDate.txt");
         if (fin.is_open()) {
             Semester s;
             while (s.readASemesterFromCsvFile(fin)) {
@@ -90,7 +91,7 @@ public:
         return false;
     }
 
-    bool saveSemesterListToSemesterList() {
+    bool saveSemesterListToSemesterList(const std::string& schoolYear) {
         std::ofstream fout;
         fout.open("Data/" + schoolYear + "/semesterStartAndEndDate.txt");
         if (fout.is_open()) {
@@ -105,12 +106,12 @@ public:
         return false;
     }
 
-  
+
     bool updateSemesterInfo(const std::string& desSemester, const std::string& newSemester, const std::string& schoolYear, const Date& start, const Date& end) {
         Node<Semester>* cur = semesterList.head;
         while (cur) {
             if (cur->data.getSemester() == desSemester) {
-                cur->data.updateSemesterInfo(newSemester, schoolYear, start, end);
+                cur->data.updateSemesterInfo(newSemester, start, end);
                 return true;
             }
         }
@@ -120,12 +121,12 @@ public:
 
     bool addSemester(const std::string& semester, const std::string& schoolYear, const Date& startDate, const Date& endDate) {
         if (!checkExistence(semester)) {
-            Semester s(semester, schoolYear, startDate, endDate);
+            Semester s(semester, startDate, endDate);
             if (s.addNewSemesterFolder(schoolYear, semester)) {
                 semesterList.addNodeAtFront(s);
                 return true;
             }
-           
+
         }
         return false;
     }
@@ -159,7 +160,7 @@ public:
         std::ifstream fin;
         fin.open("Data/CurrentSemester.txt");
         if (fin.is_open()) {
-         
+
 
 
             fin.close();
