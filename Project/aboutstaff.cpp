@@ -86,10 +86,12 @@ void staffHome(sf::RenderWindow& window, Staff& userstaff) {
             //click mode
             if (editmode.isClick(event)) {
                 editmode.setisClicked(true);
+                viewmode.setisClicked(false);
                 userstaff.setmode(true);
             }
             if (viewmode.isClick(event)) {
                 viewmode.setisClicked(true);
+                editmode.setisClicked(false);
                 userstaff.setmode(false);
             }
             
