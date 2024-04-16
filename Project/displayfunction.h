@@ -47,6 +47,7 @@ void staffmanagesemesterdisplay(sf::RenderWindow& window,Staff &userstaff, std::
 
 //manage course
 void staffmanagecourse(sf::RenderWindow& window,Staff &userstaff, std::string schoolyear, std::string semester);
+void staffaddcourse(sf::RenderWindow& window, Staff& userstaff, std::string schoolyear, std::string semester);
 
 
 //manage class
