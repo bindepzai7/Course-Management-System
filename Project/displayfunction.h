@@ -59,8 +59,8 @@ void studenthome(sf::RenderWindow& window, Student& studentuser);
 void studentprofileview(sf::RenderWindow& window, Student& studentuser);
 void studentAboutUs(sf::RenderWindow& window, Student& studentuser);
 void studentChangePassword(sf::RenderWindow& window, Student& studentuser);
-void studentCourse(sf::RenderWindow& window, Student& studentuser);
-void studentScoreboard(sf::RenderWindow& window, Student& studentuser);
+void studentCourse(sf::RenderWindow& window, Student& studentuser, std::string schoolyear, std::string semester);
+void studentScoreboard(sf::RenderWindow& window, Student& studentuser, std::string schoolyear, std::string semester);
 
 
 

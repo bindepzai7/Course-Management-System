@@ -33,6 +33,15 @@ void studenthome(sf::RenderWindow &window,Student&studentuser) {
     Button logoutbut(sf::Color(192, 200, 184), sf::Vector2f(90, 30), false, sf::Color::Black, "Log out", 20, Palatino);
     logoutbut.setposition(sf::Vector2f(227, 895));
 
+    //navigation bar current textbox
+    OutputTextBox schoolyeartextbox(22, sf::Color(119, 106, 92), getCurrentSchoolyear());
+    schoolyeartextbox.setfont(Palatino);
+    schoolyeartextbox.setTextPosition(sf::Vector2f(181, 667));
+
+    OutputTextBox semestertextbox(22, sf::Color(119, 106, 92), getCurrentSemester());
+    semestertextbox.setfont(Palatino);
+    semestertextbox.setTextPosition(sf::Vector2f(218, 702));
+
     while (window.isOpen())
     {
         sf::Event event;
@@ -55,9 +64,9 @@ void studenthome(sf::RenderWindow &window,Student&studentuser) {
             if (studenthomebuttonlist.isClickedKOrder(event, 2))
                 studentChangePassword(window, studentuser);
             if (studenthomebuttonlist.isClickedKOrder(event, 3))
-                studentCourse(window, studentuser);
+                studentCourse(window, studentuser, getCurrentSchoolyear(), getCurrentSemester());
             if (studenthomebuttonlist.isClickedKOrder(event, 4))
-                studentScoreboard(window, studentuser);
+                studentScoreboard(window, studentuser, getCurrentSchoolyear(), getCurrentSemester());
             if (studenthomebuttonlist.isClickedKOrder(event, 5))
                 studentAboutUs(window, studentuser);
 
@@ -79,6 +88,8 @@ void studenthome(sf::RenderWindow &window,Student&studentuser) {
         window.draw(s_Studenthometexture);
         studenthomebuttonlist.drawButwithTextbox(window, event, sf::Color(168, 158, 146), sf::Color(239, 233, 222));
         logoutbut.drawbutton(window);
+        schoolyeartextbox.drawTextbox(window);
+        semestertextbox.drawTextbox(window);
         window.display();
     }
 
@@ -146,6 +157,14 @@ void studentprofileview(sf::RenderWindow& window, Student& studentuser) {
     socialID.setfont(Palatino);
     socialID.setTextPosition(sf::Vector2f(970, 701));
 
+    //navigation bar current textbox
+    OutputTextBox schoolyeartextbox(22, sf::Color(119, 106, 92), getCurrentSchoolyear());
+    schoolyeartextbox.setfont(Palatino);
+    schoolyeartextbox.setTextPosition(sf::Vector2f(181, 667));
+
+    OutputTextBox semestertextbox(22, sf::Color(119, 106, 92), getCurrentSemester());
+    semestertextbox.setfont(Palatino);
+    semestertextbox.setTextPosition(sf::Vector2f(218, 702));
 
     while (window.isOpen())
     {
@@ -172,9 +191,9 @@ void studentprofileview(sf::RenderWindow& window, Student& studentuser) {
             if (studenthomebuttonlist.isClickedKOrder(event, 2))
                 studentChangePassword(window, studentuser);
             if (studenthomebuttonlist.isClickedKOrder(event, 3))
-                studentCourse(window, studentuser);
+                studentCourse(window, studentuser, getCurrentSchoolyear(), getCurrentSemester());
             if (studenthomebuttonlist.isClickedKOrder(event, 4))
-                studentScoreboard(window, studentuser);
+                studentScoreboard(window, studentuser, getCurrentSchoolyear(), getCurrentSemester());
             if (studenthomebuttonlist.isClickedKOrder(event, 5))
                 studentAboutUs(window, studentuser);
 
@@ -204,6 +223,8 @@ void studentprofileview(sf::RenderWindow& window, Student& studentuser) {
         dob.drawTextbox(window);
         gender.drawTextbox(window);
         username.drawTextbox(window);
+        schoolyeartextbox.drawTextbox(window);
+        semestertextbox.drawTextbox(window);
         window.display();
     }
 }
@@ -227,6 +248,14 @@ void studentChangePassword(sf::RenderWindow& window, Student& studentuser) {
     dropdownlist studenthomebuttonlist(sf::Color(168, 158, 146), sf::Vector2f(280, 53), false, sf::Color(239, 233, 222), studenttexthomebutton, 30, Palatino);
     studenthomebuttonlist.setpostionlistbutton(30, 143, 0, 95);
 
+    //navigation bar current textbox
+    OutputTextBox schoolyeartextbox(22, sf::Color(119, 106, 92), getCurrentSchoolyear());
+    schoolyeartextbox.setfont(Palatino);
+    schoolyeartextbox.setTextPosition(sf::Vector2f(181, 667));
+
+    OutputTextBox semestertextbox(22, sf::Color(119, 106, 92), getCurrentSemester());
+    semestertextbox.setfont(Palatino);
+    semestertextbox.setTextPosition(sf::Vector2f(218, 702));
 
     //log out button
     Button logoutbut(sf::Color(192, 200, 184), sf::Vector2f(90, 30), false, sf::Color::Black, "Log out", 20, Palatino);
@@ -257,9 +286,9 @@ void studentChangePassword(sf::RenderWindow& window, Student& studentuser) {
             if (studenthomebuttonlist.isClickedKOrder(event, 2))
                 studentChangePassword(window, studentuser);
             if (studenthomebuttonlist.isClickedKOrder(event, 3))
-                studentCourse(window, studentuser);
+                studentCourse(window, studentuser, getCurrentSchoolyear(), getCurrentSemester());
             if (studenthomebuttonlist.isClickedKOrder(event, 4))
-                studentScoreboard(window, studentuser);
+                studentScoreboard(window, studentuser, getCurrentSchoolyear(), getCurrentSemester());
             if (studenthomebuttonlist.isClickedKOrder(event, 5))
                 studentAboutUs(window, studentuser);
 
@@ -281,12 +310,14 @@ void studentChangePassword(sf::RenderWindow& window, Student& studentuser) {
         window.draw(s_studentChangePasswordTexture);
         studenthomebuttonlist.drawButwithTextbox(window, event, sf::Color(168, 158, 146), sf::Color(239, 233, 222));
         logoutbut.drawbutton(window);
+        schoolyeartextbox.drawTextbox(window);
+        semestertextbox.drawTextbox(window);
         window.display();
     }
 
  }
 
-void studentCourse(sf::RenderWindow& window, Student& studentuser) {
+void studentCourse(sf::RenderWindow& window, Student& studentuser, std::string schoolyear, std::string semester) {
     sf::Texture studentCourseTexture;
     studentCourseTexture.loadFromFile("Design UI/[Student - 4] My Course.jpg");
     studentCourseTexture.setSmooth(true);
@@ -305,10 +336,29 @@ void studentCourse(sf::RenderWindow& window, Student& studentuser) {
     dropdownlist studenthomebuttonlist(sf::Color(168, 158, 146), sf::Vector2f(280, 53), false, sf::Color(239, 233, 222), studenttexthomebutton, 30, Palatino);
     studenthomebuttonlist.setpostionlistbutton(30, 143, 0, 95);
 
+    ///navigation bar current textbox
+    OutputTextBox schoolyeartextbox(22, sf::Color(119, 106, 92), getCurrentSchoolyear());
+    schoolyeartextbox.setfont(Palatino);
+    schoolyeartextbox.setTextPosition(sf::Vector2f(181, 667));
+
+    OutputTextBox semestertextbox(22, sf::Color(119, 106, 92), getCurrentSemester());
+    semestertextbox.setfont(Palatino);
+    semestertextbox.setTextPosition(sf::Vector2f(218, 702));
 
     //log out button
     Button logoutbut(sf::Color(192, 200, 184), sf::Vector2f(90, 30), false, sf::Color::Black, "Log out", 20, Palatino);
     logoutbut.setposition(sf::Vector2f(227, 895));
+
+
+    //school year current textbox
+    OutputTextBox cur_schoolyeartextbox(28, sf::Color::Black, schoolyear);
+    cur_schoolyeartextbox.setfont(Palatino);
+    cur_schoolyeartextbox.setTextPosition(sf::Vector2f(1160, 180));
+
+    //semester current textbox
+    OutputTextBox cur_semestertextbox(28, sf::Color::Black, semester);
+    cur_semestertextbox.setfont(Palatino);
+    cur_semestertextbox.setTextPosition(sf::Vector2f(1215, 250));
 
     while (window.isOpen())
     {
@@ -335,9 +385,9 @@ void studentCourse(sf::RenderWindow& window, Student& studentuser) {
             if (studenthomebuttonlist.isClickedKOrder(event, 2))
                 studentChangePassword(window, studentuser);
             if (studenthomebuttonlist.isClickedKOrder(event, 3))
-                studentCourse(window, studentuser);
+                studentCourse(window, studentuser, getCurrentSchoolyear(), getCurrentSemester());
             if (studenthomebuttonlist.isClickedKOrder(event, 4))
-                studentScoreboard(window, studentuser);
+                studentScoreboard(window, studentuser, getCurrentSchoolyear(), getCurrentSemester());
             if (studenthomebuttonlist.isClickedKOrder(event, 5))
                 studentAboutUs(window, studentuser);
 
@@ -359,12 +409,16 @@ void studentCourse(sf::RenderWindow& window, Student& studentuser) {
         window.draw(s_studentCourseTexture);
         studenthomebuttonlist.drawButwithTextbox(window, event, sf::Color(168, 158, 146), sf::Color(239, 233, 222));
         logoutbut.drawbutton(window);
+        cur_schoolyeartextbox.drawTextbox(window);
+        cur_semestertextbox.drawTextbox(window);
+        schoolyeartextbox.drawTextbox(window);
+        semestertextbox.drawTextbox(window);
         window.display();
     }
 
 }
 
-void studentScoreboard(sf::RenderWindow& window, Student& studentuser) {
+void studentScoreboard(sf::RenderWindow& window, Student& studentuser, std::string schoolyear, std::string semester) {
     sf::Texture studentScoreboardTexture;
     studentScoreboardTexture.loadFromFile("Design UI/[Student - 5] My Scoreboard.jpg");
     studentScoreboardTexture.setSmooth(true);
@@ -388,6 +442,28 @@ void studentScoreboard(sf::RenderWindow& window, Student& studentuser) {
     Button logoutbut(sf::Color(192, 200, 184), sf::Vector2f(90, 30), false, sf::Color::Black, "Log out", 20, Palatino);
     logoutbut.setposition(sf::Vector2f(227, 895));
 
+
+
+    //navigation bar current textbox
+    OutputTextBox schoolyeartextbox(22, sf::Color(119, 106, 92), getCurrentSchoolyear());
+    schoolyeartextbox.setfont(Palatino);
+    schoolyeartextbox.setTextPosition(sf::Vector2f(181, 667));
+
+    OutputTextBox semestertextbox(22, sf::Color(119, 106, 92), getCurrentSemester());
+    semestertextbox.setfont(Palatino);
+    semestertextbox.setTextPosition(sf::Vector2f(218, 702));
+
+
+    //school year current textbox
+    OutputTextBox cur_schoolyeartextbox(28, sf::Color::Black, schoolyear);
+    cur_schoolyeartextbox.setfont(Palatino);
+    cur_schoolyeartextbox.setTextPosition(sf::Vector2f(1160, 180));
+
+    //semester current textbox
+    OutputTextBox cur_semestertextbox(28, sf::Color::Black, semester);
+    cur_semestertextbox.setfont(Palatino);
+    cur_semestertextbox.setTextPosition(sf::Vector2f(1215, 250));
+
     while (window.isOpen())
     {
         sf::Event event;
@@ -413,9 +489,9 @@ void studentScoreboard(sf::RenderWindow& window, Student& studentuser) {
             if (studenthomebuttonlist.isClickedKOrder(event, 2))
                 studentChangePassword(window, studentuser);
             if (studenthomebuttonlist.isClickedKOrder(event, 3))
-                studentCourse(window, studentuser);
+                studentCourse(window, studentuser, getCurrentSchoolyear(), getCurrentSemester());
             if (studenthomebuttonlist.isClickedKOrder(event, 4))
-                studentScoreboard(window, studentuser);
+                studentScoreboard(window, studentuser, getCurrentSchoolyear(), getCurrentSemester());
             if (studenthomebuttonlist.isClickedKOrder(event, 5))
                 studentAboutUs(window, studentuser);
 
@@ -437,6 +513,10 @@ void studentScoreboard(sf::RenderWindow& window, Student& studentuser) {
         window.draw(s_studentScoreboardTexture);
         studenthomebuttonlist.drawButwithTextbox(window, event, sf::Color(168, 158, 146), sf::Color(239, 233, 222));
         logoutbut.drawbutton(window);
+        cur_schoolyeartextbox.drawTextbox(window);
+        cur_semestertextbox.drawTextbox(window);
+        schoolyeartextbox.drawTextbox(window);
+        semestertextbox.drawTextbox(window);
         window.display();
     }
 }
@@ -460,6 +540,14 @@ void studentAboutUs(sf::RenderWindow& window, Student& studentuser) {
     dropdownlist studenthomebuttonlist(sf::Color(168, 158, 146), sf::Vector2f(280, 53), false, sf::Color(239, 233, 222), studenttexthomebutton, 30, Palatino);
     studenthomebuttonlist.setpostionlistbutton(30, 143, 0, 95);
 
+    //navigation bar current textbox
+    OutputTextBox schoolyeartextbox(22, sf::Color(119, 106, 92), getCurrentSchoolyear());
+    schoolyeartextbox.setfont(Palatino);
+    schoolyeartextbox.setTextPosition(sf::Vector2f(181, 667));
+
+    OutputTextBox semestertextbox(22, sf::Color(119, 106, 92), getCurrentSemester());
+    semestertextbox.setfont(Palatino);
+    semestertextbox.setTextPosition(sf::Vector2f(218, 702));
 
     //log out button
     Button logoutbut(sf::Color(192, 200, 184), sf::Vector2f(90, 30), false, sf::Color::Black, "Log out", 20, Palatino);
@@ -490,9 +578,9 @@ void studentAboutUs(sf::RenderWindow& window, Student& studentuser) {
             if (studenthomebuttonlist.isClickedKOrder(event, 2))
                 studentChangePassword(window, studentuser);
             if (studenthomebuttonlist.isClickedKOrder(event, 3))
-                studentCourse(window, studentuser);
+                studentCourse(window, studentuser, getCurrentSchoolyear(), getCurrentSemester());
             if (studenthomebuttonlist.isClickedKOrder(event, 4))
-                studentScoreboard(window, studentuser);
+                studentScoreboard(window, studentuser, getCurrentSchoolyear(), getCurrentSemester());
             if (studenthomebuttonlist.isClickedKOrder(event, 5))
                 studentAboutUs(window, studentuser);
 
@@ -514,6 +602,8 @@ void studentAboutUs(sf::RenderWindow& window, Student& studentuser) {
         window.draw(s_studentAboutUsTexture);
         studenthomebuttonlist.drawButwithTextbox(window, event, sf::Color(168, 158, 146), sf::Color(239, 233, 222));
         logoutbut.drawbutton(window);
+        schoolyeartextbox.drawTextbox(window);
+        semestertextbox.drawTextbox(window);
         window.display();
     }
 
