@@ -1,20 +1,9 @@
-﻿  Class.cpp
-  Course.cpp
-  ReadCSVfile.cpp
-  Semester.cpp
-  Staff.cpp
-  loginfunction.cpp
-C:\Users\uyenn\source\repos\STUDY\[CS162] Course Management System\Group_project_Cs162_2\Project\Button.h(83,18): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
-C:\Users\uyenn\source\repos\STUDY\[CS162] Course Management System\Group_project_Cs162_2\Project\Button.h(84,18): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
-  main.cpp
-  staffview.cpp
+﻿  studentview.cpp
 C:\Users\uyenn\source\repos\STUDY\[CS162] Course Management System\Group_project_Cs162_2\Project\button.h(83,18): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
 C:\Users\uyenn\source\repos\STUDY\[CS162] Course Management System\Group_project_Cs162_2\Project\button.h(84,18): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
-C:\Users\uyenn\source\repos\STUDY\[CS162] Course Management System\Group_project_Cs162_2\Project\staffview.cpp(147,41): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+C:\Users\uyenn\source\repos\STUDY\[CS162] Course Management System\Group_project_Cs162_2\Project\studentview.cpp(142,41): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
           with
           [
               T=float
           ]
-  studentview.cpp
-  Generating Code...
   Project.vcxproj -> C:\Users\uyenn\source\repos\STUDY\[CS162] Course Management System\Group_project_Cs162_2\Project\x64\Debug\Project.exe
