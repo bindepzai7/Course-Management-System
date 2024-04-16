@@ -1,4 +1,3 @@
 username,password,firstName,lastName,Gender,socialID,dateOfBirth
-TranTrongNguyen,123456789,Trong Nguyen,Tran,0,123,16 06 2005
-NguyenThuUyen,123456789,Thu Uyen,Nguyen,1,064305000513,28 08 2005
-DoanDucTuan,123456789,Duc Tuan,Doan,0,123,01 01 2005
+dinhbatien,123456789,Ba Tien,Dinh,0,064305000513,01 01 2005
+hotuanthanh,123456789,Tuan Thanh,Ho,0,123,01 01 2005

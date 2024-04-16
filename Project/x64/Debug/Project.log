@@ -1,4 +1,43 @@
-﻿  main.cpp
-C:\Users\uyenn\source\repos\STUDY\[CS162] Course Management System\Group_project_Cs162_2\Project\button.h(83,18): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
-C:\Users\uyenn\source\repos\STUDY\[CS162] Course Management System\Group_project_Cs162_2\Project\button.h(84,18): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
-  Project.vcxproj -> C:\Users\uyenn\source\repos\STUDY\[CS162] Course Management System\Group_project_Cs162_2\Project\x64\Debug\Project.exe
+﻿  Class.cpp
+  Course.cpp
+  loginfunction.cpp
+C:\labwork - CS 162\group_project\Group_project_Cs162_2\Project\button.h(83,18): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+C:\labwork - CS 162\group_project\Group_project_Cs162_2\Project\button.h(84,18): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+  main.cpp
+C:\labwork - CS 162\group_project\Group_project_Cs162_2\Project\button.h(83,18): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+C:\labwork - CS 162\group_project\Group_project_Cs162_2\Project\button.h(84,18): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+  manageclass.cpp
+C:\labwork - CS 162\group_project\Group_project_Cs162_2\Project\button.h(83,18): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+C:\labwork - CS 162\group_project\Group_project_Cs162_2\Project\button.h(84,18): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+  managecourse.cpp
+C:\labwork - CS 162\group_project\Group_project_Cs162_2\Project\button.h(83,18): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+C:\labwork - CS 162\group_project\Group_project_Cs162_2\Project\button.h(84,18): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+  manageschoolyear.cpp
+C:\labwork - CS 162\group_project\Group_project_Cs162_2\Project\button.h(83,18): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+C:\labwork - CS 162\group_project\Group_project_Cs162_2\Project\button.h(84,18): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+  managesemester.cpp
+C:\labwork - CS 162\group_project\Group_project_Cs162_2\Project\button.h(83,18): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+C:\labwork - CS 162\group_project\Group_project_Cs162_2\Project\button.h(84,18): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+  ReadCSVfile.cpp
+  Semester.cpp
+  Staff.cpp
+  aboutstaff.cpp
+C:\labwork - CS 162\group_project\Group_project_Cs162_2\Project\button.h(83,18): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+C:\labwork - CS 162\group_project\Group_project_Cs162_2\Project\button.h(84,18): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+C:\labwork - CS 162\group_project\Group_project_Cs162_2\Project\aboutstaff.cpp(168,41): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+  studentview.cpp
+C:\labwork - CS 162\group_project\Group_project_Cs162_2\Project\button.h(83,18): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+C:\labwork - CS 162\group_project\Group_project_Cs162_2\Project\button.h(84,18): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+C:\labwork - CS 162\group_project\Group_project_Cs162_2\Project\studentview.cpp(153,41): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+  User.cpp
+  Generating Code...
+  LINK : C:\labwork - CS 162\group_project\Group_project_Cs162_2\Project\x64\Debug\Project.exe not found or not built by the last incremental link; performing full link
+  Project.vcxproj -> C:\labwork - CS 162\group_project\Group_project_Cs162_2\Project\x64\Debug\Project.exe
