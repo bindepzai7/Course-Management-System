@@ -11,7 +11,7 @@
 
 void studenthome(sf::RenderWindow &window,Student&studentuser) {
     sf::Texture Studenthometexture;
-    Studenthometexture.loadFromFile("Design UI/[Student] Home.jpg");
+    Studenthometexture.loadFromFile("Design UI/[Student - 1] Home.jpg");
     Studenthometexture.setSmooth(true);
     sf::Sprite s_Studenthometexture;
     s_Studenthometexture.setTexture(Studenthometexture);
@@ -86,7 +86,7 @@ void studenthome(sf::RenderWindow &window,Student&studentuser) {
 
 void studentprofileview(sf::RenderWindow& window, Student& studentuser) {
     sf::Texture studentprofileviewtexture;
-    studentprofileviewtexture.loadFromFile("Design UI/[Student] Profile.jpg");
+    studentprofileviewtexture.loadFromFile("Design UI/[Student - 2] Profile.jpg");
     studentprofileviewtexture.setSmooth(true);
     sf::Sprite s_studentprofileviewtexture;
     s_studentprofileviewtexture.setTexture(studentprofileviewtexture);
@@ -210,7 +210,7 @@ void studentprofileview(sf::RenderWindow& window, Student& studentuser) {
 
 void studentChangePassword(sf::RenderWindow& window, Student& studentuser) {
     sf::Texture studentChangePasswordTexture;
-    studentChangePasswordTexture.loadFromFile("Design UI/[Student] Change Password.jpg");
+    studentChangePasswordTexture.loadFromFile("Design UI/[Student - 3] Change Password.jpg");
     studentChangePasswordTexture.setSmooth(true);
     sf::Sprite s_studentChangePasswordTexture;
     s_studentChangePasswordTexture.setTexture(studentChangePasswordTexture);
@@ -288,7 +288,7 @@ void studentChangePassword(sf::RenderWindow& window, Student& studentuser) {
 
 void studentCourse(sf::RenderWindow& window, Student& studentuser) {
     sf::Texture studentCourseTexture;
-    studentCourseTexture.loadFromFile("Design UI/[Student] Course List.jpg");
+    studentCourseTexture.loadFromFile("Design UI/[Student - 4] My Course.jpg");
     studentCourseTexture.setSmooth(true);
     sf::Sprite s_studentCourseTexture;
     s_studentCourseTexture.setTexture(studentCourseTexture);
@@ -366,7 +366,7 @@ void studentCourse(sf::RenderWindow& window, Student& studentuser) {
 
 void studentScoreboard(sf::RenderWindow& window, Student& studentuser) {
     sf::Texture studentScoreboardTexture;
-    studentScoreboardTexture.loadFromFile("Design UI/[Student] scoreboard.jpg");
+    studentScoreboardTexture.loadFromFile("Design UI/[Student - 5] My Scoreboard.jpg");
     studentScoreboardTexture.setSmooth(true);
     sf::Sprite s_studentScoreboardTexture;
     s_studentScoreboardTexture.setTexture(studentScoreboardTexture);
@@ -443,7 +443,7 @@ void studentScoreboard(sf::RenderWindow& window, Student& studentuser) {
 
 void studentAboutUs(sf::RenderWindow& window, Student& studentuser) {
     sf::Texture studentAboutUsTexture;
-    studentAboutUsTexture.loadFromFile("Design UI/[Student] About us.jpg");
+    studentAboutUsTexture.loadFromFile("Design UI/[Student - 6] About us.jpg");
     studentAboutUsTexture.setSmooth(true);
     sf::Sprite s_studentAboutUsTexture;
     s_studentAboutUsTexture.setTexture(studentAboutUsTexture);

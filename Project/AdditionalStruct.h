@@ -5,7 +5,29 @@
 #include <iostream>
 #include <sstream>
 #include <string>
+#include <fstream>
 #include <time.h>
+
+static std::string getCurrentSchoolyear() {
+	std::string schoolyear = "";
+	std::ifstream fin("Data/CurrentSemester.txt");
+	if (fin.is_open()) {
+		getline(fin, schoolyear, ' ');
+	}
+	fin.close();
+	return schoolyear;
+}
+
+static std::string getCurrentSemester() {
+	std::string semester = "";
+	std::ifstream fin("Data/CurrentSemester.txt");
+	if (fin.is_open()) {
+		getline(fin, semester, ' ');
+		getline(fin, semester);
+	}
+	fin.close();
+	return semester;
+}
 
 struct Date {
 	int day;
@@ -95,7 +117,6 @@ struct Name {
 		return true;
 	}
 };
-
 
 
 

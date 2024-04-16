@@ -43,9 +43,6 @@ public:
         return schoolYear;
     }
 
-
-
-
     bool loadSemesterListFromSemesterList(const std::string& schoolYear) {
         semesterList.empty();
         std::ifstream fin;
@@ -77,7 +74,6 @@ public:
         return false;
     }
 
-
     bool updateSemesterInfo(const std::string& desSemester, const std::string& newSemester, const std::string& schoolYear, const Date& start, const Date& end) {
         Node<Semester>* cur = semesterList.head;
         while (cur) {
@@ -88,7 +84,6 @@ public:
         }
         return false;
     }
-
 
     bool addSemester(const std::string& semester, const std::string& schoolYear, const Date& startDate, const Date& endDate) {
         if (!checkExistence(semester)) {
@@ -126,25 +121,7 @@ public:
         }
         return false;
     }
-
-    bool getCurrentSemester() {
-        std::ifstream fin;
-        fin.open("Data/CurrentSemester.txt");
-        if (fin.is_open()) {
-
-
-
-            fin.close();
-            return true;
-        }
-        fin.close();
-        return false;
-    }
-
-
-
-
-
+    
 };
 
 

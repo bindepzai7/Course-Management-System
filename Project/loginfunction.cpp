@@ -13,7 +13,7 @@
 void chooseRole(sf::RenderWindow& window)
 {
     sf::Texture roletexture;
-    roletexture.loadFromFile("Design UI/Login 1.jpg");
+    roletexture.loadFromFile("Design UI/1 - Login 1.jpg");
     roletexture.setSmooth(true);
     sf::Sprite s_roletexture;
     s_roletexture.setTexture(roletexture);
@@ -56,7 +56,7 @@ void loginWindow(sf::RenderWindow& window, bool role)
 {
     account acc;
     sf::Texture loginscreen;
-    loginscreen.loadFromFile("Design UI/Login 2.jpg");
+    loginscreen.loadFromFile("Design UI/2 - Login 2.jpg");
     loginscreen.setSmooth(true);
     sf::Sprite s_loginscreen;
     s_loginscreen.setTexture(loginscreen);
@@ -128,7 +128,7 @@ void loginWindow(sf::RenderWindow& window, bool role)
                                 LinkedList<Staff> Stafflist;
                                 Staff userstaff;
                                 //getDataStafffromlist(Stafflist, username.getText(), userstaff);
-                                staffhome(window, userstaff);
+                                staffHome(window, userstaff);
                             }
                             else
                                 acc.iswrongaccount = true;

@@ -1,7 +1,7 @@
-﻿  studentview.cpp
+﻿  staffview.cpp
 C:\Users\uyenn\source\repos\STUDY\[CS162] Course Management System\Group_project_Cs162_2\Project\button.h(83,18): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
 C:\Users\uyenn\source\repos\STUDY\[CS162] Course Management System\Group_project_Cs162_2\Project\button.h(84,18): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
-C:\Users\uyenn\source\repos\STUDY\[CS162] Course Management System\Group_project_Cs162_2\Project\studentview.cpp(142,41): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+C:\Users\uyenn\source\repos\STUDY\[CS162] Course Management System\Group_project_Cs162_2\Project\staffview.cpp(144,41): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
           with
           [
               T=float
