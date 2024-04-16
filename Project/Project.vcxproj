@@ -145,7 +145,6 @@
     <ClInclude Include="SchoolYear.h" />
     <ClInclude Include="Semester.h" />
     <ClInclude Include="Staff.h" />
-    <ClInclude Include="staffview.h" />
     <ClInclude Include="Student.h" />
     <ClInclude Include="Textbox.h" />
     <ClInclude Include="User.h" />

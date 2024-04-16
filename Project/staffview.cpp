@@ -1,4 +1,13 @@
-#include "staffview.h"
+#include"displayfunction.h"
+#include"dropdownlist.h"
+#include"Textbox.h"
+#include"LinkedList.h"
+#include"Staff.h"
+#include"Student.h"
+#include<iostream>
+#include<string>
+#include<SFML/Graphics.hpp>
+#include<Windows.h>
 
 void staffaboutUs(sf::RenderWindow& window, Staff& userstaff) {
     sf::Texture AboutUstexture;
@@ -100,11 +109,42 @@ void staffviewprofile(sf::RenderWindow& window, Staff& userstaff) {
     dropdownlist staffhomebuttonlist(sf::Color(168, 158, 146), sf::Vector2f(280, 53), false, sf::Color(239, 233, 222), textstaffhomebutton, 30, Palatino);
     staffhomebuttonlist.setpostionlistbutton(30, 143, 0, 65);
 
-
-
     //log out button
     Button logoutbut(sf::Color(192, 200, 184), sf::Vector2f(90, 30), false, sf::Color::Black, "Log out", 20, Palatino);
     logoutbut.setposition(sf::Vector2f(227, 895));
+
+
+    //Staff ID textbox
+    OutputTextBox ID(22, sf::Color::Black, "Bo ID vao day");
+    ID.setfont(Palatino);
+    ID.setTextPosition(sf::Vector2f(700, 342));
+
+    //Staff username textbox
+    OutputTextBox username(22, sf::Color::Black, "Bo Username vao day");
+    username.setfont(Palatino);
+    username.setTextPosition(sf::Vector2f(445, 481));
+
+    //Staff fullname textbox
+    OutputTextBox fullname(22, sf::Color::Black, "Bo Fullname vao day");
+    fullname.setfont(Palatino);
+    fullname.setTextPosition(sf::Vector2f(445, 590));
+
+    //Staff social ID textbox
+    OutputTextBox socialID(22, sf::Color::Black, "Bo social ID vao day");
+    socialID.setfont(Palatino);
+    socialID.setTextPosition(sf::Vector2f(445, 703));
+
+    //Staff dob textbox
+    OutputTextBox dob(22, sf::Color::Black, "Bo day of birth vao day");
+    dob.setfont(Palatino);
+    dob.setTextPosition(sf::Vector2f(970, 590));
+
+    //Staff gender textbox
+    OutputTextBox gender(50, sf::Color(119, 106, 92), "*");
+    gender.setfont(Palatino);
+    int x = 1090;
+    if (1) x += 172;   //if gender is female 
+    gender.setTextPosition(sf::Vector2f(x, 464));
 
     while (window.isOpen())
     {
@@ -156,6 +196,12 @@ void staffviewprofile(sf::RenderWindow& window, Staff& userstaff) {
         window.clear();
         window.draw(s_staffViewProfiletexture);
         staffhomebuttonlist.drawButwithTextbox(window, event, sf::Color(168, 158, 146), sf::Color(239, 233, 222));
+        ID.drawTextbox(window);
+        fullname.drawTextbox(window);
+        socialID.drawTextbox(window);
+        dob.drawTextbox(window);
+        gender.drawTextbox(window);
+        username.drawTextbox(window);
         logoutbut.drawbutton(window);
         window.display();
 

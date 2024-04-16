@@ -7,18 +7,13 @@
 #include "Semester.h"
 #include "LinkedList.h"
 
-//Make schoolyear a struct and SchoolYear a list of schoolYear
-//Change the semester school year or course schoolyear right away
 
 class SchoolYear {
 private:
-    struct schoolYear {
-
-    };
     int yStart;
     int yEnd;
     std::string schoolYear;
-    LinkedList<std::string> schoolYearList;
+
     LinkedList<Semester> semesterList;
 
 public:
@@ -47,30 +42,6 @@ public:
     std::string getSchoolYear() {
         return schoolYear;
     }
-
-
-    bool saveSchoolYearList() {}
-
-    bool updateSchoolYearList() {
-    }
-
-    bool deleteSchoolYear() {}
-
-    bool addSchoolYear() {}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -169,7 +140,7 @@ public:
         fin.close();
         return false;
     }
-    void setCurrentSemester() {}
+
 
 
 

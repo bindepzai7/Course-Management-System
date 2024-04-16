@@ -37,6 +37,10 @@ public:
 		return StaffID;
 	}
 
+	std::string getStaffSocialID() {
+		return socialID;
+	}
+
 	LinkedList<std::string> getschoolyearstext() {
 		Node<SchoolYear>* cur = schoolyearlist.head;
 		LinkedList<std::string> schoolyearstext;

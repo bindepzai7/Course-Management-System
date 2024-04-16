@@ -106,7 +106,7 @@ void loginWindow(sf::RenderWindow& window, bool role)
                         acc.isselectedpassword = true;
                     }
                 }
-                if (x_coor > 45 && x_coor < 85 && y_coor>50 && y_coor < 90) {
+                if (x_coor > 45 && x_coor < 100 && y_coor>47 && y_coor < 100) {
                     Sleep(200);
                     chooseRole(window);
                 }
