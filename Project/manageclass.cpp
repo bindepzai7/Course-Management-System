@@ -203,10 +203,6 @@ void staffmanageclass(sf::RenderWindow& window, Staff& userstaff, std::string sc
     Button logoutbut(sf::Color(192, 200, 184), sf::Vector2f(90, 30), false, sf::Color::Black, "Log out", 20, Palatino);
     logoutbut.setposition(sf::Vector2f(227, 895));
 
-    //add first year student button
-
-    //view student in class button
-
     //init newposy of list classes button and class button chosen
     float newposy = 320;
     float newposyofclasschosen = Posofclasschosen.y;
@@ -248,9 +244,10 @@ void staffmanageclass(sf::RenderWindow& window, Staff& userstaff, std::string sc
             for (int i = 1; i <= classestext.sizeoflist(); i++) {
                 if (classesbutton.isClickedKOrder(event, i))
                     staffmanageclass(window, userstaff, schoolyear, i);
-
+                if (classchosenbutton.isClick(event))
+                    staffaddclasses(window, userstaff, schoolyear);
             }
-
+            
 
             //wheel scrool
             if (event.type == event.MouseWheelScrolled) {
@@ -345,7 +342,7 @@ void staffaddfirstyearstudent(sf::RenderWindow& window, Staff& userstaff, std::s
     //class current textbox
     OutputTextBox cur_classtextbox(28, sf::Color::Black, addtoclass);
     cur_classtextbox.setfont(Palatino);
-    cur_classtextbox.setTextPosition(sf::Vector2f(1070.f, 216.f));
+    cur_classtextbox.setTextPosition(sf::Vector2f(1120.f, 216.f));
 
     //add student with information 
     TextBox addStudentID(24, sf::Color::Black, false);
@@ -661,6 +658,12 @@ void staffviewstudentinclass(sf::RenderWindow& window, Staff& userstaff, std::st
     semestertextbox.setfont(Palatino);
     semestertextbox.setTextPosition(sf::Vector2f(218, 702));
 
+    //class current textbox
+    OutputTextBox cur_classtextbox(28, sf::Color::Black, classchosen);
+    cur_classtextbox.setfont(Palatino);
+    cur_classtextbox.setTextPosition(sf::Vector2f(1120.f, 216.f));
+
+
     //log out button
     Button logoutbut(sf::Color(192, 200, 184), sf::Vector2f(90, 30), false, sf::Color::Black, "Log out", 20, Palatino);
     logoutbut.setposition(sf::Vector2f(227, 895));
@@ -720,6 +723,7 @@ void staffviewstudentinclass(sf::RenderWindow& window, Staff& userstaff, std::st
         logoutbut.drawbutton(window);
         schoolyeartextbox.drawTextbox(window);
         semestertextbox.drawTextbox(window);
+        cur_classtextbox.drawTextbox(window);
         window.display();
 
     }

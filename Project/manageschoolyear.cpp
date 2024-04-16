@@ -272,8 +272,10 @@ void staffmanageschoolyear2display(sf::RenderWindow& window, Staff& userstaff, i
                 if (schoolyears.isClickedKOrder(event, i)) {
                     staffmanageschoolyear2display(window, userstaff, i);
                 }
+                if (schoolyearclickbutton.isClick(event))
+                    staffmanageschoolyeardisplay(window, userstaff);
             }
-
+            
 
             //wheel scrool
             if (event.type == event.MouseWheelScrolled) {
