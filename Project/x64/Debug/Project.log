@@ -1,2 +1,4 @@
-﻿  Staff.cpp
+﻿  main.cpp
+C:\labwork - CS 162\group_project\Group_project_Cs162_2\Project\button.h(83,18): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+C:\labwork - CS 162\group_project\Group_project_Cs162_2\Project\button.h(84,18): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
   Project.vcxproj -> C:\labwork - CS 162\group_project\Group_project_Cs162_2\Project\x64\Debug\Project.exe

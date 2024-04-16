@@ -4,7 +4,7 @@
 
 
 int main() {
-    /*sf::RenderWindow window(sf::VideoMode(1470, 950), "Login window",sf::Style::Close);
+    sf::RenderWindow window(sf::VideoMode(1470, 950), "Login window",sf::Style::Close);
 
     while (window.isOpen())
     {
@@ -19,7 +19,7 @@ int main() {
         chooseRole(window);
         window.display();
     }
-    return 0;*/
+    return 0;
     
 
 
@@ -32,13 +32,13 @@ int main() {
     //else std::cout << "password or username wrong" << std::endl;
 
 
-    std::string filename = "Data/staffAccount.txt";
+    /*std::string filename = "Data/staffAccount.txt";
     LinkedList<Staff> staffList;
     LoadDataofStaff(staffList, filename);
     Node<Staff>* head = staffList.head;
     while (head) {
         std::cout << head->data.getStaffID() << std::endl;
         head = head->next;
-    }
+    }*/
 
 }
