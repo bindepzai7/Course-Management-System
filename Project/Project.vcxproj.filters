@@ -74,7 +74,7 @@
     <ClCompile Include="studentview.cpp">
       <Filter>Graphics</Filter>
     </ClCompile>
-    <ClCompile Include="staffview.cpp">
+    <ClCompile Include="aboutstaff.cpp">
       <Filter>Graphics</Filter>
     </ClCompile>
     <ClCompile Include="loginfunction.cpp">
@@ -97,6 +97,18 @@
     </ClCompile>
     <ClCompile Include="Class.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="manageschoolyear.cpp">
+      <Filter>Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="managesemester.cpp">
+      <Filter>Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="managecourse.cpp">
+      <Filter>Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="manageclass.cpp">
+      <Filter>Graphics</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

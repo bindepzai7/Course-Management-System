@@ -154,10 +154,14 @@
     <ClCompile Include="Course.cpp" />
     <ClCompile Include="loginfunction.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="manageclass.cpp" />
+    <ClCompile Include="managecourse.cpp" />
+    <ClCompile Include="manageschoolyear.cpp" />
+    <ClCompile Include="managesemester.cpp" />
     <ClCompile Include="ReadCSVfile.cpp" />
     <ClCompile Include="Semester.cpp" />
     <ClCompile Include="Staff.cpp" />
-    <ClCompile Include="staffview.cpp" />
+    <ClCompile Include="aboutstaff.cpp" />
     <ClCompile Include="studentview.cpp" />
     <ClCompile Include="User.cpp" />
   </ItemGroup>
