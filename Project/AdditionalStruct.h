@@ -29,6 +29,14 @@ static std::string getCurrentSemester() {
 	return semester;
 }
 
+static void savetofile(std::string schoolyear, std::string semester) {
+	std::ofstream fout("Data/CurrentSemester.txt");
+	if (fout.is_open()) {
+		fout << schoolyear << " " << semester << '\n';
+	}
+	fout.close();
+}
+
 struct Date {
 	int day;
 	int month;

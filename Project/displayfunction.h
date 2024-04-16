@@ -75,6 +75,4 @@ void studentCourse(sf::RenderWindow& window, Student& studentuser, std::string s
 void studentScoreboard(sf::RenderWindow& window, Student& studentuser, std::string schoolyear, std::string semester);
 
 
-
-
 #endif // !_DISPLAYFUNCTION_H
