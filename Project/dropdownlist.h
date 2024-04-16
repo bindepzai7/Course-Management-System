@@ -36,12 +36,12 @@ public:
 		}
 	}
 	//setpositon with limit view
-	void setpostionlistbuttonwithlimit(float Posx, float Posy, int i, float size,float Posylimabove,float Posylimunder,float jumpsize) {
+	void setpostionlistbuttonwithlimit(float Posx, float Posy, int i, float distance,float Posylimabove,float Posylimunder,float jumpdistance) {
 		Node<Button>* curbut = buttonlist.head;
 		while (curbut) {
-			float newPosy = Posy + size * i;
-			if (newPosy <= Posylimabove) newPosy = newPosy - jumpsize;
-			if (newPosy >= Posylimunder) newPosy = newPosy + jumpsize;
+			float newPosy = Posy + distance * i;
+			if (newPosy <= Posylimabove) newPosy = newPosy - jumpdistance;
+			if (newPosy >= Posylimunder) newPosy = newPosy + jumpdistance;
 			curbut->data.setposition(sf::Vector2f(Posx, newPosy));
 			curbut = curbut->next;
 			i++;

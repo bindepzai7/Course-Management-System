@@ -48,6 +48,14 @@ void staffmanageschoolyeardisplay(sf::RenderWindow& window, Staff& userstaff) {
 
      //init newposy of list school years button
     float newposy = 320;
+
+    //for scroll wheel
+    const int maxbuttondisplay = 8;
+    int numberofbutton = schoolyearstext.sizeoflist();
+    float Posylimabove = 310.0f;
+    float Posylimunder=800.0f;
+    float jumpdistance=500.0f;
+
     while (window.isOpen())
     {
         sf::Event event;
@@ -129,10 +137,18 @@ void staffmanageschoolyeardisplay(sf::RenderWindow& window, Staff& userstaff) {
 
 
             //wheel scrool
-            if (event.type == event.MouseWheelScrolled) {
-                newposy = newposy + event.mouseWheelScroll.delta * 10.0f;
-                schoolyears.setpostionlistbuttonwithlimit(475, newposy, 0, 65, 310, 830, 500);
+            //wheel scrool
+            if (event.type == event.MouseWheelScrolled and numberofbutton > maxbuttondisplay) {
+                newposy = newposy + event.mouseWheelScroll.delta * 5.0f;
+                if (schoolyears.getpositionofKbut(numberofbutton).y <= Posylimunder - 10) {
+                    newposy = 85;
+                }
+                else if (schoolyears.getpositionofKbut(maxbuttondisplay).y >= Posylimunder - 10) {
+                    newposy = 325;
+                }
+                schoolyears.setpostionlistbuttonwithlimit(475, newposy, 0, 65, Posylimabove, Posylimunder, jumpdistance); 
             }
+
 
         }
         //add school button is Press
@@ -218,6 +234,13 @@ void staffmanageschoolyear2display(sf::RenderWindow& window, Staff& userstaff, i
     //view semester butotn
 
 
+     //for scroll wheel
+    const int maxbuttondisplay = 8;
+    int numberofbutton = schoolyearstext.sizeoflist();
+    float Posylimabove = 310.0f;
+    float Posylimunder = 800.0f;
+    float jumpdistance = 500.0f;
+
     while (window.isOpen())
     {
         sf::Event event;
@@ -279,27 +302,24 @@ void staffmanageschoolyear2display(sf::RenderWindow& window, Staff& userstaff, i
             
 
             //wheel scrool
-            if (event.type == event.MouseWheelScrolled) {
-                newposy = newposy + event.mouseWheelScroll.delta * 10.0f;
-                newposyofschoolyearclicked = newposyofschoolyearclicked + event.mouseWheelScroll.delta * 10.0f;
-                schoolyears.setpostionlistbuttonwithlimit(475, newposy, 0, 65, 310, 830, 500);
-                schoolyearclickbutton.setpositiontwithbuttonlimit(Posofschoolyearclicked.x, newposyofschoolyearclicked, 310, 830, 500);
-            }
+            if (event.type == event.MouseWheelScrolled and numberofbutton > maxbuttondisplay) {
 
+                newposy = newposy + event.mouseWheelScroll.delta * 5.0f;
+                newposyofschoolyearclicked = newposyofschoolyearclicked + event.mouseWheelScroll.delta * 5.0f;
 
-            if (event.type == sf::Event::MouseButtonPressed) {
-                if (event.mouseButton.button == sf::Mouse::Left)
-                {
-                    int x_coor = event.mouseButton.x;
-                    int y_coor = event.mouseButton.y;
-                    if (x_coor > 910 and x_coor < 1385 and y_coor >390 and y_coor < 490) {
-                        staffaddclasses(window, userstaff, textofbutton);
-                    }
-                    if (x_coor > 910 and x_coor < 1385 and y_coor >545 and y_coor < 645) {
-                        staffmanagesemesterdisplay(window, userstaff, textofbutton);
-                    }
+                if (schoolyears.getpositionofKbut(numberofbutton).y <= Posylimunder - 10) {
+                    newposy = 85;
+                    newposyofschoolyearclicked = schoolyears.getpositionofKbut(Korderofbut).y + 10.f;
                 }
+                else if (schoolyears.getpositionofKbut(maxbuttondisplay).y >= Posylimunder - 10) {
+                    newposy = 325;
+                    newposyofschoolyearclicked = schoolyears.getpositionofKbut(Korderofbut).y - 10.f;
+                }
+
+                schoolyears.setpostionlistbuttonwithlimit(475, newposy, 0, 65, Posylimabove, Posylimunder, jumpdistance);
+                schoolyearclickbutton.setpositiontwithbuttonlimit(Posofschoolyearclicked.x, newposyofschoolyearclicked, Posylimabove, Posylimunder, jumpdistance);
             }
+
 
         }
 
