@@ -269,11 +269,12 @@ void staffmanageschoolyear2display(sf::RenderWindow& window, Staff& userstaff, i
 
             //list of year button
             for (int i = 1; i <= schoolyearstext.sizeoflist(); i++) {
+                if (schoolyearclickbutton.isClick(event))
+                    staffmanageschoolyeardisplay(window, userstaff);
                 if (schoolyears.isClickedKOrder(event, i)) {
                     staffmanageschoolyear2display(window, userstaff, i);
                 }
-                if (schoolyearclickbutton.isClick(event))
-                    staffmanageschoolyeardisplay(window, userstaff);
+                
             }
             
 

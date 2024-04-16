@@ -53,7 +53,7 @@ void staffmanagecourse(sf::RenderWindow& window,Staff &userstaff, std::string sc
 void staffaddclasses(sf::RenderWindow& window, Staff& userstaff, std::string schoolyear);
 void staffmanageclass(sf::RenderWindow& window, Staff& userstaff, std::string schoolyear, int Korderbut);
 void staffaddfirstyearstudent(sf::RenderWindow& window, Staff& userstaff,std::string schoolyear, std::string addtoclass);
-void staffviewstudentinclass(sf::RenderWindow& window, Staff& userstaff, std::string classchosen);
+void staffviewstudentinclass(sf::RenderWindow& window, Staff& userstaff, std::string schoolyear, std::string classchosen);
 
 std::string filenametoimport();
 

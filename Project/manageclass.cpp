@@ -242,10 +242,11 @@ void staffmanageclass(sf::RenderWindow& window, Staff& userstaff, std::string sc
 
             //click class button
             for (int i = 1; i <= classestext.sizeoflist(); i++) {
-                if (classesbutton.isClickedKOrder(event, i))
-                    staffmanageclass(window, userstaff, schoolyear, i);
                 if (classchosenbutton.isClick(event))
                     staffaddclasses(window, userstaff, schoolyear);
+                if (classesbutton.isClickedKOrder(event, i))
+                    staffmanageclass(window, userstaff, schoolyear, i);
+                
             }
             
 
@@ -277,7 +278,7 @@ void staffmanageclass(sf::RenderWindow& window, Staff& userstaff, std::string sc
                     int x_coor = event.mouseButton.x;
                     int y_coor = event.mouseButton.y;
                     if (x_coor > 910 and x_coor < 1385 and y_coor >390 and y_coor < 490) {
-                        staffviewstudentinclass(window, userstaff, textofbutton);
+                        staffviewstudentinclass(window, userstaff, schoolyear, textofbutton);
                     }
                     if (x_coor > 910 and x_coor < 1385 and y_coor >545 and y_coor < 645) {
                         staffaddfirstyearstudent(window, userstaff, schoolyear, textofbutton);
@@ -630,7 +631,7 @@ std::string filenametoimport() {
     return filename;
 }
 
-void staffviewstudentinclass(sf::RenderWindow& window, Staff& userstaff, std::string classchosen) {
+void staffviewstudentinclass(sf::RenderWindow& window, Staff& userstaff, std::string schoolyear, std::string classchosen) {
     sf::Texture AboutUstexture;
     AboutUstexture.loadFromFile("Design UI/[Staff - 6.2.1] View Students in Class.jpg");
     AboutUstexture.setSmooth(true);
@@ -687,6 +688,9 @@ void staffviewstudentinclass(sf::RenderWindow& window, Staff& userstaff, std::st
                     }
                     if (x_coor > 40 && x_coor < 77 && y_coor>887 && y_coor < 932) {
                         staffviewprofile(window, userstaff);
+                    }
+                    if (x_coor > 390 && x_coor < 640 && y_coor>867 && y_coor < 917) {
+                        staffaddfirstyearstudent(window, userstaff,schoolyear, classchosen);
                     }
                 }
             }

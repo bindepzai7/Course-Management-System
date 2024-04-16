@@ -75,7 +75,7 @@ public:
 	}
 	~TextBox()
 	{
-		std::cout << "object being delete"<<std::endl;
+		//std::cout << "object being delete"<<std::endl;
 	}
 	void setfont(sf::Font& font)
 	{
@@ -197,7 +197,7 @@ public:
 	}
 	~OutputTextBox()
 	{
-		std::cout << "object being delete" << std::endl;
+		//std::cout << "object being delete" << std::endl;
 	}
 	void setfont(sf::Font& font)
 	{
