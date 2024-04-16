@@ -28,8 +28,8 @@ void Class::loadStudentfromCSV(std::string filename) {
 				getline(fin, firstname, ',');
 				getline(fin, dob, ',');
 				getline(fin, gender, ',');
-				getline(fin, socialID, ',');
-				getline(fin, username, ',');
+				getline(fin, socialID);
+				
 
 				std::istringstream ss(dob);
 				int d, m, y;
