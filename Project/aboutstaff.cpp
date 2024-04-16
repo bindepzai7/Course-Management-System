@@ -48,6 +48,10 @@ void staffHome(sf::RenderWindow& window, Staff& userstaff) {
     logoutbut.setposition(sf::Vector2f(227, 895));
 
     //mode button
+    Button editmode(sf::Color(192, 200, 184), sf::Vector2f(70, 40), false, sf::Color::Black,"edit",20, Palatino);
+    editmode.setposition(sf::Vector2f(110, 490));
+    Button viewmde(sf::Color(192, 200, 184), sf::Vector2f(70, 40), false, sf::Color::Black, "view", 20, Palatino);
+    viewmde.setposition(sf::Vector2f(110, 538));
 
     while (window.isOpen())
     {
