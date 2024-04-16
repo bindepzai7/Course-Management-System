@@ -152,10 +152,24 @@ bool Course::loadStudentsFromCsvFileStaffUpload(const std::string& schoolYear, c
 	return true;
 }
 
+bool Course::saveStudentsToCsvFile(const std::string& schoolYear, const std::string& semester) {
+	std::ofstream fout("Data/" + schoolYear + "/" + semester + "/studentOfEachCourse/" + this->courseID + ".csv");
+	if (fout.is_open()) {
+		Node<Student>* cur = studentsInThisCourse.head;
+		int i = 0;
+		fout << "No,studentID,lastName,firstName\n";
+		while (cur) {
+			fout << ++i << "," << cur->data.StudentID << "," << cur->data.name.lastName << "," << cur->data.name.firstName << '\n';
+			cur = cur->next;
+		}
+		fout.close();
+		return true;
+	}
+	fout.close();
+	return false;
+}
 
-
-		//We dont need to save back to the file staffs uploaded because we will store students data in the Score csv file
-		//Or is it?
+		
 bool Course::deleteStudentFromThisCourse(const std::string& studentID) {
 	Node<Student>* cur = studentsInThisCourse.head;
 	int index = 0;
@@ -170,8 +184,6 @@ bool Course::deleteStudentFromThisCourse(const std::string& studentID) {
 	}
 	return false;
 }
-
-
 
 bool Course::addStudentToThisCourse(const std::string& studentID, const Name& name) {
 	if (this->getValidSlot() > 0) {

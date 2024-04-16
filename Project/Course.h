@@ -123,6 +123,8 @@ public:
 
     //About students in this course
     bool loadStudentsFromCsvFileStaffUpload(const std::string& schoolYear, const std::string& semester);    //checked
+
+    bool saveStudentsToCsvFile(const std::string& schoolYear, const std::string& semester);
    
     bool deleteStudentFromThisCourse(const std::string& studentID);   //checked
 
