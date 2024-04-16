@@ -1,14 +1,7 @@
+
+
 #include"displayfunction.h"
-#include"dropdownlist.h"
-#include"Textbox.h"
-#include"LinkedList.h"
-#include"Staff.h"
-#include "AdditionalStruct.h"
-#include"Student.h"
-#include<iostream>
-#include<string>
-#include<SFML/Graphics.hpp>
-#include<Windows.h>
+
 
 void staffmanageschoolyeardisplay(sf::RenderWindow& window, Staff& userstaff) {
     sf::Texture Schoolyeartexture;
@@ -30,6 +23,14 @@ void staffmanageschoolyeardisplay(sf::RenderWindow& window, Staff& userstaff) {
     dropdownlist staffhomebuttonlist(sf::Color(168, 158, 146), sf::Vector2f(280, 53), false, sf::Color(239, 233, 222), textstaffhomebutton, 30, Palatino);
     staffhomebuttonlist.setpostionlistbutton(30, 143, 0, 65);
 
+    //navigation bar current textbox
+    OutputTextBox schoolyeartextbox(22, sf::Color(119, 106, 92), getCurrentSchoolyear());
+    schoolyeartextbox.setfont(Palatino);
+    schoolyeartextbox.setTextPosition(sf::Vector2f(181, 667));
+
+    OutputTextBox semestertextbox(22, sf::Color(119, 106, 92), getCurrentSemester());
+    semestertextbox.setfont(Palatino);
+    semestertextbox.setTextPosition(sf::Vector2f(218, 702));
 
     //log out button
     Button logoutbut(sf::Color(192, 200, 184), sf::Vector2f(90, 30), false, sf::Color::Black, "Log out", 20, Palatino);
@@ -156,6 +157,8 @@ void staffmanageschoolyeardisplay(sf::RenderWindow& window, Staff& userstaff) {
         schoolyears.drawButwithoutchangeTextboxcolor(window, event, sf::Color(168, 158, 146));
         addschoolyearbox.setTextPosition(sf::Vector2f(950, 515));
         addschoolyearbox.drawTextbox(window);
+        schoolyeartextbox.drawTextbox(window);
+        semestertextbox.drawTextbox(window);
         window.display();
     }
 }
@@ -181,7 +184,14 @@ void staffmanageschoolyear2display(sf::RenderWindow& window, Staff& userstaff, i
     dropdownlist staffhomebuttonlist(sf::Color(168, 158, 146), sf::Vector2f(280, 53), false, sf::Color(239, 233, 222), textstaffhomebutton, 30, Palatino);
     staffhomebuttonlist.setpostionlistbutton(30, 143, 0, 65);
 
+    //navigation bar current textbox
+    OutputTextBox schoolyeartextbox(22, sf::Color(119, 106, 92), getCurrentSchoolyear());
+    schoolyeartextbox.setfont(Palatino);
+    schoolyeartextbox.setTextPosition(sf::Vector2f(181, 667));
 
+    OutputTextBox semestertextbox(22, sf::Color(119, 106, 92), getCurrentSemester());
+    semestertextbox.setfont(Palatino);
+    semestertextbox.setTextPosition(sf::Vector2f(218, 702));
 
     //log out button
     Button logoutbut(sf::Color(192, 200, 184), sf::Vector2f(90, 30), false, sf::Color::Black, "Log out", 20, Palatino);
@@ -296,6 +306,8 @@ void staffmanageschoolyear2display(sf::RenderWindow& window, Staff& userstaff, i
         logoutbut.drawbutton(window);
         schoolyears.drawButwithoutchangeTextboxcolor(window, event, sf::Color(168, 158, 146));
         schoolyearclickbutton.drawbutton(window);
+        schoolyeartextbox.drawTextbox(window);
+        semestertextbox.drawTextbox(window);
         window.display();
     }
 }

@@ -1,9 +1,19 @@
 #ifndef DISPLAYFUNCTION_H
 #define DISPLAYFUNCTION_H
-#include"Staff.h"
+
 #include"User.h"
-#include<SFML/Graphics.hpp>
+#include"dropdownlist.h"
+#include"Textbox.h"
+#include"LinkedList.h"
+#include"Staff.h"
+#include "AdditionalStruct.h"
+#include"Student.h"
+#include<iostream>
 #include<string>
+#include<SFML/Graphics.hpp>
+#include<Windows.h>
+
+
 struct account
 {
 	bool isselectedusername = false;

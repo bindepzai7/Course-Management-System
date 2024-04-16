@@ -31,6 +31,15 @@ void staffHome(sf::RenderWindow& window, Staff& userstaff) {
     staffhomebuttonlist.setpostionlistbutton(30, 143, 0, 65);
 
 
+    //navigation bar current textbox
+    OutputTextBox schoolyeartextbox(22, sf::Color(119, 106, 92), getCurrentSchoolyear());
+    schoolyeartextbox.setfont(Palatino);
+    schoolyeartextbox.setTextPosition(sf::Vector2f(181, 667));
+
+    OutputTextBox semestertextbox(22, sf::Color(119, 106, 92), getCurrentSemester());
+    semestertextbox.setfont(Palatino);
+    semestertextbox.setTextPosition(sf::Vector2f(218, 702));
+
     //log out button
     Button logoutbut(sf::Color(192, 200, 184), sf::Vector2f(90, 30), false, sf::Color::Black, "Log out", 20, Palatino);
     logoutbut.setposition(sf::Vector2f(227, 895));
@@ -83,6 +92,8 @@ void staffHome(sf::RenderWindow& window, Staff& userstaff) {
         window.draw(s_staffHomeTexture);
         staffhomebuttonlist.drawButwithTextbox(window, event, sf::Color(168, 158, 146), sf::Color(239, 233, 222));
         logoutbut.drawbutton(window);
+        schoolyeartextbox.drawTextbox(window);
+        semestertextbox.drawTextbox(window);
         window.display();
     }
 }
@@ -110,6 +121,14 @@ void staffviewprofile(sf::RenderWindow& window, Staff& userstaff) {
     Button logoutbut(sf::Color(192, 200, 184), sf::Vector2f(90, 30), false, sf::Color::Black, "Log out", 20, Palatino);
     logoutbut.setposition(sf::Vector2f(227, 895));
 
+    //navigation bar current textbox
+    OutputTextBox schoolyeartextbox(22, sf::Color(119, 106, 92), getCurrentSchoolyear());
+    schoolyeartextbox.setfont(Palatino);
+    schoolyeartextbox.setTextPosition(sf::Vector2f(181, 667));
+
+    OutputTextBox semestertextbox(22, sf::Color(119, 106, 92), getCurrentSemester());
+    semestertextbox.setfont(Palatino);
+    semestertextbox.setTextPosition(sf::Vector2f(218, 702));
 
     //Staff ID textbox
     OutputTextBox ID(22, sf::Color::Black, "Bo ID vao day");
@@ -201,6 +220,8 @@ void staffviewprofile(sf::RenderWindow& window, Staff& userstaff) {
         dob.drawTextbox(window);
         gender.drawTextbox(window);
         username.drawTextbox(window);
+        schoolyeartextbox.drawTextbox(window);
+        semestertextbox.drawTextbox(window);
         logoutbut.drawbutton(window);
         window.display();
 
@@ -226,7 +247,14 @@ void staffChangePassword(sf::RenderWindow& window, Staff& userstaff) {
     dropdownlist staffhomebuttonlist(sf::Color(168, 158, 146), sf::Vector2f(280, 53), false, sf::Color(239, 233, 222), textstaffhomebutton, 30, Palatino);
     staffhomebuttonlist.setpostionlistbutton(30, 143, 0, 65);
 
+    //navigation bar current textbox
+    OutputTextBox schoolyeartextbox(22, sf::Color(119, 106, 92), getCurrentSchoolyear());
+    schoolyeartextbox.setfont(Palatino);
+    schoolyeartextbox.setTextPosition(sf::Vector2f(181, 667));
 
+    OutputTextBox semestertextbox(22, sf::Color(119, 106, 92), getCurrentSemester());
+    semestertextbox.setfont(Palatino);
+    semestertextbox.setTextPosition(sf::Vector2f(218, 702));
 
     //log out button
     Button logoutbut(sf::Color(192, 200, 184), sf::Vector2f(90, 30), false, sf::Color::Black, "Log out", 20, Palatino);
@@ -285,6 +313,8 @@ void staffChangePassword(sf::RenderWindow& window, Staff& userstaff) {
         window.draw(s_staffChangePassword);
         staffhomebuttonlist.drawButwithTextbox(window, event, sf::Color(168, 158, 146), sf::Color(239, 233, 222));
         logoutbut.drawbutton(window);
+        schoolyeartextbox.drawTextbox(window);
+        semestertextbox.drawTextbox(window);
         window.display();
 
     }
@@ -309,7 +339,14 @@ void staffaboutUs(sf::RenderWindow& window, Staff& userstaff) {
     dropdownlist staffhomebuttonlist(sf::Color(168, 158, 146), sf::Vector2f(280, 53), false, sf::Color(239, 233, 222), textstaffhomebutton, 30, Palatino);
     staffhomebuttonlist.setpostionlistbutton(30, 143, 0, 65);
 
+    //navigation bar current textbox
+    OutputTextBox schoolyeartextbox(22, sf::Color(119, 106, 92), getCurrentSchoolyear());
+    schoolyeartextbox.setfont(Palatino);
+    schoolyeartextbox.setTextPosition(sf::Vector2f(181, 667));
 
+    OutputTextBox semestertextbox(22, sf::Color(119, 106, 92), getCurrentSemester());
+    semestertextbox.setfont(Palatino);
+    semestertextbox.setTextPosition(sf::Vector2f(218, 702));
 
     //log out button
     Button logoutbut(sf::Color(192, 200, 184), sf::Vector2f(90, 30), false, sf::Color::Black, "Log out", 20, Palatino);
@@ -368,6 +405,10 @@ void staffaboutUs(sf::RenderWindow& window, Staff& userstaff) {
         window.draw(s_AboutUstexture);
         staffhomebuttonlist.drawButwithTextbox(window, event, sf::Color(168, 158, 146), sf::Color(239, 233, 222));
         logoutbut.drawbutton(window);
+        schoolyeartextbox.drawTextbox(window);
+        semestertextbox.drawTextbox(window);
+        schoolyeartextbox.drawTextbox(window);
+        semestertextbox.drawTextbox(window);
         window.display();
 
     }
