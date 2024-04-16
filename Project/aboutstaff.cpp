@@ -12,6 +12,9 @@
 
 
 void staffHome(sf::RenderWindow& window, Staff& userstaff) {
+    //init mode
+    userstaff.setmode(false);
+
     sf::Texture staffHomeTexture;
     staffHomeTexture.loadFromFile("Design UI/[Staff - 1] Home.jpg");
     staffHomeTexture.setSmooth(true);
@@ -43,6 +46,8 @@ void staffHome(sf::RenderWindow& window, Staff& userstaff) {
     //log out button
     Button logoutbut(sf::Color(192, 200, 184), sf::Vector2f(90, 30), false, sf::Color::Black, "Log out", 20, Palatino);
     logoutbut.setposition(sf::Vector2f(227, 895));
+
+    //mode button
 
     while (window.isOpen())
     {

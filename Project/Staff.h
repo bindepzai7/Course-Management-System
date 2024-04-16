@@ -15,6 +15,8 @@ private:
 	//std::string password;
 	std::string socialID;
 	Name staffName;
+
+	bool mode;//1 is 
     
 public:
 	Staff() : StaffID(""), socialID(""),staffName("") {}
@@ -39,6 +41,13 @@ public:
 
 	std::string getStaffSocialID() {
 		return socialID;
+	}
+	void setmode(bool mode) {
+		this->mode = mode;
+	}
+
+	bool getmode() {
+		return this->mode;
 	}
 
 	LinkedList<std::string> getschoolyearstext() {
