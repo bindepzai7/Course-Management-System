@@ -1,4 +1,6 @@
-﻿  Staff.cpp
+﻿  Class.cpp
+  ReadCSVfile.cpp
+  Staff.cpp
   aboutstaff.cpp
 D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\button.h(83,18): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
   (compiling source file 'aboutstaff.cpp')
@@ -6,11 +8,11 @@ D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\button.h(83,18): warning 
 D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\button.h(84,18): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
   (compiling source file 'aboutstaff.cpp')
   
-D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\aboutstaff.cpp(166,41): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
-D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\aboutstaff.cpp(166,41): warning C4244:         with
-D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\aboutstaff.cpp(166,41): warning C4244:         [
-D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\aboutstaff.cpp(166,41): warning C4244:             T=float
-D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\aboutstaff.cpp(166,41): warning C4244:         ]
+D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\aboutstaff.cpp(186,41): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\aboutstaff.cpp(186,41): warning C4244:         with
+D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\aboutstaff.cpp(186,41): warning C4244:         [
+D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\aboutstaff.cpp(186,41): warning C4244:             T=float
+D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\aboutstaff.cpp(186,41): warning C4244:         ]
   loginfunction.cpp
 D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\button.h(83,18): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
   (compiling source file 'loginfunction.cpp')
@@ -66,4 +68,5 @@ D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\studentview.cpp(153,41): 
 D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\studentview.cpp(153,41): warning C4244:             T=float
 D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\studentview.cpp(153,41): warning C4244:         ]
   Generating Code...
+  LINK : D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\x64\Debug\Project.exe not found or not built by the last incremental link; performing full link
   Project.vcxproj -> D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\x64\Debug\Project.exe

@@ -50,8 +50,8 @@ void staffHome(sf::RenderWindow& window, Staff& userstaff) {
     //mode button
     Button editmode(sf::Color(192, 200, 184), sf::Vector2f(70, 40), false, sf::Color::Black,"edit",20, Palatino);
     editmode.setposition(sf::Vector2f(110, 490));
-    Button viewmde(sf::Color(192, 200, 184), sf::Vector2f(70, 40), false, sf::Color::Black, "view", 20, Palatino);
-    viewmde.setposition(sf::Vector2f(110, 538));
+    Button viewmode(sf::Color(192, 200, 184), sf::Vector2f(70, 40), false, sf::Color::Black, "view", 20, Palatino);
+    viewmode.setposition(sf::Vector2f(110, 538));
 
     while (window.isOpen())
     {
@@ -83,6 +83,17 @@ void staffHome(sf::RenderWindow& window, Staff& userstaff) {
             if (staffhomebuttonlist.isClickedKOrder(event, 5))
                 staffaboutUs(window, userstaff);
 
+            //click mode
+            if (editmode.isClick(event)) {
+                editmode.setisClicked(true);
+                userstaff.setmode(true);
+            }
+            if (viewmode.isClick(event)) {
+                viewmode.setisClicked(true);
+                userstaff.setmode(false);
+            }
+            
+
             //click logout button
             if (logoutbut.isClick(event)) chooseRole(window);
 
@@ -100,9 +111,12 @@ void staffHome(sf::RenderWindow& window, Staff& userstaff) {
         window.clear();
         window.draw(s_staffHomeTexture);
         staffhomebuttonlist.drawButwithTextbox(window, event, sf::Color(168, 158, 146), sf::Color(239, 233, 222));
+        if (editmode.getisClick()) editmode.drawbutton(window);
+        if (viewmode.getisClick()) viewmode.drawbutton(window);
         logoutbut.drawbutton(window);
         schoolyeartextbox.drawTextbox(window);
         semestertextbox.drawTextbox(window);
+
         window.display();
     }
 }
