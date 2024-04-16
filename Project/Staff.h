@@ -86,7 +86,7 @@ public:
 };
 
 
-void LoadDataofStaff(LinkedList<Staff>& s, std::ifstream fin);
+void LoadDataofStaff(LinkedList<Staff>& staffList, std::string filename);
 bool getDataStafffromlist(LinkedList<Staff>s, std::string username, Staff& userstaff);
 
 #endif

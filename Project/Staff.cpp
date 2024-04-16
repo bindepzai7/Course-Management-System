@@ -71,8 +71,38 @@ void Staff::writeClasstoFile(std::string schoolyear, LinkedList<std::string> &cl
 	fout.close();
 }
 
-void LoadDataofStaff(LinkedList<Staff>& s, std::ifstream fin) {
-	 
+void LoadDataofStaff(LinkedList<Staff>& staffList, std::string filename) {
+	std::ifstream fin(filename);
+	if (!fin.is_open()) {
+		std::cout << "Error opening file: " << filename << std::endl;
+		return;
+	}
+	int count = 0;
+	std::string firstname, lastname, socialID, gender, username, password, staffID;
+	std::string dob;
+	while (!fin.eof()) {
+		if (count == 0) {
+			std::string temp;
+			getline(fin, temp);
+			count = 1;
+		}
+		else {
+			getline(fin, staffID, ',');
+			getline(fin, firstname, ',');
+			getline(fin, lastname, ',');
+			getline(fin, gender, ',');
+			getline(fin, socialID, ',');
+			getline(fin, dob);
+
+			std::istringstream ss(dob);
+			int d, m, y;
+			char delimiter;
+			bool gen = 0;
+			if (gender == "1") gen = 1;
+			ss >> d >> delimiter >> m >> delimiter >> y;
+			staffList.addNodeInAscending(Staff(staffID, socialID, Name(firstname, lastname)));
+		}
+	}
 }
 
 bool getDataStafffromlist(LinkedList<Staff>s, std::string username, Staff &userstaff) {
