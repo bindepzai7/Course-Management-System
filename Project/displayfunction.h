@@ -10,6 +10,9 @@ struct account
 	bool isselectedpassword = false;
 	bool iswrongaccount = false;
 };
+
+
+
 void chooseRole(sf::RenderWindow& window);
 void loginWindow(sf::RenderWindow& window, bool role);
 void staffhome(sf::RenderWindow &window,Staff &userstaff);
@@ -31,6 +34,9 @@ void staffaddfirstyearstudent(sf::RenderWindow& window, Staff& userstaff,std::st
 std::string filenametoimport();
 
 void studenthome(sf::RenderWindow& window, Student& studentuser);
-
-
+void studentprofileview(sf::RenderWindow& window, Student& studentuser);
+void studentAboutUs(sf::RenderWindow& window, Student& studentuser);
+void studentChangePassword(sf::RenderWindow& window, Student& studentuser);
+void studentCourse(sf::RenderWindow& window, Student& studentuser);
+void studentScoreboard(sf::RenderWindow& window, Student& studentuser);
 #endif // !_DISPLAYFUNCTION_H
