@@ -1,4 +1,10 @@
-﻿  main.cpp
+﻿  aboutstaff.cpp
 C:\labwork - CS 162\group_project\Group_project_Cs162_2\Project\button.h(83,18): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
 C:\labwork - CS 162\group_project\Group_project_Cs162_2\Project\button.h(84,18): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+C:\labwork - CS 162\group_project\Group_project_Cs162_2\Project\aboutstaff.cpp(188,41): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+  LINK : C:\labwork - CS 162\group_project\Group_project_Cs162_2\Project\x64\Debug\Project.exe not found or not built by the last incremental link; performing full link
   Project.vcxproj -> C:\labwork - CS 162\group_project\Group_project_Cs162_2\Project\x64\Debug\Project.exe
