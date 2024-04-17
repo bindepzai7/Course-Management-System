@@ -113,8 +113,8 @@ void staffHome(sf::RenderWindow& window, Staff& userstaff) {
         window.clear();
         window.draw(s_staffHomeTexture);
         staffhomebuttonlist.drawButwithTextbox(window, event, sf::Color(168, 158, 146), sf::Color(239, 233, 222));
-        if (editmode.getisClick()) editmode.drawbutton(window);
-        if (viewmode.getisClick()) viewmode.drawbutton(window);
+        if (userstaff.getmode()) editmode.drawbutton(window);
+        else viewmode.drawbutton(window);
         logoutbut.drawbutton(window);
         schoolyeartextbox.drawTextbox(window);
         semestertextbox.drawTextbox(window);
@@ -377,6 +377,13 @@ void staffaboutUs(sf::RenderWindow& window, Staff& userstaff) {
     Button logoutbut(sf::Color(192, 200, 184), sf::Vector2f(90, 30), false, sf::Color::Black, "Log out", 20, Palatino);
     logoutbut.setposition(sf::Vector2f(227, 895));
 
+    //mode button
+    Button editmode(sf::Color(192, 200, 184), sf::Vector2f(70, 40), false, sf::Color::Black, "edit", 20, Palatino);
+    editmode.setposition(sf::Vector2f(110, 490));
+    Button viewmode(sf::Color(192, 200, 184), sf::Vector2f(70, 40), false, sf::Color::Black, "view", 20, Palatino);
+    viewmode.setposition(sf::Vector2f(110, 538));
+
+
     while (window.isOpen())
     {
         sf::Event event;
@@ -411,6 +418,18 @@ void staffaboutUs(sf::RenderWindow& window, Staff& userstaff) {
             if (staffhomebuttonlist.isClickedKOrder(event, 5))
                 staffaboutUs(window, userstaff);
 
+            //click mode
+            if (editmode.isClick(event)) {
+                editmode.setisClicked(true);
+                viewmode.setisClicked(false);
+                userstaff.setmode(true);
+            }
+            if (viewmode.isClick(event)) {
+                viewmode.setisClicked(true);
+                editmode.setisClicked(false);
+                userstaff.setmode(false);
+            }
+
 
             //click logout button
             if (logoutbut.isClick(event)) chooseRole(window);
@@ -430,6 +449,8 @@ void staffaboutUs(sf::RenderWindow& window, Staff& userstaff) {
         window.draw(s_AboutUstexture);
         staffhomebuttonlist.drawButwithTextbox(window, event, sf::Color(168, 158, 146), sf::Color(239, 233, 222));
         logoutbut.drawbutton(window);
+        if (userstaff.getmode()) editmode.drawbutton(window);
+        else viewmode.drawbutton(window);
         schoolyeartextbox.drawTextbox(window);
         semestertextbox.drawTextbox(window);
         schoolyeartextbox.drawTextbox(window);

@@ -35,6 +35,12 @@ void staffaddclasses(sf::RenderWindow& window, Staff& userstaff, std::string sch
     Button logoutbut(sf::Color(192, 200, 184), sf::Vector2f(90, 30), false, sf::Color::Black, "Log out", 20, Palatino);
     logoutbut.setposition(sf::Vector2f(227, 895));
 
+    //mode button
+    Button editmode(sf::Color(192, 200, 184), sf::Vector2f(70, 40), false, sf::Color::Black, "edit", 20, Palatino);
+    editmode.setposition(sf::Vector2f(110, 490));
+    Button viewmode(sf::Color(192, 200, 184), sf::Vector2f(70, 40), false, sf::Color::Black, "view", 20, Palatino);
+    viewmode.setposition(sf::Vector2f(110, 538));
+
     //school year current textbox
     OutputTextBox cur_schoolyeartextbox(28, sf::Color::Black, schoolyear);
     cur_schoolyeartextbox.setfont(Palatino);
@@ -113,7 +119,17 @@ void staffaddclasses(sf::RenderWindow& window, Staff& userstaff, std::string sch
 
             //click logout button
             if (logoutbut.isClick(event)) chooseRole(window);
-
+            //click mode
+            if (editmode.isClick(event)) {
+                editmode.setisClicked(true);
+                viewmode.setisClicked(false);
+                userstaff.setmode(true);
+            }
+            if (viewmode.isClick(event)) {
+                viewmode.setisClicked(true);
+                editmode.setisClicked(false);
+                userstaff.setmode(false);
+            }
             //change color button when on cursor
             if (logoutbut.isonMousecursor(event)) {
                 logoutbut.changecolor(sf::Color(192, 200, 184));
@@ -177,6 +193,8 @@ void staffaddclasses(sf::RenderWindow& window, Staff& userstaff, std::string sch
         window.draw(s_Staffaddclasstexture);
         staffhomebuttonlist.drawButwithTextbox(window, event, sf::Color(168, 158, 146), sf::Color(239, 233, 222));
         logoutbut.drawbutton(window);
+        if (userstaff.getmode()) editmode.drawbutton(window);
+        else viewmode.drawbutton(window);
         classesbutton.drawButwithoutchangeTextboxcolor(window, event, sf::Color(168, 158, 146));
         cur_schoolyeartextbox.drawTextbox(window);
         addclasstxtbox.drawTextbox(window);
@@ -234,6 +252,12 @@ void staffmanageclass(sf::RenderWindow& window, Staff& userstaff, std::string sc
     //log out button
     Button logoutbut(sf::Color(192, 200, 184), sf::Vector2f(90, 30), false, sf::Color::Black, "Log out", 20, Palatino);
     logoutbut.setposition(sf::Vector2f(227, 895));
+
+    //mode button
+    Button editmode(sf::Color(192, 200, 184), sf::Vector2f(70, 40), false, sf::Color::Black, "edit", 20, Palatino);
+    editmode.setposition(sf::Vector2f(110, 490));
+    Button viewmode(sf::Color(192, 200, 184), sf::Vector2f(70, 40), false, sf::Color::Black, "view", 20, Palatino);
+    viewmode.setposition(sf::Vector2f(110, 538));
 
     //init newposy of list classes button and class button chosen
     float newposy = 320;
@@ -303,6 +327,18 @@ void staffmanageclass(sf::RenderWindow& window, Staff& userstaff, std::string sc
             //click logout button
             if (logoutbut.isClick(event)) chooseRole(window);
 
+            //click mode
+            if (editmode.isClick(event)) {
+                editmode.setisClicked(true);
+                viewmode.setisClicked(false);
+                userstaff.setmode(true);
+            }
+            if (viewmode.isClick(event)) {
+                viewmode.setisClicked(true);
+                editmode.setisClicked(false);
+                userstaff.setmode(false);
+            }
+
             //change color button when on cursor
             if (logoutbut.isonMousecursor(event)) {
                 logoutbut.changecolor(sf::Color(192, 200, 184));
@@ -334,6 +370,8 @@ void staffmanageclass(sf::RenderWindow& window, Staff& userstaff, std::string sc
         classesbutton.drawButwithoutchangeTextboxcolor(window, event, sf::Color(168, 158, 146));
         classchosenbutton.drawbutton(window);
         logoutbut.drawbutton(window);
+        if (userstaff.getmode()) editmode.drawbutton(window);
+        else viewmode.drawbutton(window);
         schoolyeartextbox.drawTextbox(window);
         semestertextbox.drawTextbox(window);
         window.display();
@@ -380,6 +418,12 @@ void staffaddfirstyearstudent(sf::RenderWindow& window, Staff& userstaff, std::s
     //log out button
     Button logoutbut(sf::Color(192, 200, 184), sf::Vector2f(90, 30), false, sf::Color::Black, "Log out", 20, Palatino);
     logoutbut.setposition(sf::Vector2f(227, 895));
+
+    //mode button
+    Button editmode(sf::Color(192, 200, 184), sf::Vector2f(70, 40), false, sf::Color::Black, "edit", 20, Palatino);
+    editmode.setposition(sf::Vector2f(110, 490));
+    Button viewmode(sf::Color(192, 200, 184), sf::Vector2f(70, 40), false, sf::Color::Black, "view", 20, Palatino);
+    viewmode.setposition(sf::Vector2f(110, 538));
 
     //class current textbox
     OutputTextBox cur_classtextbox(28, sf::Color::Black, addtoclass);
@@ -464,6 +508,17 @@ void staffaddfirstyearstudent(sf::RenderWindow& window, Staff& userstaff, std::s
 
             //click logout button
             if (logoutbut.isClick(event)) chooseRole(window);
+            //click mode
+            if (editmode.isClick(event)) {
+                editmode.setisClicked(true);
+                viewmode.setisClicked(false);
+                userstaff.setmode(true);
+            }
+            if (viewmode.isClick(event)) {
+                viewmode.setisClicked(true);
+                editmode.setisClicked(false);
+                userstaff.setmode(false);
+            }
 
             //change color logout button when on cursor
             if (logoutbut.isonMousecursor(event)) {
@@ -603,6 +658,8 @@ void staffaddfirstyearstudent(sf::RenderWindow& window, Staff& userstaff, std::s
         window.draw(s_add1styearstudenttexture);
         staffhomebuttonlist.drawButwithTextbox(window, event, sf::Color(168, 158, 146), sf::Color(239, 233, 222));
         logoutbut.drawbutton(window);
+        if (userstaff.getmode()) editmode.drawbutton(window);
+        else viewmode.drawbutton(window);
         cur_classtextbox.drawTextbox(window);
         addStudentID.drawTextbox(window);
         addFirstname.drawTextbox(window);
@@ -713,6 +770,12 @@ void staffviewstudentinclass(sf::RenderWindow& window, Staff& userstaff, std::st
     Button logoutbut(sf::Color(192, 200, 184), sf::Vector2f(90, 30), false, sf::Color::Black, "Log out", 20, Palatino);
     logoutbut.setposition(sf::Vector2f(227, 895));
 
+    //mode button
+    Button editmode(sf::Color(192, 200, 184), sf::Vector2f(70, 40), false, sf::Color::Black, "edit", 20, Palatino);
+    editmode.setposition(sf::Vector2f(110, 490));
+    Button viewmode(sf::Color(192, 200, 184), sf::Vector2f(70, 40), false, sf::Color::Black, "view", 20, Palatino);
+    viewmode.setposition(sf::Vector2f(110, 538));
+
     while (window.isOpen())
     {
         sf::Event event;
@@ -763,6 +826,18 @@ void staffviewstudentinclass(sf::RenderWindow& window, Staff& userstaff, std::st
             //click logout button
             if (logoutbut.isClick(event)) chooseRole(window);
 
+            //click mode
+            if (editmode.isClick(event)) {
+                editmode.setisClicked(true);
+                viewmode.setisClicked(false);
+                userstaff.setmode(true);
+            }
+            if (viewmode.isClick(event)) {
+                viewmode.setisClicked(true);
+                editmode.setisClicked(false);
+                userstaff.setmode(false);
+            }
+
             //change color button when on cursor
             if (logoutbut.isonMousecursor(event)) {
                 logoutbut.changecolor(sf::Color(192, 200, 184));
@@ -778,6 +853,8 @@ void staffviewstudentinclass(sf::RenderWindow& window, Staff& userstaff, std::st
         window.draw(s_AboutUstexture);
         staffhomebuttonlist.drawButwithTextbox(window, event, sf::Color(168, 158, 146), sf::Color(239, 233, 222));
         logoutbut.drawbutton(window);
+        if (userstaff.getmode()) editmode.drawbutton(window);
+        else viewmode.drawbutton(window);
         schoolyeartextbox.drawTextbox(window);
         semestertextbox.drawTextbox(window);
         cur_classtextbox.drawTextbox(window);
