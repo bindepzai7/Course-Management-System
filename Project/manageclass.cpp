@@ -41,7 +41,6 @@ void staffaddclasses(sf::RenderWindow& window, Staff& userstaff, std::string sch
     cur_schoolyeartextbox.setTextPosition(sf::Vector2f(1110, 357));
 
     //list of class at current schoolyear
-
     userstaff.readAllClassinSchoolYear(schoolyear);
     LinkedList<std::string> classestext = userstaff.getclassescode();
     dropdownlist classesbutton(sf::Color(168, 158, 146), sf::Vector2f(300, 50), false, sf::Color::Black, classestext, 30, Palatino);
@@ -50,8 +49,17 @@ void staffaddclasses(sf::RenderWindow& window, Staff& userstaff, std::string sch
     TextBox addclasstxtbox(24, sf::Color::Black, false);
     addclasstxtbox.setfont(Palatino);
     addclasstxtbox.setTextPosition(sf::Vector2f(950, 515));
+
+
     //init newposy of list classes button
     float newposy = 320;
+
+    //for scroll wheel
+    const int maxbuttondisplay = 8;
+    int numberofbutton = classestext.sizeoflist();
+    float Posylimabove = 310.0f;
+    float Posylimunder = 800.0f;
+    float jumpdistance = 500.0f;
 
     while (window.isOpen())
     {
@@ -105,18 +113,9 @@ void staffaddclasses(sf::RenderWindow& window, Staff& userstaff, std::string sch
             //click class button
             for (int i = 1; i <= classestext.sizeoflist(); i++) {
                 if (classesbutton.isClickedKOrder(event, i)) {
-
                     staffmanageclass(window, userstaff, schoolyear, i);
                 }
             }
-
-
-            //wheel scrool
-            if (event.type == event.MouseWheelScrolled) {
-                newposy = newposy + event.mouseWheelScroll.delta * 10.0f;
-                classesbutton.setpostionlistbuttonwithlimit(475, newposy, 0, 65, 310, 830, 500);
-            }
-
 
             if (addclasstxtbox.isClick(event, 950, 505, 1350, 545)) {
                 addclasstxtbox.setselected(true);
@@ -129,6 +128,22 @@ void staffaddclasses(sf::RenderWindow& window, Staff& userstaff, std::string sch
                         addclasstxtbox.typedText(event);
                 }
             }
+
+            
+
+            //wheel scrool
+            if (event.type == event.MouseWheelScrolled and numberofbutton > maxbuttondisplay) {
+                newposy = newposy + event.mouseWheelScroll.delta * 5.0f;
+                if (classesbutton.getpositionofKbut(numberofbutton).y <= Posylimunder - 10) {
+                    newposy = 85;
+                }
+                else if (classesbutton.getpositionofKbut(maxbuttondisplay).y >= Posylimunder - 10) {
+                    newposy = 325;
+                }
+                classesbutton.setpostionlistbuttonwithlimit(475, newposy, 0, 65, Posylimabove, Posylimunder, jumpdistance);
+            }
+
+            
         }
         //add class button is Press
         if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
@@ -343,7 +358,7 @@ void staffaddfirstyearstudent(sf::RenderWindow& window, Staff& userstaff, std::s
     //class current textbox
     OutputTextBox cur_classtextbox(28, sf::Color::Black, addtoclass);
     cur_classtextbox.setfont(Palatino);
-    cur_classtextbox.setTextPosition(sf::Vector2f(1120.f, 216.f));
+    cur_classtextbox.setTextPosition(sf::Vector2f(1090.f, 216.f));
 
     //add student with information 
     TextBox addStudentID(24, sf::Color::Black, false);
@@ -393,6 +408,10 @@ void staffaddfirstyearstudent(sf::RenderWindow& window, Staff& userstaff, std::s
                     if (x_coor > 40 && x_coor < 77 && y_coor>887 && y_coor < 932) {
                         staffviewprofile(window, userstaff);
                     }
+                    if (x_coor > 1240 && x_coor < 1353 && y_coor>218 && y_coor < 251) {
+                        staffviewstudentinclass(window, userstaff,schoolyear,addtoclass);
+                    }
+                     
                 }
             }
             if (staffhomebuttonlist.isClickedKOrder(event, 1))
@@ -565,34 +584,25 @@ void staffaddfirstyearstudent(sf::RenderWindow& window, Staff& userstaff, std::s
 
 std::string filenametoimport() {
     sf::RenderWindow window(sf::VideoMode(800, 300), "Enter Filename", sf::Style::Close);
+    sf::Texture enterFilenameTexture;
+    enterFilenameTexture.loadFromFile("Design UI/Enter filename.png");
+    enterFilenameTexture.setSmooth(true);
+    sf::Sprite s_enterFilenameTexture;
+    s_enterFilenameTexture.setTexture(enterFilenameTexture);
     sf::Font Palatino;
     Palatino.loadFromFile("Font/Palatino.ttf");
 
-    sf::RectangleShape framebut;
-    framebut.setFillColor(sf::Color(239, 233, 222));
-    framebut.setSize(sf::Vector2f(500, 50));
-    framebut.setOutlineColor(sf::Color(255, 215, 0));
-    framebut.setOutlineThickness(1.0f);
-    framebut.setPosition(sf::Vector2f(200, 150));
-
-    OutputTextBox tilte(32, sf::Color::Black, "Enter filename to import!");
-    tilte.setfont(Palatino);
-    tilte.setStyleBold();
-    tilte.setTextPosition(sf::Vector2f(200, 30));
-
-    OutputTextBox filenametxt(26, sf::Color::Black, "Filename: ");
-    filenametxt.setfont(Palatino);
-    filenametxt.setStyleBold();
-    filenametxt.setTextPosition(sf::Vector2f(60, 100));
-
     TextBox enterfile(24, sf::Color::Black, false);
     enterfile.setfont(Palatino);
-    enterfile.setTextPosition(sf::Vector2f(210, 170));
+    enterfile.setTextPosition(sf::Vector2f(120, 220));
 
-    Button enterbut(sf::Color(211, 212, 198), sf::Vector2f(120, 50), false, sf::Color::Black, "import", 28, Palatino);
-    enterbut.setposition(sf::Vector2f(340, 230));
+    Button enterbut(sf::Color::Transparent, sf::Vector2f(306, 46), false, sf::Color::Transparent, "", 28, Palatino);
+    enterbut.setposition(sf::Vector2f(458, 54));
 
-    std::string filename;
+    Button cancelbut(sf::Color::Transparent, sf::Vector2f(306, 46), false, sf::Color::Transparent, "", 28, Palatino);
+    cancelbut.setposition(sf::Vector2f(458, 120));
+
+    std::string filename = "";
 
     while (window.isOpen())
     {
@@ -602,7 +612,7 @@ std::string filenametoimport() {
             if (event.type == sf::Event::Closed)
                 window.close();
 
-            if (enterfile.isClick(event, 200, 150, 700, 200)) {
+            if (enterfile.isClick(event, 103, 208, 764, 259)) {
                 enterfile.setselected(true);
             }
             if (event.type == sf::Event::TextEntered) {
@@ -613,17 +623,16 @@ std::string filenametoimport() {
                         enterfile.typedText(event);
                 }
             }
-            if (enterbut.isonMousecursor(event)) enterbut.changecolor(sf::Color(192, 200, 184));
-            else enterbut.changecolor(sf::Color(211, 212, 198));
             if (enterbut.isClick(event)) {
                 filename = enterbut.getisClick();
                 window.close();
             }
+            if (cancelbut.isClick(event)) {
+                window.close();
+            }
         }
-        window.clear(sf::Color(251, 244, 234));
-        window.draw(framebut);
-        tilte.drawTextbox(window);
-        filenametxt.drawTextbox(window);
+        window.clear();
+        window.draw(s_enterFilenameTexture);
         enterfile.drawTextbox(window);
         enterbut.drawbutton(window);
         window.display();

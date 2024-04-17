@@ -14,7 +14,7 @@ public:
     std::string socialID;
 
     // Default constructor
-    Student() : studentID(""), name(Name()), studentGender(false), birthDay(Date()), socialID("") {}
+    Student() : studentID(""), name(Name()), studentGender(0), birthDay(Date()), socialID("") {}
     //Constructor with studentID and password
     Student(const std::string& studentID, const std::string& password) : studentID(studentID), name(Name()), studentGender(false), birthDay(Date()), socialID("") {}
     // Constructor with parameters
