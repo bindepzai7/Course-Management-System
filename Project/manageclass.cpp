@@ -66,7 +66,7 @@ void staffaddclasses(sf::RenderWindow& window, Staff& userstaff, std::string sch
 
     //for scroll wheel
     const int maxbuttondisplay = 8;
-    int numberofbutton = classestext.sizeoflist();
+    int numberofbutton = classestext.sizeoflist();  
     float Posylimabove = 310.0f;
     float Posylimunder = 800.0f;
     float jumpdistance = 500.0f;
@@ -163,11 +163,14 @@ void staffaddclasses(sf::RenderWindow& window, Staff& userstaff, std::string sch
 
             //wheel scrool
             if (event.type == event.MouseWheelScrolled and numberofbutton > maxbuttondisplay) {
-                newposy = newposy + event.mouseWheelScroll.delta * 5.0f;
-                if (classesbutton.getpositionofKbut(numberofbutton).y <= Posylimunder - 10) {
-                    newposy = 85;
+                newposy = newposy + event.mouseWheelScroll.delta * 10.0f;
+                if (classesbutton.getpositionofKbut(numberofbutton).y <= Posylimunder-10) {
+                   
+                    newposy = 275-(numberofbutton-maxbuttondisplay-1)*65;
+                    
                 }
                 else if (classesbutton.getpositionofKbut(maxbuttondisplay).y >= Posylimunder - 10) {
+                   
                     newposy = 325;
                 }
                 classesbutton.setpostionlistbuttonwithlimit(475, newposy, 0, 65, Posylimabove, Posylimunder, jumpdistance);
@@ -326,11 +329,11 @@ void staffmanageclass(sf::RenderWindow& window, Staff& userstaff, std::string sc
             //wheel scrool
             if (event.type == event.MouseWheelScrolled and numberofbutton > maxbuttondisplay) {
 
-                newposy = newposy + event.mouseWheelScroll.delta * 5.0f;
-                newposyofclasschosen = newposyofclasschosen + event.mouseWheelScroll.delta * 5.0f;
+                newposy = newposy + event.mouseWheelScroll.delta * 10.0f;
+                newposyofclasschosen = newposyofclasschosen + event.mouseWheelScroll.delta * 10.0f;
 
                 if (classesbutton.getpositionofKbut(numberofbutton).y <= Posylimunder - 10) {
-                    newposy = 85;
+                    newposy = 275 - (numberofbutton - maxbuttondisplay - 1) * 65;
                     newposyofclasschosen= classesbutton.getpositionofKbut(Korderbut).y + 10.f;
                 }
                 else if (classesbutton.getpositionofKbut(maxbuttondisplay).y >= Posylimunder - 10) {
