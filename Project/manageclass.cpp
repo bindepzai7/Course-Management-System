@@ -263,7 +263,14 @@ void staffmanageclass(sf::RenderWindow& window, Staff& userstaff, std::string sc
     float newposy = 320;
     float newposyofclasschosen = Posofclasschosen.y;
     if (Korderbut > limitnumsofbutton)  newposyofclasschosen = newposyofclasschosen - 500.f;
+    
 
+    //for scroll wheel
+    const int maxbuttondisplay = 8;
+    int numberofbutton = classestext.sizeoflist();
+    float Posylimabove = 310.0f;
+    float Posylimunder = 800.0f;
+    float jumpdistance = 500.0f;
     while (window.isOpen())
     {
         sf::Event event;
@@ -315,13 +322,24 @@ void staffmanageclass(sf::RenderWindow& window, Staff& userstaff, std::string sc
             }
             
 
+            
             //wheel scrool
-            if (event.type == event.MouseWheelScrolled) {
-                newposy = newposy + event.mouseWheelScroll.delta * 10.0f;
-                newposyofclasschosen = newposyofclasschosen + event.mouseWheelScroll.delta * 10.0f;
-                classesbutton.setpostionlistbuttonwithlimit(475, newposy, 0, 65, 310, 830, 500);
-                classchosenbutton.setpositiontwithbuttonlimit(Posofclasschosen.x, newposyofclasschosen, 310, 830, 500);
+            if (event.type == event.MouseWheelScrolled and numberofbutton > maxbuttondisplay) {
 
+                newposy = newposy + event.mouseWheelScroll.delta * 5.0f;
+                newposyofclasschosen = newposyofclasschosen + event.mouseWheelScroll.delta * 5.0f;
+
+                if (classesbutton.getpositionofKbut(numberofbutton).y <= Posylimunder - 10) {
+                    newposy = 85;
+                    newposyofclasschosen= classesbutton.getpositionofKbut(Korderbut).y + 10.f;
+                }
+                else if (classesbutton.getpositionofKbut(maxbuttondisplay).y >= Posylimunder - 10) {
+                    newposy = 325;
+                    newposyofclasschosen = classesbutton.getpositionofKbut(Korderbut).y - 10.f;
+                }
+
+                classesbutton.setpostionlistbuttonwithlimit(475, newposy, 0, 65, Posylimabove, Posylimunder, jumpdistance);
+                classchosenbutton.setpositiontwithbuttonlimit(Posofclasschosen.x, newposyofclasschosen, Posylimabove, Posylimunder, jumpdistance);
             }
 
             //click logout button
