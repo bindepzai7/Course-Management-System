@@ -29,7 +29,7 @@ void Class::loadStudentfromCSV(std::string filename) {
 				getline(fin, dob, ',');
 				getline(fin, gender, ',');
 				getline(fin, socialID);
-				
+
 
 				std::istringstream ss(dob);
 				int d, m, y;
@@ -41,20 +41,22 @@ void Class::loadStudentfromCSV(std::string filename) {
 			}
 		}
 	}
+	else std::cout << "error";
 	fin.close();
 }
-void Class::saveStudent(std::string schoolyear) {
+void Class::saveStudent(std::string schoolyear,std::string classcode) {
 	std::ofstream fout;
-	fout.open("Data/" + schoolyear + "/" + classCode+".csv");
+	fout.open("Data/" + schoolyear + "/" + classcode + ".csv");
 	if (!fout.is_open()) {
 		Node<Student>* cur = studentList.head;
 		int i = 0;
 		fout << "No,studentID,lastName,firstName,dayOfBirth,gender,socialID\n";
 		while (cur) {
 			fout << ++i << "," << cur->data.studentID << "," << cur->data.name.lastName << "," << cur->data.name.firstName
-				<< ","<<cur->data.birthDay.day<<"/"<< cur->data.birthDay.month << "/"<<cur->data.birthDay.year << "," << cur->data.studentGender << "," << cur->data.socialID << '\n';
+				<< "," << cur->data.birthDay.day << "/" << cur->data.birthDay.month << "/" << cur->data.birthDay.year << "," << cur->data.studentGender << "," << cur->data.socialID << '\n';
 			cur = cur->next;
 		}
 	}
+	else std::cout << "error";
 	fout.close();
 }

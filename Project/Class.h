@@ -15,7 +15,10 @@ public:
 	//Class()//default constructor
 	//	:className(""),classCode(""),teacherName(Name()),schedule(""){}
 	Class(): classCode(""){}
-	Class(const std::string &cC): classCode(cC){}
+	Class(const std::string &cC): classCode(cC){
+		std::cout << classCode;
+		std::cout << cC;
+	}
 	//Class(const std::string& cN, const std::string& cC, const Name& n, std::string &schedule)//with parameter
 	//	:className(cN), classCode(cC), teacherName(n), schedule(schedule) {}
 	~Class() {};
@@ -41,7 +44,7 @@ public:
 	}
 	void loadStudentfromCSV(std::string filename);
 
-	void saveStudent(std::string schoolyear);
+	void saveStudent(std::string schoolyear,std::string classcode);
 
 	std::string getclasscode() {
 		return classCode;
