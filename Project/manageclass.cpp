@@ -776,6 +776,47 @@ void staffviewstudentinclass(sf::RenderWindow& window, Staff& userstaff, std::st
     Button viewmode(sf::Color(192, 200, 184), sf::Vector2f(70, 40), false, sf::Color::Black, "view", 20, Palatino);
     viewmode.setposition(sf::Vector2f(110, 538));
 
+    //list of student
+
+    Class curclass(classchosen);
+    curclass.loadStudentfromCSV("Data/" + schoolyear + "/" + classchosen + ".csv");
+    int n = curclass.getnumberofstudentinclass();
+    Node<Student>* cur = curclass.getstudentlist();
+
+    TextBox** Studenttextbox = new TextBox * [n];
+
+    float Posx[7] = { 355,410,575,860,965,1200,1420 };
+    float Posy = 385;
+    float distance = 60;
+    float Posylimabove = 365;
+    float Posylimunder = 810;
+    float jumpsize = 500;
+    int numberofbutton = 8;
+    for (int i = 0; i < n; i++)
+    {
+        Studenttextbox[i] = new TextBox[6];
+        for (int j = 0; j < 6; j++)
+        {
+            Studenttextbox[i][j].setsize(24);
+            Studenttextbox[i][j].setColor(sf::Color::Black);
+            Studenttextbox[i][j].setselected(false);
+            Studenttextbox[i][j].setfont(Palatino);
+            Studenttextbox[i][j].setTextboxpostitionwithlimit(Posx[j], Posy + distance * i, Posylimabove, Posylimunder, jumpsize);
+        }
+
+        Studenttextbox[i][0].setText(std::to_string(i + 1)); // Assuming you want to set index 0 to an index value
+        Studenttextbox[i][1].setText(cur->data.studentID);
+        Studenttextbox[i][2].setText(cur->data.name.firstName + cur->data.name.lastName);
+
+        if (cur->data.studentGender == 0)
+            Studenttextbox[i][3].setText("male");
+        else
+            Studenttextbox[i][3].setText("female");
+        Studenttextbox[i][4].setText(std::to_string(cur->data.birthDay.day) + "/" + std::to_string(cur->data.birthDay.month) + "/" + std:: to_string(cur->data.birthDay.year));
+        Studenttextbox[i][5].setText(cur->data.socialID);
+        cur = cur->next;
+    }
+
     while (window.isOpen())
     {
         sf::Event event;
@@ -847,6 +888,52 @@ void staffviewstudentinclass(sf::RenderWindow& window, Staff& userstaff, std::st
                 logoutbut.changecolor(sf::Color::Transparent);
                 logoutbut.changeTextColor(sf::Color::Transparent);
             }
+
+
+
+            if (event.type == event.MouseWheelScrolled and n > 8) {
+                Posy = Posy + event.mouseWheelScroll.delta * 5.0f;
+                if (Studenttextbox[n - 1][0].getPositionofTextbox().y <= Posylimunder - 10) {
+                    std::cout << Studenttextbox[n - 1][0].getPositionofTextbox().y;
+                    std::cout << Posy;
+                    Posy = -1710;
+
+                }
+                else if (Studenttextbox[numberofbutton - 1][0].getPositionofTextbox().y >= Posylimunder) {
+
+                    std::cout << Posy;
+                    Posy = 388;
+
+                }
+                for (int i = 0; i < n; i++)
+                {
+                    for (int j = 0; j < 6; j++)
+                    {
+                        Studenttextbox[i][j].setTextboxpostitionwithlimit(Posx[j], Posy + distance * i, Posylimabove, Posylimunder, jumpsize);
+
+                    }
+                }
+            }
+            for (int i = 0; i < n; i++)
+            {
+                for (int j = 0; j < 6; j++)
+                {
+                    if (Studenttextbox[i][j].isClickwithoutPosagrument(event)) {
+                        Studenttextbox[i][j].setselected(true);
+                        setnotseleted(Studenttextbox, n, i, j);
+                    }
+                    if (event.type == sf::Event::TextEntered) {
+                        if (Studenttextbox[i][j].isselectedbox()) {
+                            if (sf::Keyboard::isKeyPressed(sf::Keyboard::Return))
+                                Studenttextbox[i][j].setselected(false);
+                            else
+                                Studenttextbox[i][j].typedText(event);
+                        }
+                    }
+
+                }
+
+            }
         }
 
         window.clear();
@@ -858,6 +945,9 @@ void staffviewstudentinclass(sf::RenderWindow& window, Staff& userstaff, std::st
         schoolyeartextbox.drawTextbox(window);
         semestertextbox.drawTextbox(window);
         cur_classtextbox.drawTextbox(window);
+        for (int i = 0; i < n; i++)
+            for (int j = 0; j < 6; j++)
+                Studenttextbox[i][j].drawTextbox(window);
         window.display();
 
     }

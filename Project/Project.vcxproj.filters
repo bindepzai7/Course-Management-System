@@ -110,5 +110,8 @@
     <ClCompile Include="manageclass.cpp">
       <Filter>Graphics</Filter>
     </ClCompile>
+    <ClCompile Include="Textbox.cpp">
+      <Filter>Graphics</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

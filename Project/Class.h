@@ -46,5 +46,12 @@ public:
 	std::string getclasscode() {
 		return classCode;
 	}
+
+	Node<Student>* getstudentlist() {
+		return studentList.head;
+	}
+	int getnumberofstudentinclass() {
+		return studentList.sizeoflist();
+	}
 };
 

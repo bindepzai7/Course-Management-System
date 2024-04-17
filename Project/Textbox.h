@@ -62,6 +62,7 @@ private:
 		}
 	}
 public:
+	TextBox(){}
 	TextBox (int size, sf::Color color, bool sel)
 	{
 		textbox.setCharacterSize(size);
@@ -77,6 +78,16 @@ public:
 	{
 		//std::cout << "object being delete"<<std::endl;
 	}
+	void setsize(int size) {
+		textbox.setCharacterSize(size);
+	}
+	void setColor(sf::Color color) {
+		textbox.setFillColor(color);
+	}
+	void setText(std::string text) {
+		this->text = text;
+		textbox.setString(text);
+	}
 	void setfont(sf::Font& font)
 	{
 		textbox.setFont(font);
@@ -84,6 +95,15 @@ public:
 	void setTextPosition(sf::Vector2f point)
 	{
 		textbox.setPosition(point);
+	}
+	void setTextboxpostitionwithlimit(float Posx, float Posy, float Posylimabove, float Posylimunder, float jumpsize) {
+		if (Posy <= Posylimabove) {
+			Posy = Posylimabove - jumpsize;
+		}
+		else if (Posy >= Posylimunder) {
+			Posy = Posylimunder + jumpsize;
+		}
+		textbox.setPosition(sf::Vector2f(Posx, Posy));
 	}
 	//change selected state
 	void setselected(bool sel)
@@ -178,6 +198,29 @@ public:
 		}
 		return false;
 	}
+	bool isClickwithoutPosagrument(sf::Event event) {
+		if (event.type == sf::Event::MouseButtonPressed) {
+			if (event.mouseButton.button == sf::Mouse::Left)
+			{
+				//coordinate of window 
+				int x_coor = event.mouseButton.x;
+				int y_coor = event.mouseButton.y;
+				int Posx = textbox.getPosition().x;
+				int Posy = textbox.getPosition().y;
+				int Posxmax = textbox.getPosition().x + textbox.getLocalBounds().width + 20.0f;
+				int Posymax = textbox.getPosition().y + textbox.getLocalBounds().height + 20.0f;
+				if (x_coor > Posx && x_coor<Posxmax &&
+					y_coor>Posy && y_coor < Posymax) {
+					return true;
+				}
+			}
+		}
+		return false;
+	}
+
+	sf::Vector2f getPositionofTextbox() {
+		return textbox.getPosition();
+	}
 };
 
 class OutputTextBox
@@ -222,4 +265,6 @@ public:
 		window.draw(o_textbox);
 	}
 };
+
+void setnotseleted(TextBox**& Studenttextbox, int n, int x, int y);
 #endif
