@@ -1,28 +1,2 @@
-﻿  manageclass.cpp
-D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\button.h(83,18): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
-  (compiling source file 'manageclass.cpp')
-  
-D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\button.h(84,18): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
-  (compiling source file 'manageclass.cpp')
-  
-  managecourse.cpp
-D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\button.h(83,18): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
-  (compiling source file 'managecourse.cpp')
-  
-D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\button.h(84,18): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
-  (compiling source file 'managecourse.cpp')
-  
-  studentview.cpp
-D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\button.h(83,18): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
-  (compiling source file 'studentview.cpp')
-  
-D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\button.h(84,18): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
-  (compiling source file 'studentview.cpp')
-  
-D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\studentview.cpp(153,41): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
-D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\studentview.cpp(153,41): warning C4244:         with
-D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\studentview.cpp(153,41): warning C4244:         [
-D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\studentview.cpp(153,41): warning C4244:             T=float
-D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\studentview.cpp(153,41): warning C4244:         ]
-  Generating Code...
+﻿  Class.cpp
   Project.vcxproj -> D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\x64\Debug\Project.exe

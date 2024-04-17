@@ -46,8 +46,9 @@ void Class::loadStudentfromCSV(std::string filename) {
 }
 void Class::saveStudent(std::string schoolyear,std::string classcode) {
 	std::ofstream fout;
+	
 	fout.open("Data/" + schoolyear + "/" + classcode + ".csv");
-	if (!fout.is_open()) {
+	if (fout.is_open()) {
 		Node<Student>* cur = studentList.head;
 		int i = 0;
 		fout << "No,studentID,lastName,firstName,dayOfBirth,gender,socialID\n";

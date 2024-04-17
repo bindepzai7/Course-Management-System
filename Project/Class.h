@@ -15,10 +15,7 @@ public:
 	//Class()//default constructor
 	//	:className(""),classCode(""),teacherName(Name()),schedule(""){}
 	Class(): classCode(""){}
-	Class(const std::string &cC): classCode(cC){
-		std::cout << classCode;
-		std::cout << cC;
-	}
+	Class(const std::string &cC): classCode(cC){}
 	//Class(const std::string& cN, const std::string& cC, const Name& n, std::string &schedule)//with parameter
 	//	:className(cN), classCode(cC), teacherName(n), schedule(schedule) {}
 	~Class() {};
