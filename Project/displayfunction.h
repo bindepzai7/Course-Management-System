@@ -25,7 +25,7 @@ struct account
 
 void chooseRole(sf::RenderWindow& window);
 void loginWindow(sf::RenderWindow& window, bool role);
-
+void anoucement(std::string anoucmenttext);
 
 
 

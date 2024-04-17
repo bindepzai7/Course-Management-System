@@ -466,6 +466,7 @@ void staffaddfirstyearstudent(sf::RenderWindow& window, Staff& userstaff, std::s
 
     OutputTextBox gender(52, sf::Color(119, 106, 92), "*");
     gender.setfont(Palatino);
+    gender.setTextPosition(sf::Vector2f(1254, 365));
 
     TextBox adddayofbirth(24, sf::Color::Black, false);
     adddayofbirth.setfont(Palatino);
@@ -639,22 +640,27 @@ void staffaddfirstyearstudent(sf::RenderWindow& window, Staff& userstaff, std::s
                         studentID = addStudentID.getText();
                         name.firstName = addFirstname.getText();
                         name.lastName = addLastname.getText();
-                        std::string dayofbirth = adddayofbirth.getText();
-                        int i = 0;
-                        while (dayofbirth[i] != 47 && dayofbirth[i] != 45 && i < dayofbirth.size())
-                            i++;
-                        birthDay.day = std::stoi(dayofbirth.substr(0, i));
-                        std::cout << birthDay.day;
-                        int j = i + 1;
-                        while (dayofbirth[j] != 47 && dayofbirth[j] != 45 && j < dayofbirth.size())
-                            j++;
-                        birthDay.month = std::stoi(dayofbirth.substr(i + 1, j - 1));
-                        std::cout << birthDay.month;
-                        birthDay.year = std::stoi(dayofbirth.substr(j + 1, dayofbirth.size() - 1));
-                        std::cout << birthDay.year;
                         socialID = addSocialID.getText();
-                        curclass.addStudent(Student(studentID, name, studentGender, birthDay, socialID));
-                        curclass.saveStudent(schoolyear,addtoclass);
+                        std::string dayofbirth = adddayofbirth.getText();
+                        if (studentID == "" || name.firstName == "" && name.lastName == "" || socialID == "" || dayofbirth.size() != 10) {
+                            anoucement("Leave data blank or wrong date format!\nPlease enter all student data\nor enter correct date format dd/mm/yyy!");
+                        }
+                        else {
+                            int i = 0;
+                            while (dayofbirth[i] != 47 && dayofbirth[i] != 45 && i < dayofbirth.size())
+                                i++;
+                            birthDay.day = std::stoi(dayofbirth.substr(0, i));
+                            std::cout << birthDay.day;
+                            int j = i + 1;
+                            while (dayofbirth[j] != 47 && dayofbirth[j] != 45 && j < dayofbirth.size())
+                                j++;
+                            birthDay.month = std::stoi(dayofbirth.substr(i + 1, j - 1));
+                            std::cout << birthDay.month;
+                            birthDay.year = std::stoi(dayofbirth.substr(j + 1, dayofbirth.size() - 1));
+                            std::cout << birthDay.year;
+                            curclass.addStudent(Student(studentID, name, studentGender, birthDay, socialID));
+                            curclass.saveStudent(schoolyear, addtoclass);
+                        }
                     }
                 }
             }
@@ -668,8 +674,10 @@ void staffaddfirstyearstudent(sf::RenderWindow& window, Staff& userstaff, std::s
             if (importbut.isClick(event)) {
                 importbut.setisClicked(true);
                 std::string filename = filenametoimport();
-                curclass.loadStudentfromCSV(filename);
-                curclass.saveStudent(schoolyear,addtoclass);
+                if (filename != "") {
+                    curclass.loadStudentfromCSV(filename);
+                    curclass.saveStudent(schoolyear, addtoclass);
+                }
             }
             else importbut.setisClicked(false);
         }
