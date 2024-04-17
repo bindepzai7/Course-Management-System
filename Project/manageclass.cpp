@@ -827,7 +827,7 @@ void staffviewstudentinclass(sf::RenderWindow& window, Staff& userstaff, std::st
 
         Studenttextbox[i][0].setText(std::to_string(i + 1)); // Assuming you want to set index 0 to an index value
         Studenttextbox[i][1].setText(cur->data.studentID);
-        Studenttextbox[i][2].setText(cur->data.name.firstName + cur->data.name.lastName);
+        Studenttextbox[i][2].setText(cur->data.name.lastName + " "+ cur->data.name.firstName);
 
         if (cur->data.studentGender == 0)
             Studenttextbox[i][3].setText("male");
@@ -913,12 +913,11 @@ void staffviewstudentinclass(sf::RenderWindow& window, Staff& userstaff, std::st
 
 
             if (event.type == event.MouseWheelScrolled and n > 8) {
-                Posy = Posy + event.mouseWheelScroll.delta * 5.0f;
+                Posy = Posy + event.mouseWheelScroll.delta * 10.0f;
                 if (Studenttextbox[n - 1][0].getPositionofTextbox().y <= Posylimunder - 10) {
                     std::cout << Studenttextbox[n - 1][0].getPositionofTextbox().y;
                     std::cout << Posy;
-                    Posy = -1710;
-
+                    Posy = 325 - (n - numberofbutton - 1) * distance;
                 }
                 else if (Studenttextbox[numberofbutton - 1][0].getPositionofTextbox().y >= Posylimunder) {
 
