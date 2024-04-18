@@ -307,7 +307,7 @@ void staffviewstudentofcourse(sf::RenderWindow& window, Staff& userstaff, std::s
                         staffviewprofile(window, userstaff);
                     }
                     if (x_coor > 390 && x_coor < 640 && y_coor>867 && y_coor < 917) {
-                        staffaddstudentstocourse(window, userstaff, schoolyear, semester, coursechosen);
+                        //////////////////////UNDERCONSTRUCTION CODE HERE
                     }
                 }
             }
