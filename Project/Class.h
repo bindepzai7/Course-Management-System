@@ -47,8 +47,8 @@ public:
 		return classCode;
 	}
 
-	Node<Student>* getstudentlist() {
-		return studentList.head;
+	LinkedList<Student> getstudentlist() {
+		return studentList;
 	}
 	int getnumberofstudentinclass() {
 		return studentList.sizeoflist();

@@ -810,7 +810,8 @@ void staffviewstudentinclass(sf::RenderWindow& window, Staff& userstaff, std::st
     Class curclass(classchosen);
     curclass.loadStudentfromCSV("Data/" + schoolyear + "/" + classchosen + ".csv");
     int n = curclass.getnumberofstudentinclass();
-    Node<Student>* cur = curclass.getstudentlist();
+    LinkedList<Student> studentlist = curclass.getstudentlist();
+    Node<Student>* cur = studentlist.head;
 
     TextBox** Studenttextbox = new TextBox * [n];
 
@@ -845,7 +846,11 @@ void staffviewstudentinclass(sf::RenderWindow& window, Staff& userstaff, std::st
         Studenttextbox[i][5].setText(cur->data.socialID);
         cur = cur->next;
     }
-
+    //button of list student
+    dropdownlist StudentsButton(sf::Color::Transparent, sf::Vector2f(1090, 40), false, n);
+    StudentsButton.setpostionlistbuttonwithlimit(Posx[0], Posy - 5, 0, distance, Posylimabove, Posylimunder, jumpsize);
+    int kbuttonchose = -1;
+    Button studentchosen(sf::Color::Transparent, sf::Vector2f(1096,40), false);
     while (window.isOpen())
     {
         sf::Event event;
@@ -941,24 +946,33 @@ void staffviewstudentinclass(sf::RenderWindow& window, Staff& userstaff, std::st
 
                     }
                 }
+                StudentsButton.setpostionlistbuttonwithlimit(Posx[0], Posy - 5, 0, distance, Posylimabove, Posylimunder, jumpsize);
             }
             for (int i = 0; i < n; i++)
             {
-                for (int j = 0; j < 6; j++)
-                {
-                    if (Studenttextbox[i][j].isClickwithoutPosagrument(event)) {
-                        Studenttextbox[i][j].setselected(true);
-                        setnotseleted(Studenttextbox, n, i, j);
-                    }
-                    if (event.type == sf::Event::TextEntered) {
-                        if (Studenttextbox[i][j].isselectedbox()) {
-                            if (sf::Keyboard::isKeyPressed(sf::Keyboard::Return))
-                                Studenttextbox[i][j].setselected(false);
-                            else
-                                Studenttextbox[i][j].typedText(event);
+                if (userstaff.getmode()) {
+                    for (int j = 0; j < 6; j++)
+                    {
+                        if (Studenttextbox[i][j].isClickwithoutPosagrument(event)) {
+                            Studenttextbox[i][j].setselected(true);
+                            setnotseleted(Studenttextbox, n, i, j);
+                        }
+                        if (event.type == sf::Event::TextEntered) {
+                            if (Studenttextbox[i][j].isselectedbox()) {
+                                if (sf::Keyboard::isKeyPressed(sf::Keyboard::Return))
+                                    Studenttextbox[i][j].setselected(false);
+                                else
+                                    Studenttextbox[i][j].typedText(event);
+                            }
                         }
                     }
-
+                    studentchosen.changecolor(sf::Color::Transparent);
+                }
+                else {
+                    if (StudentsButton.isClickedKOrder(event, i + 1)) {
+                        studentchosen.setButposition(StudentsButton.getpositionofKbut(i + 1));
+                        studentchosen.changecolor(sf::Color(186, 158, 146, 100));
+                    }
                 }
 
             }
@@ -976,6 +990,8 @@ void staffviewstudentinclass(sf::RenderWindow& window, Staff& userstaff, std::st
         for (int i = 0; i < n; i++)
             for (int j = 0; j < 6; j++)
                 Studenttextbox[i][j].drawTextbox(window);
+        StudentsButton.drawButwithoutchangeTextboxcolor(window, event, sf::Color(168, 158, 146, 100));
+        studentchosen.drawbutton(window);
         window.display();
 
     }
