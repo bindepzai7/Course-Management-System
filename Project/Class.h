@@ -50,6 +50,9 @@ public:
 	LinkedList<Student> getstudentlist() {
 		return studentList;
 	}
+	Node<Student>* getstudentnode() {
+		return studentList.head;
+	}
 	void savechangestudentsdata(LinkedList<Student>& s) {
 		studentList = s;
 	}

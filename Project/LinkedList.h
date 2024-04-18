@@ -148,8 +148,9 @@ public:
             Node<T>* temp = head;
             head = head->next;
             delete temp;
+            return;
         }
-        else {
+       
             //Node<T>* prev = nullptr;
             Node<T>* curr = head;
             /*while (prev && curr->next && !(curr->next->data == data)) {
@@ -170,8 +171,8 @@ public:
                     delete tmp;
                     return;
                 }
+                curr = curr->next;
             }
-        }
     }
     //function use for dropdownlist (if its needed)
     void push_tail(const T &data) {

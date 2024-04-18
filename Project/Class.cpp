@@ -36,11 +36,12 @@ void Class::loadStudentfromCSV(std::string filename) {
 				bool gen = 0;
 				if (gender == "1") gen = 1;
 				ss >> d >> delimiter >> m >> delimiter >> y;
-				studentList.addNodeInAscending(Student(studentID, Name(firstname, lastname), gen, Date(d, m, y), socialID));
+				//studentList.addNodeInAscending(Student(studentID, Name(firstname, lastname), gen, Date(d, m, y), socialID));
+				addStudent(Student(studentID, Name(firstname, lastname), gen, Date(d, m, y), socialID));
 			}
 		}
 	}
-	else std::cout << "error";
+	else std::cout << "error to load "<< filename;
 	fin.close();
 }
 void Class::saveStudent(std::string schoolyear,std::string classcode) {
