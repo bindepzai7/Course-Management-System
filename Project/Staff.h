@@ -21,9 +21,9 @@ private:
 	bool mode;//1 is 
     
 public:
-	Staff() : StaffID(""), socialID(""),staffName(""),gender(0),dob(Date()) {}
+	Staff() : StaffID(""), mode(false), socialID(""),staffName(""),gender(0),dob(Date()) {}
 	Staff(const std::string& StaffID, const std::string& socialID, const Name& staffName,const bool& gender,const Date &dob)
-		: StaffID(StaffID), socialID(socialID), staffName(staffName),gender(gender), dob(dob) {}
+		: StaffID(StaffID), socialID(socialID), staffName(staffName),gender(gender), dob(dob), mode(false) {}
 	~Staff() {};
 	
 	bool operator ==(const Staff& s2) const {
