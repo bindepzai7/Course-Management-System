@@ -822,9 +822,9 @@ void staffviewstudentinclass(sf::RenderWindow& window, Staff& userstaff, std::st
     curclass.loadStudentfromCSV("Data/" + schoolyear + "/" + classchosen + ".csv");
     int n = curclass.getnumberofstudentinclass();
     //LinkedList<Student> studentlist = curclass.getstudentlist();
-    Node<Student>* head = curclass.getstudentnode();
-    Node<Student>* cur = head;
-    //Node<Student>* tmp = curclass.getstudentnode();
+    //Node<Student>* head = curclass.getstudentnode();
+    Node<Student>* cur =curclass.studentList.head;
+    
 
     TextBox** Studenttextbox = new TextBox * [n];
 
@@ -972,7 +972,7 @@ void staffviewstudentinclass(sf::RenderWindow& window, Staff& userstaff, std::st
                 studentchosen.setButposition(StudentsButton.getpositionofKbut(kbuttonchose + 1));
             }
             //init node tmp for change data;
-            
+            Node<Student>* tmp = curclass.studentList.head;
             for (int i = 0; i < n; i++)
             {
                 if (StudentsButton.isClickedKOrder(event, i + 1)) {
@@ -998,7 +998,7 @@ void staffviewstudentinclass(sf::RenderWindow& window, Staff& userstaff, std::st
 
                     }
                     //savebuttonclick
-                   /* if (tmp) {
+                    if (tmp) {
                         tmp->data.studentID = Studenttextbox[i][1].getText();
                         std::string fullname = Studenttextbox[i][2].getText();
                         std::string dob = Studenttextbox[i][4].getText();
@@ -1007,17 +1007,20 @@ void staffviewstudentinclass(sf::RenderWindow& window, Staff& userstaff, std::st
                         int found = fullname.find("-");
                         int foundday = dob.find("/");
                         int foundmonth = -1;
-                        if (foundday > 0) int foundmonth = dob.find("/", foundday + 1);
-                        if (found != -1 and foundday != -1 and foundmonth != -1) {
+                        if (foundday > 0)  foundmonth = dob.find("/", foundday + 1);
+                        if (found >0 and foundday >0 and foundmonth > 0) {
                             tmp->data.name.lastName = fullname.substr(0, found);
                             tmp->data.name.firstName = fullname.substr(found + 1, fullname.size());
                             tmp->data.birthDay.day = std::stoi(dob.substr(0, foundday));
+                            if(foundday<foundmonth)
                             tmp->data.birthDay.month = std::stoi(dob.substr(foundday + 1, foundmonth));
-                            tmp->data.birthDay.year = std::stoi(dob.substr(foundmonth + 1, dob.size()));
+                            if (foundmonth+1 < dob.size())
+                            tmp->data.birthDay.year = std::stoi(dob.substr(foundmonth+1, dob.size()));
                             tmp->data.socialID = Studenttextbox[i][5].getText();
-                            tmp = tmp->next;
+                            
                         }
-                    }*/
+                        tmp = tmp->next;
+                    }
                     
                    
                     
@@ -1059,7 +1062,7 @@ void staffviewstudentinclass(sf::RenderWindow& window, Staff& userstaff, std::st
 
             }
             if (savebut.isClick(event)) {
-                //curclass.savechangestudentsdata(studentlist);
+                //curclass.savechangestudentsdata();
                 curclass.saveStudent(schoolyear, classchosen);
                 staffviewstudentinclass(window, userstaff, schoolyear, classchosen);
             }

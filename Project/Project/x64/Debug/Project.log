@@ -65,9 +65,12 @@ D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\manageclass.cpp(809,39): 
 D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\manageclass.cpp(809,39): warning C4305:         [
 D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\manageclass.cpp(809,39): warning C4305:             T=float
 D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\manageclass.cpp(809,39): warning C4305:         ]
-D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\manageclass.cpp(1030,35): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
-D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\manageclass.cpp(1041,38): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
-D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\manageclass.cpp(1043,40): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
-D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\manageclass.cpp(1229,35): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\manageclass.cpp(1408,35): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\manageclass.cpp(1007,35): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\manageclass.cpp(1008,38): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\manageclass.cpp(1010,65): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\manageclass.cpp(1033,35): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\manageclass.cpp(1044,38): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\manageclass.cpp(1046,40): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\manageclass.cpp(1232,35): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\manageclass.cpp(1411,35): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
   Project.vcxproj -> D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\x64\Debug\Project.exe

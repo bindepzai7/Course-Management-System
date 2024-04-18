@@ -9,9 +9,10 @@ class Class {
 	//Name teacherName;
 	//std::string schedule;
 
-	LinkedList<Student> studentList;
+	
 
 public:
+	LinkedList<Student> studentList;
 	//Class()//default constructor
 	//	:className(""),classCode(""),teacherName(Name()),schedule(""){}
 	Class(): classCode(""){}
@@ -47,15 +48,15 @@ public:
 		return classCode;
 	}
 
-	LinkedList<Student> getstudentlist() {
+	/*LinkedList<Student> getstudentlist() {
 		return studentList;
-	}
+	}*/
 	Node<Student>* getstudentnode() {
 		return studentList.head;
 	}
-	void savechangestudentsdata(LinkedList<Student>& s) {
+	/*void savechangestudentsdata(LinkedList<Student>& s) {
 		studentList = s;
-	}
+	}*/
 	int getnumberofstudentinclass() {
 		return studentList.sizeoflist();
 	}

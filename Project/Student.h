@@ -21,7 +21,7 @@ public:
     // Constructor with parameters
     Student(const std::string& studentID, const Name& name, bool studentGender, const Date& birthday, const std::string& socialID)
         : studentID(studentID), name(name), studentGender(studentGender), birthDay(birthday), socialID(socialID) {}
-
+    ~Student(){}
 
     bool operator==(const Student& s2) const {
         return studentID == s2.studentID/*&&password==s2.password*/;
