@@ -136,7 +136,7 @@ void studentprofileview(sf::RenderWindow& window, Student& studentuser) {
     fullname.setTextPosition(sf::Vector2f(445, 590));
 
     //Student class textbox
-    OutputTextBox className(22, sf::Color::Black, "Bo Class vao day");
+    OutputTextBox className(22, sf::Color::Black, "23TT2");
     className.setfont(Palatino);
     className.setTextPosition(sf::Vector2f(445, 701));
 
@@ -237,6 +237,7 @@ void studentChangePassword(sf::RenderWindow& window, Student& studentuser) {
     s_studentChangePasswordTexture.setTexture(studentChangePasswordTexture);
     sf::Font Palatino;
     Palatino.loadFromFile("Font/Palatino.ttf");
+    OutputTextBox wrongaccount(16, sf::Color::Red, "Username or password incorrect!\nPlease try again!");
 
     //list of button manage
     LinkedList<std::string> studenttexthomebutton;
@@ -261,105 +262,6 @@ void studentChangePassword(sf::RenderWindow& window, Student& studentuser) {
     Button logoutbut(sf::Color(192, 200, 184), sf::Vector2f(90, 30), false, sf::Color::Black, "Log out", 20, Palatino);
     logoutbut.setposition(sf::Vector2f(227, 895));
 
-    while (window.isOpen())
-    {
-        sf::Event event;
-        while (window.pollEvent(event))
-        {
-            if (event.type == sf::Event::Closed) window.close();
-
-            if (event.type == sf::Event::MouseButtonPressed) {
-                if (event.mouseButton.button == sf::Mouse::Left)
-                {
-                    int x_coor = event.mouseButton.x;
-                    int y_coor = event.mouseButton.y;
-                    if (x_coor > 45 && x_coor < 100 && y_coor>47 && y_coor < 100) {
-                        studenthome(window, studentuser);
-                    }
-                    if (x_coor > 40 && x_coor < 77 && y_coor>887 && y_coor < 932) {
-                        studentprofileview(window, studentuser);
-                    }
-                }
-            }
-            if (studenthomebuttonlist.isClickedKOrder(event, 1))
-                studentprofileview(window, studentuser);
-            if (studenthomebuttonlist.isClickedKOrder(event, 2))
-                studentChangePassword(window, studentuser);
-            if (studenthomebuttonlist.isClickedKOrder(event, 3))
-                studentCourse(window, studentuser, getCurrentSchoolyear(), getCurrentSemester());
-            if (studenthomebuttonlist.isClickedKOrder(event, 4))
-                studentScoreboard(window, studentuser, getCurrentSchoolyear(), getCurrentSemester());
-            if (studenthomebuttonlist.isClickedKOrder(event, 5))
-                studentAboutUs(window, studentuser);
-
-            //click logout button
-            if (logoutbut.isClick(event)) chooseRole(window);
-
-            //change color button when on cursor
-            if (logoutbut.isonMousecursor(event)) {
-                logoutbut.changecolor(sf::Color(192, 200, 184));
-                logoutbut.changeTextColor(sf::Color::Black);
-            }
-            else {
-                logoutbut.changecolor(sf::Color::Transparent);
-                logoutbut.changeTextColor(sf::Color::Transparent);
-            }
-        }
-
-        window.clear();
-        window.draw(s_studentChangePasswordTexture);
-        studenthomebuttonlist.drawButwithTextbox(window, event, sf::Color(168, 158, 146), sf::Color(239, 233, 222));
-        logoutbut.drawbutton(window);
-        schoolyeartextbox.drawTextbox(window);
-        semestertextbox.drawTextbox(window);
-        window.display();
-    }
-
- }
-
-void studentCourse(sf::RenderWindow& window, Student& studentuser, std::string schoolyear, std::string semester) {
-    sf::Texture studentCourseTexture;
-    studentCourseTexture.loadFromFile("Design UI/[Student - 4] My Course.jpg");
-    studentCourseTexture.setSmooth(true);
-    sf::Sprite s_studentCourseTexture;
-    s_studentCourseTexture.setTexture(studentCourseTexture);
-    sf::Font Palatino;
-    Palatino.loadFromFile("Font/Palatino.ttf");
-
-    //list of button manage
-    LinkedList<std::string> studenttexthomebutton;
-    studenttexthomebutton.push_tail("my profile");
-    studenttexthomebutton.push_tail("change password");
-    studenttexthomebutton.push_tail("my courses");
-    studenttexthomebutton.push_tail("my scoreboard");
-    studenttexthomebutton.push_tail("about us");
-    dropdownlist studenthomebuttonlist(sf::Color(168, 158, 146), sf::Vector2f(280, 53), false, sf::Color(239, 233, 222), studenttexthomebutton, 30, Palatino);
-    studenthomebuttonlist.setpostionlistbutton(30, 143, 0, 95);
-
-    ///navigation bar current textbox
-    OutputTextBox schoolyeartextbox(22, sf::Color(119, 106, 92), getCurrentSchoolyear());
-    schoolyeartextbox.setfont(Palatino);
-    schoolyeartextbox.setTextPosition(sf::Vector2f(181, 667));
-
-    OutputTextBox semestertextbox(22, sf::Color(119, 106, 92), getCurrentSemester());
-    semestertextbox.setfont(Palatino);
-    semestertextbox.setTextPosition(sf::Vector2f(218, 702));
-
-    //log out button
-    Button logoutbut(sf::Color(192, 200, 184), sf::Vector2f(90, 30), false, sf::Color::Black, "Log out", 20, Palatino);
-    logoutbut.setposition(sf::Vector2f(227, 895));
-
-
-    //school year current textbox
-    OutputTextBox cur_schoolyeartextbox(28, sf::Color::Black, schoolyear);
-    cur_schoolyeartextbox.setfont(Palatino);
-    cur_schoolyeartextbox.setTextPosition(sf::Vector2f(1160, 180));
-
-    //semester current textbox
-    OutputTextBox cur_semestertextbox(28, sf::Color::Black, semester);
-    cur_semestertextbox.setfont(Palatino);
-    cur_semestertextbox.setTextPosition(sf::Vector2f(1215, 250));
-
     //input 3 types of password
     TextBox inputCurrentPassword(24, sf::Color::Black, false);
     inputCurrentPassword.setfont(Palatino);
@@ -372,6 +274,8 @@ void studentCourse(sf::RenderWindow& window, Student& studentuser, std::string s
     TextBox inputConfirmPassword(24, sf::Color::Black, false);
     inputConfirmPassword.setfont(Palatino);
     inputConfirmPassword.setTextPosition(sf::Vector2f(750, 644));
+
+    bool check = 0;
     while (window.isOpen())
     {
         sf::Event event;
@@ -461,23 +365,26 @@ void studentCourse(sf::RenderWindow& window, Student& studentuser, std::string s
                     int y_coor = event.mouseButton.y;
                     if (x_coor > 946 && x_coor < 1167 && y_coor > 730 && y_coor < 771) {
                         std::string studentID = studentuser.studentID;
-                        std::string currentPassword = string_hashing(inputCurrentPassword.getText());
-                        std::string newPassword = string_hashing(inputNewPassword.getText());
-                        std::string confirmPassword = string_hashing(inputConfirmPassword.getText());
+                        std::string currentPassword = inputCurrentPassword.getText();
+                        std::string newPassword = inputNewPassword.getText();
+                        std::string confirmPassword = inputConfirmPassword.getText();
                         if (newPassword != confirmPassword) {
                             std::cout << "Wrong" << std::endl;
+                            check = 1;
                         }
                         else if (newPassword == currentPassword) {
-                            std::cout << "wrong" << std::endl;
+                            std::cout << "wrong1" << std::endl;
                         }
                         else {
                             LinkedList<User> userList = readUserFromCSV("Data/studentuser.csv");
                             if (check_login(userList, studentuser.studentID, currentPassword)) {
                                 changePassword(userList, studentuser.studentID, newPassword);
                                 updateUser2CSVfile("Data/studentuser.csv", userList);
+                                std::cout << "Change password successfully" << std::endl;
                             }
                             else {
-                                std::cout << "wrong" << std::endl;
+                                std::cout << "wrong2" << std::endl;
+                                std::cout << studentuser.studentID << std::endl;
                             }
 
                         }
@@ -487,14 +394,119 @@ void studentCourse(sf::RenderWindow& window, Student& studentuser, std::string s
         }
 
         window.clear();
+        window.draw(s_studentChangePasswordTexture);
+        studenthomebuttonlist.drawButwithTextbox(window, event, sf::Color(168, 158, 146), sf::Color(239, 233, 222));
+        logoutbut.drawbutton(window);
+        inputCurrentPassword.drawTextbox(window);
+        inputNewPassword.drawTextbox(window);
+        inputConfirmPassword.drawTextbox(window);
+        if (check) {
+            wrongaccount.setTextPosition(sf::Vector2f(45, 590));
+            wrongaccount.drawTextbox(window);
+        }
+        schoolyeartextbox.drawTextbox(window);
+        semestertextbox.drawTextbox(window);
+        window.display();
+    }
+
+ }
+
+void studentCourse(sf::RenderWindow& window, Student& studentuser, std::string schoolyear, std::string semester) {
+    sf::Texture studentCourseTexture;
+    studentCourseTexture.loadFromFile("Design UI/[Student - 4] My Course.jpg");
+    studentCourseTexture.setSmooth(true);
+    sf::Sprite s_studentCourseTexture;
+    s_studentCourseTexture.setTexture(studentCourseTexture);
+    sf::Font Palatino;
+    Palatino.loadFromFile("Font/Palatino.ttf");
+
+    //list of button manage
+    LinkedList<std::string> studenttexthomebutton;
+    studenttexthomebutton.push_tail("my profile");
+    studenttexthomebutton.push_tail("change password");
+    studenttexthomebutton.push_tail("my courses");
+    studenttexthomebutton.push_tail("my scoreboard");
+    studenttexthomebutton.push_tail("about us");
+    dropdownlist studenthomebuttonlist(sf::Color(168, 158, 146), sf::Vector2f(280, 53), false, sf::Color(239, 233, 222), studenttexthomebutton, 30, Palatino);
+    studenthomebuttonlist.setpostionlistbutton(30, 143, 0, 95);
+
+    ///navigation bar current textbox
+    OutputTextBox schoolyeartextbox(22, sf::Color(119, 106, 92), getCurrentSchoolyear());
+    schoolyeartextbox.setfont(Palatino);
+    schoolyeartextbox.setTextPosition(sf::Vector2f(181, 667));
+
+    OutputTextBox semestertextbox(22, sf::Color(119, 106, 92), getCurrentSemester());
+    semestertextbox.setfont(Palatino);
+    semestertextbox.setTextPosition(sf::Vector2f(218, 702));
+
+    //log out button
+    Button logoutbut(sf::Color(192, 200, 184), sf::Vector2f(90, 30), false, sf::Color::Black, "Log out", 20, Palatino);
+    logoutbut.setposition(sf::Vector2f(227, 895));
+
+
+    //school year current textbox
+    OutputTextBox cur_schoolyeartextbox(28, sf::Color::Black, schoolyear);
+    cur_schoolyeartextbox.setfont(Palatino);
+    cur_schoolyeartextbox.setTextPosition(sf::Vector2f(1160, 180));
+
+    //semester current textbox
+    OutputTextBox cur_semestertextbox(28, sf::Color::Black, semester);
+    cur_semestertextbox.setfont(Palatino);
+    cur_semestertextbox.setTextPosition(sf::Vector2f(1215, 250));
+
+    while (window.isOpen())
+    {
+        sf::Event event;
+        while (window.pollEvent(event))
+        {
+            if (event.type == sf::Event::Closed) window.close();
+
+            if (event.type == sf::Event::MouseButtonPressed) {
+                if (event.mouseButton.button == sf::Mouse::Left)
+                {
+                    int x_coor = event.mouseButton.x;
+                    int y_coor = event.mouseButton.y;
+                    if (x_coor > 45 && x_coor < 100 && y_coor>47 && y_coor < 100) {
+                        studenthome(window, studentuser);
+                    }
+                    if (x_coor > 40 && x_coor < 77 && y_coor>887 && y_coor < 932) {
+                        studentprofileview(window, studentuser);
+                    }
+                }
+            }
+            if (studenthomebuttonlist.isClickedKOrder(event, 1))
+                studentprofileview(window, studentuser);
+            if (studenthomebuttonlist.isClickedKOrder(event, 2))
+                studentChangePassword(window, studentuser);
+            if (studenthomebuttonlist.isClickedKOrder(event, 3))
+                studentCourse(window, studentuser, getCurrentSchoolyear(), getCurrentSemester());
+            if (studenthomebuttonlist.isClickedKOrder(event, 4))
+                studentScoreboard(window, studentuser, getCurrentSchoolyear(), getCurrentSemester());
+            if (studenthomebuttonlist.isClickedKOrder(event, 5))
+                studentAboutUs(window, studentuser);
+
+            //click logout button
+            if (logoutbut.isClick(event)) chooseRole(window);
+
+            //change color button when on cursor
+            if (logoutbut.isonMousecursor(event)) {
+                logoutbut.changecolor(sf::Color(192, 200, 184));
+                logoutbut.changeTextColor(sf::Color::Black);
+            }
+            else {
+                logoutbut.changecolor(sf::Color::Transparent);
+                logoutbut.changeTextColor(sf::Color::Transparent);
+            }
+
+            
+        }
+
+        window.clear();
         window.draw(s_studentCourseTexture);
         studenthomebuttonlist.drawButwithTextbox(window, event, sf::Color(168, 158, 146), sf::Color(239, 233, 222));
         logoutbut.drawbutton(window);
         cur_schoolyeartextbox.drawTextbox(window);
         cur_semestertextbox.drawTextbox(window);
-        inputCurrentPassword.drawTextbox(window);
-        inputNewPassword.drawTextbox(window);
-        inputConfirmPassword.drawTextbox(window);
         schoolyeartextbox.drawTextbox(window);
         semestertextbox.drawTextbox(window);
         window.display();
