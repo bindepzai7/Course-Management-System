@@ -150,9 +150,9 @@ public:
             delete temp;
         }
         else {
-            Node<T>* prev = nullptr;
+            //Node<T>* prev = nullptr;
             Node<T>* curr = head;
-            while (prev && curr->next && !(curr->next->data == data)) {
+            /*while (prev && curr->next && !(curr->next->data == data)) {
                 prev = curr;
                 curr = curr->next;
             }
@@ -162,6 +162,14 @@ public:
             else if (!curr->next) {
                 prev->next = curr->next;
                 delete curr;
+            }*/
+            while (curr->next) {
+                if (curr->next->data == data) {
+                    Node<T>* tmp = curr->next;
+                    curr->next = tmp->next;
+                    delete tmp;
+                    return;
+                }
             }
         }
     }

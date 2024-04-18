@@ -1014,6 +1014,8 @@ void staffviewstudentinclass(sf::RenderWindow& window, Staff& userstaff, std::st
                         std::cout<<studentdeleted.birthDay.year;
                         studentdeleted.socialID = Studenttextbox[kbuttonchose][5].getText();
                         curclass.removeStudent(studentdeleted);
+                        curclass.saveStudent(schoolyear, classchosen);
+                        staffviewstudentinclass(window, userstaff, schoolyear, classchosen);
                     }
                 }
                 else {
@@ -1022,8 +1024,6 @@ void staffviewstudentinclass(sf::RenderWindow& window, Staff& userstaff, std::st
 
             }
             if (savebut.isClick(event)) {
-                curclass.saveStudent(schoolyear, classchosen);
-                staffviewstudentinclass(window, userstaff, schoolyear, classchosen);
             }
         }
 
