@@ -360,6 +360,18 @@ void studentCourse(sf::RenderWindow& window, Student& studentuser, std::string s
     cur_semestertextbox.setfont(Palatino);
     cur_semestertextbox.setTextPosition(sf::Vector2f(1215, 250));
 
+    //input 3 types of password
+    TextBox inputCurrentPassword(24, sf::Color::Black, false);
+    inputCurrentPassword.setfont(Palatino);
+    inputCurrentPassword.setTextPosition(sf::Vector2f(750, 420));
+
+    TextBox inputNewPassword(24, sf::Color::Black, false);
+    inputNewPassword.setfont(Palatino);
+    inputNewPassword.setTextPosition(sf::Vector2f(750, 532));
+
+    TextBox inputConfirmPassword(24, sf::Color::Black, false);
+    inputConfirmPassword.setfont(Palatino);
+    inputConfirmPassword.setTextPosition(sf::Vector2f(750, 644));
     while (window.isOpen())
     {
         sf::Event event;
@@ -403,6 +415,75 @@ void studentCourse(sf::RenderWindow& window, Student& studentuser, std::string s
                 logoutbut.changecolor(sf::Color::Transparent);
                 logoutbut.changeTextColor(sf::Color::Transparent);
             }
+
+            //change password click
+            if (inputCurrentPassword.isClick(event, 733, 413, 1164, 455)) {
+                inputCurrentPassword.setselected(true);
+                inputNewPassword.setselected(false);
+                inputConfirmPassword.setselected(false);
+            }
+            else if (inputNewPassword.isClick(event, 733, 525, 1164, 575)) {
+                inputCurrentPassword.setselected(false);
+                inputNewPassword.setselected(true);
+                inputConfirmPassword.setselected(false);
+            }
+            else if (inputConfirmPassword.isClick(event, 733, 636, 1164, 679)) {
+                inputCurrentPassword.setselected(false);
+                inputNewPassword.setselected(false);
+                inputConfirmPassword.setselected(true);
+            }
+
+            if (event.type == sf::Event::TextEntered) {
+                if (inputCurrentPassword.isselectedbox()) {
+                    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Return))
+                        inputCurrentPassword.setselected(false);
+                    else
+                        inputCurrentPassword.typedText(event);
+                }
+                else if (inputNewPassword.isselectedbox()) {
+                    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Return))
+                        inputNewPassword.setselected(false);
+                    else
+                        inputNewPassword.typedText(event);
+                }
+                else if (inputConfirmPassword.isselectedbox()) {
+                    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Return))
+                        inputConfirmPassword.setselected(false);
+                    else
+                        inputConfirmPassword.typedText(event);
+                }
+            }
+
+            //if change password is clicked
+            if (event.type == sf::Event::MouseButtonPressed) {
+                if (event.mouseButton.button == sf::Mouse::Left) {
+                    int x_coor = event.mouseButton.x;
+                    int y_coor = event.mouseButton.y;
+                    if (x_coor > 946 && x_coor < 1167 && y_coor > 730 && y_coor < 771) {
+                        std::string studentID = studentuser.studentID;
+                        std::string currentPassword = string_hashing(inputCurrentPassword.getText());
+                        std::string newPassword = string_hashing(inputNewPassword.getText());
+                        std::string confirmPassword = string_hashing(inputConfirmPassword.getText());
+                        if (newPassword != confirmPassword) {
+                            std::cout << "Wrong" << std::endl;
+                        }
+                        else if (newPassword == currentPassword) {
+                            std::cout << "wrong" << std::endl;
+                        }
+                        else {
+                            LinkedList<User> userList = readUserFromCSV("Data/studentuser.csv");
+                            if (check_login(userList, studentuser.studentID, currentPassword)) {
+                                changePassword(userList, studentuser.studentID, newPassword);
+                                updateUser2CSVfile("Data/studentuser.csv", userList);
+                            }
+                            else {
+                                std::cout << "wrong" << std::endl;
+                            }
+
+                        }
+                    }
+                }
+            }
         }
 
         window.clear();
@@ -411,6 +492,9 @@ void studentCourse(sf::RenderWindow& window, Student& studentuser, std::string s
         logoutbut.drawbutton(window);
         cur_schoolyeartextbox.drawTextbox(window);
         cur_semestertextbox.drawTextbox(window);
+        inputCurrentPassword.drawTextbox(window);
+        inputNewPassword.drawTextbox(window);
+        inputConfirmPassword.drawTextbox(window);
         schoolyeartextbox.drawTextbox(window);
         semestertextbox.drawTextbox(window);
         window.display();
