@@ -748,7 +748,7 @@ std::string filenametoimport() {
                 }
             }
             if (enterbut.isClick(event)) {
-                filename = enterbut.getisClick();
+                filename = enterfile.getText();
                 window.close();
             }
             if (cancelbut.isClick(event)) {
@@ -803,10 +803,10 @@ void staffviewstudentinclass(sf::RenderWindow& window, Staff& userstaff, std::st
     logoutbut.setposition(sf::Vector2f(227, 895));
 
     //mode button
-    Button editmode(sf::Color(168, 158, 146), sf::Vector2f(133, 43), false, sf::Color::Black, "EDIT", 20, Palatino);
-    editmode.setposition(sf::Vector2f(46, 491));
-    Button viewmode(sf::Color(168, 158, 146), sf::Vector2f(133, 43), false, sf::Color::Black, "VIEW", 20, Palatino);
-    viewmode.setposition(sf::Vector2f(46, 538));
+    Button editmode(sf::Color(168, 158, 146), sf::Vector2f(132.6, 42.5), false, sf::Color::Black, "EDIT", 20, Palatino);
+    editmode.setposition(sf::Vector2f(45.7, 490.68));
+    Button viewmode(sf::Color(168, 158, 146), sf::Vector2f(132.6, 42.5), false, sf::Color::Black, "VIEW", 20, Palatino);
+    viewmode.setposition(sf::Vector2f(45.7, 538.28));
 
     //save and delete button
     Button savebut(sf::Color(186, 158, 146, 100), sf::Vector2f(135, 40), false);
@@ -814,7 +814,7 @@ void staffviewstudentinclass(sf::RenderWindow& window, Staff& userstaff, std::st
     savebut.setposition(sf::Vector2f(180, 490));
     deletebut.setposition(sf::Vector2f(180, 540));
 
-   
+
 
     //list of student
 
@@ -823,6 +823,7 @@ void staffviewstudentinclass(sf::RenderWindow& window, Staff& userstaff, std::st
     int n = curclass.getnumberofstudentinclass();
     LinkedList<Student> studentlist = curclass.getstudentlist();
     Node<Student>* cur = studentlist.head;
+
 
     TextBox** Studenttextbox = new TextBox * [n];
 
@@ -847,13 +848,13 @@ void staffviewstudentinclass(sf::RenderWindow& window, Staff& userstaff, std::st
 
         Studenttextbox[i][0].setText(std::to_string(i + 1)); // Assuming you want to set index 0 to an index value
         Studenttextbox[i][1].setText(cur->data.studentID);
-        Studenttextbox[i][2].setText(cur->data.name.lastName + "-"+ cur->data.name.firstName);
+        Studenttextbox[i][2].setText(cur->data.name.lastName + "-" + cur->data.name.firstName);
 
         if (cur->data.studentGender == 0)
             Studenttextbox[i][3].setText("male");
         else
             Studenttextbox[i][3].setText("female");
-        Studenttextbox[i][4].setText(std::to_string(cur->data.birthDay.day) + "/" + std::to_string(cur->data.birthDay.month) + "/" + std:: to_string(cur->data.birthDay.year));
+        Studenttextbox[i][4].setText(std::to_string(cur->data.birthDay.day) + "/" + std::to_string(cur->data.birthDay.month) + "/" + std::to_string(cur->data.birthDay.year));
         Studenttextbox[i][5].setText(cur->data.socialID);
         cur = cur->next;
     }
@@ -861,7 +862,7 @@ void staffviewstudentinclass(sf::RenderWindow& window, Staff& userstaff, std::st
     dropdownlist StudentsButton(sf::Color::Transparent, sf::Vector2f(1090, 40), false, n);
     StudentsButton.setpostionlistbuttonwithlimit(Posx[0], Posy - 5, 0, distance, Posylimabove, Posylimunder, jumpsize);
     int kbuttonchose = -1;
-    Button studentchosen(sf::Color::Transparent, sf::Vector2f(1096,40), false);
+    Button studentchosen(sf::Color::Transparent, sf::Vector2f(1096, 40), false);
     while (window.isOpen())
     {
         sf::Event event;
@@ -883,7 +884,7 @@ void staffviewstudentinclass(sf::RenderWindow& window, Staff& userstaff, std::st
                         staffviewprofile(window, userstaff);
                     }
                     if (x_coor > 390 && x_coor < 640 && y_coor>867 && y_coor < 917) {
-                        staffaddfirstyearstudent(window, userstaff,schoolyear, classchosen);
+                        staffaddfirstyearstudent(window, userstaff, schoolyear, classchosen);
                     }
                 }
             }
@@ -968,6 +969,8 @@ void staffviewstudentinclass(sf::RenderWindow& window, Staff& userstaff, std::st
                 }
                 StudentsButton.setpostionlistbuttonwithlimit(Posx[0], Posy - 5, 0, distance, Posylimabove, Posylimunder, jumpsize);
             }
+            //init node tmp for change data;
+            Node<Student>* tmp = studentlist.head;
             for (int i = 0; i < n; i++)
             {
                 if (StudentsButton.isClickedKOrder(event, i + 1)) {
@@ -990,15 +993,36 @@ void staffviewstudentinclass(sf::RenderWindow& window, Staff& userstaff, std::st
                                     Studenttextbox[i][j].typedText(event);
                             }
                         }
-                        
+
                     }
+                    //savebuttonclick
+                    tmp->data.studentID = Studenttextbox[i][1].getText();
+                    std::string fullname = Studenttextbox[i][2].getText();
+                    int found = fullname.find("-");
+                    if (found != 0) {
+                        tmp->data.name.lastName = fullname.substr(0, found);
+                        tmp->data.name.firstName = fullname.substr(found + 1, fullname.size());
+
+                    }
+                    if (Studenttextbox[i][3].getText() == "male") tmp->data.studentGender = 0;
+                    else tmp->data.studentGender = 0;
+                    std::string dob = Studenttextbox[i][4].getText();
+                    int foundday = dob.find("/");
+                    tmp->data.birthDay.day = std::stoi(dob.substr(0, found));
+                    int foundmonth = dob.find("/", foundday + 1);
+                    tmp->data.birthDay.month = std::stoi(dob.substr(foundday + 1, foundmonth));
+                    tmp->data.birthDay.year = std::stoi(dob.substr(foundmonth + 1, dob.size()));
+                    tmp->data.socialID = Studenttextbox[i][5].getText();
+                    tmp = tmp->next;
+
+                    //deletebutton
                     if (deletebut.isClick(event) and kbuttonchose != -1) {
                         Student studentdeleted;
                         studentdeleted.studentID = Studenttextbox[kbuttonchose][1].getText();
-                        std::string fullname=Studenttextbox[kbuttonchose][2].getText();
+                        std::string fullname = Studenttextbox[kbuttonchose][2].getText();
                         int found = fullname.find("-");
                         std::cout << found;
-                        if (found!=0) {
+                        if (found != 0) {
                             studentdeleted.name.lastName = fullname.substr(0, found);
                             std::cout << studentdeleted.name.lastName;
                             studentdeleted.name.firstName = fullname.substr(found + 1, fullname.size());
@@ -1012,10 +1036,10 @@ void staffviewstudentinclass(sf::RenderWindow& window, Staff& userstaff, std::st
                         int foundmonth = dob.find("/", foundday + 1);
                         std::cout << foundmonth;
                         std::cout << studentdeleted.birthDay.day;
-                        studentdeleted.birthDay.month = std::stoi(dob.substr(foundday+1, foundmonth));
-                        std::cout<<studentdeleted.birthDay.month;
-                        studentdeleted.birthDay.year = std::stoi(dob.substr(foundmonth+1, dob.size()));
-                        std::cout<<studentdeleted.birthDay.year;
+                        studentdeleted.birthDay.month = std::stoi(dob.substr(foundday + 1, foundmonth));
+                        std::cout << studentdeleted.birthDay.month;
+                        studentdeleted.birthDay.year = std::stoi(dob.substr(foundmonth + 1, dob.size()));
+                        std::cout << studentdeleted.birthDay.year;
                         studentdeleted.socialID = Studenttextbox[kbuttonchose][5].getText();
                         curclass.removeStudent(studentdeleted);
                         curclass.saveStudent(schoolyear, classchosen);
@@ -1028,6 +1052,9 @@ void staffviewstudentinclass(sf::RenderWindow& window, Staff& userstaff, std::st
 
             }
             if (savebut.isClick(event)) {
+                curclass.savechangestudentsdata(studentlist);
+                curclass.saveStudent(schoolyear, classchosen);
+                staffviewstudentinclass(window, userstaff, schoolyear, classchosen);
             }
         }
 

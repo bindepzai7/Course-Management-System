@@ -50,6 +50,9 @@ public:
 	LinkedList<Student> getstudentlist() {
 		return studentList;
 	}
+	void savechangestudentsdata(LinkedList<Student>& s) {
+		studentList = s;
+	}
 	int getnumberofstudentinclass() {
 		return studentList.sizeoflist();
 	}
