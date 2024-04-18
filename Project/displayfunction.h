@@ -58,6 +58,8 @@ void staffaddclasses(sf::RenderWindow& window, Staff& userstaff, std::string sch
 void staffmanageclass(sf::RenderWindow& window, Staff& userstaff, std::string schoolyear, int Korderbut);
 void staffaddfirstyearstudent(sf::RenderWindow& window, Staff& userstaff,std::string schoolyear, std::string addtoclass);
 void staffviewstudentinclass(sf::RenderWindow& window, Staff& userstaff, std::string schoolyear, std::string classchosen);
+void staffChooseOption(sf::RenderWindow& window, Staff& userstaff, std::string classchosen);
+void staffChooseOption2(sf::RenderWindow& window, Staff& userstaff, std::string classchosen, int Korderofbut);
 
 std::string filenametoimport();
 
@@ -75,6 +77,6 @@ void studentAboutUs(sf::RenderWindow& window, Student& studentuser);
 void studentChangePassword(sf::RenderWindow& window, Student& studentuser);
 void studentCourse(sf::RenderWindow& window, Student& studentuser, std::string schoolyear, std::string semester);
 void studentScoreboard(sf::RenderWindow& window, Student& studentuser, std::string schoolyear, std::string semester);
-
+void studentChooseOption(sf::RenderWindow& window, Student& studentuser, int viewType);
 
 #endif // !_DISPLAYFUNCTION_H

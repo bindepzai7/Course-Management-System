@@ -417,7 +417,7 @@ void studentChangePassword(sf::RenderWindow& window, Student& studentuser) {
 
  void studentChooseOption(sf::RenderWindow& window, Student& studentuser, int viewType) {
      sf::Texture StudentChooseOptionTexture;
-     StudentChooseOptionTexture.loadFromFile("Design UI/[Staff - 4.1] Manage Semester.jpg");
+     StudentChooseOptionTexture.loadFromFile("Design UI/[Student - 4] choosing to view.jpg");
      StudentChooseOptionTexture.setSmooth(true);
      sf::Sprite s_StudentChooseOptionTexture;
      s_StudentChooseOptionTexture.setTexture(StudentChooseOptionTexture);
@@ -448,7 +448,13 @@ void studentChangePassword(sf::RenderWindow& window, Student& studentuser) {
      Button logoutbut(sf::Color(192, 200, 184), sf::Vector2f(90, 30), false, sf::Color::Black, "Log out", 20, Palatino);
      logoutbut.setposition(sf::Vector2f(227, 895));
 
-     
+     //CODE HERE
+     //////////////////////////////////////////////////////////////////////////////////
+     /////////////////////////////////////////////////////////////////////////////////
+     ///////////////////////////////////////////////////////////////////////////////
+     //////////////////////////////////////////////////////////////////////////////////
+     //Find schoolyear student is in and choose semester
+
 
      while (window.isOpen())
      {
@@ -478,7 +484,7 @@ void studentChangePassword(sf::RenderWindow& window, Student& studentuser) {
              if (studenthomebuttonlist.isClickedKOrder(event, 2))
                  studentChangePassword(window, studentuser);
              if (studenthomebuttonlist.isClickedKOrder(event, 3))
-                 studentCourse(window, studentuser, getCurrentSchoolyear(), getCurrentSemester());
+                 studentCourse(window, studentuser, getCurrentSchoolyear(), getCurrentSemester());   //////////////////should change
              if (studenthomebuttonlist.isClickedKOrder(event, 4))
                  studentScoreboard(window, studentuser, getCurrentSchoolyear(), getCurrentSemester());
              if (studenthomebuttonlist.isClickedKOrder(event, 5))

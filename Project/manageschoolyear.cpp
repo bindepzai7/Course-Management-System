@@ -37,10 +37,10 @@ void staffmanageschoolyeardisplay(sf::RenderWindow& window, Staff& userstaff) {
     logoutbut.setposition(sf::Vector2f(227, 895));
 
     //mode button
-    Button editmode(sf::Color(168, 158, 146), sf::Vector2f(132.6, 42.5), false, sf::Color::Black, "EDIT", 20, Palatino);
-    editmode.setposition(sf::Vector2f(45.7, 490.68));
-    Button viewmode(sf::Color(168, 158, 146), sf::Vector2f(132.6, 42.5), false, sf::Color::Black, "VIEW", 20, Palatino);
-    viewmode.setposition(sf::Vector2f(45.7, 538.28));
+    Button editmode(sf::Color(168, 158, 146), sf::Vector2f(133, 43), false, sf::Color::Black, "EDIT", 20, Palatino);
+    editmode.setposition(sf::Vector2f(46, 491));
+    Button viewmode(sf::Color(168, 158, 146), sf::Vector2f(133, 43), false, sf::Color::Black, "VIEW", 20, Palatino);
+    viewmode.setposition(sf::Vector2f(46, 538));
 
     userstaff.readAllSchoolyear();
     LinkedList<std::string> schoolyearstext = userstaff.getschoolyearstext();
@@ -228,10 +228,10 @@ void staffmanageschoolyear2display(sf::RenderWindow& window, Staff& userstaff, i
     logoutbut.setposition(sf::Vector2f(227, 895));
 
     //mode button
-    Button editmode(sf::Color(168, 158, 146), sf::Vector2f(132.6, 42.5), false, sf::Color::Black, "EDIT", 20, Palatino);
-    editmode.setposition(sf::Vector2f(45.7, 490.68));
-    Button viewmode(sf::Color(168, 158, 146), sf::Vector2f(132.6, 42.5), false, sf::Color::Black, "VIEW", 20, Palatino);
-    viewmode.setposition(sf::Vector2f(45.7, 538.28));
+    Button editmode(sf::Color(168, 158, 146), sf::Vector2f(133, 43), false, sf::Color::Black, "EDIT", 20, Palatino);
+    editmode.setposition(sf::Vector2f(46, 491));
+    Button viewmode(sf::Color(168, 158, 146), sf::Vector2f(133, 43), false, sf::Color::Black, "VIEW", 20, Palatino);
+    viewmode.setposition(sf::Vector2f(46, 538));
 
     //userstaff.readAllSchoolyear();
     LinkedList<std::string> schoolyearstext = userstaff.getschoolyearstext();

@@ -36,11 +36,10 @@ void staffmanagecourse(sf::RenderWindow& window, Staff& userstaff, std::string s
     Button logoutbut(sf::Color(192, 200, 184), sf::Vector2f(90, 30), false, sf::Color::Black, "Log out", 20, Palatino);
     logoutbut.setposition(sf::Vector2f(227, 895));
     //mode button
-    Button editmode(sf::Color(168, 158, 146), sf::Vector2f(132.6, 42.5), false, sf::Color::Black, "EDIT", 20, Palatino);
-    editmode.setposition(sf::Vector2f(45.7, 490.68));
-    Button viewmode(sf::Color(168, 158, 146), sf::Vector2f(132.6, 42.5), false, sf::Color::Black, "VIEW", 20, Palatino);
-    viewmode.setposition(sf::Vector2f(45.7, 538.28));
-
+    Button editmode(sf::Color(168, 158, 146), sf::Vector2f(133, 43), false, sf::Color::Black, "EDIT", 20, Palatino);
+    editmode.setposition(sf::Vector2f(46, 491));
+    Button viewmode(sf::Color(168, 158, 146), sf::Vector2f(133, 43), false, sf::Color::Black, "VIEW", 20, Palatino);
+    viewmode.setposition(sf::Vector2f(46, 538));
     //school year current textbox
     OutputTextBox cur_schoolyeartextbox(28, sf::Color::Black, schoolyear);
     cur_schoolyeartextbox.setfont(Palatino);
@@ -158,10 +157,10 @@ void staffaddcourse(sf::RenderWindow& window, Staff& userstaff, std::string scho
     Button logoutbut(sf::Color(192, 200, 184), sf::Vector2f(90, 30), false, sf::Color::Black, "Log out", 20, Palatino);
     logoutbut.setposition(sf::Vector2f(227, 895));
     //mode button
-    Button editmode(sf::Color(168, 158, 146), sf::Vector2f(132.6, 42.5), false, sf::Color::Black, "EDIT", 20, Palatino);
-    editmode.setposition(sf::Vector2f(45.7, 490.68));
-    Button viewmode(sf::Color(168, 158, 146), sf::Vector2f(132.6, 42.5), false, sf::Color::Black, "VIEW", 20, Palatino);
-    viewmode.setposition(sf::Vector2f(45.7, 538.28));
+    Button editmode(sf::Color(168, 158, 146), sf::Vector2f(133, 43), false, sf::Color::Black, "EDIT", 20, Palatino);
+    editmode.setposition(sf::Vector2f(46, 491));
+    Button viewmode(sf::Color(168, 158, 146), sf::Vector2f(133, 43), false, sf::Color::Black, "VIEW", 20, Palatino);
+    viewmode.setposition(sf::Vector2f(46, 538));
     //school year current textbox
     OutputTextBox cur_schoolyeartextbox(28, sf::Color::Black, schoolyear);
     cur_schoolyeartextbox.setfont(Palatino);
@@ -284,11 +283,10 @@ void staffviewstudentofcourse(sf::RenderWindow& window, Staff& userstaff, std::s
     logoutbut.setposition(sf::Vector2f(227, 895));
 
     //mode button
-    Button editmode(sf::Color(168, 158, 146), sf::Vector2f(132.6, 42.5), false, sf::Color::Black, "EDIT", 20, Palatino);
-    editmode.setposition(sf::Vector2f(45.7, 490.68));
-    Button viewmode(sf::Color(168, 158, 146), sf::Vector2f(132.6, 42.5), false, sf::Color::Black, "VIEW", 20, Palatino);
-    viewmode.setposition(sf::Vector2f(45.7, 538.28));
-
+    Button editmode(sf::Color(168, 158, 146), sf::Vector2f(133, 43), false, sf::Color::Black, "EDIT", 20, Palatino);
+    editmode.setposition(sf::Vector2f(46, 491));
+    Button viewmode(sf::Color(168, 158, 146), sf::Vector2f(133, 43), false, sf::Color::Black, "VIEW", 20, Palatino);
+    viewmode.setposition(sf::Vector2f(46, 538));
 
     while (window.isOpen())
     {
@@ -398,10 +396,10 @@ void staffaddstudentstocourse(sf::RenderWindow& window, Staff& userstaff, std::s
     logoutbut.setposition(sf::Vector2f(227, 895));
 
     //mode button
-    Button editmode(sf::Color(168, 158, 146), sf::Vector2f(132.6, 42.5), false, sf::Color::Black, "EDIT", 20, Palatino);
-    editmode.setposition(sf::Vector2f(45.7, 490.68));
-    Button viewmode(sf::Color(168, 158, 146), sf::Vector2f(132.6, 42.5), false, sf::Color::Black, "VIEW", 20, Palatino);
-    viewmode.setposition(sf::Vector2f(45.7, 538.28));
+    Button editmode(sf::Color(168, 158, 146), sf::Vector2f(133, 43), false, sf::Color::Black, "EDIT", 20, Palatino);
+    editmode.setposition(sf::Vector2f(46, 491));
+    Button viewmode(sf::Color(168, 158, 146), sf::Vector2f(133, 43), false, sf::Color::Black, "VIEW", 20, Palatino);
+    viewmode.setposition(sf::Vector2f(46, 538));
 
     //class current textbox
     OutputTextBox cur_coursetextbox(28, sf::Color::Black, coursechosen);
