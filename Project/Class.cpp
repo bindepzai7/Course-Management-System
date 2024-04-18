@@ -50,6 +50,7 @@ void Class::saveStudent(std::string schoolyear,std::string classcode) {
 	if (fout.is_open()) {
 		Node<Student>* cur = studentList.head;
 		int i = 0;
+		if(cur)
 		fout << "No,studentID,lastName,firstName,dayOfBirth,gender,socialID\n";
 		while (cur) {
 			fout << ++i << "," << cur->data.studentID << "," << cur->data.name.lastName << "," << cur->data.name.firstName
