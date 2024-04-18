@@ -3,6 +3,7 @@
 
 #include <string>
 #include "AdditionalStruct.h"
+#include"LinkedList.h"
 
 class Student {
 public:
@@ -37,5 +38,6 @@ public:
         return studentID != s2.studentID || password!=s2.password;
     }*/
 };
-
+void LoadDataofStudent(LinkedList<Student>& studentlist, std::string filename);
+bool getDataStudentromlist(LinkedList<Student>&s, std::string username, Student& studentuser);
 #endif

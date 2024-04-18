@@ -156,27 +156,27 @@ void staffviewprofile(sf::RenderWindow& window, Staff& userstaff) {
     semestertextbox.setTextPosition(sf::Vector2f(218, 702));
 
     //Staff ID textbox
-    OutputTextBox ID(22, sf::Color::Black, "Bo ID vao day");
+    OutputTextBox ID(22, sf::Color::Black, userstaff.getStaffID());
     ID.setfont(Palatino);
     ID.setTextPosition(sf::Vector2f(700, 342));
 
     //Staff username textbox
-    OutputTextBox username(22, sf::Color::Black, "Bo Username vao day");
+    OutputTextBox username(22, sf::Color::Black, userstaff.getStaffID());
     username.setfont(Palatino);
     username.setTextPosition(sf::Vector2f(445, 481));
 
     //Staff fullname textbox
-    OutputTextBox fullname(22, sf::Color::Black, "Bo Fullname vao day");
+    OutputTextBox fullname(22, sf::Color::Black, userstaff.getLastname()+" "+userstaff.getFirstname());
     fullname.setfont(Palatino);
     fullname.setTextPosition(sf::Vector2f(445, 590));
 
     //Staff social ID textbox
-    OutputTextBox socialID(22, sf::Color::Black, "Bo social ID vao day");
+    OutputTextBox socialID(22, sf::Color::Black, userstaff.getStaffSocialID());
     socialID.setfont(Palatino);
     socialID.setTextPosition(sf::Vector2f(445, 703));
 
     //Staff dob textbox
-    OutputTextBox dob(22, sf::Color::Black, "Bo day of birth vao day");
+    OutputTextBox dob(22, sf::Color::Black, userstaff.getdob());
     dob.setfont(Palatino);
     dob.setTextPosition(sf::Vector2f(970, 590));
 
@@ -184,7 +184,7 @@ void staffviewprofile(sf::RenderWindow& window, Staff& userstaff) {
     OutputTextBox gender(50, sf::Color(119, 106, 92), "*");
     gender.setfont(Palatino);
     int x = 1090;
-    if (1) x += 172;   //if gender is female 
+    if (userstaff.getGender()) x += 172;   //if gender is female 
     gender.setTextPosition(sf::Vector2f(x, 464));
 
     while (window.isOpen())

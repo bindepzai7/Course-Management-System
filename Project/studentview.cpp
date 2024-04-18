@@ -121,17 +121,17 @@ void studentprofileview(sf::RenderWindow& window, Student& studentuser) {
 
 
     //Student ID textbox
-    OutputTextBox ID(22, sf::Color::Black, "Bo ID vao day");
+    OutputTextBox ID(22, sf::Color::Black, studentuser.studentID);
     ID.setfont(Palatino);
     ID.setTextPosition(sf::Vector2f(700, 342));
 
     //Student username textbox
-    OutputTextBox username(22, sf::Color::Black, "Bo Username vao day");
+    OutputTextBox username(22, sf::Color::Black, studentuser.studentID);
     username.setfont(Palatino);
     username.setTextPosition(sf::Vector2f(445, 481));
 
     //Student fullname textbox
-    OutputTextBox fullname(22, sf::Color::Black, "Bo Fullname vao day");
+    OutputTextBox fullname(22, sf::Color::Black, studentuser.name.firstName+studentuser.name.lastName);
     fullname.setfont(Palatino);
     fullname.setTextPosition(sf::Vector2f(445, 590));
 
@@ -141,7 +141,7 @@ void studentprofileview(sf::RenderWindow& window, Student& studentuser) {
     className.setTextPosition(sf::Vector2f(445, 701));
 
     //Student dob textbox
-    OutputTextBox dob(22, sf::Color::Black, "Bo day of birth vao day");
+    OutputTextBox dob(22, sf::Color::Black, studentuser.birthDay.getDate());
     dob.setfont(Palatino);
     dob.setTextPosition(sf::Vector2f(970, 590));
 
@@ -149,11 +149,11 @@ void studentprofileview(sf::RenderWindow& window, Student& studentuser) {
     OutputTextBox gender(50, sf::Color(119, 106, 92), "*");
     gender.setfont(Palatino);
     int x = 1090;
-    if (1) x += 172;   //if gender is female 
+    if (studentuser.studentGender) x += 172;   //if gender is female 
     gender.setTextPosition(sf::Vector2f(x, 464));
 
     //Student social ID textbox
-    OutputTextBox socialID(22, sf::Color::Black, "Bo social ID vao day");
+    OutputTextBox socialID(22, sf::Color::Black, studentuser.socialID);
     socialID.setfont(Palatino);
     socialID.setTextPosition(sf::Vector2f(970, 701));
 

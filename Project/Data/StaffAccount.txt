@@ -1,3 +1,0 @@
-staffID,firstName,lastName,gender,socialID,dateOfBirth
-01,Ba Tien,Dinh,0,064305000513,01 01 2005
-02,Tuan Thanh,Ho,0,123,01 01 2005

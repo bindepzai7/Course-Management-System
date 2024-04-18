@@ -115,8 +115,15 @@ void loginWindow(sf::RenderWindow& window, bool role)
                             LinkedList<User> userlist = readUserFromCSV("Data/studentuser.csv");
                             if (check_login(userlist, username.getText(), password.getText())) {
                                 acc.iswrongaccount = false;
+                                LinkedList<Student> studentlist;
+                                LoadDataofStudent(studentlist, "Data/Studentdata.csv");
                                 Student studentuser;
-                                studenthome(window, studentuser);
+                                if (getDataStudentromlist(studentlist, username.getText(), studentuser))
+                                    studenthome(window, studentuser);
+                                else
+                                    std::cout << studentlist.head->data.studentID;
+                                    std::cout << studentuser.studentID;
+                                    std::cout << "erorr";
                             }
                             else
                                 acc.iswrongaccount = true;
@@ -126,8 +133,9 @@ void loginWindow(sf::RenderWindow& window, bool role)
                             if (check_login(userlist, username.getText(), password.getText())) {
                                 acc.iswrongaccount = false;
                                 LinkedList<Staff> Stafflist;
+                                LoadDataofStaff(Stafflist, "Data/Staffdata.csv");
                                 Staff userstaff;
-                                //getDataStafffromlist(Stafflist, username.getText(), userstaff);
+                                if(getDataStafffromlist(Stafflist, username.getText(), userstaff));
                                 staffHome(window, userstaff);
                             }
                             else

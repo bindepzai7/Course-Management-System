@@ -78,7 +78,7 @@ void LoadDataofStaff(LinkedList<Staff>& staffList, std::string filename) {
 		return;
 	}
 	int count = 0;
-	std::string firstname, lastname, socialID, gender, username, password, staffID;
+	std::string firstname, lastname, socialID, gender, username, staffID;
 	std::string dob;
 	while (!fin.eof()) {
 		if (count == 0) {
@@ -100,12 +100,12 @@ void LoadDataofStaff(LinkedList<Staff>& staffList, std::string filename) {
 			bool gen = 0;
 			if (gender == "1") gen = 1;
 			ss >> d >> delimiter >> m >> delimiter >> y;
-			staffList.addNodeInAscending(Staff(staffID, socialID, Name(firstname, lastname)));
+			staffList.addNodeInAscending(Staff(staffID, socialID, Name(firstname, lastname),gen,Date(d, m, y)));
 		}
 	}
 }
 
-bool getDataStafffromlist(LinkedList<Staff>s, std::string username, Staff &userstaff) {
+bool getDataStafffromlist(LinkedList<Staff>&s, std::string username, Staff &userstaff) {
 	Node<Staff>* cur = s.head;
 	while (cur && cur->data.getStaffID() != username) {
 		cur = cur->next;

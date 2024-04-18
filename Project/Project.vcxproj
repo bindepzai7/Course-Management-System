@@ -162,6 +162,7 @@
     <ClCompile Include="Semester.cpp" />
     <ClCompile Include="Staff.cpp" />
     <ClCompile Include="aboutstaff.cpp" />
+    <ClCompile Include="Student.cpp" />
     <ClCompile Include="studentview.cpp" />
     <ClCompile Include="Textbox.cpp" />
     <ClCompile Include="User.cpp" />

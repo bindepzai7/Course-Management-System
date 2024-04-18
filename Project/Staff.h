@@ -15,13 +15,15 @@ private:
 	//std::string password;
 	std::string socialID;
 	Name staffName;
+	Date dob;
+	bool gender;
 
 	bool mode;//1 is 
     
 public:
-	Staff() : StaffID(""), socialID(""),staffName("") {}
-	Staff(const std::string& StaffID, const std::string& socialID, const Name& staffName)
-		: StaffID(StaffID), socialID(socialID), staffName(staffName) {}
+	Staff() : StaffID(""), socialID(""),staffName(""),gender(0),dob(Date()) {}
+	Staff(const std::string& StaffID, const std::string& socialID, const Name& staffName,const bool& gender,const Date &dob)
+		: StaffID(StaffID), socialID(socialID), staffName(staffName),gender(gender), dob(dob) {}
 	~Staff() {};
 	
 	bool operator ==(const Staff& s2) const {
@@ -41,6 +43,18 @@ public:
 
 	std::string getStaffSocialID() {
 		return socialID;
+	}
+	std::string getdob() {
+		return dob.getDate();
+	}
+	std::string getFirstname() {
+		return staffName.firstName;
+	}
+	std::string getLastname() {
+		return staffName.lastName;
+	}
+	bool getGender() {
+		return gender;
 	}
 	void setmode(bool mode) {
 		this->mode = mode;
@@ -87,6 +101,6 @@ public:
 
 
 void LoadDataofStaff(LinkedList<Staff>& staffList, std::string filename);
-bool getDataStafffromlist(LinkedList<Staff>s, std::string username, Staff& userstaff);
+bool getDataStafffromlist(LinkedList<Staff>&s, std::string username, Staff& userstaff);
 
 #endif
