@@ -101,7 +101,7 @@ void staffaddclasses(sf::RenderWindow& window, Staff& userstaff, std::string sch
             }
             if (staffhomebuttonlist.isClickedKOrder(event, 2)) {
                 userstaff.~Staff();
-                staffmanagesemesterdisplay(window, userstaff, getCurrentSchoolyear());
+                staffSemesterLobby(window, userstaff);
             }
             if (staffhomebuttonlist.isClickedKOrder(event, 3)) {
                 userstaff.~Staff();
@@ -300,7 +300,7 @@ void staffmanageclass(sf::RenderWindow& window, Staff& userstaff, std::string sc
             }
             if (staffhomebuttonlist.isClickedKOrder(event, 2)) {
                 userstaff.~Staff();
-                staffmanagesemesterdisplay(window, userstaff, getCurrentSchoolyear());
+                staffSemesterLobby(window, userstaff);
             }
             if (staffhomebuttonlist.isClickedKOrder(event, 3)) {
                 userstaff.~Staff();
@@ -512,7 +512,7 @@ void staffaddfirstyearstudent(sf::RenderWindow& window, Staff& userstaff, std::s
             }
             if (staffhomebuttonlist.isClickedKOrder(event, 2)) {
                 userstaff.~Staff();
-                staffmanagesemesterdisplay(window, userstaff, getCurrentSchoolyear());
+                staffSemesterLobby(window, userstaff);
             }
             if (staffhomebuttonlist.isClickedKOrder(event, 3)) {
                 userstaff.~Staff();
@@ -882,7 +882,7 @@ void staffviewstudentinclass(sf::RenderWindow& window, Staff& userstaff, std::st
             }
             if (staffhomebuttonlist.isClickedKOrder(event, 2)) {
                 userstaff.~Staff();
-                staffmanagesemesterdisplay(window, userstaff, getCurrentSchoolyear());
+                staffSemesterLobby(window, userstaff);
             }
             if (staffhomebuttonlist.isClickedKOrder(event, 3)) {
                 userstaff.~Staff();

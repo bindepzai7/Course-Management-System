@@ -89,7 +89,7 @@ void staffmanageschoolyeardisplay(sf::RenderWindow& window, Staff& userstaff) {
             if (staffhomebuttonlist.isClickedKOrder(event, 1))
                 staffmanageschoolyeardisplay(window, userstaff);
             if (staffhomebuttonlist.isClickedKOrder(event, 2))
-                staffmanagesemesterdisplay(window, userstaff, getCurrentSchoolyear());
+                staffSemesterLobby(window, userstaff);
             if (staffhomebuttonlist.isClickedKOrder(event, 3))
                 staffmanagecourse(window, userstaff, getCurrentSchoolyear(), getCurrentSemester());
             if (staffhomebuttonlist.isClickedKOrder(event, 4)) {
@@ -269,24 +269,11 @@ void staffmanageschoolyear2display(sf::RenderWindow& window, Staff& userstaff, i
                 window.close();
                 userstaff.~Staff();
             }
-            //menu button
-            if (event.type == sf::Event::MouseButtonPressed) {
-                if (event.mouseButton.button == sf::Mouse::Left)
-                {
-                    int x_coor = event.mouseButton.x;
-                    int y_coor = event.mouseButton.y;
-                    if (x_coor > 45 && x_coor < 100 && y_coor>47 && y_coor < 100) {
-                        staffHome(window, userstaff);
-                    }
-                    if (x_coor > 40 && x_coor < 77 && y_coor>887 && y_coor < 932) {
-                        staffviewprofile(window, userstaff);
-                    }
-                }
-            }
+            
             if (staffhomebuttonlist.isClickedKOrder(event, 1))
                 staffmanageschoolyeardisplay(window, userstaff);
             if (staffhomebuttonlist.isClickedKOrder(event, 2))
-                staffmanagesemesterdisplay(window, userstaff, getCurrentSchoolyear());
+                staffSemesterLobby(window, userstaff);
             if (staffhomebuttonlist.isClickedKOrder(event, 3))
                 staffmanagecourse(window, userstaff, getCurrentSchoolyear(), getCurrentSemester());
             if (staffhomebuttonlist.isClickedKOrder(event, 4)) {
@@ -334,6 +321,12 @@ void staffmanageschoolyear2display(sf::RenderWindow& window, Staff& userstaff, i
                 {
                     int x_coor = event.mouseButton.x;
                     int y_coor = event.mouseButton.y;
+                    if (x_coor > 45 && x_coor < 100 && y_coor>47 && y_coor < 100) {
+                        staffHome(window, userstaff);
+                    }
+                    if (x_coor > 40 && x_coor < 77 && y_coor>887 && y_coor < 932) {
+                        staffviewprofile(window, userstaff);
+                    }
                     if (x_coor > 910 and x_coor < 1385 and y_coor >390 and y_coor < 490) {
                         staffaddclasses(window, userstaff, textofbutton);
                     }

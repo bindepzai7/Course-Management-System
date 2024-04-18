@@ -77,7 +77,7 @@ void staffmanagecourse(sf::RenderWindow& window, Staff& userstaff, std::string s
             if (staffhomebuttonlist.isClickedKOrder(event, 1))
                 staffmanageschoolyeardisplay(window, userstaff);
             if (staffhomebuttonlist.isClickedKOrder(event, 2))
-                staffmanagesemesterdisplay(window, userstaff, getCurrentSchoolyear());
+                staffSemesterLobby(window, userstaff);
             if (staffhomebuttonlist.isClickedKOrder(event, 3))
                 staffmanagecourse(window, userstaff, getCurrentSchoolyear(), getCurrentSemester());
             if (staffhomebuttonlist.isClickedKOrder(event, 4)) {
@@ -195,7 +195,7 @@ void staffaddcourse(sf::RenderWindow& window, Staff& userstaff, std::string scho
             if (staffhomebuttonlist.isClickedKOrder(event, 1))
                 staffmanageschoolyeardisplay(window, userstaff);
             if (staffhomebuttonlist.isClickedKOrder(event, 2))
-                staffmanagesemesterdisplay(window, userstaff, getCurrentSchoolyear());
+                staffSemesterLobby(window, userstaff);
             if (staffhomebuttonlist.isClickedKOrder(event, 3))
                 staffmanagecourse(window, userstaff, getCurrentSchoolyear(), getCurrentSemester());
             if (staffhomebuttonlist.isClickedKOrder(event, 4)) {
@@ -316,7 +316,7 @@ void staffviewstudentofcourse(sf::RenderWindow& window, Staff& userstaff, std::s
             if (staffhomebuttonlist.isClickedKOrder(event, 1))
                 staffmanageschoolyeardisplay(window, userstaff);
             if (staffhomebuttonlist.isClickedKOrder(event, 2))
-                staffmanagesemesterdisplay(window, userstaff, getCurrentSchoolyear());
+                staffSemesterLobby(window, userstaff);
             if (staffhomebuttonlist.isClickedKOrder(event, 3))
                 staffmanagecourse(window, userstaff, getCurrentSchoolyear(), getCurrentSemester());
             if (staffhomebuttonlist.isClickedKOrder(event, 4)) {
@@ -431,7 +431,7 @@ void staffaddstudentstocourse(sf::RenderWindow& window, Staff& userstaff, std::s
             if (staffhomebuttonlist.isClickedKOrder(event, 1))
                 staffmanageschoolyeardisplay(window, userstaff);
             if (staffhomebuttonlist.isClickedKOrder(event, 2))
-                staffmanagesemesterdisplay(window, userstaff, getCurrentSchoolyear());
+                staffSemesterLobby(window, userstaff);
             if (staffhomebuttonlist.isClickedKOrder(event, 3))
                 staffmanagecourse(window, userstaff, getCurrentSchoolyear(), getCurrentSemester());
             if (staffhomebuttonlist.isClickedKOrder(event, 4)) {
