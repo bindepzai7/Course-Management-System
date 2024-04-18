@@ -237,7 +237,7 @@ void studentChangePassword(sf::RenderWindow& window, Student& studentuser) {
     s_studentChangePasswordTexture.setTexture(studentChangePasswordTexture);
     sf::Font Palatino;
     Palatino.loadFromFile("Font/Palatino.ttf");
-    OutputTextBox wrongaccount(16, sf::Color::Red, "Username or password incorrect!\nPlease try again!");
+   
 
     //list of button manage
     LinkedList<std::string> studenttexthomebutton;
@@ -274,7 +274,8 @@ void studentChangePassword(sf::RenderWindow& window, Student& studentuser) {
     TextBox inputConfirmPassword(24, sf::Color::Black, false);
     inputConfirmPassword.setfont(Palatino);
     inputConfirmPassword.setTextPosition(sf::Vector2f(750, 644));
-
+    OutputTextBox wrongaccount(16, sf::Color::Red, "password incorrect!\nPlease try again!");
+    wrongaccount.setfont(Palatino);
     bool check = 0;
     while (window.isOpen())
     {
@@ -370,21 +371,24 @@ void studentChangePassword(sf::RenderWindow& window, Student& studentuser) {
                         std::string confirmPassword = inputConfirmPassword.getText();
                         if (newPassword != confirmPassword) {
                             std::cout << "Wrong" << std::endl;
-                            check = 1;
+                            check = true;
                         }
                         else if (newPassword == currentPassword) {
                             std::cout << "wrong1" << std::endl;
+                            check = true;
+                            std:: cout << check;
                         }
                         else {
                             LinkedList<User> userList = readUserFromCSV("Data/studentuser.csv");
                             if (check_login(userList, studentuser.studentID, currentPassword)) {
                                 changePassword(userList, studentuser.studentID, newPassword);
                                 updateUser2CSVfile("Data/studentuser.csv", userList);
-                                std::cout << "Change password successfully" << std::endl;
+                                anoucement("change password sucessfully");                            
                             }
                             else {
                                 std::cout << "wrong2" << std::endl;
                                 std::cout << studentuser.studentID << std::endl;
+                                check = true;
                             }
 
                         }
@@ -400,12 +404,12 @@ void studentChangePassword(sf::RenderWindow& window, Student& studentuser) {
         inputCurrentPassword.drawTextbox(window);
         inputNewPassword.drawTextbox(window);
         inputConfirmPassword.drawTextbox(window);
-        if (check) {
-            wrongaccount.setTextPosition(sf::Vector2f(45, 590));
-            wrongaccount.drawTextbox(window);
-        }
         schoolyeartextbox.drawTextbox(window);
         semestertextbox.drawTextbox(window);
+        if (check) {
+            wrongaccount.setTextPosition(sf::Vector2f(750,680));
+            wrongaccount.drawTextbox(window);
+        }
         window.display();
     }
 

@@ -35,4 +35,7 @@ D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\Textbox.h(211,17): warnin
   
 D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\manageclass.cpp(169,34): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
 D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\manageclass.cpp(336,35): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\manageclass.cpp(995,35): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\manageclass.cpp(1006,38): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\manageclass.cpp(1008,40): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
   Project.vcxproj -> D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\x64\Debug\Project.exe

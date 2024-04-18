@@ -23,7 +23,7 @@ void LoadDataofStudent(LinkedList<Student>& studentlist, std::string filename) {
 				getline(fin, dob, ',');
 				getline(fin, gender, ',');
 				getline(fin, socialID);
-
+				
 
 				std::istringstream ss(dob);
 				int d, m, y;

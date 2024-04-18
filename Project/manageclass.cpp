@@ -804,6 +804,13 @@ void staffviewstudentinclass(sf::RenderWindow& window, Staff& userstaff, std::st
     editmode.setposition(sf::Vector2f(110, 490));
     Button viewmode(sf::Color(192, 200, 184), sf::Vector2f(70, 40), false, sf::Color::Black, "view", 20, Palatino);
     viewmode.setposition(sf::Vector2f(110, 538));
+    //save and delete button
+    Button savebut(sf::Color(186, 158, 146, 100), sf::Vector2f(135, 40), false);
+    Button deletebut(sf::Color(186, 158, 146, 100), sf::Vector2f(135, 40), false);
+    savebut.setposition(sf::Vector2f(180, 490));
+    deletebut.setposition(sf::Vector2f(180, 540));
+
+   
 
     //list of student
 
@@ -836,7 +843,7 @@ void staffviewstudentinclass(sf::RenderWindow& window, Staff& userstaff, std::st
 
         Studenttextbox[i][0].setText(std::to_string(i + 1)); // Assuming you want to set index 0 to an index value
         Studenttextbox[i][1].setText(cur->data.studentID);
-        Studenttextbox[i][2].setText(cur->data.name.lastName + " "+ cur->data.name.firstName);
+        Studenttextbox[i][2].setText(cur->data.name.lastName + "-"+ cur->data.name.firstName);
 
         if (cur->data.studentGender == 0)
             Studenttextbox[i][3].setText("male");
@@ -922,6 +929,15 @@ void staffviewstudentinclass(sf::RenderWindow& window, Staff& userstaff, std::st
                 logoutbut.changecolor(sf::Color::Transparent);
                 logoutbut.changeTextColor(sf::Color::Transparent);
             }
+            if (savebut.isonMousecursor(event)) {
+                savebut.changecolor(sf::Color(186, 158, 146, 100));
+            }
+            else savebut.changecolor(sf::Color::Transparent);
+            if (deletebut.isonMousecursor(event))
+                deletebut.changecolor(sf::Color(186, 158, 146, 100));
+            else
+                deletebut.changecolor(sf::Color::Transparent);
+
 
 
 
@@ -950,6 +966,11 @@ void staffviewstudentinclass(sf::RenderWindow& window, Staff& userstaff, std::st
             }
             for (int i = 0; i < n; i++)
             {
+                if (StudentsButton.isClickedKOrder(event, i + 1)) {
+                    studentchosen.setButposition(StudentsButton.getpositionofKbut(i + 1));
+                    studentchosen.changecolor(sf::Color(186, 158, 146, 100));
+                    kbuttonchose = i;
+                }
                 if (userstaff.getmode()) {
                     for (int j = 0; j < 6; j++)
                     {
@@ -965,16 +986,44 @@ void staffviewstudentinclass(sf::RenderWindow& window, Staff& userstaff, std::st
                                     Studenttextbox[i][j].typedText(event);
                             }
                         }
+                        
                     }
-                    studentchosen.changecolor(sf::Color::Transparent);
+                    if (deletebut.isClick(event) and kbuttonchose != -1) {
+                        Student studentdeleted;
+                        studentdeleted.studentID = Studenttextbox[kbuttonchose][1].getText();
+                        std::string fullname=Studenttextbox[kbuttonchose][2].getText();
+                        int found = fullname.find("-");
+                        std::cout << found;
+                        if (found!=0) {
+                            studentdeleted.name.lastName = fullname.substr(0, found);
+                            std::cout << studentdeleted.name.lastName;
+                            studentdeleted.name.firstName = fullname.substr(found + 1, fullname.size());
+                            std::cout << studentdeleted.name.firstName;
+                        }
+                        if (Studenttextbox[kbuttonchose][3].getText() == "male") studentdeleted.studentGender = 0;
+                        else studentdeleted.studentGender = 0;
+                        std::string dob = Studenttextbox[kbuttonchose][4].getText();
+                        int foundday = dob.find("/");
+                        studentdeleted.birthDay.day = std::stoi(dob.substr(0, found));
+                        int foundmonth = dob.find("/", foundday + 1);
+                        std::cout << foundmonth;
+                        std::cout << studentdeleted.birthDay.day;
+                        studentdeleted.birthDay.month = std::stoi(dob.substr(foundday+1, foundmonth));
+                        std::cout<<studentdeleted.birthDay.month;
+                        studentdeleted.birthDay.year = std::stoi(dob.substr(foundmonth+1, dob.size()));
+                        std::cout<<studentdeleted.birthDay.year;
+                        studentdeleted.socialID = Studenttextbox[kbuttonchose][5].getText();
+                        curclass.removeStudent(studentdeleted);
+                    }
                 }
                 else {
-                    if (StudentsButton.isClickedKOrder(event, i + 1)) {
-                        studentchosen.setButposition(StudentsButton.getpositionofKbut(i + 1));
-                        studentchosen.changecolor(sf::Color(186, 158, 146, 100));
-                    }
+                    //view score
                 }
 
+            }
+            if (savebut.isClick(event)) {
+                curclass.saveStudent(schoolyear, classchosen);
+                staffviewstudentinclass(window, userstaff, schoolyear, classchosen);
             }
         }
 
