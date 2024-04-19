@@ -646,6 +646,7 @@ void staffaddcourse(sf::RenderWindow& window, Staff& userstaff, std::string scho
                             addMaxStudent.setText("");
                             addTeacherName.setText("");
                             addSession.setText("");
+                            staffaddcourse(window, userstaff, schoolyear, semester);
                         }
                     }
                 }
