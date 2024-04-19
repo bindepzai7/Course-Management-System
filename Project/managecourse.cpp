@@ -66,7 +66,7 @@ void staffmanagecourse(sf::RenderWindow& window, Staff& userstaff, std::string s
     TextBox** CourseTextBox = new TextBox * [n];
 
     float Posx[8] = { 345,374,494,837,886,941,1057,1286 };
-    float Posy = 416;
+    float Posy = 385;
     float distance = 60;
     float Posylimabove = 365;
     float Posylimunder = 810;

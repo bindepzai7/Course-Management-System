@@ -24,4 +24,5 @@ C:\Users\uyenn\source\repos\STUDY\[CS162] Course Management System\Group_project
 C:\Users\uyenn\source\repos\STUDY\[CS162] Course Management System\Group_project_Cs162_2\Project\managecourse.cpp(301,35): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
 C:\Users\uyenn\source\repos\STUDY\[CS162] Course Management System\Group_project_Cs162_2\Project\managecourse.cpp(630,39): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
 C:\Users\uyenn\source\repos\STUDY\[CS162] Course Management System\Group_project_Cs162_2\Project\managecourse.cpp(942,35): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+  LINK : C:\Users\uyenn\source\repos\STUDY\[CS162] Course Management System\Group_project_Cs162_2\Project\x64\Debug\Project.exe not found or not built by the last incremental link; performing full link
   Project.vcxproj -> C:\Users\uyenn\source\repos\STUDY\[CS162] Course Management System\Group_project_Cs162_2\Project\x64\Debug\Project.exe
