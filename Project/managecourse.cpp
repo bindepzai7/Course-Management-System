@@ -310,6 +310,10 @@ void staffmanagecourse(sf::RenderWindow& window, Staff& userstaff, std::string s
 
                     if (savebut.isClick(event)) {
                         s.saveCourseListToFileCourseList(schoolyear);
+                        for (int i = 0; i < n; ++i) {
+                            delete[] CourseTextBox[i];
+                        }
+                        delete[] CourseTextBox;
                         staffmanagecourse(window, userstaff, schoolyear, semester);
                     }
 
@@ -319,6 +323,10 @@ void staffmanagecourse(sf::RenderWindow& window, Staff& userstaff, std::string s
                         remove("Data/"+schoolyear+"/"+semester+"/studentOfEachCourse/" + CourseTextBox[kbuttonchose][1].getText() + ".csv");
                         remove("Data/" + schoolyear + "/" + semester + "/scoreOfEachCourse/" + CourseTextBox[kbuttonchose][1].getText() + ".csv");
                         s.saveCourseListToFileCourseList(schoolyear);
+                        for (int i = 0; i < n; ++i) {
+                            delete[] CourseTextBox[i];
+                        }
+                        delete[] CourseTextBox;
                         staffmanagecourse(window, userstaff, schoolyear, semester);
                     }
                 }
@@ -714,6 +722,11 @@ void staffviewstudentofcourse(sf::RenderWindow& window, Staff& userstaff, std::s
     semestertextbox.setfont(Palatino);
     semestertextbox.setTextPosition(sf::Vector2f(218, 702));
 
+    //save and delete button
+    Button savebut(sf::Color(186, 158, 146, 100), sf::Vector2f(135, 40), false);
+    Button deletebut(sf::Color(186, 158, 146, 100), sf::Vector2f(135, 40), false);
+    savebut.setposition(sf::Vector2f(180, 490));
+    deletebut.setposition(sf::Vector2f(180, 540));
 
     //class current textbox
     OutputTextBox cur_coursetextbox(28, sf::Color::Black, coursechosen);
@@ -730,6 +743,45 @@ void staffviewstudentofcourse(sf::RenderWindow& window, Staff& userstaff, std::s
     Button viewmode(sf::Color(168, 158, 146), sf::Vector2f(133, 43), false, sf::Color::Black, "VIEW", 20, Palatino);
     viewmode.setposition(sf::Vector2f(46, 538));
 
+
+    Course c(coursechosen);
+    c.loadStudentsFromCsvFileStaffUpload("Data/" + schoolyear + "/" + semester + "/studentOfEachCourse/" + c.courseID + ".csv");
+    int n = c.countStudent();
+    Node<Course::Student>* cur = c.studentsInThisCourse.head;
+
+    TextBox** StudentTextBox = new TextBox * [n];
+
+    float Posx[3] = { 924,970, 1138 };
+    float Posy = 385;
+    float distance = 60;
+    float Posylimabove = 365;
+    float Posylimunder = 810;
+    float jumpsize = 500;
+    int numberofbutton = 3;
+    for (int i = 0; i < n && cur; i++)
+    {
+        StudentTextBox[i] = new TextBox[3];
+        for (int j = 0; j < 3; j++)
+        {
+            StudentTextBox[i][j].setsize(22);
+            StudentTextBox[i][j].setColor(sf::Color::Black);
+            StudentTextBox[i][j].setselected(false);
+            StudentTextBox[i][j].setfont(Palatino);
+            StudentTextBox[i][j].setTextboxpostitionwithlimit(Posx[j], Posy + distance * i, Posylimabove, Posylimunder, jumpsize);
+        }
+        StudentTextBox[i][0].setText(std::to_string(i + 1)); // Assuming you want to set index 0 to an index value
+        StudentTextBox[i][1].setText(cur->data.getStudentID());
+        StudentTextBox[i][2].setText(cur->data.getName());
+        cur = cur->next;
+    }
+
+    //button of list student
+    dropdownlist studentsButton(sf::Color::Transparent, sf::Vector2f(500, 40), false, n);
+    studentsButton.setpostionlistbuttonwithlimit(Posx[0], Posy - 5, 0, distance, Posylimabove, Posylimunder, jumpsize);
+    int kbuttonchose = -1;
+    Button studentChosen(sf::Color::Transparent, sf::Vector2f(500, 40), false);
+
+
     while (window.isOpen())
     {
         sf::Event event;
@@ -743,31 +795,67 @@ void staffviewstudentofcourse(sf::RenderWindow& window, Staff& userstaff, std::s
                     int x_coor = event.mouseButton.x;
                     int y_coor = event.mouseButton.y;
                     if (x_coor > 45 && x_coor < 100 && y_coor>47 && y_coor < 100) {
+                        for (int i = 0; i < n; ++i) {
+                            delete[] StudentTextBox[i];
+                        }
+                        delete[] StudentTextBox;
                         staffHome(window, userstaff);
                     }
                     if (x_coor > 40 && x_coor < 77 && y_coor>887 && y_coor < 932) {
+                        for (int i = 0; i < n; ++i) {
+                            delete[] StudentTextBox[i];
+                        }
+                        delete[] StudentTextBox;
                         staffviewprofile(window, userstaff);
                     }
-                    if (x_coor > 390 && x_coor < 640 && y_coor>867 && y_coor < 917) {
-                        //////////////////////UNDERCONSTRUCTION CODE HERE
-                    }
+                    
                 }
             }
-            if (staffhomebuttonlist.isClickedKOrder(event, 1))
+            if (staffhomebuttonlist.isClickedKOrder(event, 1)) {
+                for (int i = 0; i < n; ++i) {
+                    delete[] StudentTextBox[i];
+                }
+                delete[] StudentTextBox;
                 staffmanageschoolyeardisplay(window, userstaff);
-            if (staffhomebuttonlist.isClickedKOrder(event, 2))
-                staffSemesterLobby(window, userstaff);
-            if (staffhomebuttonlist.isClickedKOrder(event, 3))
-                staffmanagecourse(window, userstaff, getCurrentSchoolyear(), getCurrentSemester());
+            }
+                if (staffhomebuttonlist.isClickedKOrder(event, 2)) {
+                    for (int i = 0; i < n; ++i) {
+                        delete[] StudentTextBox[i];
+                    }
+                    delete[] StudentTextBox;
+                    staffSemesterLobby(window, userstaff);
+            }
+                if (staffhomebuttonlist.isClickedKOrder(event, 3)) {
+                    for (int i = 0; i < n; ++i) {
+                        delete[] StudentTextBox[i];
+                    }
+                    delete[] StudentTextBox;
+                    staffmanagecourse(window, userstaff, getCurrentSchoolyear(), getCurrentSemester());
+            }
             if (staffhomebuttonlist.isClickedKOrder(event, 4)) {
+                for (int i = 0; i < n; ++i) {
+                    delete[] StudentTextBox[i];
+                }
+                delete[] StudentTextBox;
                 staffaddclasses(window, userstaff, getCurrentSchoolyear());
             }
-            if (staffhomebuttonlist.isClickedKOrder(event, 5))
+            if (staffhomebuttonlist.isClickedKOrder(event, 5)) {
+                for (int i = 0; i < n; ++i) {
+                    delete[] StudentTextBox[i];
+                }
+                delete[] StudentTextBox;
                 staffaboutUs(window, userstaff);
+            }
 
 
             //click logout button
-            if (logoutbut.isClick(event)) chooseRole(window);
+            if (logoutbut.isClick(event)) {
+                for (int i = 0; i < n; ++i) {
+                    delete[] StudentTextBox[i];
+                }
+                delete[] StudentTextBox;
+                chooseRole(window);
+            }
 
             //click mode
             if (editmode.isClick(event)) {
@@ -790,7 +878,103 @@ void staffviewstudentofcourse(sf::RenderWindow& window, Staff& userstaff, std::s
                 logoutbut.changecolor(sf::Color::Transparent);
                 logoutbut.changeTextColor(sf::Color::Transparent);
             }
+
+
+
+
+            if (event.type == event.MouseWheelScrolled and n > 8) {
+                Posy = Posy + event.mouseWheelScroll.delta * 10.0f;
+                if (StudentTextBox[n - 1][0].getPositionofTextbox().y <= Posylimunder - 10) {
+                    std::cout << StudentTextBox[n - 1][0].getPositionofTextbox().y;
+                    std::cout << Posy;
+                    Posy = 325 - (n - numberofbutton - 1) * distance;
+                }
+                else if (StudentTextBox[numberofbutton - 1][0].getPositionofTextbox().y >= Posylimunder) {
+
+                    std::cout << Posy;
+                    Posy = 388;
+
+                }
+                for (int i = 0; i < n; i++)
+                {
+                    for (int j = 0; j < 3; j++)
+                    {
+                        StudentTextBox[i][j].setTextboxpostitionwithlimit(Posx[j], Posy + distance * i, Posylimabove, Posylimunder, jumpsize);
+
+                    }
+                }
+                studentsButton.setpostionlistbuttonwithlimit(Posx[0], Posy - 5, 0, distance, Posylimabove, Posylimunder, jumpsize);
+                studentChosen.setButposition(studentsButton.getpositionofKbut(kbuttonchose + 1));
+            }
+
+
+            //init node tmp for change data;
+            Node<Course::Student>* tmp = c.studentsInThisCourse.head;
+            for (int i = 0; i < n; i++)
+            {
+                if (studentsButton.isClickedKOrder(event, i + 1)) {
+                    studentChosen.setButposition(studentsButton.getpositionofKbut(i + 1));
+                    studentChosen.changecolor(sf::Color(186, 158, 146, 100));
+                    kbuttonchose = i;
+                }
+                if (userstaff.getmode()) {
+                    for (int j = 0; j < 3; j++)
+                    {
+                        if (StudentTextBox[i][j].isClickwithoutPosagrument(event)) {
+                            StudentTextBox[i][j].setselected(true);
+                            setnotseleted(StudentTextBox, n, i, j);
+                        }
+                        if (event.type == sf::Event::TextEntered) {
+                            if (StudentTextBox[i][j].isselectedbox()) {
+                                if (sf::Keyboard::isKeyPressed(sf::Keyboard::Return))
+                                    StudentTextBox[i][j].setselected(false);
+                                else
+                                    StudentTextBox[i][j].typedText(event);
+                            }
+                        }
+
+                    }
+                    //savebuttonclick
+                    if (tmp) {
+                        tmp->data.StudentID = StudentTextBox[i][1].getText();
+
+                        std::string fullname = StudentTextBox[i][2].getText();
+                        int found = fullname.find("-");
+                        if (found > 0) {
+                            tmp->data.name.lastName = fullname.substr(0, found);
+                            tmp->data.name.firstName = fullname.substr(found + 1, fullname.size());
+                        }
+                        tmp = tmp->next;
+                    }
+
+
+                    if (savebut.isClick(event)) {
+                        c.saveStudentsToCsvFile(schoolyear, semester);
+                        for (int i = 0; i < n; ++i) {
+                            delete[] StudentTextBox[i];
+                        }
+                        delete[] StudentTextBox;
+                        staffviewstudentofcourse(window, userstaff, schoolyear, semester, coursechosen);
+                    }
+
+                    //deletebutton
+                    if (deletebut.isClick(event) and kbuttonchose != -1) {
+                        c.deleteStudentFromThisCourse(StudentTextBox[kbuttonchose][1].getText());
+                        c.saveStudentsToCsvFile(schoolyear, semester);
+                        for (int i = 0; i < n; ++i) {
+                            delete[] StudentTextBox[i];
+                        }
+                        delete[] StudentTextBox;
+                        staffviewstudentofcourse(window, userstaff, schoolyear, semester, coursechosen);
+                    }
+                }
+            }
+
+
         }
+
+        
+
 
         window.clear();
         window.draw(s_staffviewstudentofcourseTexture);
@@ -798,6 +982,13 @@ void staffviewstudentofcourse(sf::RenderWindow& window, Staff& userstaff, std::s
         logoutbut.drawbutton(window);
         if (userstaff.getmode()) editmode.drawbutton(window);
         else viewmode.drawbutton(window);
+        for (int i = 0; i < n; i++)
+            for (int j = 0; j < 3; j++)
+                StudentTextBox[i][j].drawTextbox(window);
+        studentsButton.drawButwithoutchangeTextboxcolor(window, event, sf::Color(168, 158, 146, 100));
+        studentChosen.drawbutton(window);
+        deletebut.drawbutton(window);
+        savebut.drawbutton(window);
         schoolyeartextbox.drawTextbox(window);
         semestertextbox.drawTextbox(window);
         cur_coursetextbox.drawTextbox(window);

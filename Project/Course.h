@@ -73,6 +73,16 @@ public:
 
     //Constructor
     Course();
+    Course(const std::string courseID) {
+        this->courseID = courseID;
+        courseName = "";
+        credits =0;
+        maxStudent = 0;
+        validSlot = 0;
+        session = "";
+        className = "";
+
+    }
     Course(const std::string& courseID, const std::string& courseName, const std::string& session, const int& credits, const int& maxStudent, const Name& teacherName, const std::string& className);
 
     //operator
@@ -123,6 +133,10 @@ public:
 
 
     //About students in this course
+
+    int countStudent() {
+        return studentsInThisCourse.sizeoflist();
+    }
 
     void deleteAllStudentInCourse();
 

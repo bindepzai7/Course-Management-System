@@ -89,7 +89,7 @@ std::string Course::getCourseName() {
 	return this->courseName;
 }
 std::string Course::getTeacherName() {
-	return (this->teacherName.lastName + " " + this->teacherName.firstName);
+	return (this->teacherName.lastName + "-" + this->teacherName.firstName);
 }
 int Course::getCredit() {
 	return this->credits;
