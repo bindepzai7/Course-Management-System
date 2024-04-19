@@ -54,6 +54,7 @@ bool Semester::loadCourseListFromFileCourseList(const std::string& schoolYear) {
 		getline(fin, s);  //ignore the first line
 		Course c;
 		while (c.readACourseFromFileCourseList(fin)) {
+			std::cout << c.courseID << " ";
 			courseList.addNodeAtFront(c);
 		}
 		fin.close();
@@ -116,7 +117,7 @@ bool Semester::updateACourseOfCourseList(const std::string& destCourseID, const 
 
 bool Semester::addACourseToCourseList(const Course& c) {
 	if (!checkIfThereIsAlreadyACourse(c)) {
-		courseList.push_head(c);
+		courseList.addNodeAtFront(c);
 		return true;
 	}
 	return false;

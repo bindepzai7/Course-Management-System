@@ -150,8 +150,8 @@ bool Course::loadStudentsFromCsvFileStaffUpload(const std::string& filename) {
 	These files should be the ones that staffs upload.
 	Staff will upload this file and it will go to the studentOfEachCourse folder.
 	*/
-
-	studentsInThisCourse.empty(); //If we already load students from another course
+	//I delete the valid spot 
+	//studentsInThisCourse.empty(); //If we already load students from another course
 
 	std::ifstream fin;
 	//fin.open("Data/" + schoolYear + "/" + semester + "/studentOfEachCourse/" + this->courseID + ".csv");
@@ -163,7 +163,7 @@ bool Course::loadStudentsFromCsvFileStaffUpload(const std::string& filename) {
 	std::string input = "";
 	getline(fin, input); //ignore the first line
 
-	while (!fin.eof() and validSlot != 0) {
+	while (!fin.eof()) {
 		//Read each student one by one 
 		Student student;
 		getline(fin, input, ',');
@@ -171,11 +171,11 @@ bool Course::loadStudentsFromCsvFileStaffUpload(const std::string& filename) {
 		getline(fin, student.StudentID, ',');
 		getline(fin, student.name.lastName, ',');
 		getline(fin, student.name.firstName, '\n');
+		std::cout << student.name.lastName << " ";
 		studentsInThisCourse.addNodeInAscending(student);
-		validSlot--;
 	}
 	fin.close();
-	if (validSlot == 0 and !fin.eof()) return false;
+	if ( !fin.eof()) return false;
 	return true;
 }
 

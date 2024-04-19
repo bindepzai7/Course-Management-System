@@ -245,6 +245,8 @@ void staffmanagecourse(sf::RenderWindow& window, Staff& userstaff, std::string s
                 courseButton.setpostionlistbuttonwithlimit(Posx[0], Posy - 5, 0, distance, Posylimabove, Posylimunder, jumpsize);
                 courseChosen.setButposition(courseButton.getpositionofKbut(kbuttonchose + 1));
             }
+
+
             //init node tmp for change data;
             Node<Course>* tmp = s.courseList.head;
             for (int i = 0; i < n; i++)
@@ -254,7 +256,16 @@ void staffmanagecourse(sf::RenderWindow& window, Staff& userstaff, std::string s
                     courseChosen.changecolor(sf::Color(186, 158, 146, 100));
                     kbuttonchose = i;
                 }
-                if (userstaff.getmode()) {
+                if (!userstaff.getmode()) {
+                    if (courseChosen.isClick(event)) {
+                        courseChosen.setisClicked(false);
+                        if (courseChosen.isClick(event)) {
+                            staffviewstudentofcourse(window, userstaff, schoolyear, semester, CourseTextBox[i][1].getText());
+                        }
+                    }
+                    
+                }
+                else {
                     for (int j = 0; j < 8; j++)
                     {
                         if (CourseTextBox[i][j].isClickwithoutPosagrument(event)) {
@@ -608,12 +619,15 @@ void staffaddcourse(sf::RenderWindow& window, Staff& userstaff, std::string scho
                         }
                         else {
                             int found = name.find_last_of(" ");
-                            teacherName.lastName = name.substr(0, found);
-                            teacherName.firstName = name.substr(found + 1);
+                            if (found != std::string::npos) {
+                                teacherName.lastName = name.substr(0, found);
+                                teacherName.firstName = name.substr(found + 1);
+                            }
+                            else teacherName.firstName = name;
                             c.setCourse(courseID, courseName, session, std::stoi(credit), std::stoi(maxStudent), teacherName, className);
-                            s.addACourseToCourseList(c);
-
                             c.saveStudentsToCsvFile(schoolyear, semester);
+                            
+                            s.addACourseToCourseList(c);
                             s.saveCourseListToFileCourseList(schoolyear);
 
                             addCourseID.setText("");
@@ -623,7 +637,6 @@ void staffaddcourse(sf::RenderWindow& window, Staff& userstaff, std::string scho
                             addMaxStudent.setText("");
                             addTeacherName.setText("");
                             addSession.setText("");
-                            c.deleteAllStudentInCourse();
                         }
                     }
                 }
@@ -639,7 +652,7 @@ void staffaddcourse(sf::RenderWindow& window, Staff& userstaff, std::string scho
             if (importbut.isClick(event)) {
                 importbut.setisClicked(true);
                 std::string filename = filenametoimport();
-                if (filename != "" and c.courseID != "") {
+                if (filename != "") {
                     c.loadStudentsFromCsvFileStaffUpload(filename);
                 }
             }
@@ -790,3 +803,5 @@ void staffviewstudentofcourse(sf::RenderWindow& window, Staff& userstaff, std::s
         window.display();
     }
 }
+
+

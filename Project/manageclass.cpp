@@ -1148,7 +1148,7 @@ void staffChooseOption(sf::RenderWindow& window, Staff& userstaff, std::string c
 
     ///////////////////////////////////CODE HERE
     sf::Texture staffChooseOptionTexture;
-    staffChooseOptionTexture.loadFromFile("Design UI/[Staff - 6] choosing to view scoreboard.jpg");
+    staffChooseOptionTexture.loadFromFile("Design UI/[Staff - 8] choosing to view scoreboard.jpg");
     staffChooseOptionTexture.setSmooth(true);
     sf::Sprite s_staffChooseOptionTexture;
     s_staffChooseOptionTexture.setTexture(staffChooseOptionTexture);

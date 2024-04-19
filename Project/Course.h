@@ -76,16 +76,15 @@ public:
     Course(const std::string& courseID, const std::string& courseName, const std::string& session, const int& credits, const int& maxStudent, const Name& teacherName, const std::string& className);
 
     //operator
-    bool operator=(Course c) {
-        this->courseID = c.courseID;
-        this->courseName = c.courseName;
-        this->credits = c.credits;
-        this->maxStudent = c.maxStudent;
-        this->validSlot = c.validSlot;
-        this->teacherName = c.teacherName;
-        this->session = c.session;
-        this->className = c.className;
-        return true;
+    void operator=(const Course& c) {
+        courseID = c.courseID;
+        courseName = c.courseName;
+        credits = c.credits;
+        maxStudent = c.maxStudent;
+        validSlot = c.validSlot;
+        teacherName = c.teacherName;
+        session = c.session;
+        className = c.className;
     }
     bool operator==(const Course& c) {
         if (this->className != c.className and this->session!=c.session) return false;
