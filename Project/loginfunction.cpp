@@ -184,7 +184,7 @@ void loginWindow(sf::RenderWindow& window, bool role)
     }
 }
 
-void anoucement(std::string anoucmenttext) {
+void announcement(std::string announcementtext) {
     sf::RenderWindow window(sf::VideoMode(800, 300), "anoucement", sf::Style::Close);
     /*sf::Texture enterFilenameTexture;
     enterFilenameTexture.loadFromFile("Design UI/Enter filename.png");
@@ -194,11 +194,11 @@ void anoucement(std::string anoucmenttext) {
     sf::Font Palatino;
     Palatino.loadFromFile("Font/Palatino.ttf");
 
-    Button enterbut(sf::Color(192,200,184), sf::Vector2f(306, 46), false, sf::Color::Black, "enter", 30, Palatino);
-    enterbut.setposition(sf::Vector2f(458, 220));
+    Button closebut(sf::Color(192,200,184), sf::Vector2f(306, 46), false, sf::Color::Black, "Close", 30, Palatino);
+    closebut.setposition(sf::Vector2f(458, 220));
 
-    Button anoucement(sf::Color::Transparent, sf::Vector2f(306, 46), false, sf::Color::Black,anoucmenttext, 28, Palatino);
-    anoucement.setposition(sf::Vector2f(220, 120));
+    Button announcement(sf::Color::Transparent, sf::Vector2f(306, 46), false, sf::Color::Black,announcementtext, 28, Palatino);
+    announcement.setposition(sf::Vector2f(220, 120));
 
     std::string filename = "";
 
@@ -209,13 +209,13 @@ void anoucement(std::string anoucmenttext) {
         {
             if (event.type == sf::Event::Closed)
                 window.close();
-            if (enterbut.isClick(event)) {
+            if (closebut.isClick(event)) {
                 window.close();
             }
         }
         window.clear(sf::Color(239,233,222));
-        enterbut.drawbutton(window);
-        anoucement.drawbutton(window);
+        closebut.drawbutton(window);
+        announcement.drawbutton(window);
         window.display();
     }
     

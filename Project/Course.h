@@ -9,13 +9,13 @@
 
 
 class Course {
-private:
+
+public:
     //Course basic information
-    std::string courseID, courseName, session;
+    std::string courseID, courseName, session, className;
     int credits, maxStudent, validSlot;
     Name teacherName;
 
-public:
     //Course's students' info and score struct
     struct Student {
         std::string StudentID;
@@ -69,14 +69,11 @@ public:
             return this->otherScore;
         }
     };
-
-private:
     LinkedList<Student> studentsInThisCourse;
-public:
 
     //Constructor
     Course();
-    Course(const std::string& courseID, const std::string& courseName, const std::string& session, const int& credits, const int& maxStudent, const Name& teacherName);
+    Course(const std::string& courseID, const std::string& courseName, const std::string& session, const int& credits, const int& maxStudent, const Name& teacherName, const std::string& className);
 
     //operator
     bool operator=(Course c) {
@@ -87,10 +84,12 @@ public:
         this->validSlot = c.validSlot;
         this->teacherName = c.teacherName;
         this->session = c.session;
+        this->className = c.className;
         return true;
     }
-    bool operator==(std::string courseID) {
-        return (this->courseID == courseID);
+    bool operator==(const Course& c) {
+        if (this->className != c.className) return false;
+        return (this->courseID == c.courseID);
     }
 
 
@@ -111,12 +110,13 @@ public:
              std::string getCourseID(); //checked
              std::string getCourseName(); //checked
              std::string getTeacherName(); //checked
+             std::string getClassName();
              int getCredit(); //checked
              int getMaxStudent(); //checked
              int getValidSlot();
 
 
-    bool updateCourseInfo(const std::string& courseID, const std::string& courseName, const Name& teacher, const int& MaxStudent, const int& credits, const std::string& session);  //checked
+    bool updateCourseInfo(const std::string& className, const std::string& courseID, const std::string& courseName, const Name& teacher, const int& MaxStudent, const int& credits, const std::string& session);  //checked
 
     void saveACourseToFileCourseList(std::ofstream& fout);   //checked
 

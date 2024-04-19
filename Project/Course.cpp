@@ -20,12 +20,13 @@ Course::Course() {
 	this->validSlot = maxStudent;
 }
 
-Course::Course(const std::string& courseID, const std::string& courseName, const std::string& session, const int& credits, const int& maxStudent, const Name& teacherName) {
+Course::Course(const std::string& courseID, const std::string& courseName, const std::string& session, const int& credits, const int& maxStudent, const Name& teacherName, const std::string& className) {
 	if (maxStudent == NULL) {
 		this->maxStudent = 50; //Default maxStudent
 	}
 	else this->maxStudent = maxStudent;
 	this->courseID = courseID;
+	this->className = className;
 	this->courseName = courseName;
 	this->teacherName = teacherName;
 	this->validSlot = maxStudent;
@@ -52,7 +53,8 @@ bool Course::readACourseFromFileCourseList(std::ifstream& fin) {
 		fin >> (maxStudent);
 		this->validSlot = maxStudent;
 		fin.ignore(1000, ',');
-		getline(fin, session, '\n');
+		getline(fin, session, ',');
+		getline(fin, className, '\n');
 		return true;
 	}
 	return false;
@@ -80,8 +82,11 @@ int Course::getMaxStudent() {
 int Course::getValidSlot() {
 	return this->validSlot;
 }
+std::string Course::getClassName() {
+	return this->className;
+}
 
-bool Course::updateCourseInfo(const std::string& courseID, const std::string& courseName, const Name& teacher, const int& MaxStudent, const int& credits, const std::string& session) {
+bool Course::updateCourseInfo(const std::string& className, const std::string& courseID, const std::string& courseName, const Name& teacher, const int& MaxStudent, const int& credits, const std::string& session) {
 	if (MaxStudent > 0) {
 		int a = MaxStudent - this->maxStudent;
 		if (this->validSlot + a < 0) return false;
@@ -106,13 +111,16 @@ bool Course::updateCourseInfo(const std::string& courseID, const std::string& co
 	if (teacher.lastName != "") {
 		this->teacherName.lastName = teacher.lastName;
 	}
+	if (className != "") {
+		this->className = className;
+	}
 	return true;
 	
 };
 
 void Course::saveACourseToFileCourseList(std::ofstream& fout) {
 	fout << this->courseID << "," << this->courseName << "," << this->teacherName.lastName << ',' << this->teacherName.firstName << ','
-		<< this->credits << "," << this->maxStudent << ',' << this->session << '\n';
+		<< this->credits << "," << this->maxStudent << ',' << this->session << "," << this->className << '\n';
 }
 
 

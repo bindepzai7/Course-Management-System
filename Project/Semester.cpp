@@ -67,7 +67,7 @@ bool Semester::saveCourseListToFileCourseList(const std::string& schoolYear) {
 	std::ofstream fout;
 	fout.open("Data/" + schoolYear + "/" + semester + "/CourseList.csv");
 	if (fout.is_open()) {
-		fout << "No,courseID,courseNam,teacher_lastName,teacher_firstName,credits,max_student,dayAndSession\n";
+		fout << "No,courseID,courseNam,teacher_lastName,teacher_firstName,credits,max_student,dayAndSession,classes\n";
 		Course c;
 		int i = 1;
 		while (courseList.pop_head(c)) {
@@ -102,11 +102,11 @@ bool Semester::findACourseInCourseList(const std::string& courseID, Course& c) {
 	return false;
 }
 
-bool Semester::updateACourseOfCourseList(const std::string& destCourseID, const std::string& modiCourseID, const std::string& courseName, const Name& teacher, const int& MaxStudent, const int& credits, const std::string& session) {
+bool Semester::updateACourseOfCourseList(const std::string& destCourseID, const std::string& modiCourseID, const std::string& courseName, const Name& teacher, const int& MaxStudent, const int& credits, const std::string& session, const std::string& className) {
 	Node<Course>* cur = courseList.head;
 	while (cur) {
 		if (cur->data.getCourseID() == destCourseID) {
-			cur->data.updateCourseInfo(modiCourseID, courseName, teacher, MaxStudent, credits, session);
+			cur->data.updateCourseInfo(className, modiCourseID, courseName, teacher, MaxStudent, credits, session);
 			return true;
 		}
 		cur = cur->next;
@@ -114,9 +114,9 @@ bool Semester::updateACourseOfCourseList(const std::string& destCourseID, const 
 	return false;
 }
 
-bool Semester::addACourseToCourseList(const std::string& courseID, const std::string& courseName, const std::string& session, const int& credits, const int& maxStudent, const Name& teacherName) {
+bool Semester::addACourseToCourseList(const std::string& courseID, const std::string& courseName, const std::string& session, const int& credits, const int& maxStudent, const Name& teacherName, const std::string& className) {
 	if (!checkIfThereIsAlreadyACourse(courseID)) {
-		Course c(courseID, courseName, session, credits, maxStudent, teacherName);
+		Course c(courseID, courseName, session, credits, maxStudent, teacherName, className);
 		courseList.push_head(c);
 		return true;
 	}

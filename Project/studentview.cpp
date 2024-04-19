@@ -397,7 +397,7 @@ void studentChangePassword(sf::RenderWindow& window, Student& studentuser) {
                             if (check_login(userList, studentuser.studentID, currentPassword)) {
                                 changePassword(userList, studentuser.studentID, newPassword);
                                 updateUser2CSVfile("Data/studentuser.csv", userList);
-                                anoucement("change password sucessfully");                            
+                                announcement("change password sucessfully");                            
                             }
                             else {
                                 std::cout << "wrong2" << std::endl;

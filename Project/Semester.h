@@ -9,16 +9,19 @@
 using namespace std::filesystem;
 
 class Semester {
-	LinkedList<Course> courseList;
+	
 	std::string semester;
 	Date startDay;
 	Date endDay;
 public:
+	LinkedList<Course> courseList;
 	//default constructor
 	Semester() : semester(""), startDay(Date(0, 0, 0)), endDay(Date(0, 0, 0)) {}
 	//constructor with parameters
 	Semester(const std::string& semester, const Date& startDate, const Date& endDate) : semester(semester), startDay(startDate), endDay(endDate) {}
-
+	Semester(const std::string& semester) {
+		this->semester = semester;
+	}
 
 	//				About this semester's info
 
@@ -48,15 +51,23 @@ public:
 
 	bool loadCourseListFromFileCourseList(const std::string& schoolYear);   //checked
 
+	int getNumberOfCourse() {
+		return courseList.sizeoflist();
+	}
+
+	Node<Course>* getCourseList() {
+		return courseList.head;
+	}
+
 	bool saveCourseListToFileCourseList(const std::string& schoolYear);    //checked
 
 	bool checkIfThereIsAlreadyACourse(const std::string& CourseID);  //checked
 
 	bool findACourseInCourseList(const std::string& courseID, Course& c);
 
-	bool updateACourseOfCourseList(const std::string& destCourseID, const std::string& modiCourseID, const std::string& courseName, const Name& teacher, const int& MaxStudent, const int& credits, const std::string& session);    //checked
+	bool updateACourseOfCourseList(const std::string& destCourseID, const std::string& modiCourseID, const std::string& courseName, const Name& teacher, const int& MaxStudent, const int& credits, const std::string& session, const std::string& className);    //checked
 
-	bool addACourseToCourseList(const std::string& courseID, const std::string& courseName, const std::string& session, const int& credits, const int& maxStudent, const Name& teacherName);    //checked
+	bool addACourseToCourseList(const std::string& courseID, const std::string& courseName, const std::string& session, const int& credits, const int& maxStudent, const Name& teacherName, const std::string& className);    //checked
 
 	bool deleteACourseFromCourseList(const std::string& courseID);  //checked
 
