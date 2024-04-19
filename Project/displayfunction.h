@@ -60,6 +60,7 @@ void staffaddfirstyearstudent(sf::RenderWindow& window, Staff& userstaff,std::st
 void staffviewstudentinclass(sf::RenderWindow& window, Staff& userstaff, std::string schoolyear, std::string classchosen);
 void staffChooseOption(sf::RenderWindow& window, Staff& userstaff, std::string classchosen);
 void staffChooseOption2(sf::RenderWindow& window, Staff& userstaff, std::string classchosen, int Korderofbut);
+void staffviewstudentcoreboard(sf::RenderWindow& window, Staff& userstaff, std::string classchosen, std::string schoolyear, std::string semeseter);
 
 std::string filenametoimport();
 

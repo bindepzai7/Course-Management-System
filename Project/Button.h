@@ -62,6 +62,10 @@ public:
 	void changecolor(sf::Color color) {
 		recbutton.setFillColor(color);
 	}
+	void setoutlinecolor(sf::Color color) {
+		recbutton.setOutlineColor(color);
+		recbutton.setOutlineThickness(0.5f);
+	}
 	void changeTextColor(sf::Color color) {
 		textbox.setFillColor(color);
 	}

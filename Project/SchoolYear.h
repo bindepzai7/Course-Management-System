@@ -43,7 +43,7 @@ public:
         return schoolYear;
     }
 
-    bool loadSemesterListFromSemesterList(const std::string& schoolYear) {
+    bool loadSemesterListFromSemesterList() {
         semesterList.empty();
         std::ifstream fin;
         fin.open("Data/" + schoolYear + "/semesterStartAndEndDate.txt");
@@ -59,7 +59,7 @@ public:
         return false;
     }
 
-    bool saveSemesterListToSemesterList(const std::string& schoolYear) {
+    bool saveSemesterListToSemesterList() {
         std::ofstream fout;
         fout.open("Data/" + schoolYear + "/semesterStartAndEndDate.txt");
         if (fout.is_open()) {
@@ -74,7 +74,7 @@ public:
         return false;
     }
 
-    bool updateSemesterInfo(const std::string& desSemester, const std::string& newSemester, const std::string& schoolYear, const Date& start, const Date& end) {
+    bool updateSemesterInfo(const std::string& desSemester, const std::string& newSemester, const Date& start, const Date& end) {
         Node<Semester>* cur = semesterList.head;
         while (cur) {
             if (cur->data.getSemester() == desSemester) {
@@ -85,7 +85,7 @@ public:
         return false;
     }
 
-    bool addSemester(const std::string& semester, const std::string& schoolYear, const Date& startDate, const Date& endDate) {
+    bool addSemester(const std::string& semester, const Date& startDate, const Date& endDate) {
         if (!checkExistence(semester)) {
             Semester s(semester, startDate, endDate);
             if (s.addNewSemesterFolder(schoolYear, semester)) {
@@ -120,6 +120,10 @@ public:
             cur = cur->next;
         }
         return false;
+    }
+
+    int getnumberofsemeseter() {
+        return semesterList.sizeoflist();
     }
     
 };

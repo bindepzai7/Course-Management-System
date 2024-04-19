@@ -339,7 +339,7 @@ void staffmanageschoolyear2display(sf::RenderWindow& window, Staff& userstaff, i
             //wheel scrool
             if (event.type == event.MouseWheelScrolled and numberofbutton > maxbuttondisplay) {
 
-                newposy = newposy + event.mouseWheelScroll.delta * 5.0f;
+                newposy = newposy + event.mouseWheelScroll.delta * 10.0f;
                 newposyofschoolyearclicked = newposyofschoolyearclicked + event.mouseWheelScroll.delta * 10.0f;
 
                 if (schoolyears.getpositionofKbut(numberofbutton).y <= Posylimunder - 10) {
