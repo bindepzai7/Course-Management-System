@@ -185,7 +185,7 @@ void loginWindow(sf::RenderWindow& window, bool role)
 }
 
 void announcement(std::string announcementtext) {
-    sf::RenderWindow window(sf::VideoMode(800, 300), "anoucement", sf::Style::Close);
+    sf::RenderWindow window(sf::VideoMode(800, 300), "announcement", sf::Style::Close);
     /*sf::Texture enterFilenameTexture;
     enterFilenameTexture.loadFromFile("Design UI/Enter filename.png");
     enterFilenameTexture.setSmooth(true);

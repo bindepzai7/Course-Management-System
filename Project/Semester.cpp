@@ -81,10 +81,10 @@ bool Semester::saveCourseListToFileCourseList(const std::string& schoolYear) {
 	return false;
 }
 
-bool Semester::checkIfThereIsAlreadyACourse(const std::string& CourseID) {
+bool Semester::checkIfThereIsAlreadyACourse(const Course& c) {
 	Node<Course>* cur = courseList.head;
 	while (cur) {
-		if (cur->data.getCourseID() == CourseID) return true;
+		if (cur->data == c) return true;
 		cur = cur->next;
 	}
 	return false;
@@ -114,9 +114,8 @@ bool Semester::updateACourseOfCourseList(const std::string& destCourseID, const 
 	return false;
 }
 
-bool Semester::addACourseToCourseList(const std::string& courseID, const std::string& courseName, const std::string& session, const int& credits, const int& maxStudent, const Name& teacherName, const std::string& className) {
-	if (!checkIfThereIsAlreadyACourse(courseID)) {
-		Course c(courseID, courseName, session, credits, maxStudent, teacherName, className);
+bool Semester::addACourseToCourseList(const Course& c) {
+	if (!checkIfThereIsAlreadyACourse(c)) {
 		courseList.push_head(c);
 		return true;
 	}

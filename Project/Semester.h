@@ -61,13 +61,13 @@ public:
 
 	bool saveCourseListToFileCourseList(const std::string& schoolYear);    //checked
 
-	bool checkIfThereIsAlreadyACourse(const std::string& CourseID);  //checked
+	bool checkIfThereIsAlreadyACourse(const Course& c);  //checked
 
 	bool findACourseInCourseList(const std::string& courseID, Course& c);
 
 	bool updateACourseOfCourseList(const std::string& destCourseID, const std::string& modiCourseID, const std::string& courseName, const Name& teacher, const int& MaxStudent, const int& credits, const std::string& session, const std::string& className);    //checked
 
-	bool addACourseToCourseList(const std::string& courseID, const std::string& courseName, const std::string& session, const int& credits, const int& maxStudent, const Name& teacherName, const std::string& className);    //checked
+	bool addACourseToCourseList(const Course& c);    //checked
 
 	bool deleteACourseFromCourseList(const std::string& courseID);  //checked
 
