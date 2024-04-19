@@ -65,8 +65,8 @@ void staffmanagecourse(sf::RenderWindow& window, Staff& userstaff, std::string s
     
     TextBox** CourseTextBox = new TextBox * [n];
 
-    float Posx[8] = { 355,410,575,760,820,965,1100,1320 };
-    float Posy = 385;
+    float Posx[8] = { 345,374,494,837,886,941,1057,1286 };
+    float Posy = 416;
     float distance = 60;
     float Posylimabove = 365;
     float Posylimunder = 810;
@@ -90,7 +90,6 @@ void staffmanagecourse(sf::RenderWindow& window, Staff& userstaff, std::string s
         CourseTextBox[i][4].setText(std::to_string(cur->data.getMaxStudent()));
         CourseTextBox[i][5].setText(cur->data.getClassName());
         CourseTextBox[i][6].setText(cur->data.getTeacherName());
-        std::cout << CourseTextBox[i][6].getText();
         CourseTextBox[i][7].setText(cur->data.getSession());
         cur = cur->next;
     }
