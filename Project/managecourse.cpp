@@ -258,12 +258,13 @@ void staffmanagecourse(sf::RenderWindow& window, Staff& userstaff, std::string s
                 }
                 if (!userstaff.getmode()) {
                     if (courseChosen.isClick(event)) {
-                        courseChosen.setisClicked(false);
-                        if (courseChosen.isClick(event)) {
-                            staffviewstudentofcourse(window, userstaff, schoolyear, semester, CourseTextBox[i][1].getText());
+                        std::string choice = CourseTextBox[i][1].getText();
+                        for (int i = 0; i < n; ++i) {
+                            delete[] CourseTextBox[i];
                         }
+                        delete[] CourseTextBox;
+                        staffviewstudentofcourse(window, userstaff, schoolyear, semester, choice);
                     }
-                    
                 }
                 else {
                     for (int j = 0; j < 8; j++)
@@ -717,7 +718,7 @@ void staffviewstudentofcourse(sf::RenderWindow& window, Staff& userstaff, std::s
     //class current textbox
     OutputTextBox cur_coursetextbox(28, sf::Color::Black, coursechosen);
     cur_coursetextbox.setfont(Palatino);
-    cur_coursetextbox.setTextPosition(sf::Vector2f(1120.f, 216.f));
+    cur_coursetextbox.setTextPosition(sf::Vector2f(640, 330));
 
     //log out button
     Button logoutbut(sf::Color(192, 200, 184), sf::Vector2f(90, 30), false, sf::Color::Black, "Log out", 20, Palatino);
