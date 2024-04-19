@@ -296,20 +296,22 @@ void staffmanagecourse(sf::RenderWindow& window, Staff& userstaff, std::string s
                     }
 
 
-
+                    if (savebut.isClick(event)) {
+                        s.saveCourseListToFileCourseList(schoolyear);
+                        staffmanagecourse(window, userstaff, schoolyear, semester);
+                    }
 
                     //deletebutton
                     if (deletebut.isClick(event) and kbuttonchose != -1) {
                         s.deleteACourseFromCourseList(CourseTextBox[kbuttonchose][1].getText());
+                        remove("Data/"+schoolyear+"/"+semester+"/studentOfEachCourse/" + CourseTextBox[kbuttonchose][1].getText() + ".csv");
+                        remove("Data/" + schoolyear + "/" + semester + "/scoreOfEachCourse/" + CourseTextBox[kbuttonchose][1].getText() + ".csv");
                         s.saveCourseListToFileCourseList(schoolyear);
                         staffmanagecourse(window, userstaff, schoolyear, semester);
                     }
                 }
             }
-            if (savebut.isClick(event)) {
-                s.saveCourseListToFileCourseList(schoolyear);
-                staffmanagecourse(window, userstaff, schoolyear, semester);
-            }
+            
 
 
         }
