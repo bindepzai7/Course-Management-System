@@ -72,7 +72,7 @@ void staffmanagecourse(sf::RenderWindow& window, Staff& userstaff, std::string s
     float Posylimunder = 810;
     float jumpsize = 500;
     int numberofbutton = 8;
-    for (int i = 0; i < n && cur; i++)
+    for (int i = 0; i < n; i++)
     {
         CourseTextBox[i] = new TextBox[8];
         for (int j = 0; j < 8; j++)
@@ -316,6 +316,9 @@ void staffmanagecourse(sf::RenderWindow& window, Staff& userstaff, std::string s
         savebut.drawbutton(window);
         window.display();
     }
+    for (int i = 0; i < n; i++)
+        delete[] CourseTextBox[i];
+    delete[] CourseTextBox;
 }
 
 void staffaddcourse(sf::RenderWindow& window, Staff& userstaff, std::string schoolyear, std::string semester) {
@@ -714,12 +717,12 @@ void staffviewstudentofcourse(sf::RenderWindow& window, Staff& userstaff, std::s
     TextBox** StudentTextBox = new TextBox * [n];
 
     float Posx[3] = { 924,970, 1138 };
-    float Posy = 385;
+    float Posy = 245;
     float distance = 60;
-    float Posylimabove = 365;
+    float Posylimabove = 235;
     float Posylimunder = 810;
     float jumpsize = 500;
-    int numberofbutton = 3;
+    int numberofbutton = 10;
     for (int i = 0; i < n && cur; i++)
     {
         StudentTextBox[i] = new TextBox[3];
@@ -820,17 +823,17 @@ void staffviewstudentofcourse(sf::RenderWindow& window, Staff& userstaff, std::s
 
 
 
-            if (event.type == event.MouseWheelScrolled and n > 8) {
+            if (event.type == event.MouseWheelScrolled and n > 10) {
                 Posy = Posy + event.mouseWheelScroll.delta * 10.0f;
                 if (StudentTextBox[n - 1][0].getPositionofTextbox().y <= Posylimunder - 10) {
                     std::cout << StudentTextBox[n - 1][0].getPositionofTextbox().y;
                     std::cout << Posy;
-                    Posy = 325 - (n - numberofbutton - 1) * distance;
+                    Posy = 202 - (n - numberofbutton - 1) * distance;
                 }
                 else if (StudentTextBox[numberofbutton - 1][0].getPositionofTextbox().y >= Posylimunder) {
 
                     std::cout << Posy;
-                    Posy = 388;
+                    Posy = 260;
 
                 }
                 for (int i = 0; i < n; i++)

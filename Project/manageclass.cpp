@@ -842,7 +842,7 @@ void staffviewstudentinclass(sf::RenderWindow& window, Staff& userstaff, std::st
     float Posylimunder = 810;
     float jumpsize = 500;
     int numberofbutton = 8;
-    for (int i = 0; i < n && cur; i++)
+    for (int i = 0; i < n ; i++)
     {
         studentTextBox[i] = new TextBox[6];
         for (int j = 0; j < 6; j++)
@@ -965,7 +965,7 @@ void staffviewstudentinclass(sf::RenderWindow& window, Staff& userstaff, std::st
 
 
 
-            if (event.type == event.MouseWheelScrolled and n > 8) {
+            if (event.type == event.MouseWheelScrolled and n > numberofbutton) {
                 Posy = Posy + event.mouseWheelScroll.delta * 10.0f;
                 if (studentTextBox[n - 1][0].getPositionofTextbox().y <= Posylimunder - 10) {
                     std::cout << studentTextBox[n - 1][0].getPositionofTextbox().y;
@@ -1105,6 +1105,9 @@ void staffviewstudentinclass(sf::RenderWindow& window, Staff& userstaff, std::st
         window.display();
 
     }
+    for (int i = 0; i < n; i++)
+        delete[] studentTextBox[i];
+    delete[] studentTextBox;
 }
 
 

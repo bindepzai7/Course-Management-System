@@ -5,6 +5,7 @@
 
 class Class {
 	//std::string className;
+private:
 	std::string classCode;
 	//Name teacherName;
 	//std::string schedule;
