@@ -469,7 +469,7 @@ void staffaddfirstyearstudent(sf::RenderWindow& window, Staff& userstaff, std::s
 
     OutputTextBox gender(52, sf::Color(119, 106, 92), "*");
     gender.setfont(Palatino);
-    gender.setTextPosition(sf::Vector2f(1254, 365));
+    gender.setTextPosition(sf::Vector2f(1085, 365));
 
     TextBox adddayofbirth(24, sf::Color::Black, false);
     adddayofbirth.setfont(Palatino);
@@ -646,7 +646,7 @@ void staffaddfirstyearstudent(sf::RenderWindow& window, Staff& userstaff, std::s
                         socialID = addSocialID.getText();
                         std::string dayofbirth = adddayofbirth.getText();
                         if (studentID == "" || name.firstName == "" && name.lastName == "" || socialID == "" || dayofbirth.size() != 10) {
-                            anoucement("Leave data blank or wrong date format!\nPlease enter all student data\nor enter correct date format dd/mm/yyy!");
+                            announcement("Leave data blank or wrong date format!\nPlease enter all student data\nor enter correct date format dd/mm/yyy!");
                         }
                         else {
                             int i = 0;
@@ -663,6 +663,13 @@ void staffaddfirstyearstudent(sf::RenderWindow& window, Staff& userstaff, std::s
                             std::cout << birthDay.year;
                             curclass.addStudent(Student(studentID, name, studentGender, birthDay, socialID));
                             curclass.saveStudent(schoolyear, addtoclass);
+                            addStudentID.setText("");
+                            addSocialID.setText("");
+                            adddayofbirth.setText("");
+                            addFirstname.setText("");
+                            addLastname.setText("");
+                            gender.setTextPosition(sf::Vector2f(1085, 365));
+                            studentGender = 0;
                         }
                     }
                 }
@@ -859,6 +866,7 @@ void staffviewstudentinclass(sf::RenderWindow& window, Staff& userstaff, std::st
         Studenttextbox[i][5].setText(cur->data.socialID);
         cur = cur->next;
     }
+
     //button of list student
     dropdownlist StudentsButton(sf::Color::Transparent, sf::Vector2f(1090, 40), false, n);
     StudentsButton.setpostionlistbuttonwithlimit(Posx[0], Posy - 5, 0, distance, Posylimabove, Posylimunder, jumpsize);
