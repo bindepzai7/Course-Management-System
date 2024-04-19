@@ -1127,6 +1127,8 @@ void staffviewstudentinclass(sf::RenderWindow& window, Staff& userstaff, std::st
         schoolyeartextbox.drawTextbox(window);
         semestertextbox.drawTextbox(window);
         cur_classtextbox.drawTextbox(window);
+        deletebut.drawbutton(window);
+        savebut.drawbutton(window);
         for (int i = 0; i < n; i++)
             for (int j = 0; j < 6; j++)
                 studentTextBox[i][j].drawTextbox(window);

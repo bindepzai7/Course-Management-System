@@ -95,10 +95,10 @@ void staffmanagecourse(sf::RenderWindow& window, Staff& userstaff, std::string s
     }
     
     //button of list student
-    dropdownlist courseButton(sf::Color::Transparent, sf::Vector2f(1090, 40), false, n);
+    dropdownlist courseButton(sf::Color::Transparent, sf::Vector2f(1100, 40), false, n);
     courseButton.setpostionlistbuttonwithlimit(Posx[0], Posy - 5, 0, distance, Posylimabove, Posylimunder, jumpsize);
     int kbuttonchose = -1;
-    Button courseChosen(sf::Color::Transparent, sf::Vector2f(1096, 40), false);
+    Button courseChosen(sf::Color::Transparent, sf::Vector2f(1100, 40), false);
 
     while (window.isOpen())
     {
@@ -162,7 +162,7 @@ void staffmanagecourse(sf::RenderWindow& window, Staff& userstaff, std::string s
                 staffmanagecourse(window, userstaff, getCurrentSchoolyear(), getCurrentSemester());
             }
             if (staffhomebuttonlist.isClickedKOrder(event, 4)) {
-                for (int i = 0; i < 8; ++i) {
+                for (int i = 0; i < n; ++i) {
                     delete[] CourseTextBox[i];
                 }
                 delete[] CourseTextBox;
@@ -236,7 +236,7 @@ void staffmanagecourse(sf::RenderWindow& window, Staff& userstaff, std::string s
                 }
                 for (int i = 0; i < n; i++)
                 {
-                    for (int j = 0; j < 6; j++)
+                    for (int j = 0; j < 8; j++)
                     {
                         CourseTextBox[i][j].setTextboxpostitionwithlimit(Posx[j], Posy + distance * i, Posylimabove, Posylimunder, jumpsize);
 
@@ -255,7 +255,7 @@ void staffmanagecourse(sf::RenderWindow& window, Staff& userstaff, std::string s
                     kbuttonchose = i;
                 }
                 if (userstaff.getmode()) {
-                    for (int j = 0; j < 6; j++)
+                    for (int j = 0; j < 8; j++)
                     {
                         if (CourseTextBox[i][j].isClickwithoutPosagrument(event)) {
                             CourseTextBox[i][j].setselected(true);
@@ -329,6 +329,8 @@ void staffmanagecourse(sf::RenderWindow& window, Staff& userstaff, std::string s
         courseChosen.drawbutton(window);
         schoolyeartextbox.drawTextbox(window);
         semestertextbox.drawTextbox(window);
+        deletebut.drawbutton(window);
+        savebut.drawbutton(window);
         window.display();
     }
 }
@@ -379,6 +381,49 @@ void staffaddcourse(sf::RenderWindow& window, Staff& userstaff, std::string scho
     cur_semestertextbox.setfont(Palatino);
     cur_semestertextbox.setTextPosition(sf::Vector2f(1215, 250));
 
+    //innit semester
+    Semester s(semester);
+    std::string courseID = "", courseName = "", session = "", className = "", credit ="", maxStudent="";
+    Name teacherName;
+
+    //load courseInfo and innit course
+    s.loadCourseListFromFileCourseList(schoolyear);
+    Course c;
+
+    //add student with information 
+    TextBox addCourseID(24, sf::Color::Black, false);
+    addCourseID.setfont(Palatino);
+    addCourseID.setTextPosition(sf::Vector2f(450, 390));
+
+    TextBox addCourseName(24, sf::Color::Black, false);
+    addCourseName.setfont(Palatino);
+    addCourseName.setTextPosition(sf::Vector2f(450, 497));
+
+    TextBox addCredits(24, sf::Color::Black, false);
+    addCredits.setfont(Palatino);
+    addCredits.setTextPosition(sf::Vector2f(450, 604));
+
+    TextBox addClassName(24, sf::Color::Black, false);
+    addClassName.setfont(Palatino);
+    addClassName.setTextPosition(sf::Vector2f(450, 695));
+
+    TextBox addMaxStudent(24, sf::Color::Black, false);
+    addMaxStudent.setfont(Palatino);
+    addMaxStudent.setTextPosition(sf::Vector2f(970, 390));
+
+    TextBox addTeacherName(24, sf::Color::Black, false);
+    addTeacherName.setfont(Palatino);
+    addTeacherName.setTextPosition(sf::Vector2f(970, 497));
+
+    TextBox addSession(24, sf::Color::Black, false);
+    addSession.setfont(Palatino);
+    addSession.setTextPosition(sf::Vector2f(970, 604));
+
+    //button click to import file
+
+    Button importbut(sf::Color(251, 244, 234, 50), sf::Vector2f(700, 145), false);
+    importbut.setButposition(sf::Vector2f(680, 773));
+
     while (window.isOpen())
     {
         sf::Event event;
@@ -386,19 +431,7 @@ void staffaddcourse(sf::RenderWindow& window, Staff& userstaff, std::string scho
         {
             if (event.type == sf::Event::Closed)
                 window.close();
-            if (event.type == sf::Event::MouseButtonPressed) {
-                if (event.mouseButton.button == sf::Mouse::Left)
-                {
-                    int x_coor = event.mouseButton.x;
-                    int y_coor = event.mouseButton.y;
-                    if (x_coor > 45 && x_coor < 100 && y_coor>47 && y_coor < 100) {
-                        staffHome(window, userstaff);
-                    }
-                    if (x_coor > 40 && x_coor < 77 && y_coor>887 && y_coor < 932) {
-                        staffviewprofile(window, userstaff);
-                    }
-                }
-            }
+           
             if (staffhomebuttonlist.isClickedKOrder(event, 1))
                 staffmanageschoolyeardisplay(window, userstaff);
             if (staffhomebuttonlist.isClickedKOrder(event, 2))
@@ -436,6 +469,183 @@ void staffaddcourse(sf::RenderWindow& window, Staff& userstaff, std::string scho
                 logoutbut.changecolor(sf::Color::Transparent);
                 logoutbut.changeTextColor(sf::Color::Transparent);
             }
+
+            //click to add student to class
+
+            if (addCourseID.isClick(event, 450, 380, 815, 420)) {
+                addCourseID.setselected(true);
+                addCourseName.setselected(false);
+                addCredits.setselected(false);
+                addClassName.setselected(false);
+                addMaxStudent.setselected(false);
+                addTeacherName.setselected(false);
+                addSession.setselected(false);
+            }
+            else if (addCourseName.isClick(event, 450, 487, 815, 527)) {
+                addCourseID.setselected(false);
+                addCourseName.setselected(true);
+                addCredits.setselected(false);
+                addClassName.setselected(false);
+                addMaxStudent.setselected(false);
+                addTeacherName.setselected(false);
+                addSession.setselected(false);
+            }
+            else  if (addCredits.isClick(event, 450, 594, 815, 634)) {
+                addCourseID.setselected(false);
+                addCourseName.setselected(false);
+                addCredits.setselected(true);
+                addClassName.setselected(false);
+                addMaxStudent.setselected(false);
+                addTeacherName.setselected(false);
+                addSession.setselected(false);
+            }
+            else  if (addClassName.isClick(event, 450, 685, 815, 731)) {
+                addCourseID.setselected(false);
+                addCourseName.setselected(false);
+                addCredits.setselected(false);
+                addClassName.setselected(true);
+                addMaxStudent.setselected(false);
+                addTeacherName.setselected(false);
+                addSession.setselected(false);
+            }
+            else if (addMaxStudent.isClick(event, 970, 380, 1335, 420)) {
+                addCourseID.setselected(false);
+                addCourseName.setselected(false);
+                addCredits.setselected(false);
+                addClassName.setselected(false);
+                addMaxStudent.setselected(true);
+                addTeacherName.setselected(false);
+                addSession.setselected(false);
+            }
+            else if (addTeacherName.isClick(event, 970, 487, 1335, 527)) {
+                addCourseID.setselected(false);
+                addCourseName.setselected(false);
+                addCredits.setselected(false);
+                addClassName.setselected(false);
+                addMaxStudent.setselected(false);
+                addTeacherName.setselected(true);
+                addSession.setselected(false);
+            }
+            else if (addSession.isClick(event, 970, 594, 1335, 634)) {
+                addCourseID.setselected(false);
+                addCourseName.setselected(false);
+                addCredits.setselected(false);
+                addClassName.setselected(false);
+                addMaxStudent.setselected(false);
+                addTeacherName.setselected(false);
+                addSession.setselected(true);
+            }
+
+            if (event.type == sf::Event::TextEntered) {
+                if (addCourseID.isselectedbox()) {
+                    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Return))
+                        addCourseID.setselected(false);
+                    else
+                        addCourseID.typedText(event);
+                }
+                else if (addCourseName.isselectedbox()) {
+                    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Return))
+                        addCourseName.setselected(false);
+                    else
+                        addCourseName.typedText(event);
+                }
+                else if (addCredits.isselectedbox()) {
+                    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Return))
+                        addCredits.setselected(false);
+                    else
+                        addCredits.typedText(event);
+                }
+                else if (addClassName.isselectedbox()) {
+                    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Return))
+                        addClassName.setselected(false);
+                    else
+                        addClassName.typedText(event);
+                }
+                else if (addMaxStudent.isselectedbox()) {
+                    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Return))
+                        addMaxStudent.setselected(false);
+                    else
+                        addMaxStudent.typedText(event);
+                }
+                else if (addTeacherName.isselectedbox()) {
+                    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Return))
+                        addTeacherName.setselected(false);
+                    else
+                        addTeacherName.typedText(event);
+                }
+                else if (addSession.isselectedbox()) {
+                    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Return))
+                        addSession.setselected(false);
+                    else
+                        addSession.typedText(event);
+                }
+            }
+         
+
+            //add student button is Press
+            if (event.type == sf::Event::MouseButtonPressed) {
+                if (event.mouseButton.button == sf::Mouse::Left) {
+                    int x_coor = event.mouseButton.x;
+                    int y_coor = event.mouseButton.y;
+                    if (x_coor > 45 && x_coor < 100 && y_coor>47 && y_coor < 100) {
+                        staffHome(window, userstaff);
+                    }
+                    if (x_coor > 40 && x_coor < 77 && y_coor>887 && y_coor < 932) {
+                        staffviewprofile(window, userstaff);
+                    }
+                    if (x_coor > 1150 && x_coor < 1350 && y_coor>666 && y_coor < 706) {
+                        courseID = addCourseID.getText();
+                        courseName = addCourseName.getText();
+                        className = addClassName.getText();
+                        credit = addCredits.getText();
+                        maxStudent = addMaxStudent.getText();
+                        session = addSession.getText();
+                        std::string name = addTeacherName.getText();
+                        if (name == "" or courseID == "" or courseName == "" or className == "" or credit == "" or maxStudent == "0" or session == "") {
+                            announcement("Error!\nPlease check your date format (dd/mm/yyyy)\nAnd fill all blank spaces.\n ");
+                        }
+                        else {
+                            int found = name.find_last_of(" ");
+                            teacherName.lastName = name.substr(0, found);
+                            teacherName.firstName = name.substr(found + 1);
+                            c.setCourse(courseID, courseName, session, std::stoi(credit), std::stoi(maxStudent), teacherName, className);
+                            s.addACourseToCourseList(c);
+
+                            c.saveStudentsToCsvFile(schoolyear, semester);
+                            s.saveCourseListToFileCourseList(schoolyear);
+
+                            addCourseID.setText("");
+                            addCourseName.setText("");
+                            addClassName.setText("");
+                            addCredits.setText("");
+                            addMaxStudent.setText("");
+                            addTeacherName.setText("");
+                            addSession.setText("");
+                            c.deleteAllStudentInCourse();
+                        }
+                    }
+                }
+            }
+
+
+            //importfile is on mouse cursor
+            if (importbut.isonMousecursor(event))
+                importbut.changecolor(sf::Color(251, 244, 234, 128));
+            else
+                importbut.changecolor(sf::Color::Transparent);
+
+            if (importbut.isClick(event)) {
+                importbut.setisClicked(true);
+                std::string filename = filenametoimport();
+                if (filename != "" and c.courseID != "") {
+                    c.loadStudentsFromCsvFileStaffUpload(filename);
+                }
+            }
+            else importbut.setisClicked(false);
+
+
+
+
         }
 
         window.clear();
@@ -444,6 +654,14 @@ void staffaddcourse(sf::RenderWindow& window, Staff& userstaff, std::string scho
         logoutbut.drawbutton(window);
         if (userstaff.getmode()) editmode.drawbutton(window);
         else viewmode.drawbutton(window);
+        addCourseID.drawTextbox(window);
+        addCourseName.drawTextbox(window);
+        addClassName.drawTextbox(window);
+        addCredits.drawTextbox(window);
+        addMaxStudent.drawTextbox(window);
+        addTeacherName.drawTextbox(window);
+        addSession.drawTextbox(window);
+        importbut.drawbutton(window);
         cur_schoolyeartextbox.drawTextbox(window);
         cur_semestertextbox.drawTextbox(window);
         schoolyeartextbox.drawTextbox(window);
