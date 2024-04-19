@@ -309,6 +309,24 @@ void staffChangePassword(sf::RenderWindow& window, Staff& userstaff) {
     //log out button
     Button logoutbut(sf::Color(192, 200, 184), sf::Vector2f(90, 30), false, sf::Color::Black, "Log out", 20, Palatino);
     logoutbut.setposition(sf::Vector2f(227, 895));
+    //input 3 types of password
+    TextBox inputCurrentPassword(24, sf::Color::Black, false);
+    inputCurrentPassword.setfont(Palatino);
+    inputCurrentPassword.setTextPosition(sf::Vector2f(750, 420));
+    inputCurrentPassword.setlimit(true, 24);
+
+    TextBox inputNewPassword(24, sf::Color::Black, false);
+    inputNewPassword.setfont(Palatino);
+    inputNewPassword.setTextPosition(sf::Vector2f(750, 532));
+    inputNewPassword.setlimit(true, 24);
+
+    TextBox inputConfirmPassword(24, sf::Color::Black, false);
+    inputConfirmPassword.setfont(Palatino);
+    inputConfirmPassword.setTextPosition(sf::Vector2f(750, 644));
+    inputConfirmPassword.setlimit(true, 24);
+    OutputTextBox wrongaccount(16, sf::Color::Red, "password incorrect!\nPlease try again!");
+    wrongaccount.setfont(Palatino);
+    bool check = 0;
 
     while (window.isOpen())
     {
@@ -367,6 +385,92 @@ void staffChangePassword(sf::RenderWindow& window, Staff& userstaff) {
                 logoutbut.changecolor(sf::Color::Transparent);
                 logoutbut.changeTextColor(sf::Color::Transparent);
             }
+
+            //change password click
+            if (inputCurrentPassword.isClick(event, 733, 413, 1164, 455)) {
+                inputCurrentPassword.setselected(true);
+                inputNewPassword.setselected(false);
+                inputConfirmPassword.setselected(false);
+                inputCurrentPassword.settextencode(true);
+                inputNewPassword.settextencode(true);
+                inputConfirmPassword.settextencode(true);
+            }
+            else if (inputNewPassword.isClick(event, 733, 525, 1164, 575)) {
+                inputCurrentPassword.setselected(false);
+                inputNewPassword.setselected(true);
+                inputConfirmPassword.setselected(false);
+                inputCurrentPassword.settextencode(true);
+                inputNewPassword.settextencode(true);
+                inputConfirmPassword.settextencode(true);
+            }
+            else if (inputConfirmPassword.isClick(event, 733, 636, 1164, 679)) {
+                inputCurrentPassword.setselected(false);
+                inputNewPassword.setselected(false);
+                inputConfirmPassword.setselected(true);
+                inputCurrentPassword.settextencode(true);
+                inputNewPassword.settextencode(true);
+                inputConfirmPassword.settextencode(true);
+            }
+
+            if (event.type == sf::Event::TextEntered) {
+                if (inputCurrentPassword.isselectedbox()) {
+                    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Return)) {
+                        inputCurrentPassword.setselected(false);
+                    }
+                    else
+                        inputCurrentPassword.typedText(event);
+                }
+                else if (inputNewPassword.isselectedbox()) {
+                    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Return)) {
+                        inputNewPassword.setselected(false);
+                    }
+                    else
+                        inputNewPassword.typedText(event);
+                }
+                else if (inputConfirmPassword.isselectedbox()) {
+                    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Return)) {
+                        inputConfirmPassword.setselected(false);
+                    }
+                    else
+                        inputConfirmPassword.typedText(event);
+                }
+            }
+            //if change password is clicked
+            if (event.type == sf::Event::MouseButtonPressed) {
+                if (event.mouseButton.button == sf::Mouse::Left) {
+                    int x_coor = event.mouseButton.x;
+                    int y_coor = event.mouseButton.y;
+                    if (x_coor > 946 && x_coor < 1167 && y_coor > 730 && y_coor < 771) {
+                        std::string staffID = userstaff.getStaffID();
+                        std::string currentPassword = inputCurrentPassword.getText();
+                        std::string newPassword = inputNewPassword.getText();
+                        std::string confirmPassword = inputConfirmPassword.getText();
+                        if (newPassword != confirmPassword) {
+                            std::cout << "Wrong" << std::endl;
+                            check = true;
+                        }
+                        else if (newPassword == currentPassword) {
+                            std::cout << "wrong1" << std::endl;
+                            check = true;
+                            std::cout << check;
+                        }
+                        else {
+                            LinkedList<User> userList = readUserFromCSV("Data/staffuser.csv");
+                            if (check_login(userList, userstaff.getStaffID(), currentPassword)) {
+                                changePassword(userList, userstaff.getStaffID(), newPassword);
+                                updateUser2CSVfile("Data/staffuser.csv", userList);
+                                announcement("change password sucessfully");
+                            }
+                            else {
+                                std::cout << "wrong2" << std::endl;
+                                std::cout << userstaff.getStaffID() << std::endl;
+                                check = true;
+                            }
+
+                        }
+                    }
+                }
+            }
         }
 
         window.clear();
@@ -375,6 +479,13 @@ void staffChangePassword(sf::RenderWindow& window, Staff& userstaff) {
         logoutbut.drawbutton(window);
         if (userstaff.getmode()) editmode.drawbutton(window);
         else viewmode.drawbutton(window);
+        inputCurrentPassword.drawTextbox(window);
+        inputNewPassword.drawTextbox(window);
+        inputConfirmPassword.drawTextbox(window);
+        if (check) {
+            wrongaccount.setTextPosition(sf::Vector2f(750, 680));
+            wrongaccount.drawTextbox(window);
+        }
         schoolyeartextbox.drawTextbox(window);
         semestertextbox.drawTextbox(window);
         window.display();
