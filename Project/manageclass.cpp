@@ -878,10 +878,7 @@ void staffviewstudentinclass(sf::RenderWindow& window, Staff& userstaff, std::st
         while (window.pollEvent(event))
         {
             if (event.type == sf::Event::Closed) {
-                for (int i = 0; i < n; ++i) {
-                    delete[] studentTextBox[i];
-                }
-                delete[] studentTextBox;
+                userstaff.~Staff();
                 window.close();
             }
 
@@ -891,76 +888,48 @@ void staffviewstudentinclass(sf::RenderWindow& window, Staff& userstaff, std::st
                     int x_coor = event.mouseButton.x;
                     int y_coor = event.mouseButton.y;
                     if (x_coor > 45 && x_coor < 100 && y_coor>47 && y_coor < 100) {
-                        for (int i = 0; i < n; ++i) {
-                            delete[] studentTextBox[i];
-                        }
-                        delete[] studentTextBox;
+                        
                         staffHome(window, userstaff);
                     }
                     if (x_coor > 40 && x_coor < 77 && y_coor>887 && y_coor < 932) {
-                        for (int i = 0; i < n; ++i) {
-                            delete[] studentTextBox[i];
-                        }
-                        delete[] studentTextBox;
+                        userstaff.~Staff();
                         staffviewprofile(window, userstaff);
                     }
                     if (x_coor > 390 && x_coor < 640 && y_coor>867 && y_coor < 917) {
-                        for (int i = 0; i < n; ++i) {
-                            delete[] studentTextBox[i];
-                        }
-                        delete[] studentTextBox;
+                        userstaff.~Staff();
                         staffaddfirstyearstudent(window, userstaff, schoolyear, classchosen);
                     }
                 }
             }
             if (staffhomebuttonlist.isClickedKOrder(event, 1)) {
                 userstaff.~Staff();
-                for (int i = 0; i < n; ++i) {
-                    delete[] studentTextBox[i];
-                }
-                delete[] studentTextBox;
+                
                 staffmanageschoolyeardisplay(window, userstaff);
             }
             if (staffhomebuttonlist.isClickedKOrder(event, 2)) {
                 userstaff.~Staff();
-                for (int i = 0; i < n; ++i) {
-                    delete[] studentTextBox[i];
-                }
-                delete[] studentTextBox;
+                
                 staffSemesterLobby(window, userstaff);
             }
             if (staffhomebuttonlist.isClickedKOrder(event, 3)) {
                 userstaff.~Staff();
-                for (int i = 0; i < n; ++i) {
-                    delete[] studentTextBox[i];
-                }
-                delete[] studentTextBox;
+                
                 staffmanagecourse(window, userstaff, getCurrentSchoolyear(), getCurrentSemester());
             }
             if (staffhomebuttonlist.isClickedKOrder(event, 4)) {
                 userstaff.~Staff();
-                for (int i = 0; i < n; ++i) {
-                    delete[] studentTextBox[i];
-                }
-                delete[] studentTextBox;
+                
                 staffaddclasses(window, userstaff, getCurrentSchoolyear());
             }
             if (staffhomebuttonlist.isClickedKOrder(event, 5)) {
                 userstaff.~Staff();
-                for (int i = 0; i < n; ++i) {
-                    delete[] studentTextBox[i];
-                }
-                delete[] studentTextBox;
                 staffaboutUs(window, userstaff);
             }
 
 
             //click logout button
             if (logoutbut.isClick(event)) {
-                for (int i = 0; i < n; ++i) {
-                    delete[] studentTextBox[i];
-                }
-                delete[] studentTextBox;
+                userstaff.~Staff();
                 chooseRole(window);
             }
 
