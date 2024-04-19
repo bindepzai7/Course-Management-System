@@ -60,6 +60,24 @@ bool Course::readACourseFromFileCourseList(std::ifstream& fin) {
 	return false;
 }
 
+void Course::deleteAllStudentInCourse() {
+	studentsInThisCourse.empty();
+}
+
+void Course::setCourse(const std::string& courseID, const std::string& courseName, const std::string& session, const int& credits, const int& maxStudent, const Name& teacherName, const std::string& className) {
+	if (maxStudent == NULL) {
+		this->maxStudent = 50; //Default maxStudent
+	}
+	else this->maxStudent = maxStudent;
+	this->courseID = courseID;
+	this->className = className;
+	this->courseName = courseName;
+	this->teacherName = teacherName;
+	this->validSlot = maxStudent;
+	this->session = session;
+	this->credits = credits;
+}
+
 std::string Course::getSession() {
 	//stringSession ex: TUE 7:30-10:30
 	return this->session;
@@ -127,7 +145,7 @@ void Course::saveACourseToFileCourseList(std::ofstream& fout) {
 
 //								About students in this course
 
-bool Course::loadStudentsFromCsvFileStaffUpload(const std::string& schoolYear, const std::string& semester) {
+bool Course::loadStudentsFromCsvFileStaffUpload(const std::string& filename) {
 	/*
 	These files should be the ones that staffs upload.
 	Staff will upload this file and it will go to the studentOfEachCourse folder.
@@ -136,7 +154,8 @@ bool Course::loadStudentsFromCsvFileStaffUpload(const std::string& schoolYear, c
 	studentsInThisCourse.empty(); //If we already load students from another course
 
 	std::ifstream fin;
-	fin.open("Data/" + schoolYear + "/" + semester + "/studentOfEachCourse/" + this->courseID + ".csv");
+	//fin.open("Data/" + schoolYear + "/" + semester + "/studentOfEachCourse/" + this->courseID + ".csv");
+	fin.open(filename);
 	if (!fin.is_open()) {
 		fin.close();
 		return false;

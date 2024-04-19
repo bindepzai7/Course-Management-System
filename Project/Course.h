@@ -88,7 +88,7 @@ public:
         return true;
     }
     bool operator==(const Course& c) {
-        if (this->className != c.className) return false;
+        if (this->className != c.className and this->session!=c.session) return false;
         return (this->courseID == c.courseID);
     }
 
@@ -115,6 +115,8 @@ public:
              int getMaxStudent(); //checked
              int getValidSlot();
 
+    void setCourse(const std::string& courseID, const std::string& courseName, const std::string& session, const int& credits, const int& maxStudent, const Name& teacherName, const std::string& className);
+
 
     bool updateCourseInfo(const std::string& className, const std::string& courseID, const std::string& courseName, const Name& teacher, const int& MaxStudent, const int& credits, const std::string& session);  //checked
 
@@ -122,7 +124,10 @@ public:
 
 
     //About students in this course
-    bool loadStudentsFromCsvFileStaffUpload(const std::string& schoolYear, const std::string& semester);    //checked
+
+    void deleteAllStudentInCourse();
+
+    bool loadStudentsFromCsvFileStaffUpload(const std::string& filename);    //checked
 
     bool saveStudentsToCsvFile(const std::string& schoolYear, const std::string& semester);
    
