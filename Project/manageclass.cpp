@@ -810,10 +810,10 @@ void staffviewstudentinclass(sf::RenderWindow& window, Staff& userstaff, std::st
     logoutbut.setposition(sf::Vector2f(227, 895));
 
     //mode button
-    Button editmode(sf::Color(168, 158, 146), sf::Vector2f(132.6, 42.5), false, sf::Color::Black, "EDIT", 20, Palatino);
-    editmode.setposition(sf::Vector2f(45.7, 490.68));
-    Button viewmode(sf::Color(168, 158, 146), sf::Vector2f(132.6, 42.5), false, sf::Color::Black, "VIEW", 20, Palatino);
-    viewmode.setposition(sf::Vector2f(45.7, 538.28));
+    Button editmode(sf::Color(168, 158, 146), sf::Vector2f(133, 43), false, sf::Color::Black, "EDIT", 20, Palatino);
+    editmode.setposition(sf::Vector2f(46, 491));
+    Button viewmode(sf::Color(168, 158, 146), sf::Vector2f(133, 43), false, sf::Color::Black, "VIEW", 20, Palatino);
+    viewmode.setposition(sf::Vector2f(46, 538));
 
     //save and delete button
     Button savebut(sf::Color(186, 158, 146, 100), sf::Vector2f(135, 40), false);
@@ -842,7 +842,7 @@ void staffviewstudentinclass(sf::RenderWindow& window, Staff& userstaff, std::st
     float Posylimunder = 810;
     float jumpsize = 500;
     int numberofbutton = 8;
-    for (int i = 0; i < n&&cur; i++)
+    for (int i = 0; i < n && cur; i++)
     {
         studentTextBox[i] = new TextBox[6];
         for (int j = 0; j < 6; j++)
@@ -888,7 +888,7 @@ void staffviewstudentinclass(sf::RenderWindow& window, Staff& userstaff, std::st
                     int x_coor = event.mouseButton.x;
                     int y_coor = event.mouseButton.y;
                     if (x_coor > 45 && x_coor < 100 && y_coor>47 && y_coor < 100) {
-                        
+                        userstaff.~Staff();
                         staffHome(window, userstaff);
                     }
                     if (x_coor > 40 && x_coor < 77 && y_coor>887 && y_coor < 932) {
@@ -903,7 +903,6 @@ void staffviewstudentinclass(sf::RenderWindow& window, Staff& userstaff, std::st
             }
             if (staffhomebuttonlist.isClickedKOrder(event, 1)) {
                 userstaff.~Staff();
-                
                 staffmanageschoolyeardisplay(window, userstaff);
             }
             if (staffhomebuttonlist.isClickedKOrder(event, 2)) {
