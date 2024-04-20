@@ -393,6 +393,7 @@ void staffmanageschoolyear2display(sf::RenderWindow& window, Staff& userstaff, i
                 LinkedList<std::string> schoolyearstext2 = userstaff.getschoolyearstext();
                 userstaff.writeSchoolyear2file(schoolyearstext2);
                 std::filesystem::remove_all("Data/" + textofbutton);
+                std::filesystem::remove("Data/" + textofbutton);
                 if (Korderofbut > schoolyearstext2.sizeoflist()) Korderofbut = Korderofbut - 1;
                 staffmanageschoolyear2display(window, userstaff,Korderofbut);
             }
