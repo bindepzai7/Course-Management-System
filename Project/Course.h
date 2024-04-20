@@ -167,7 +167,7 @@ public:
 
     void saveScore2CsvScoresFile(const std::string& schoolYear, const std::string& semester);    //checked
 
-
+    void importScorefromCSVfile(const std::string& filename);
    
 };
 

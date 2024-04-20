@@ -945,6 +945,7 @@ void staffviewstudentofcourse(sf::RenderWindow& window, Staff& userstaff, std::s
                 std::string filename = filenametoimport();
                 if (filename != "") {
                     c.loadStudentsFromCsvFileStaffUpload(filename);
+                    c.saveStudentsToCsvFile(schoolyear, semester);
                     c.saveScore2CsvScoresFile(schoolyear, semester);
                     staffviewstudentofcourse(window, userstaff, schoolyear, semester, coursechosen);
                 }
@@ -1243,6 +1244,13 @@ void staffCourseScoreboard(sf::RenderWindow& window, Staff& userstaff, std::stri
                     if (x_coor > 40 && x_coor < 77 && y_coor>887 && y_coor < 932) {
                         userstaff.~Staff();
                         staffviewprofile(window, userstaff);
+                    }
+                    if (x_coor > 400 and x_coor < 625 and y_coor>870 and y_coor < 910) {
+                        std::string filename = filenametoimport();
+                        if(filename!="")
+                        c.importScorefromCSVfile(filename);
+                        c.saveScore2CsvScoresFile(schoolyear, semester);
+                        staffCourseScoreboard(window, userstaff, schoolyear, semester, coursechosen);
                     }
                 }
             }

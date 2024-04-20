@@ -1639,7 +1639,7 @@ void staffViewStudentScoreboard(sf::RenderWindow& window, Staff& userstaff, std:
     dropdownlist StudentsButton(sf::Color::Transparent, sf::Vector2f(1090, 40), false, n);
     StudentsButton.setpostionlistbuttonwithlimit(Posx[0], Posy - 5, 0, distance, Posylimabove, Posylimunder, jumpsize);
     Button studentchosen(sf::Color::Transparent, sf::Vector2f(1096, 40), false);
-    int kstudentchosen;
+    int kstudentchosen=-1;
     while (window.isOpen())
     {
         sf::Event event;
@@ -1728,7 +1728,7 @@ void staffViewStudentScoreboard(sf::RenderWindow& window, Staff& userstaff, std:
                         }
                     }
                     StudentsButton.setpostionlistbuttonwithlimit(Posx[0], Posy - 5, 0, distance, Posylimabove, Posylimunder, jumpsize);
-                    studentchosen.setButposition(StudentsButton.getpositionofKbut(kstudentchosen + 1));
+                    if(kstudentchosen>0) studentchosen.setButposition(StudentsButton.getpositionofKbut(kstudentchosen + 1));
                 }
             }
             for (int i = 0; i < n; i++)
@@ -1912,7 +1912,7 @@ void staffViewStudentScoreboard2(sf::RenderWindow& window, Staff& userstaff, std
     float Posy2 = 685;
     //float distance2 = 60;
     float Posylimabove2 = 680;
-    float Posylimunder2 = 860;
+    float Posylimunder2 = 830;
     //float jumpsize2 = 1000;
     int numberofbutton2 = 3;
     TextBox** scoreboards = new TextBox * [numbercousestudy];
@@ -2046,13 +2046,18 @@ void staffViewStudentScoreboard2(sf::RenderWindow& window, Staff& userstaff, std
                     studentchosen.setButposition(StudentsButton.getpositionofKbut(kstudentchosen + 1));
                 }
                 if (y_coor > Posylimabove2 - 5 and y_coor < Posylimunder2 + 20 and numbercousestudy>numberofbutton2) {
-                    Posy2 = Posy2 + event.mouseWheelScroll.delta + 10.0f;
+                    Posy2 = Posy2 + event.mouseWheelScroll.delta * 10.0f;
                     if (scoreboards[numbercousestudy - 1][0].getPositionofTextbox().y <= Posylimunder2 - 10) {
-                        Posy2 = 635 - (numbercousestudy - numberofbutton2 - 1) * distance;
+                        std::cout << Posy2;
+                        Posy2 = 645 - (numbercousestudy - numberofbutton2 - 1) * distance;
                     }
                     else if (scoreboards[numberofbutton2 - 1][0].getPositionofTextbox().y >= Posylimunder2) {
-                        Posy = 688;
+                        std::cout << Posy2;
+                        Posy2 = 688;
                     }
+                    for (int i = 0; i < numbercousestudy; i++)
+                        for (int j = 0; j < 7; j++)
+                            scoreboards[i][j].setTextboxpostitionwithlimit(Posx2[j], Posy2 + distance * i, Posylimabove2, Posylimunder2, jumpsize);
                 }
             }
             for (int i = 0; i < n; i++)

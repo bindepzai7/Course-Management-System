@@ -347,3 +347,25 @@ void Course::saveScore2CsvScoresFile(const std::string& schoolYear, const std::s
 	}
 	fout.close();
 }
+void Course::importScorefromCSVfile(const std::string& filename) {
+	studentsInThisCourse.empty();
+	std::ifstream fin(filename);
+	if (fin.is_open()) {
+		std::string input = "";
+		getline(fin, input); //Ignore the fisrt line
+		while (!fin.eof()) {
+			Student student;
+			getline(fin, input, ',');
+			if (input == "") break;
+			getline(fin, student.StudentID, ',');
+			getline(fin, student.name.lastName, ',');
+			getline(fin, student.name.firstName, ',');
+			getline(fin, student.midScore, ',');
+			getline(fin, student.finScore, ',');
+			getline(fin, student.otherScore, ',');
+			getline(fin, student.totalScore, '\n');
+			studentsInThisCourse.addNodeInAscending(student);
+		}
+	}
+	fin.close();
+}
