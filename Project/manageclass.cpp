@@ -1911,7 +1911,7 @@ void staffViewStudentScoreboard2(sf::RenderWindow& window, Staff& userstaff, std
     float Posylimabove2 = 680;
     float Posylimunder2 = 860;
     //float jumpsize2 = 1000;
-
+    int numberofbutton2 = 3;
     TextBox** scoreboards = new TextBox * [numbercousestudy];
     std::cout << scorestudent[0].getStudentID();
     for (int i = 0; i < numbercousestudy; i++) {
@@ -2033,12 +2033,12 @@ void staffViewStudentScoreboard2(sf::RenderWindow& window, Staff& userstaff, std
                     StudentsButton.setpostionlistbuttonwithlimit(Posx[0], Posy - 5, 0, distance, Posylimabove, Posylimunder, jumpsize);
                     studentchosen.setButposition(StudentsButton.getpositionofKbut(kstudentchosen + 1));
                 }
-                if (y_coor > Posylimabove2 - 5 and y_coor < Posylimunder2 + 20 and numbercousestudy>numberofbutton) {
+                if (y_coor > Posylimabove2 - 5 and y_coor < Posylimunder2 + 20 and numbercousestudy>numberofbutton2) {
                     Posy2 = Posy2 + event.mouseWheelScroll.delta + 10.0f;
                     if (scoreboards[numbercousestudy - 1][0].getPositionofTextbox().y <= Posylimunder2 - 10) {
-                        Posy2 = 635 - (numbercousestudy - numberofbutton - 1) * distance;
+                        Posy2 = 635 - (numbercousestudy - numberofbutton2 - 1) * distance;
                     }
-                    else if (scoreboards[numberofbutton - 1][0].getPositionofTextbox().y >= Posylimunder2) {
+                    else if (scoreboards[numberofbutton2 - 1][0].getPositionofTextbox().y >= Posylimunder2) {
                         Posy = 688;
                     }
                 }
