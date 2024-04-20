@@ -40,6 +40,11 @@ void staffaddclasses(sf::RenderWindow& window, Staff& userstaff, std::string sch
     editmode.setposition(sf::Vector2f(46, 491));
     Button viewmode(sf::Color(168, 158, 146), sf::Vector2f(133, 43), false, sf::Color::Black, "VIEW", 20, Palatino);
     viewmode.setposition(sf::Vector2f(46, 538));
+    //save and delete button
+    Button savebut(sf::Color(186, 158, 146, 100), sf::Vector2f(135, 40), false);
+    Button deletebut(sf::Color(186, 158, 146, 100), sf::Vector2f(135, 40), false);
+    savebut.setposition(sf::Vector2f(182, 491));
+    deletebut.setposition(sf::Vector2f(180, 540));
 
     //school year current textbox
     OutputTextBox cur_schoolyeartextbox(28, sf::Color::Black, schoolyear);
@@ -139,6 +144,15 @@ void staffaddclasses(sf::RenderWindow& window, Staff& userstaff, std::string sch
                 logoutbut.changecolor(sf::Color::Transparent);
                 logoutbut.changeTextColor(sf::Color::Transparent);
             }
+            if (savebut.isonMousecursor(event)) {
+                savebut.changecolor(sf::Color(186, 158, 146, 100));
+            }
+            else savebut.changecolor(sf::Color::Transparent);
+            if (deletebut.isonMousecursor(event))
+                deletebut.changecolor(sf::Color(186, 158, 146, 100));
+            else
+                deletebut.changecolor(sf::Color::Transparent);
+
 
             //click class button
             for (int i = 1; i <= classestext.sizeoflist(); i++) {
@@ -201,6 +215,8 @@ void staffaddclasses(sf::RenderWindow& window, Staff& userstaff, std::string sch
         classesbutton.drawButwithoutchangeTextboxcolor(window, event, sf::Color(168, 158, 146));
         cur_schoolyeartextbox.drawTextbox(window);
         addclasstxtbox.drawTextbox(window);
+        deletebut.drawbutton(window);
+        savebut.drawbutton(window);
         schoolyeartextbox.drawTextbox(window);
         semestertextbox.drawTextbox(window);
         window.display();
@@ -227,6 +243,11 @@ void staffmanageclass(sf::RenderWindow& window, Staff& userstaff, std::string sc
     dropdownlist staffhomebuttonlist(sf::Color(168, 158, 146), sf::Vector2f(280, 53), false, sf::Color(239, 233, 222), textstaffhomebutton, 30, Palatino);
     staffhomebuttonlist.setpostionlistbutton(30, 143, 0, 65);
 
+    //save and delete button
+    Button savebut(sf::Color(186, 158, 146, 100), sf::Vector2f(135, 40), false);
+    Button deletebut(sf::Color(186, 158, 146, 100), sf::Vector2f(135, 40), false);
+    savebut.setposition(sf::Vector2f(182, 491));
+    deletebut.setposition(sf::Vector2f(180, 540));
 
     //list of class at current schoolyear
 
@@ -359,6 +380,15 @@ void staffmanageclass(sf::RenderWindow& window, Staff& userstaff, std::string sc
                 editmode.setisClicked(false);
                 userstaff.setmode(false);
             }
+            if (savebut.isonMousecursor(event)) {
+                savebut.changecolor(sf::Color(186, 158, 146, 100));
+            }
+            else savebut.changecolor(sf::Color::Transparent);
+            if (deletebut.isonMousecursor(event))
+                deletebut.changecolor(sf::Color(186, 158, 146, 100));
+            else
+                deletebut.changecolor(sf::Color::Transparent);
+
 
             //change color button when on cursor
             if (logoutbut.isonMousecursor(event)) {
@@ -396,6 +426,8 @@ void staffmanageclass(sf::RenderWindow& window, Staff& userstaff, std::string sc
         logoutbut.drawbutton(window);
         if (userstaff.getmode()) editmode.drawbutton(window);
         else viewmode.drawbutton(window);
+        deletebut.drawbutton(window);
+        savebut.drawbutton(window);
         schoolyeartextbox.drawTextbox(window);
         semestertextbox.drawTextbox(window);
         window.display();
@@ -554,6 +586,8 @@ void staffaddfirstyearstudent(sf::RenderWindow& window, Staff& userstaff, std::s
                 logoutbut.changecolor(sf::Color::Transparent);
                 logoutbut.changeTextColor(sf::Color::Transparent);
             }
+
+
 
 
             //click to add student to class
@@ -818,7 +852,7 @@ void staffviewstudentinclass(sf::RenderWindow& window, Staff& userstaff, std::st
     //save and delete button
     Button savebut(sf::Color(186, 158, 146, 100), sf::Vector2f(135, 40), false);
     Button deletebut(sf::Color(186, 158, 146, 100), sf::Vector2f(135, 40), false);
-    savebut.setposition(sf::Vector2f(180, 490));
+    savebut.setposition(sf::Vector2f(182, 491));
     deletebut.setposition(sf::Vector2f(180, 540));
 
 
@@ -950,9 +984,7 @@ void staffviewstudentinclass(sf::RenderWindow& window, Staff& userstaff, std::st
             }
             else {
                 logoutbut.changecolor(sf::Color::Transparent);
-                logoutbut.changeTextColor(sf::Color::Transparent);
-            }
-            if (savebut.isonMousecursor(event)) {
+                logoutbut.changeTextColor(sf::Color::Transparent);if (savebut.isonMousecursor(event)) {
                 savebut.changecolor(sf::Color(186, 158, 146, 100));
             }
             else savebut.changecolor(sf::Color::Transparent);
@@ -960,6 +992,8 @@ void staffviewstudentinclass(sf::RenderWindow& window, Staff& userstaff, std::st
                 deletebut.changecolor(sf::Color(186, 158, 146, 100));
             else
                 deletebut.changecolor(sf::Color::Transparent);
+            }
+            
 
 
 

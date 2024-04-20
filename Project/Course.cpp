@@ -213,15 +213,12 @@ bool Course::deleteStudentFromThisCourse(const std::string& studentID) {
 }
 
 bool Course::addStudentToThisCourse(const std::string& studentID, const Name& name) {
-	if (this->getValidSlot() > 0) {
-		if (!this->findIfStudentIsInThisCourse(studentID)) {
-			Student student;
-			student.StudentID = studentID;
-			student.name = name;
-			studentsInThisCourse.addNodeInAscending(student);
-			--validSlot;
-			return true;
-		}
+	if (!this->findIfStudentIsInThisCourse(studentID)) {
+		Student student;
+		student.StudentID = studentID;
+		student.name = name;
+		studentsInThisCourse.addNodeInAscending(student);
+		return true;
 	}
 	return false;
 }

@@ -47,6 +47,12 @@ void staffmanageschoolyeardisplay(sf::RenderWindow& window, Staff& userstaff) {
     dropdownlist schoolyears(sf::Color(168, 158, 146), sf::Vector2f(300, 50), false, sf::Color::Black, schoolyearstext, 30, Palatino);
     schoolyears.setpostionlistbuttonwithlimit(475, 320, 0, 65, 310, 830, 500);
 
+    //save and delete button
+    Button savebut(sf::Color(186, 158, 146, 100), sf::Vector2f(135, 40), false);
+    Button deletebut(sf::Color(186, 158, 146, 100), sf::Vector2f(135, 40), false);
+    savebut.setposition(sf::Vector2f(182, 491));
+    deletebut.setposition(sf::Vector2f(180, 540));
+
 
     TextBox addschoolyearbox(24, sf::Color::Black, false);
     addschoolyearbox.setfont(Palatino);
@@ -112,6 +118,14 @@ void staffmanageschoolyeardisplay(sf::RenderWindow& window, Staff& userstaff) {
                 editmode.setisClicked(false);
                 userstaff.setmode(false);
             }
+            if (savebut.isonMousecursor(event)) {
+                savebut.changecolor(sf::Color(186, 158, 146, 100));
+            }
+            else savebut.changecolor(sf::Color::Transparent);
+            if (deletebut.isonMousecursor(event))
+                deletebut.changecolor(sf::Color(186, 158, 146, 100));
+            else
+                deletebut.changecolor(sf::Color::Transparent);
 
             //change color button when on cursor
             if (logoutbut.isonMousecursor(event)) {
@@ -189,6 +203,9 @@ void staffmanageschoolyeardisplay(sf::RenderWindow& window, Staff& userstaff) {
         addschoolyearbox.drawTextbox(window);
         schoolyeartextbox.drawTextbox(window);
         semestertextbox.drawTextbox(window);
+
+        deletebut.drawbutton(window);
+        savebut.drawbutton(window);
         window.display();
     }
 }
@@ -245,7 +262,11 @@ void staffmanageschoolyear2display(sf::RenderWindow& window, Staff& userstaff, i
 
     Button schoolyearclickbutton(sf::Color(192, 200, 184), sf::Vector2f(300, 50), false, sf::Color::Black, textofbutton, 30, Palatino);//Nen lay mau gi??
     schoolyearclickbutton.setposition(sf::Vector2f(Posofschoolyearclicked.x, Posofschoolyearclicked.y));
-
+    //save and delete button
+    Button savebut(sf::Color(186, 158, 146, 100), sf::Vector2f(135, 40), false);
+    Button deletebut(sf::Color(186, 158, 146, 100), sf::Vector2f(135, 40), false);
+    savebut.setposition(sf::Vector2f(182, 491));
+    deletebut.setposition(sf::Vector2f(180, 540));
     //init newposy of list school years button
     float newposy = 320;
     float newposyofschoolyearclicked = Posofschoolyearclicked.y;
@@ -305,6 +326,14 @@ void staffmanageschoolyear2display(sf::RenderWindow& window, Staff& userstaff, i
                 logoutbut.changecolor(sf::Color::Transparent);
                 logoutbut.changeTextColor(sf::Color::Transparent);
             }
+            if (savebut.isonMousecursor(event)) {
+                savebut.changecolor(sf::Color(186, 158, 146, 100));
+            }
+            else savebut.changecolor(sf::Color::Transparent);
+            if (deletebut.isonMousecursor(event))
+                deletebut.changecolor(sf::Color(186, 158, 146, 100));
+            else
+                deletebut.changecolor(sf::Color::Transparent);
 
             //list of year button
             for (int i = 1; i <= schoolyearstext.sizeoflist(); i++) {
@@ -367,6 +396,8 @@ void staffmanageschoolyear2display(sf::RenderWindow& window, Staff& userstaff, i
         schoolyears.drawButwithoutchangeTextboxcolor(window, event, sf::Color(168, 158, 146));
         schoolyearclickbutton.drawbutton(window);
         schoolyeartextbox.drawTextbox(window);
+        deletebut.drawbutton(window);
+        savebut.drawbutton(window);
         semestertextbox.drawTextbox(window);
         window.display();
     }

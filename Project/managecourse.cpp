@@ -44,8 +44,8 @@ void staffmanagecourse(sf::RenderWindow& window, Staff& userstaff, std::string s
     //save and delete button
     Button savebut(sf::Color(186, 158, 146, 100), sf::Vector2f(135, 40), false);
     Button deletebut(sf::Color(186, 158, 146, 100), sf::Vector2f(135, 40), false);
-    savebut.setposition(sf::Vector2f(180, 490));
-    deletebut.setposition(sf::Vector2f(180, 540));
+    savebut.setposition(sf::Vector2f(182, 491));
+    deletebut.setposition(sf::Vector2f(182, 538));
 
     //school year current textbox
     OutputTextBox cur_schoolyeartextbox(28, sf::Color::Black, schoolyear);
@@ -688,10 +688,10 @@ void staffviewstudentofcourse(sf::RenderWindow& window, Staff& userstaff, std::s
     semestertextbox.setTextPosition(sf::Vector2f(218, 702));
 
     //save and delete button
-    Button savebut(sf::Color(186, 158, 146, 100), sf::Vector2f(135, 40), false);
-    Button deletebut(sf::Color(186, 158, 146, 100), sf::Vector2f(135, 40), false);
-    savebut.setposition(sf::Vector2f(180, 490));
-    deletebut.setposition(sf::Vector2f(180, 540));
+    Button savebut(sf::Color(186, 158, 146, 100), sf::Vector2f(133, 42), false);
+    Button deletebut(sf::Color(186, 158, 146, 100), sf::Vector2f(133, 42), false);
+    savebut.setposition(sf::Vector2f(182, 491));
+    deletebut.setposition(sf::Vector2f(182, 537));
 
     //class current textbox
     OutputTextBox cur_coursetextbox(28, sf::Color::Black, coursechosen);
@@ -708,6 +708,24 @@ void staffviewstudentofcourse(sf::RenderWindow& window, Staff& userstaff, std::s
     Button viewmode(sf::Color(168, 158, 146), sf::Vector2f(133, 43), false, sf::Color::Black, "VIEW", 20, Palatino);
     viewmode.setposition(sf::Vector2f(46, 538));
 
+
+    //add student with information 
+    TextBox addStudentID(24, sf::Color::Black, false);
+    addStudentID.setfont(Palatino);
+    addStudentID.setTextPosition(sf::Vector2f(440, 590));
+
+    TextBox addFirstname(24, sf::Color::Black, false);
+    addFirstname.setfont(Palatino);
+    addFirstname.setTextPosition(sf::Vector2f(440, 695));
+
+    TextBox addLastname(24, sf::Color::Black, false);
+    addLastname.setfont(Palatino);
+    addLastname.setTextPosition(sf::Vector2f(440, 802));
+
+    //button click to import file
+
+    Button importbut(sf::Color(251, 244, 234, 50), sf::Vector2f(228, 49), false);
+    importbut.setButposition(sf::Vector2f(392, 852));
 
     Course c(coursechosen);
     c.loadStudentsFromCsvFileStaffUpload("Data/" + schoolyear + "/" + semester + "/studentOfEachCourse/" + c.courseID + ".csv");
@@ -746,6 +764,9 @@ void staffviewstudentofcourse(sf::RenderWindow& window, Staff& userstaff, std::s
     int kbuttonchose = -1;
     Button studentChosen(sf::Color::Transparent, sf::Vector2f(500, 40), false);
 
+    //innit
+    std::string studentID = "";
+    Name name;
 
     while (window.isOpen())
     {
@@ -774,11 +795,11 @@ void staffviewstudentofcourse(sf::RenderWindow& window, Staff& userstaff, std::s
                 userstaff.~Staff();
                 staffmanageschoolyeardisplay(window, userstaff);
             }
-                if (staffhomebuttonlist.isClickedKOrder(event, 2)) {
+            if (staffhomebuttonlist.isClickedKOrder(event, 2)) {
                     userstaff.~Staff();
                     staffSemesterLobby(window, userstaff);
             }
-                if (staffhomebuttonlist.isClickedKOrder(event, 3)) {
+            if (staffhomebuttonlist.isClickedKOrder(event, 3)) {
                     userstaff.~Staff();
                     staffmanagecourse(window, userstaff, getCurrentSchoolyear(), getCurrentSemester());
             }
@@ -820,6 +841,98 @@ void staffviewstudentofcourse(sf::RenderWindow& window, Staff& userstaff, std::s
                 logoutbut.changeTextColor(sf::Color::Transparent);
             }
 
+            if (savebut.isonMousecursor(event)) {
+                savebut.changecolor(sf::Color(186, 158, 146, 100));
+            }
+            else savebut.changecolor(sf::Color::Transparent);
+            if (deletebut.isonMousecursor(event))
+                deletebut.changecolor(sf::Color(186, 158, 146, 100));
+            else
+                deletebut.changecolor(sf::Color::Transparent);
+
+
+            if (addStudentID.isClick(event, 413, 574, 839, 620)) {
+                addStudentID.setselected(true);
+                addFirstname.setselected(false);
+                addLastname.setselected(false);
+            }
+            else if (addFirstname.isClick(event, 413, 681, 839, 727)) {
+                addStudentID.setselected(false);
+                addFirstname.setselected(true);
+                addLastname.setselected(false);
+            }
+            else  if (addLastname.isClick(event, 413, 788, 839, 834)) {
+                addStudentID.setselected(false);
+                addFirstname.setselected(false);
+                addLastname.setselected(true);
+            }
+
+            if (event.type == sf::Event::TextEntered) {
+                if (addStudentID.isselectedbox()) {
+                    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Return))
+                        addStudentID.setselected(false);
+                    else
+                        addStudentID.typedText(event);
+                }
+                else if (addFirstname.isselectedbox()) {
+                    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Return))
+                        addFirstname.setselected(false);
+                    else
+                        addFirstname.typedText(event);
+                }
+                else if (addLastname.isselectedbox()) {
+                    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Return))
+                        addLastname.setselected(false);
+                    else
+                        addLastname.typedText(event);
+                }
+            }
+
+            //add student button is Press
+            if (event.type == sf::Event::MouseButtonPressed) {
+                if (event.mouseButton.button == sf::Mouse::Left) {
+                    int x_coor = event.mouseButton.x;
+                    int y_coor = event.mouseButton.y;
+                    
+                    if (x_coor > 630 && x_coor < 852 && y_coor>856 && y_coor < 902) {
+                        studentID = addStudentID.getText();
+                        name.firstName = addFirstname.getText();
+                        name.lastName = addLastname.getText();
+                        if (studentID == "" || name.firstName == "" && name.lastName == "") {
+                            announcement("Please fill all the blank spaces.");
+                        }
+                        else {
+                            if (!c.addStudentToThisCourse(studentID, name)) {
+                                announcement("User with this StudentID already exist.");
+                            }
+                            else {
+                                c.saveStudentsToCsvFile(schoolyear, semester);
+                                addStudentID.setText("");
+                                addFirstname.setText("");
+                                addLastname.setText("");
+                                staffviewstudentofcourse(window, userstaff, schoolyear, semester, coursechosen);
+                            }
+                        }
+                    }
+                }
+            }
+            //importfile is on mouse cursor
+            if (importbut.isonMousecursor(event))
+                importbut.changecolor(sf::Color(251, 244, 234, 128));
+            else
+                importbut.changecolor(sf::Color::Transparent);
+
+            if (importbut.isClick(event)) {
+                importbut.setisClicked(true);
+                std::string filename = filenametoimport();
+                if (filename != "") {
+                    c.loadStudentsFromCsvFileStaffUpload(filename);
+                    c.saveStudentsToCsvFile(schoolyear, semester);
+                    staffviewstudentofcourse(window, userstaff, schoolyear, semester, coursechosen);
+                }
+            }
+            else importbut.setisClicked(false);
+
 
 
 
@@ -831,10 +944,8 @@ void staffviewstudentofcourse(sf::RenderWindow& window, Staff& userstaff, std::s
                     Posy = 202 - (n - numberofbutton - 1) * distance;
                 }
                 else if (StudentTextBox[numberofbutton - 1][0].getPositionofTextbox().y >= Posylimunder) {
-
                     std::cout << Posy;
                     Posy = 260;
-
                 }
                 for (int i = 0; i < n; i++)
                 {
@@ -847,7 +958,7 @@ void staffviewstudentofcourse(sf::RenderWindow& window, Staff& userstaff, std::s
                 studentsButton.setpostionlistbuttonwithlimit(Posx[0], Posy - 5, 0, distance, Posylimabove, Posylimunder, jumpsize);
                 studentChosen.setButposition(studentsButton.getpositionofKbut(kbuttonchose + 1));
             }
-
+            
 
             //init node tmp for change data;
             Node<Course::Student>* tmp = c.studentsInThisCourse.head;
@@ -910,7 +1021,6 @@ void staffviewstudentofcourse(sf::RenderWindow& window, Staff& userstaff, std::s
 
         
 
-
         window.clear();
         window.draw(s_staffviewstudentofcourseTexture);
         staffhomebuttonlist.drawButwithTextbox(window, event, sf::Color(168, 158, 146), sf::Color(239, 233, 222));
@@ -922,9 +1032,15 @@ void staffviewstudentofcourse(sf::RenderWindow& window, Staff& userstaff, std::s
                 StudentTextBox[i][j].drawTextbox(window);
         studentsButton.drawButwithoutchangeTextboxcolor(window, event, sf::Color(168, 158, 146, 100));
         studentChosen.drawbutton(window);
+        addFirstname.drawTextbox(window);
+        addLastname.drawTextbox(window);
+        addStudentID.drawTextbox(window);
+        importbut.drawbutton(window);
         deletebut.drawbutton(window);
         savebut.drawbutton(window);
         schoolyeartextbox.drawTextbox(window);
+        deletebut.drawbutton(window);
+        savebut.drawbutton(window);
         semestertextbox.drawTextbox(window);
         cur_coursetextbox.drawTextbox(window);
         window.display();
