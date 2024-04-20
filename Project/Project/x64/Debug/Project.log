@@ -35,8 +35,8 @@ C:\Users\uyenn\source\repos\STUDY\[CS162] Course Management System\Group_project
   
 C:\Users\uyenn\source\repos\STUDY\[CS162] Course Management System\Group_project_Cs162_2\Project\managesemester.cpp(137,35): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
 C:\Users\uyenn\source\repos\STUDY\[CS162] Course Management System\Group_project_Cs162_2\Project\managesemester.cpp(309,35): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-C:\Users\uyenn\source\repos\STUDY\[CS162] Course Management System\Group_project_Cs162_2\Project\managesemester.cpp(643,38): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
-C:\Users\uyenn\source\repos\STUDY\[CS162] Course Management System\Group_project_Cs162_2\Project\managesemester.cpp(646,52): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
-C:\Users\uyenn\source\repos\STUDY\[CS162] Course Management System\Group_project_Cs162_2\Project\managesemester.cpp(656,44): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
-C:\Users\uyenn\source\repos\STUDY\[CS162] Course Management System\Group_project_Cs162_2\Project\managesemester.cpp(659,50): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\uyenn\source\repos\STUDY\[CS162] Course Management System\Group_project_Cs162_2\Project\managesemester.cpp(650,38): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\uyenn\source\repos\STUDY\[CS162] Course Management System\Group_project_Cs162_2\Project\managesemester.cpp(653,52): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\uyenn\source\repos\STUDY\[CS162] Course Management System\Group_project_Cs162_2\Project\managesemester.cpp(663,44): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\uyenn\source\repos\STUDY\[CS162] Course Management System\Group_project_Cs162_2\Project\managesemester.cpp(666,50): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
   Project.vcxproj -> C:\Users\uyenn\source\repos\STUDY\[CS162] Course Management System\Group_project_Cs162_2\Project\x64\Debug\Project.exe

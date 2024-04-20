@@ -618,7 +618,14 @@ void staffmanagesemesterdisplay(sf::RenderWindow& window, Staff& userstaff, std:
                     semesterchosen.changecolor(sf::Color(186, 158, 146, 100));
                     kbuttonchose = i;
                 }
-                if (userstaff.getmode()) {
+                if (!userstaff.getmode()) {
+                    if (semesterchosen.isClick(event)) {
+                        std::string choice = semesterTextBox[i][0].getText();
+                        userstaff.~Staff();
+                        staffmanagecourse(window, userstaff, schoolyear, choice);
+                    }
+                }
+                else {
                     for (int j = 0; j < 3; j++)
                     {
                         if (semesterTextBox[i][j].isClickwithoutPosagrument(event)) {
@@ -685,19 +692,6 @@ void staffmanagesemesterdisplay(sf::RenderWindow& window, Staff& userstaff, std:
                 staffmanagesemesterdisplay(window, userstaff, schoolyear);
             }
         }
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
         window.clear();
