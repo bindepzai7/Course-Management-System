@@ -181,15 +181,17 @@ void staffmanageschoolyeardisplay(sf::RenderWindow& window, Staff& userstaff) {
         if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
             int x_coor = event.mouseButton.x;
             int y_coor = event.mouseButton.y;
-            if (x_coor > 1150 && x_coor < 1350 && y_coor>575 && y_coor < 615) {
-                std::cout << "c";
-                std::string newschoolyeartext = addschoolyearbox.getText();
-                int newstartyear = std::stoi(newschoolyeartext.substr(0, 4));
-                int newsendyear = std::stoi(newschoolyeartext.substr(5, 8));
-                userstaff.addNewSchoolyear(SchoolYear(newstartyear, newsendyear));
-                LinkedList<std::string> schoolyearstext2 = userstaff.getschoolyearstext();
-                userstaff.writeSchoolyear2file(schoolyearstext2);
-                staffmanageschoolyeardisplay(window, userstaff);
+            if (x_coor > 1150 && x_coor < 1350 && y_coor>575 && y_coor < 615 ) {
+                if (userstaff.getmode()) {
+                    std::string newschoolyeartext = addschoolyearbox.getText();
+                    int newstartyear = std::stoi(newschoolyeartext.substr(0, 4));
+                    int newsendyear = std::stoi(newschoolyeartext.substr(5, 8));
+                    userstaff.addNewSchoolyear(SchoolYear(newstartyear, newsendyear));
+                    LinkedList<std::string> schoolyearstext2 = userstaff.getschoolyearstext();
+                    userstaff.writeSchoolyear2file(schoolyearstext2);
+                    staffmanageschoolyeardisplay(window, userstaff);
+                }
+                else announcement("this mode is not allow to add schoolyear!\nPlease move to edit mode");
             }
         }
         window.clear();
@@ -383,7 +385,15 @@ void staffmanageschoolyear2display(sf::RenderWindow& window, Staff& userstaff, i
                 schoolyears.setpostionlistbuttonwithlimit(475, newposy, 0, 65, Posylimabove, Posylimunder, jumpdistance);
                 schoolyearclickbutton.setpositiontwithbuttonlimit(Posofschoolyearclicked.x, newposyofschoolyearclicked, Posylimabove, Posylimunder, jumpdistance);
             }
-
+            if (userstaff.getmode() and deletebut.isClick(event)) {
+                int staryear = std::stoi(textofbutton.substr(0, 4));
+                int endyear = std::stoi(textofbutton.substr(5, 8));
+                userstaff.deleteSchoolyear(SchoolYear(staryear, endyear));
+                LinkedList<std::string> schoolyearstext2 = userstaff.getschoolyearstext();
+                userstaff.writeSchoolyear2file(schoolyearstext2);
+                if (Korderofbut > schoolyearstext2.sizeoflist()) Korderofbut = Korderofbut - 1;
+                staffmanageschoolyear2display(window, userstaff,Korderofbut);
+            }
 
         }
 

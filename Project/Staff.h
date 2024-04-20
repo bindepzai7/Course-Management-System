@@ -92,6 +92,9 @@ public:
 	void addClassforNewSchoolYear(Class newclass) {
 		classlist.addNodeInAscending(newclass);
 	}
+	void deleteSchoolyear(SchoolYear schoolyear) {
+		schoolyearlist.removeNodeByData(schoolyear);
+	}
 
 	void readAllSchoolyear();
 	void writeSchoolyear2file(LinkedList<std::string> &schoolyearstext);
