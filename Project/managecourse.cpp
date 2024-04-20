@@ -194,13 +194,9 @@ void staffmanagecourse(sf::RenderWindow& window, Staff& userstaff, std::string s
             if (event.type == event.MouseWheelScrolled and n > 8) {
                 Posy = Posy + event.mouseWheelScroll.delta * 10.0f;
                 if (CourseTextBox[n - 1][0].getPositionofTextbox().y <= Posylimunder - 10) {
-                    std::cout << CourseTextBox[n - 1][0].getPositionofTextbox().y;
-                    std::cout << Posy;
                     Posy = 325 - (n - numberofbutton - 1) * distance;
                 }
                 else if (CourseTextBox[numberofbutton - 1][0].getPositionofTextbox().y >= Posylimunder) {
-
-                    std::cout << Posy;
                     Posy = 388;
 
                 }
@@ -209,7 +205,6 @@ void staffmanagecourse(sf::RenderWindow& window, Staff& userstaff, std::string s
                     for (int j = 0; j < 8; j++)
                     {
                         CourseTextBox[i][j].setTextboxpostitionwithlimit(Posx[j], Posy + distance * i, Posylimabove, Posylimunder, jumpsize);
-
                     }
                 }
                 courseButton.setpostionlistbuttonwithlimit(Posx[0], Posy - 5, 0, distance, Posylimabove, Posylimunder, jumpsize);
@@ -941,12 +936,11 @@ void staffviewstudentofcourse(sf::RenderWindow& window, Staff& userstaff, std::s
             if (event.type == event.MouseWheelScrolled and n > 10) {
                 Posy = Posy + event.mouseWheelScroll.delta * 10.0f;
                 if (StudentTextBox[n - 1][0].getPositionofTextbox().y <= Posylimunder - 10) {
-                    std::cout << StudentTextBox[n - 1][0].getPositionofTextbox().y;
-                    std::cout << Posy;
+
                     Posy = 202 - (n - numberofbutton - 1) * distance;
                 }
                 else if (StudentTextBox[numberofbutton - 1][0].getPositionofTextbox().y >= Posylimunder) {
-                    std::cout << Posy;
+
                     Posy = 260;
                 }
                 for (int i = 0; i < n; i++)
@@ -1238,13 +1232,9 @@ void staffCourseScoreboard(sf::RenderWindow& window, Staff& userstaff, std::stri
             if (event.type == event.MouseWheelScrolled and n > 8) {
                 Posy = Posy + event.mouseWheelScroll.delta * 10.0f;
                 if (CourseScoreboardTextBox[n - 1][0].getPositionofTextbox().y <= Posylimunder - 10) {
-                    std::cout << CourseScoreboardTextBox[n - 1][0].getPositionofTextbox().y;
-                    std::cout << Posy;
                     Posy = 325 - (n - numberofbutton - 1) * distance;
                 }
                 else if (CourseScoreboardTextBox[numberofbutton - 1][0].getPositionofTextbox().y >= Posylimunder) {
-
-                    std::cout << Posy;
                     Posy = 388;
 
                 }
