@@ -1,16 +1,16 @@
-C:\Users\uyenn\source\repos\STUDY\[CS162] Course Management System\Group_project_Cs162_2\Project\Class.cpp;C:\Users\uyenn\source\repos\STUDY\[CS162] Course Management System\Group_project_Cs162_2\Project\Project\x64\Debug\Class.obj
-C:\Users\uyenn\source\repos\STUDY\[CS162] Course Management System\Group_project_Cs162_2\Project\Course.cpp;C:\Users\uyenn\source\repos\STUDY\[CS162] Course Management System\Group_project_Cs162_2\Project\Project\x64\Debug\Course.obj
-C:\Users\uyenn\source\repos\STUDY\[CS162] Course Management System\Group_project_Cs162_2\Project\loginfunction.cpp;C:\Users\uyenn\source\repos\STUDY\[CS162] Course Management System\Group_project_Cs162_2\Project\Project\x64\Debug\loginfunction.obj
-C:\Users\uyenn\source\repos\STUDY\[CS162] Course Management System\Group_project_Cs162_2\Project\main.cpp;C:\Users\uyenn\source\repos\STUDY\[CS162] Course Management System\Group_project_Cs162_2\Project\Project\x64\Debug\main.obj
-C:\Users\uyenn\source\repos\STUDY\[CS162] Course Management System\Group_project_Cs162_2\Project\manageclass.cpp;C:\Users\uyenn\source\repos\STUDY\[CS162] Course Management System\Group_project_Cs162_2\Project\Project\x64\Debug\manageclass.obj
-C:\Users\uyenn\source\repos\STUDY\[CS162] Course Management System\Group_project_Cs162_2\Project\managecourse.cpp;C:\Users\uyenn\source\repos\STUDY\[CS162] Course Management System\Group_project_Cs162_2\Project\Project\x64\Debug\managecourse.obj
-C:\Users\uyenn\source\repos\STUDY\[CS162] Course Management System\Group_project_Cs162_2\Project\manageschoolyear.cpp;C:\Users\uyenn\source\repos\STUDY\[CS162] Course Management System\Group_project_Cs162_2\Project\Project\x64\Debug\manageschoolyear.obj
-C:\Users\uyenn\source\repos\STUDY\[CS162] Course Management System\Group_project_Cs162_2\Project\managesemester.cpp;C:\Users\uyenn\source\repos\STUDY\[CS162] Course Management System\Group_project_Cs162_2\Project\Project\x64\Debug\managesemester.obj
-C:\Users\uyenn\source\repos\STUDY\[CS162] Course Management System\Group_project_Cs162_2\Project\ReadCSVfile.cpp;C:\Users\uyenn\source\repos\STUDY\[CS162] Course Management System\Group_project_Cs162_2\Project\Project\x64\Debug\ReadCSVfile.obj
-C:\Users\uyenn\source\repos\STUDY\[CS162] Course Management System\Group_project_Cs162_2\Project\Semester.cpp;C:\Users\uyenn\source\repos\STUDY\[CS162] Course Management System\Group_project_Cs162_2\Project\Project\x64\Debug\Semester.obj
-C:\Users\uyenn\source\repos\STUDY\[CS162] Course Management System\Group_project_Cs162_2\Project\Staff.cpp;C:\Users\uyenn\source\repos\STUDY\[CS162] Course Management System\Group_project_Cs162_2\Project\Project\x64\Debug\Staff.obj
-C:\Users\uyenn\source\repos\STUDY\[CS162] Course Management System\Group_project_Cs162_2\Project\aboutstaff.cpp;C:\Users\uyenn\source\repos\STUDY\[CS162] Course Management System\Group_project_Cs162_2\Project\Project\x64\Debug\aboutstaff.obj
-C:\Users\uyenn\source\repos\STUDY\[CS162] Course Management System\Group_project_Cs162_2\Project\Student.cpp;C:\Users\uyenn\source\repos\STUDY\[CS162] Course Management System\Group_project_Cs162_2\Project\Project\x64\Debug\Student.obj
-C:\Users\uyenn\source\repos\STUDY\[CS162] Course Management System\Group_project_Cs162_2\Project\studentview.cpp;C:\Users\uyenn\source\repos\STUDY\[CS162] Course Management System\Group_project_Cs162_2\Project\Project\x64\Debug\studentview.obj
-C:\Users\uyenn\source\repos\STUDY\[CS162] Course Management System\Group_project_Cs162_2\Project\Textbox.cpp;C:\Users\uyenn\source\repos\STUDY\[CS162] Course Management System\Group_project_Cs162_2\Project\Project\x64\Debug\Textbox.obj
-C:\Users\uyenn\source\repos\STUDY\[CS162] Course Management System\Group_project_Cs162_2\Project\User.cpp;C:\Users\uyenn\source\repos\STUDY\[CS162] Course Management System\Group_project_Cs162_2\Project\Project\x64\Debug\User.obj
+D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\Class.cpp;D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\Project\x64\Debug\Class.obj
+D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\Course.cpp;D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\Project\x64\Debug\Course.obj
+D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\loginfunction.cpp;D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\Project\x64\Debug\loginfunction.obj
+D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\main.cpp;D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\Project\x64\Debug\main.obj
+D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\manageclass.cpp;D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\Project\x64\Debug\manageclass.obj
+D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\managecourse.cpp;D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\Project\x64\Debug\managecourse.obj
+D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\manageschoolyear.cpp;D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\Project\x64\Debug\manageschoolyear.obj
+D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\managesemester.cpp;D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\Project\x64\Debug\managesemester.obj
+D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\ReadCSVfile.cpp;D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\Project\x64\Debug\ReadCSVfile.obj
+D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\Semester.cpp;D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\Project\x64\Debug\Semester.obj
+D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\Staff.cpp;D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\Project\x64\Debug\Staff.obj
+D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\aboutstaff.cpp;D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\Project\x64\Debug\aboutstaff.obj
+D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\Student.cpp;D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\Project\x64\Debug\Student.obj
+D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\studentview.cpp;D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\Project\x64\Debug\studentview.obj
+D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\Textbox.cpp;D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\Project\x64\Debug\Textbox.obj
+D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\User.cpp;D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\Project\x64\Debug\User.obj

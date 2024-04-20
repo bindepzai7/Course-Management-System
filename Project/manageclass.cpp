@@ -1935,9 +1935,18 @@ void staffViewStudentScoreboard2(sf::RenderWindow& window, Staff& userstaff, std
         scoreboards[i][5].setText(scorestudent[i].getOtherScore());
         scoreboards[i][6].setText(scorestudent[i].getTotalScore());
     }
-
-
-
+    float sum = 0;
+    for (int i = 0; i < numbercousestudy; i++) {
+        sum += std::stof(scorestudent[i].getTotalScore());
+    }
+    float semGPA = sum / numbercousestudy;
+    std::ostringstream oss;
+    oss << std::fixed << std::setprecision(1) << semGPA;
+    std::string seGPA = oss.str();
+    OutputTextBox semesterGPA(29, sf::Color(119, 106, 92), seGPA);
+    semesterGPA.setfont(Palatino);
+    semesterGPA.setTextPosition(sf::Vector2f(555, 875));
+    
     while (window.isOpen())
     {
         sf::Event event;
@@ -2108,6 +2117,7 @@ void staffViewStudentScoreboard2(sf::RenderWindow& window, Staff& userstaff, std
         for (int i = 0; i < numbercousestudy; i++)
             for (int j = 0; j < 7; j++)
                 scoreboards[i][j].drawTextbox(window);
+        semesterGPA.drawTextbox(window);
         window.display();
     }
     for (int i = 0; i < n; i++)

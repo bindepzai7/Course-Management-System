@@ -41,6 +41,6 @@ D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\manageclass.cpp(1074,65):
 D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\manageclass.cpp(1097,35): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
 D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\manageclass.cpp(1108,38): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
 D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\manageclass.cpp(1110,40): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
-D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\manageclass.cpp(1301,35): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\manageclass.cpp(1514,35): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\manageclass.cpp(1297,35): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\manageclass.cpp(1510,35): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
   Project.vcxproj -> D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\x64\Debug\Project.exe
