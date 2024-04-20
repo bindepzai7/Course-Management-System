@@ -22,6 +22,14 @@ public:
 	Semester(const std::string& semester) {
 		this->semester = semester;
 	}
+	bool operator==(const Semester& s) {
+		if (this->semester == s.semester) return true;
+		return false;
+	}
+	bool operator<(const Semester& s) {
+		if (this->semester < s.semester) return true;
+		else return false;
+	}
 
 	//				About this semester's info
 

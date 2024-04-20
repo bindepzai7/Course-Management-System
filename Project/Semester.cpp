@@ -55,7 +55,7 @@ bool Semester::loadCourseListFromFileCourseList(const std::string& schoolYear) {
 		Course c;
 		while (c.readACourseFromFileCourseList(fin)) {
 			std::cout << c.courseID << " ";
-			courseList.addNodeAtFront(c);
+			courseList.addNodeInAscending(c);
 		}
 		fin.close();
 		return true;

@@ -171,7 +171,7 @@ bool Course::loadStudentsFromCsvFileStaffUpload(const std::string& filename) {
 		getline(fin, student.StudentID, ',');
 		getline(fin, student.name.lastName, ',');
 		getline(fin, student.name.firstName, '\n');
-		int found = student.name.firstName.find_last_of(",");
+		int found = student.name.firstName.find(",");
 		if (found != std::string::npos) {
 			student.name.firstName = student.name.firstName.substr(0, found);
 		}

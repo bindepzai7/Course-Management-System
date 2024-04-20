@@ -52,7 +52,7 @@ public:
         if (fin.is_open()) {
             Semester s;
             while (s.readASemesterFromCsvFile(fin)) {
-                semesterList.addNodeAtFront(s);
+                semesterList.addNodeInAscending(s);
             }
             fin.close();
             return true;
@@ -106,12 +106,12 @@ public:
         int index = 0;
         while (cur) {
             if (cur->data.getSemester() == semester) {
-                cur->data.deleteSemesterFolder(schoolYear);
                 if (schoolYear == getCurrentSchoolyear()) {
                     if (semester == getCurrentSemester()) {
                         return false;
                     }
                 }
+                cur->data.deleteSemesterFolder(schoolYear);
                 semesterList.deleteAt(index);
                 saveSemesterListToSemesterList();
                 return true;

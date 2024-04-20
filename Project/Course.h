@@ -100,7 +100,10 @@ public:
         if (this->className != c.className and this->session!=c.session) return false;
         return (this->courseID == c.courseID);
     }
-
+    bool operator<(const Course& c) {
+        if (this->courseID < c.courseID) return true;
+        else return false;
+    }
 
     //About this course's info
 

@@ -529,7 +529,7 @@ void staffmanagesemesterdisplay(sf::RenderWindow& window, Staff& userstaff, std:
                         Startdate = addStartDate.getText();
                         Enddate = addEndDate.getText();
                         if (Startdate.size() != 10 or Enddate.size() != 10 or (!semester1but.getisClick() and !semester2but.getisClick() and !semester3but.getisClick())) {
-                            announcement("Blank data or wrong date format!\nFill blank spaces and enter correct date format dd/mm/yyyy! (10 chars)");
+                            announcement("Blank data or wrong date format!\nFill blank spaces \nand enter correct date format dd/mm/yyyy! (10 chars)");
                         }
                         else {
                             if (semester1but.getisClick()) semester = "1";
