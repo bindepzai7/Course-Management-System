@@ -716,18 +716,18 @@ void studentScoreboard(sf::RenderWindow& window, Student& studentuser, std::stri
 
     OutputTextBox semestertextbox(22, sf::Color(119, 106, 92), getCurrentSemester());
     semestertextbox.setfont(Palatino);
-    semestertextbox.setTextPosition(sf::Vector2f(218, 702));
+    semestertextbox.setTextPosition(sf::Vector2f(218, 750));
 
 
     //school year current textbox
     OutputTextBox cur_schoolyeartextbox(28, sf::Color::Black, schoolyear);
     cur_schoolyeartextbox.setfont(Palatino);
-    cur_schoolyeartextbox.setTextPosition(sf::Vector2f(1160, 180));
+    cur_schoolyeartextbox.setTextPosition(sf::Vector2f(945, 168));
 
     //semester current textbox
     OutputTextBox cur_semestertextbox(28, sf::Color::Black, semester);
     cur_semestertextbox.setfont(Palatino);
-    cur_semestertextbox.setTextPosition(sf::Vector2f(1215, 250));
+    cur_semestertextbox.setTextPosition(sf::Vector2f(1322, 168));
 
     float Posx[7] = { 380,472,585,945,1110,1250,1390 };
     float Posy = 385;
