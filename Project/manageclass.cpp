@@ -935,26 +935,26 @@ void staffviewstudentinclass(sf::RenderWindow& window, Staff& userstaff, std::st
                 }
             }
             if (staffhomebuttonlist.isClickedKOrder(event, 1)) {
-                userstaff.~Staff();
+                
                 staffmanageschoolyeardisplay(window, userstaff);
             }
             if (staffhomebuttonlist.isClickedKOrder(event, 2)) {
-                userstaff.~Staff();
+                //userstaff.~Staff();
 
                 staffSemesterLobby(window, userstaff);
             }
             if (staffhomebuttonlist.isClickedKOrder(event, 3)) {
-                userstaff.~Staff();
+               // userstaff.~Staff();
 
                 staffmanagecourse(window, userstaff, getCurrentSchoolyear(), getCurrentSemester());
             }
             if (staffhomebuttonlist.isClickedKOrder(event, 4)) {
-                userstaff.~Staff();
+                //userstaff.~Staff();
 
                 staffaddclasses(window, userstaff, getCurrentSchoolyear());
             }
             if (staffhomebuttonlist.isClickedKOrder(event, 5)) {
-                userstaff.~Staff();
+                //userstaff.~Staff();
                 staffaboutUs(window, userstaff);
             }
 
@@ -984,7 +984,9 @@ void staffviewstudentinclass(sf::RenderWindow& window, Staff& userstaff, std::st
             }
             else {
                 logoutbut.changecolor(sf::Color::Transparent);
-                logoutbut.changeTextColor(sf::Color::Transparent); if (savebut.isonMousecursor(event)) {
+                logoutbut.changeTextColor(sf::Color::Transparent);
+            }
+                if (savebut.isonMousecursor(event)) {
                     savebut.changecolor(sf::Color(186, 158, 146, 100));
                 }
                 else savebut.changecolor(sf::Color::Transparent);
@@ -992,7 +994,7 @@ void staffviewstudentinclass(sf::RenderWindow& window, Staff& userstaff, std::st
                     deletebut.changecolor(sf::Color(186, 158, 146, 100));
                 else
                     deletebut.changecolor(sf::Color::Transparent);
-            }
+            
 
 
 
@@ -1790,6 +1792,13 @@ void staffViewStudentScoreboard2(sf::RenderWindow& window, Staff& userstaff, std
     Button editmode(sf::Color(168, 158, 146), sf::Vector2f(133, 43), false, sf::Color::Black, "EDIT", 20, Palatino);
     editmode.setposition(sf::Vector2f(46, 491));
     Button viewmode(sf::Color(168, 158, 146), sf::Vector2f(133, 43), false, sf::Color::Black, "VIEW", 20, Palatino);
+
+    //save and delete button
+    Button savebut(sf::Color(186, 158, 146, 100), sf::Vector2f(133, 42), false);
+    Button deletebut(sf::Color(186, 158, 146, 100), sf::Vector2f(133, 42), false);
+    savebut.setposition(sf::Vector2f(182, 491));
+    deletebut.setposition(sf::Vector2f(182, 537));
+
     viewmode.setposition(sf::Vector2f(46, 538));
 
     // textbox title
@@ -1971,6 +1980,14 @@ void staffViewStudentScoreboard2(sf::RenderWindow& window, Staff& userstaff, std
                 logoutbut.changecolor(sf::Color::Transparent);
                 logoutbut.changeTextColor(sf::Color::Transparent);
             }
+            if (savebut.isonMousecursor(event)) {
+                savebut.changecolor(sf::Color(186, 158, 146, 100));
+            }
+            else savebut.changecolor(sf::Color::Transparent);
+            if (deletebut.isonMousecursor(event))
+                deletebut.changecolor(sf::Color(186, 158, 146, 100));
+            else
+                deletebut.changecolor(sf::Color::Transparent);
 
 
             if (event.type == event.MouseWheelScrolled) {
@@ -2035,6 +2052,19 @@ void staffViewStudentScoreboard2(sf::RenderWindow& window, Staff& userstaff, std
                     }
 
             }
+            Node<Course>* tmp = cursemester.courseList.head;
+            for (int i = 0; i < numbercousestudy; i++) {
+                if(tmp) {
+                    if (tmp->data.findIfStudentIsInThisCourse(studentTextBox[kstudentchosen][1].getText())) {
+                        tmp->data.updateAStudentScoreOfThisCourse(studentTextBox[kstudentchosen][1].getText(), scoreboards[i][6].getText(),
+                            scoreboards[i][4].getText(), scoreboards[i][3].getText(), scoreboards[i][5].getText());
+                        if (savebut.isClick(event)) {
+                            tmp->data.saveScore2CsvScoresFile(schoolyear, semeseter);
+                        }
+                    }
+                    tmp = tmp->next;
+                }
+            }
         }
 
         window.clear();
@@ -2043,6 +2073,8 @@ void staffViewStudentScoreboard2(sf::RenderWindow& window, Staff& userstaff, std
         if (userstaff.getmode()) editmode.drawbutton(window);
         else viewmode.drawbutton(window);
         logoutbut.drawbutton(window);
+        savebut.drawbutton(window);
+        deletebut.drawbutton(window);
         schoolyeartextbox.drawTextbox(window);
         semestertextbox.drawTextbox(window);
         classtilte.drawTextbox(window);
