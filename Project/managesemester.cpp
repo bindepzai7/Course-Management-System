@@ -411,6 +411,46 @@ void staffmanagesemesterdisplay(sf::RenderWindow& window, Staff& userstaff, std:
     Date start, end;
     std::string Enddate = "";
     year.loadSemesterListFromSemesterList();
+    int n = year.getnumberofsemeseter();
+    Node<Semester>* cur = year.semesterList.head;
+
+
+
+
+    TextBox** semesterTextBox = new TextBox * [n];
+
+    float Posx[3] = { 355,410,575 };
+    float Posy = 385;
+    float distance = 60;
+    float Posylimabove = 365;
+    float Posylimunder = 810;
+    float jumpsize = 500;
+    int numberofbutton = 3;
+    for (int i = 0; i < n; i++)
+    {
+        semesterTextBox[i] = new TextBox[3];
+        for (int j = 0; j < 3; j++)
+        {
+            semesterTextBox[i][j].setsize(24);
+            semesterTextBox[i][j].setColor(sf::Color::Black);
+            semesterTextBox[i][j].setselected(false);
+            semesterTextBox[i][j].setfont(Palatino);
+            semesterTextBox[i][j].setTextboxpostitionwithlimit(Posx[j], Posy + distance * i, Posylimabove, Posylimunder, jumpsize);
+        }
+
+        semesterTextBox[i][0].setText(cur->data.getSemester()); // Assuming you want to set index 0 to an index value
+        semesterTextBox[i][1].setText(cur->data.getStartDate());
+        semesterTextBox[i][2].setText(cur->data.getEndDate());
+        cur = cur->next;
+    }
+    //button of list student
+    dropdownlist SemesterButton(sf::Color::Transparent, sf::Vector2f(1090, 40), false, n);
+    SemesterButton.setpostionlistbuttonwithlimit(Posx[0], Posy - 5, 0, distance, Posylimabove, Posylimunder, jumpsize);
+    int kbuttonchose = -1;
+    Button semesterchosen(sf::Color::Transparent, sf::Vector2f(1096, 40), false);
+
+
+
 
     while (window.isOpen())
     {
@@ -563,13 +603,115 @@ void staffmanagesemesterdisplay(sf::RenderWindow& window, Staff& userstaff, std:
             else
                 deletebut.changecolor(sf::Color::Transparent);
 
+
+
+
+
+
+
+            //init node tmp for change data;
+            Node<Semester>* tmp = year.semesterList.head;
+            for (int i = 0; i < n; i++)
+            {
+                if (SemesterButton.isClickedKOrder(event, i + 1)) {
+                    semesterchosen.setButposition(SemesterButton.getpositionofKbut(i + 1));
+                    semesterchosen.changecolor(sf::Color(186, 158, 146, 100));
+                    kbuttonchose = i;
+                }
+                if (userstaff.getmode()) {
+                    for (int j = 0; j < 3; j++)
+                    {
+                        if (semesterTextBox[i][j].isClickwithoutPosagrument(event)) {
+                            semesterTextBox[i][j].setselected(true);
+                            setnotseleted(semesterTextBox, n, i, j, 3);
+                        }
+                        if (event.type == sf::Event::TextEntered) {
+                            if (semesterTextBox[i][j].isselectedbox()) {
+                                if (sf::Keyboard::isKeyPressed(sf::Keyboard::Return))
+                                    semesterTextBox[i][j].setselected(false);
+                                else
+                                    semesterTextBox[i][j].typedText(event);
+                            }
+                        }
+
+                    }
+                    //savebuttonclick
+                    if (tmp) {
+                        std::string start = semesterTextBox[i][1].getText();
+                        std::string end = semesterTextBox[i][2].getText();
+
+                        int foundday = start.find("/");
+                        int foundmonth = -1;
+                        if (foundday > 0) {
+                            foundmonth = start.find("/", foundday + 1);
+                            if (foundday > 0 and foundmonth > 0) {
+                                tmp->data.startDay.day = std::stoi(start.substr(0, foundday));
+                                if (foundday < foundmonth)
+                                    tmp->data.startDay.month = std::stoi(start.substr(foundday + 1, foundmonth));
+                                if (foundmonth + 1 < start.size())
+                                    tmp->data.startDay.year = std::stoi(start.substr(foundmonth + 1, start.size()));
+                            }
+                        }
+
+                        foundday = end.find("/");
+                        foundmonth = -1;
+                        if (foundday > 0) {
+                            foundmonth = end.find("/", foundday + 1);
+                            if (foundday > 0 and foundmonth > 0) {
+                                tmp->data.endDay.day = std::stoi(end.substr(0, foundday));
+                                if (foundday < foundmonth)
+                                    tmp->data.endDay.month = std::stoi(end.substr(foundday + 1, foundmonth));
+                                if (foundmonth + 1 < end.size())
+                                    tmp->data.endDay.year = std::stoi(end.substr(foundmonth + 1, end.size()));
+                            }
+                        }
+                        tmp = tmp->next;
+                    }
+                    
+
+                    //deletebutton
+                    if (deletebut.isClick(event) and kbuttonchose != -1) {
+                        if (!year.deleteSemester(semesterTextBox[kbuttonchose][0].getText())) {
+                            announcement("Cant delete current semester.\nPlease set new current semester first.");
+                        }
+                        else staffmanagesemesterdisplay(window, userstaff, schoolyear);
+                    }
+                }
+
+            }
+
+            if (savebut.isClick(event)) {
+                year.saveSemesterListToSemesterList();
+                staffmanagesemesterdisplay(window, userstaff, schoolyear);
+            }
         }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         window.clear();
         window.draw(s_Semestertexture);
         staffhomebuttonlist.drawButwithTextbox(window, event, sf::Color(168, 158, 146), sf::Color(239, 233, 222));
         cur_schoolyeartextbox.drawTextbox(window);
         logoutbut.drawbutton(window);
+
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < 3; j++) semesterTextBox[i][j].drawTextbox(window);
+        }
+        SemesterButton.drawButwithoutchangeTextboxcolor(window, event, sf::Color(168, 158, 146, 100));
+        semesterchosen.drawbutton(window);
+
         if (userstaff.getmode()) editmode.drawbutton(window);
         else viewmode.drawbutton(window);
         if (semester1but.getisClick()) semester1but.drawbutton(window);
@@ -591,4 +733,7 @@ void staffmanagesemesterdisplay(sf::RenderWindow& window, Staff& userstaff, std:
         semestertextbox.drawTextbox(window);
         window.display();
     }
+    for (int i = 0; i < n; i++)
+        delete[] semesterTextBox[i];
+    delete[] semesterTextBox;
 }

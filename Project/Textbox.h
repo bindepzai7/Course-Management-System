@@ -266,5 +266,8 @@ public:
 	}
 };
 
-void setnotseleted(TextBox**& Studenttextbox, int n, int x, int y,int col);
+void setnotseleted(TextBox**& Studenttextbox, int n, int x, int y, int col);
+
+
+
 #endif

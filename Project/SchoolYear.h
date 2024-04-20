@@ -14,9 +14,10 @@ private:
     int yEnd;
     std::string schoolYear;
 
-    LinkedList<Semester> semesterList;
+    
 
 public:
+    LinkedList<Semester> semesterList;
     SchoolYear() :yStart(0), yEnd(0), schoolYear("") {}
     // Constructor
     SchoolYear(const int& yStart, const int& yEnd)
@@ -92,6 +93,7 @@ public:
             if (s.addNewSemesterFolder(schoolYear, semester)) {
                 semesterList.addNodeAtFront(s);
                 saveCurrentSemestertofile(schoolYear, semester);
+                saveSemesterListToSemesterList();
                 return true;
             }
 
@@ -104,7 +106,14 @@ public:
         int index = 0;
         while (cur) {
             if (cur->data.getSemester() == semester) {
+                cur->data.deleteSemesterFolder(schoolYear);
+                if (schoolYear == getCurrentSchoolyear()) {
+                    if (semester == getCurrentSemester()) {
+                        return false;
+                    }
+                }
                 semesterList.deleteAt(index);
+                saveSemesterListToSemesterList();
                 return true;
             }
             cur = cur->next;

@@ -37,7 +37,7 @@ bool Semester::addNewSemesterFolder(const std::string& schoolYear, const std::st
 }
 
 
-bool Semester::deleteSemesterFolder(const std::string& schoolYear, const std::string& semester) {
+bool Semester::deleteSemesterFolder(const std::string& schoolYear) {
 	if (exists("Data/" + schoolYear + "/" + semester)) {
 		remove_all("Data/" + schoolYear + "/" + semester);
 		return true;
