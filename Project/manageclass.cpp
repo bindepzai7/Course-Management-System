@@ -1668,7 +1668,7 @@ void staffviewstudentcoreboard(sf::RenderWindow& window, Staff& userstaff, std::
     float Posylimabove2 = 680;
     float Posylimunder2 = 860;
     //float jumpsize2 = 1000;
-    int numberofbutton2 = 4;
+   
     TextBox** scoreboards = new TextBox * [numbercousestudy];
     std::cout << scorestudent[0].getStudentID();
     for (int i = 0; i < numbercousestudy; i++) {
@@ -1751,30 +1751,41 @@ void staffviewstudentcoreboard(sf::RenderWindow& window, Staff& userstaff, std::
             }
 
 
-            if (event.type == event.MouseWheelScrolled and n > numberofbutton) {
+            if (event.type == event.MouseWheelScrolled) {
+                int y_coor = event.mouseWheelScroll.y;
+                if (y_coor > Posylimabove - 5 and y_coor < Posylimunder + 20 and n > numberofbutton) {
+                    Posy = Posy + event.mouseWheelScroll.delta * 10.0f;
+                    if (studentTextBox[n - 1][0].getPositionofTextbox().y <= Posylimunder - 10) {
+                        std::cout << studentTextBox[n - 1][0].getPositionofTextbox().y;
+                        std::cout << Posy;
+                        Posy = 335 - (n - numberofbutton - 1) * distance;
+                    }
+                    else if (studentTextBox[numberofbutton - 1][0].getPositionofTextbox().y >= Posylimunder) {
 
-                Posy = Posy + event.mouseWheelScroll.delta * 10.0f;
-                if (studentTextBox[n - 1][0].getPositionofTextbox().y <= Posylimunder - 10) {
-                    std::cout << studentTextBox[n - 1][0].getPositionofTextbox().y;
-                    std::cout << Posy;
-                    Posy = 335 - (n - numberofbutton - 1) * distance;
-                }
-                else if (studentTextBox[numberofbutton - 1][0].getPositionofTextbox().y >= Posylimunder) {
-
-                    std::cout << Posy;
-                    Posy = 388;
-
-                }
-                for (int i = 0; i < n; i++)
-                {
-                    for (int j = 0; j < 6; j++)
-                    {
-                        studentTextBox[i][j].setTextboxpostitionwithlimit(Posx[j], Posy + distance * i, Posylimabove, Posylimunder, jumpsize);
+                        std::cout << Posy;
+                        Posy = 388;
 
                     }
+                    for (int i = 0; i < n; i++)
+                    {
+                        for (int j = 0; j < 6; j++)
+                        {
+                            studentTextBox[i][j].setTextboxpostitionwithlimit(Posx[j], Posy + distance * i, Posylimabove, Posylimunder, jumpsize);
+
+                        }
+                    }
+                    StudentsButton.setpostionlistbuttonwithlimit(Posx[0], Posy - 5, 0, distance, Posylimabove, Posylimunder, jumpsize);
+                    studentchosen.setButposition(StudentsButton.getpositionofKbut(kstudentchosen + 1));
                 }
-                StudentsButton.setpostionlistbuttonwithlimit(Posx[0], Posy - 5, 0, distance, Posylimabove, Posylimunder, jumpsize);
-                studentchosen.setButposition(StudentsButton.getpositionofKbut(kstudentchosen + 1));
+                if (y_coor > Posylimabove2 - 5 and y_coor < Posylimunder2 + 20 and numbercousestudy>numberofbutton) {
+                    Posy2 = Posy2 + event.mouseWheelScroll.delta + 10.0f;
+                    if (scoreboards[numbercousestudy - 1][0].getPositionofTextbox().y <= Posylimunder2 - 10) {
+                        Posy2 = 635 - ( numbercousestudy-numberofbutton - 1) * distance;
+                    }
+                    else if (scoreboards[numberofbutton - 1][0].getPositionofTextbox().y >= Posylimunder2) {
+                        Posy = 688;
+                    }
+                }
             }
             for (int i = 0; i < n; i++)
             {
@@ -1783,10 +1794,25 @@ void staffviewstudentcoreboard(sf::RenderWindow& window, Staff& userstaff, std::
                     kstudentchosen = i;
                     staffviewstudentcoreboard(window, userstaff, classchosen, schoolyear, semeseter, kstudentchosen);
                 }
+            }
+            for (int i = 0; i < numbercousestudy; i++) {
+                if(userstaff.getmode())
+                for (int j = 0; j < 7; j++) {
+                    if (scoreboards[i][j].isClickwithoutPosagrument(event)) {
+                        scoreboards[i][j].setselected(true);
+                        setnotseleted(scoreboards, numbercousestudy, i, j, 7);
+                    }
+                    if (event.type == sf::Event::TextEntered) {
+                        if (scoreboards[i][j].isselectedbox()) {
+                            if (sf::Keyboard::isKeyPressed(sf::Keyboard::Return))
+                                scoreboards[i][j].setselected(false);
+                            else
+                                scoreboards[i][j].typedText(event);
+                        }
+                    }
+                }
 
             }
-
-
         }
 
         window.clear();
