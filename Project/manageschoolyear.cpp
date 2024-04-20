@@ -1,6 +1,7 @@
 
 
 #include"displayfunction.h"
+#include<filesystem>
 
 
 void staffmanageschoolyeardisplay(sf::RenderWindow& window, Staff& userstaff) {
@@ -391,6 +392,7 @@ void staffmanageschoolyear2display(sf::RenderWindow& window, Staff& userstaff, i
                 userstaff.deleteSchoolyear(SchoolYear(staryear, endyear));
                 LinkedList<std::string> schoolyearstext2 = userstaff.getschoolyearstext();
                 userstaff.writeSchoolyear2file(schoolyearstext2);
+                std::filesystem::remove_all("Data/" + textofbutton);
                 if (Korderofbut > schoolyearstext2.sizeoflist()) Korderofbut = Korderofbut - 1;
                 staffmanageschoolyear2display(window, userstaff,Korderofbut);
             }

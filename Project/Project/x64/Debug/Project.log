@@ -1,4 +1,7 @@
-﻿  manageschoolyear.cpp
+﻿  Course.cpp
+D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\Course.cpp(175,13): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\Course.cpp(178,47): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+  manageschoolyear.cpp
 D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\button.h(87,18): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
   (compiling source file 'manageschoolyear.cpp')
   
@@ -33,6 +36,8 @@ D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\Textbox.h(211,17): warnin
 D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\Textbox.h(211,17): warning C4244:         ]
   (compiling source file 'manageschoolyear.cpp')
   
-D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\manageschoolyear.cpp(170,35): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\manageschoolyear.cpp(377,35): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\manageschoolyear.cpp(171,35): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\manageschoolyear.cpp(378,35): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+  Generating Code...
+  LINK : D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\x64\Debug\Project.exe not found or not built by the last incremental link; performing full link
   Project.vcxproj -> D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\x64\Debug\Project.exe
