@@ -1,2 +1,35 @@
-﻿  LINK : C:\Users\uyenn\source\repos\STUDY\[CS162] Course Management System\Group_project_Cs162_2\Project\x64\Debug\Project.exe not found or not built by the last incremental link; performing full link
-  Project.vcxproj -> C:\Users\uyenn\source\repos\STUDY\[CS162] Course Management System\Group_project_Cs162_2\Project\x64\Debug\Project.exe
+﻿  manageclass.cpp
+C:\Users\uyenn\source\repos\STUDY\[CS162] Course Management System\Group_project_Cs162_2\Project\manageclass.cpp(1,1): warning C4335: Mac file format detected: please convert the source file to either DOS or UNIX format
+C:\Users\uyenn\source\repos\STUDY\[CS162] Course Management System\Group_project_Cs162_2\Project\manageclass.cpp(1,11): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+C:\Users\uyenn\source\repos\STUDY\[CS162] Course Management System\Group_project_Cs162_2\Project\button.h(87,18): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+C:\Users\uyenn\source\repos\STUDY\[CS162] Course Management System\Group_project_Cs162_2\Project\button.h(88,18): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+C:\Users\uyenn\source\repos\STUDY\[CS162] Course Management System\Group_project_Cs162_2\Project\Textbox.h(208,14): warning C4244: 'initializing': conversion from 'const T' to 'int', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\uyenn\source\repos\STUDY\[CS162] Course Management System\Group_project_Cs162_2\Project\Textbox.h(209,14): warning C4244: 'initializing': conversion from 'const T' to 'int', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\uyenn\source\repos\STUDY\[CS162] Course Management System\Group_project_Cs162_2\Project\Textbox.h(210,17): warning C4244: 'initializing': conversion from 'T' to 'int', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\uyenn\source\repos\STUDY\[CS162] Course Management System\Group_project_Cs162_2\Project\Textbox.h(211,17): warning C4244: 'initializing': conversion from 'T' to 'int', possible loss of data
+          with
+          [
+              T=float
+          ]
+main.obj : error LNK2019: unresolved external symbol "void __cdecl staffSemesterLobby(class sf::RenderWindow &,class Staff &)" (?staffSemesterLobby@@YAXAEAVRenderWindow@sf@@AEAVStaff@@@Z) referenced in function main
+managecourse.obj : error LNK2001: unresolved external symbol "void __cdecl staffSemesterLobby(class sf::RenderWindow &,class Staff &)" (?staffSemesterLobby@@YAXAEAVRenderWindow@sf@@AEAVStaff@@@Z)
+manageschoolyear.obj : error LNK2001: unresolved external symbol "void __cdecl staffSemesterLobby(class sf::RenderWindow &,class Staff &)" (?staffSemesterLobby@@YAXAEAVRenderWindow@sf@@AEAVStaff@@@Z)
+aboutstaff.obj : error LNK2001: unresolved external symbol "void __cdecl staffSemesterLobby(class sf::RenderWindow &,class Staff &)" (?staffSemesterLobby@@YAXAEAVRenderWindow@sf@@AEAVStaff@@@Z)
+managecourse.obj : error LNK2019: unresolved external symbol "void __cdecl staffaddclasses(class sf::RenderWindow &,class Staff &,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)" (?staffaddclasses@@YAXAEAVRenderWindow@sf@@AEAVStaff@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z) referenced in function "void __cdecl staffaddcourse(class sf::RenderWindow &,class Staff &,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)" (?staffaddcourse@@YAXAEAVRenderWindow@sf@@AEAVStaff@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@2@Z)
+manageschoolyear.obj : error LNK2001: unresolved external symbol "void __cdecl staffaddclasses(class sf::RenderWindow &,class Staff &,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)" (?staffaddclasses@@YAXAEAVRenderWindow@sf@@AEAVStaff@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z)
+aboutstaff.obj : error LNK2001: unresolved external symbol "void __cdecl staffaddclasses(class sf::RenderWindow &,class Staff &,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)" (?staffaddclasses@@YAXAEAVRenderWindow@sf@@AEAVStaff@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z)
+managecourse.obj : error LNK2019: unresolved external symbol "class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > __cdecl filenametoimport(void)" (?filenametoimport@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ) referenced in function "void __cdecl staffaddcourse(class sf::RenderWindow &,class Staff &,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)" (?staffaddcourse@@YAXAEAVRenderWindow@sf@@AEAVStaff@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@2@Z)
+manageschoolyear.obj : error LNK2019: unresolved external symbol "void __cdecl staffmanagesemesterdisplay(class sf::RenderWindow &,class Staff &,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >)" (?staffmanagesemesterdisplay@@YAXAEAVRenderWindow@sf@@AEAVStaff@@V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@@Z) referenced in function "void __cdecl staffmanageschoolyear2display(class sf::RenderWindow &,class Staff &,int)" (?staffmanageschoolyear2display@@YAXAEAVRenderWindow@sf@@AEAVStaff@@H@Z)
+C:\Users\uyenn\source\repos\STUDY\[CS162] Course Management System\Group_project_Cs162_2\Project\x64\Debug\Project.exe : fatal error LNK1120: 4 unresolved externals

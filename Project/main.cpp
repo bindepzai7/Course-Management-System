@@ -17,7 +17,7 @@ int main() {
 
         window.clear();
         Staff user;
-        staffHome(window, user);
+        staffSemesterLobby(window, user);
         
         //chooseRole(window);
         window.display();

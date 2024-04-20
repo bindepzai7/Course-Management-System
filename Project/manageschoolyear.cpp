@@ -48,10 +48,10 @@ void staffmanageschoolyeardisplay(sf::RenderWindow& window, Staff& userstaff) {
     schoolyears.setpostionlistbuttonwithlimit(475, 320, 0, 65, 310, 830, 500);
 
     //save and delete button
-    Button savebut(sf::Color(186, 158, 146, 100), sf::Vector2f(135, 40), false);
-    Button deletebut(sf::Color(186, 158, 146, 100), sf::Vector2f(135, 40), false);
+    Button savebut(sf::Color(186, 158, 146, 100), sf::Vector2f(133, 42), false);
+    Button deletebut(sf::Color(186, 158, 146, 100), sf::Vector2f(133, 42), false);
     savebut.setposition(sf::Vector2f(182, 491));
-    deletebut.setposition(sf::Vector2f(180, 540));
+    deletebut.setposition(sf::Vector2f(182, 537));
 
 
     TextBox addschoolyearbox(24, sf::Color::Black, false);
@@ -263,10 +263,10 @@ void staffmanageschoolyear2display(sf::RenderWindow& window, Staff& userstaff, i
     Button schoolyearclickbutton(sf::Color(192, 200, 184), sf::Vector2f(300, 50), false, sf::Color::Black, textofbutton, 30, Palatino);//Nen lay mau gi??
     schoolyearclickbutton.setposition(sf::Vector2f(Posofschoolyearclicked.x, Posofschoolyearclicked.y));
     //save and delete button
-    Button savebut(sf::Color(186, 158, 146, 100), sf::Vector2f(135, 40), false);
-    Button deletebut(sf::Color(186, 158, 146, 100), sf::Vector2f(135, 40), false);
+    Button savebut(sf::Color(186, 158, 146, 100), sf::Vector2f(133, 42), false);
+    Button deletebut(sf::Color(186, 158, 146, 100), sf::Vector2f(133, 42), false);
     savebut.setposition(sf::Vector2f(182, 491));
-    deletebut.setposition(sf::Vector2f(180, 540));
+    deletebut.setposition(sf::Vector2f(182, 537));
     //init newposy of list school years button
     float newposy = 320;
     float newposyofschoolyearclicked = Posofschoolyearclicked.y;

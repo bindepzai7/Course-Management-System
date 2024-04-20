@@ -42,10 +42,10 @@ void staffmanagecourse(sf::RenderWindow& window, Staff& userstaff, std::string s
     viewmode.setposition(sf::Vector2f(46, 538));
 
     //save and delete button
-    Button savebut(sf::Color(186, 158, 146, 100), sf::Vector2f(135, 40), false);
-    Button deletebut(sf::Color(186, 158, 146, 100), sf::Vector2f(135, 40), false);
+    Button savebut(sf::Color(186, 158, 146, 100), sf::Vector2f(133, 42), false);
+    Button deletebut(sf::Color(186, 158, 146, 100), sf::Vector2f(133, 42), false);
     savebut.setposition(sf::Vector2f(182, 491));
-    deletebut.setposition(sf::Vector2f(182, 538));
+    deletebut.setposition(sf::Vector2f(182, 537));
 
     //school year current textbox
     OutputTextBox cur_schoolyeartextbox(28, sf::Color::Black, schoolyear);
@@ -702,7 +702,7 @@ void staffviewstudentofcourse(sf::RenderWindow& window, Staff& userstaff, std::s
     Button logoutbut(sf::Color(192, 200, 184), sf::Vector2f(90, 30), false, sf::Color::Black, "Log out", 20, Palatino);
     logoutbut.setposition(sf::Vector2f(227, 895));
 
-    //mode button
+   //mode button
     Button editmode(sf::Color(168, 158, 146), sf::Vector2f(133, 43), false, sf::Color::Black, "EDIT", 20, Palatino);
     editmode.setposition(sf::Vector2f(46, 491));
     Button viewmode(sf::Color(168, 158, 146), sf::Vector2f(133, 43), false, sf::Color::Black, "VIEW", 20, Palatino);

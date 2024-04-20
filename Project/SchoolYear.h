@@ -21,6 +21,7 @@ public:
     // Constructor
     SchoolYear(const int& yStart, const int& yEnd)
         : yStart(yStart), yEnd(yEnd), schoolYear(std::to_string(yStart) + "-" + std::to_string(yEnd)) {}
+    SchoolYear(const std::string& schoolyear) : schoolYear(schoolyear), yStart(0), yEnd(0) {}
 
     bool operator==(const SchoolYear& s2) const {
         return yStart == s2.yStart;
@@ -90,6 +91,7 @@ public:
             Semester s(semester, startDate, endDate);
             if (s.addNewSemesterFolder(schoolYear, semester)) {
                 semesterList.addNodeAtFront(s);
+                saveCurrentSemestertofile(schoolYear, semester);
                 return true;
             }
 

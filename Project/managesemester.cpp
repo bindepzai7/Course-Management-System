@@ -1,5 +1,6 @@
 
 
+
 #include"displayfunction.h"
 
 void staffSemesterLobby(sf::RenderWindow& window, Staff& userstaff) {
@@ -142,8 +143,8 @@ void staffSemesterLobby(sf::RenderWindow& window, Staff& userstaff) {
             }
 
         }
-        
-       
+
+
         window.clear();
         window.draw(s_SemesterLobbyTexture);
         staffhomebuttonlist.drawButwithTextbox(window, event, sf::Color(168, 158, 146), sf::Color(239, 233, 222));
@@ -375,15 +376,41 @@ void staffmanagesemesterdisplay(sf::RenderWindow& window, Staff& userstaff, std:
     Button viewmode(sf::Color(168, 158, 146), sf::Vector2f(133, 43), false, sf::Color::Black, "VIEW", 20, Palatino);
     viewmode.setposition(sf::Vector2f(46, 538));
     //save and delete button
-    Button savebut(sf::Color(186, 158, 146, 100), sf::Vector2f(135, 40), false);
-    Button deletebut(sf::Color(186, 158, 146, 100), sf::Vector2f(135, 40), false);
+    Button savebut(sf::Color(186, 158, 146, 100), sf::Vector2f(133, 42), false);
+    Button deletebut(sf::Color(186, 158, 146, 100), sf::Vector2f(133, 42), false);
     savebut.setposition(sf::Vector2f(182, 491));
-    deletebut.setposition(sf::Vector2f(180, 540));
+    deletebut.setposition(sf::Vector2f(182, 537));
 
     //school year current textbox
     OutputTextBox cur_schoolyeartextbox(28, sf::Color::Black, schoolyear);
     cur_schoolyeartextbox.setfont(Palatino);
     cur_schoolyeartextbox.setTextPosition(sf::Vector2f(580, 430));
+
+    //Add semester button
+    Button semester1but(sf::Color::Transparent, sf::Vector2f(50, 50), false, sf::Color::Black, "[  ]", 40, Palatino);
+    semester1but.setposition(sf::Vector2f(1138, 183));
+    Button semester2but(sf::Color::Transparent, sf::Vector2f(50, 50), false, sf::Color::Black, "[  ]", 40, Palatino);
+    semester2but.setposition(sf::Vector2f(1222, 183));
+    Button semester3but(sf::Color::Transparent, sf::Vector2f(50, 50), false, sf::Color::Black, "[  ]", 40, Palatino);
+    semester3but.setposition(sf::Vector2f(1305, 183));
+
+
+    //Add start and end date
+    TextBox addStartDate(24, sf::Color::Black, false);
+    addStartDate.setfont(Palatino);
+    addStartDate.setTextPosition(sf::Vector2f(1090, 280));
+
+    TextBox addEndDate(24, sf::Color::Black, false);
+    addEndDate.setfont(Palatino);
+    addEndDate.setTextPosition(sf::Vector2f(1090, 370));
+
+    //innit
+    SchoolYear year(schoolyear);
+    std::string semester = "";
+    std::string Startdate = "";
+    Date start, end;
+    std::string Enddate = "";
+    year.loadSemesterListFromSemesterList();
 
     while (window.isOpen())
     {
@@ -432,18 +459,104 @@ void staffmanagesemesterdisplay(sf::RenderWindow& window, Staff& userstaff, std:
                 userstaff.setmode(false);
             }
 
+            //Add end and start date
+            if (addStartDate.isClick(event, 1077, 265, 1380, 316)) {
+                addStartDate.setselected(true);
+                addEndDate.setselected(false);
+            }
+            else if (addEndDate.isClick(event, 1077, 357, 1380, 408)) {
+                addStartDate.setselected(false);
+                addEndDate.setselected(true);
+            }
+            if (event.type == sf::Event::TextEntered) {
+                if (addStartDate.isselectedbox()) {
+                    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Return))
+                        addStartDate.setselected(false);
+                    else
+                        addStartDate.typedText(event);
+                }
+                else if (addEndDate.isselectedbox()) {
+                    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Return))
+                        addEndDate.setselected(false);
+                    else
+                        addEndDate.typedText(event);
+                }
+            }
+            //add student button is Press
+            if (event.type == sf::Event::MouseButtonPressed) {
+                if (event.mouseButton.button == sf::Mouse::Left) {
+                    int x_coor = event.mouseButton.x;
+                    int y_coor = event.mouseButton.y;
+                    if (x_coor > 1110 && x_coor < 1380 && y_coor>453 && y_coor < 499) {
+
+                        Startdate = addStartDate.getText();
+                        Enddate = addEndDate.getText();
+                        if (Startdate.size() != 10 or Enddate.size() != 10 or (!semester1but.getisClick() and !semester2but.getisClick() and !semester3but.getisClick())) {
+                            announcement("Blank data or wrong date format!\nFill blank spaces and enter correct date format dd/mm/yyyy! (10 chars)");
+                        }
+                        else {
+                            if (semester1but.getisClick()) semester = "1";
+                            else {
+                                if (semester2but.getisClick()) {
+                                    semester = "2";
+                                }
+                                else {
+                                    if (semester3but.getisClick()) {
+                                        semester = "3";
+                                    }
+                                }
+                            }
+                            int i = 0;
+                            while (Startdate[i] != 47 && Startdate[i] != 45 && i < Startdate.size())
+                                i++;
+                            start.day = std::stoi(Startdate.substr(0, i));
+                            int j = i + 1;
+                            while (Startdate[j] != 47 && Startdate[j] != 45 && j < Startdate.size())
+                                j++;
+                            start.month = std::stoi(Startdate.substr(i + 1, j - 1));
+                            start.year = std::stoi(Startdate.substr(j + 1, Startdate.size() - 1));
+
+
+                            i = 0;
+                            while (Enddate[i] != 47 && Enddate[i] != 45 && i < Enddate.size())
+                                i++;
+                            end.day = std::stoi(Enddate.substr(0, i));
+                            j = i + 1;
+                            while (Enddate[j] != 47 && Enddate[j] != 45 && j < Enddate.size())
+                                j++;
+                            end.month = std::stoi(Enddate.substr(i + 1, j - 1));
+                            end.year = std::stoi(Enddate.substr(j + 1, Enddate.size() - 1));
+                            
+
+
+                            year.addSemester(semester, start, end);
+                            addStartDate.setText("");
+                            addEndDate.setText("");
+                            staffmanagesemesterdisplay(window, userstaff, schoolyear);
+                        }
+                    }
+                }
+            }
+
+
+            //if semester is choose to add
+            if (semester1but.isClick(event)) {
+                semester1but.setisClicked(true);
+                semester2but.setisClicked(false);
+                semester3but.setisClicked(false);
+            }
+            if (semester2but.isClick(event)) {
+                semester1but.setisClicked(false);
+                semester2but.setisClicked(true);
+                semester3but.setisClicked(false);
+            }
+            if (semester3but.isClick(event)) {
+                semester1but.setisClicked(false);
+                semester2but.setisClicked(false);
+                semester3but.setisClicked(true);
+            }
             //change color button when on cursor
-            if (logoutbut.isonMousecursor(event)) {
-                logoutbut.changecolor(sf::Color(192, 200, 184));
-                logoutbut.changeTextColor(sf::Color::Black);
-            }
-            else {
-                logoutbut.changecolor(sf::Color::Transparent);
-                logoutbut.changeTextColor(sf::Color::Transparent);
-            }
-            if (savebut.isonMousecursor(event)) {
-                savebut.changecolor(sf::Color(186, 158, 146, 100));
-            }
+
             else savebut.changecolor(sf::Color::Transparent);
             if (deletebut.isonMousecursor(event))
                 deletebut.changecolor(sf::Color(186, 158, 146, 100));
@@ -459,8 +572,21 @@ void staffmanagesemesterdisplay(sf::RenderWindow& window, Staff& userstaff, std:
         logoutbut.drawbutton(window);
         if (userstaff.getmode()) editmode.drawbutton(window);
         else viewmode.drawbutton(window);
+        if (semester1but.getisClick()) semester1but.drawbutton(window);
+        else {
+            if (semester2but.getisClick()) {
+                semester2but.drawbutton(window);
+            }
+            else {
+                if (semester3but.getisClick()) {
+                    semester3but.drawbutton(window);
+                }
+            }
+        }
         deletebut.drawbutton(window);
         savebut.drawbutton(window);
+        addEndDate.drawTextbox(window);
+        addStartDate.drawTextbox(window);
         schoolyeartextbox.drawTextbox(window);
         semestertextbox.drawTextbox(window);
         window.display();

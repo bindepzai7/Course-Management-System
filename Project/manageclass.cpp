@@ -41,10 +41,10 @@ void staffaddclasses(sf::RenderWindow& window, Staff& userstaff, std::string sch
     Button viewmode(sf::Color(168, 158, 146), sf::Vector2f(133, 43), false, sf::Color::Black, "VIEW", 20, Palatino);
     viewmode.setposition(sf::Vector2f(46, 538));
     //save and delete button
-    Button savebut(sf::Color(186, 158, 146, 100), sf::Vector2f(135, 40), false);
-    Button deletebut(sf::Color(186, 158, 146, 100), sf::Vector2f(135, 40), false);
+    Button savebut(sf::Color(186, 158, 146, 100), sf::Vector2f(133, 42), false);
+    Button deletebut(sf::Color(186, 158, 146, 100), sf::Vector2f(133, 42), false);
     savebut.setposition(sf::Vector2f(182, 491));
-    deletebut.setposition(sf::Vector2f(180, 540));
+    deletebut.setposition(sf::Vector2f(182, 537));
 
     //school year current textbox
     OutputTextBox cur_schoolyeartextbox(28, sf::Color::Black, schoolyear);
@@ -55,8 +55,8 @@ void staffaddclasses(sf::RenderWindow& window, Staff& userstaff, std::string sch
     std::cout << schoolyear;
     int yearstart = stoi(schoolyear.substr(0, 4));
     int yearend = stoi(schoolyear.substr(5, schoolyear.size()));
-    for(int i=0;i<4;i++)
-        userstaff.readAllClassinSchoolYear(std::to_string(yearstart-i)+"-"+std::to_string(yearend-i));
+    for (int i = 0; i < 4; i++)
+        userstaff.readAllClassinSchoolYear(std::to_string(yearstart - i) + "-" + std::to_string(yearend - i));
     LinkedList<std::string> classestext = userstaff.getclassescode();
     dropdownlist classesbutton(sf::Color(168, 158, 146), sf::Vector2f(300, 50), false, sf::Color::Black, classestext, 30, Palatino);
     classesbutton.setpostionlistbuttonwithlimit(475, 320, 0, 65, 310, 830, 500);
@@ -71,7 +71,7 @@ void staffaddclasses(sf::RenderWindow& window, Staff& userstaff, std::string sch
 
     //for scroll wheel
     const int maxbuttondisplay = 8;
-    int numberofbutton = classestext.sizeoflist();  
+    int numberofbutton = classestext.sizeoflist();
     float Posylimabove = 310.0f;
     float Posylimunder = 800.0f;
     float jumpdistance = 500.0f;
@@ -173,24 +173,24 @@ void staffaddclasses(sf::RenderWindow& window, Staff& userstaff, std::string sch
                 }
             }
 
-            
+
 
             //wheel scrool
             if (event.type == event.MouseWheelScrolled and numberofbutton > maxbuttondisplay) {
                 newposy = newposy + event.mouseWheelScroll.delta * 10.0f;
-                if (classesbutton.getpositionofKbut(numberofbutton).y <= Posylimunder-10) {
-                   
-                    newposy = 275-(numberofbutton-maxbuttondisplay-1)*65;
-                    
+                if (classesbutton.getpositionofKbut(numberofbutton).y <= Posylimunder - 10) {
+
+                    newposy = 275 - (numberofbutton - maxbuttondisplay - 1) * 65;
+
                 }
                 else if (classesbutton.getpositionofKbut(maxbuttondisplay).y >= Posylimunder - 10) {
-                   
+
                     newposy = 325;
                 }
                 classesbutton.setpostionlistbuttonwithlimit(475, newposy, 0, 65, Posylimabove, Posylimunder, jumpdistance);
             }
 
-            
+
         }
         //add class button is Press
         if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
@@ -244,10 +244,10 @@ void staffmanageclass(sf::RenderWindow& window, Staff& userstaff, std::string sc
     staffhomebuttonlist.setpostionlistbutton(30, 143, 0, 65);
 
     //save and delete button
-    Button savebut(sf::Color(186, 158, 146, 100), sf::Vector2f(135, 40), false);
-    Button deletebut(sf::Color(186, 158, 146, 100), sf::Vector2f(135, 40), false);
+    Button savebut(sf::Color(186, 158, 146, 100), sf::Vector2f(133, 42), false);
+    Button deletebut(sf::Color(186, 158, 146, 100), sf::Vector2f(133, 42), false);
     savebut.setposition(sf::Vector2f(182, 491));
-    deletebut.setposition(sf::Vector2f(180, 540));
+    deletebut.setposition(sf::Vector2f(182, 537));
 
     //list of class at current schoolyear
 
@@ -287,7 +287,7 @@ void staffmanageclass(sf::RenderWindow& window, Staff& userstaff, std::string sc
     float newposy = 320;
     float newposyofclasschosen = Posofclasschosen.y;
     if (Korderbut > limitnumsofbutton)  newposyofclasschosen = newposyofclasschosen - 500.f;
-    
+
 
     //for scroll wheel
     const int maxbuttondisplay = 8;
@@ -342,11 +342,11 @@ void staffmanageclass(sf::RenderWindow& window, Staff& userstaff, std::string sc
                     staffaddclasses(window, userstaff, schoolyear);
                 if (classesbutton.isClickedKOrder(event, i))
                     staffmanageclass(window, userstaff, schoolyear, i);
-                
-            }
-            
 
-            
+            }
+
+
+
             //wheel scrool
             if (event.type == event.MouseWheelScrolled and numberofbutton > maxbuttondisplay) {
 
@@ -355,7 +355,7 @@ void staffmanageclass(sf::RenderWindow& window, Staff& userstaff, std::string sc
 
                 if (classesbutton.getpositionofKbut(numberofbutton).y <= Posylimunder - 10) {
                     newposy = 275 - (numberofbutton - maxbuttondisplay - 1) * 65;
-                    newposyofclasschosen= classesbutton.getpositionofKbut(Korderbut).y + 10.f;
+                    newposyofclasschosen = classesbutton.getpositionofKbut(Korderbut).y + 10.f;
                 }
                 else if (classesbutton.getpositionofKbut(maxbuttondisplay).y >= Posylimunder - 10) {
                     newposy = 325;
@@ -536,9 +536,9 @@ void staffaddfirstyearstudent(sf::RenderWindow& window, Staff& userstaff, std::s
                         staffviewprofile(window, userstaff);
                     }
                     if (x_coor > 1240 && x_coor < 1353 && y_coor>218 && y_coor < 251) {
-                        staffviewstudentinclass(window, userstaff,schoolyear,addtoclass);
+                        staffviewstudentinclass(window, userstaff, schoolyear, addtoclass);
                     }
-                     
+
                 }
             }
             if (staffhomebuttonlist.isClickedKOrder(event, 1)) {
@@ -680,7 +680,7 @@ void staffaddfirstyearstudent(sf::RenderWindow& window, Staff& userstaff, std::s
                         socialID = addSocialID.getText();
                         std::string dayofbirth = adddayofbirth.getText();
                         if (studentID == "" || name.firstName == "" && name.lastName == "" || socialID == "" || dayofbirth.size() != 10) {
-                            announcement("Leave data blank or wrong date format!\nPlease enter all student data\nor enter correct date format dd/mm/yyy!");
+                            announcement("Leave data blank or wrong date format!\nPlease enter all student data\nor enter correct date format dd/mm/yyyy!");
                         }
                         else {
                             int i = 0;
@@ -850,10 +850,10 @@ void staffviewstudentinclass(sf::RenderWindow& window, Staff& userstaff, std::st
     viewmode.setposition(sf::Vector2f(46, 538));
 
     //save and delete button
-    Button savebut(sf::Color(186, 158, 146, 100), sf::Vector2f(135, 40), false);
-    Button deletebut(sf::Color(186, 158, 146, 100), sf::Vector2f(135, 40), false);
+    Button savebut(sf::Color(186, 158, 146, 100), sf::Vector2f(133, 42), false);
+    Button deletebut(sf::Color(186, 158, 146, 100), sf::Vector2f(133, 42), false);
     savebut.setposition(sf::Vector2f(182, 491));
-    deletebut.setposition(sf::Vector2f(180, 540));
+    deletebut.setposition(sf::Vector2f(182, 537));
 
 
 
@@ -864,8 +864,8 @@ void staffviewstudentinclass(sf::RenderWindow& window, Staff& userstaff, std::st
     int n = curclass.getnumberofstudentinclass();
     //LinkedList<Student> studentlist = curclass.getstudentlist();
     //Node<Student>* head = curclass.getstudentnode();
-    Node<Student>* cur =curclass.studentList.head;
-    
+    Node<Student>* cur = curclass.studentList.head;
+
 
     TextBox** studentTextBox = new TextBox * [n];
 
@@ -876,7 +876,7 @@ void staffviewstudentinclass(sf::RenderWindow& window, Staff& userstaff, std::st
     float Posylimunder = 810;
     float jumpsize = 500;
     int numberofbutton = 8;
-    for (int i = 0; i < n ; i++)
+    for (int i = 0; i < n; i++)
     {
         studentTextBox[i] = new TextBox[6];
         for (int j = 0; j < 6; j++)
@@ -940,17 +940,17 @@ void staffviewstudentinclass(sf::RenderWindow& window, Staff& userstaff, std::st
             }
             if (staffhomebuttonlist.isClickedKOrder(event, 2)) {
                 userstaff.~Staff();
-                
+
                 staffSemesterLobby(window, userstaff);
             }
             if (staffhomebuttonlist.isClickedKOrder(event, 3)) {
                 userstaff.~Staff();
-                
+
                 staffmanagecourse(window, userstaff, getCurrentSchoolyear(), getCurrentSemester());
             }
             if (staffhomebuttonlist.isClickedKOrder(event, 4)) {
                 userstaff.~Staff();
-                
+
                 staffaddclasses(window, userstaff, getCurrentSchoolyear());
             }
             if (staffhomebuttonlist.isClickedKOrder(event, 5)) {
@@ -984,16 +984,16 @@ void staffviewstudentinclass(sf::RenderWindow& window, Staff& userstaff, std::st
             }
             else {
                 logoutbut.changecolor(sf::Color::Transparent);
-                logoutbut.changeTextColor(sf::Color::Transparent);if (savebut.isonMousecursor(event)) {
-                savebut.changecolor(sf::Color(186, 158, 146, 100));
+                logoutbut.changeTextColor(sf::Color::Transparent); if (savebut.isonMousecursor(event)) {
+                    savebut.changecolor(sf::Color(186, 158, 146, 100));
+                }
+                else savebut.changecolor(sf::Color::Transparent);
+                if (deletebut.isonMousecursor(event))
+                    deletebut.changecolor(sf::Color(186, 158, 146, 100));
+                else
+                    deletebut.changecolor(sf::Color::Transparent);
             }
-            else savebut.changecolor(sf::Color::Transparent);
-            if (deletebut.isonMousecursor(event))
-                deletebut.changecolor(sf::Color(186, 158, 146, 100));
-            else
-                deletebut.changecolor(sf::Color::Transparent);
-            }
-            
+
 
 
 
@@ -1059,22 +1059,22 @@ void staffviewstudentinclass(sf::RenderWindow& window, Staff& userstaff, std::st
                         int foundday = dob.find("/");
                         int foundmonth = -1;
                         if (foundday > 0)  foundmonth = dob.find("/", foundday + 1);
-                        if (found >0 and foundday >0 and foundmonth > 0) {
+                        if (found > 0 and foundday > 0 and foundmonth > 0) {
                             tmp->data.name.lastName = fullname.substr(0, found);
                             tmp->data.name.firstName = fullname.substr(found + 1, fullname.size());
                             tmp->data.birthDay.day = std::stoi(dob.substr(0, foundday));
-                            if(foundday<foundmonth)
-                            tmp->data.birthDay.month = std::stoi(dob.substr(foundday + 1, foundmonth));
-                            if (foundmonth+1 < dob.size())
-                            tmp->data.birthDay.year = std::stoi(dob.substr(foundmonth+1, dob.size()));
+                            if (foundday < foundmonth)
+                                tmp->data.birthDay.month = std::stoi(dob.substr(foundday + 1, foundmonth));
+                            if (foundmonth + 1 < dob.size())
+                                tmp->data.birthDay.year = std::stoi(dob.substr(foundmonth + 1, dob.size()));
                             tmp->data.socialID = studentTextBox[i][5].getText();
-                            
+
                         }
                         tmp = tmp->next;
                     }
-                    
-                   
-                    
+
+
+
 
                     //deletebutton
                     if (deletebut.isClick(event) and kbuttonchose != -1) {
@@ -1085,7 +1085,7 @@ void staffviewstudentinclass(sf::RenderWindow& window, Staff& userstaff, std::st
                         //std::cout << found;
                         if (found != 0) {
                             studentdeleted.name.lastName = fullname.substr(0, found);
-                           // std::cout << studentdeleted.name.lastName;
+                            // std::cout << studentdeleted.name.lastName;
                             studentdeleted.name.firstName = fullname.substr(found + 1, fullname.size());
                             //std::cout << studentdeleted.name.firstName;
                         }
@@ -1375,7 +1375,7 @@ void staffChooseOption2(sf::RenderWindow& window, Staff& userstaff, std::string 
     int n = schoolyearchosen.getnumberofsemeseter();
     Button* semesterbut = new Button[n];
     for (int i = 0; i < n; i++) {
-        semesterbut[i].changecolor(sf::Color(192, 200, 184,100));
+        semesterbut[i].changecolor(sf::Color(192, 200, 184, 100));
         semesterbut[i].changesize(sf::Vector2f(55, 55));
         semesterbut[i].setButposition(sf::Vector2f(1093 + i * 100.0f, 454));
     }
@@ -1447,7 +1447,7 @@ void staffChooseOption2(sf::RenderWindow& window, Staff& userstaff, std::string 
                 if (schoolyearclickbutton.isClick(event))
                     staffChooseOption(window, userstaff, classchosen);
                 if (schoolyears.isClickedKOrder(event, i)) {
-                    staffChooseOption2(window, userstaff,classchosen, i);
+                    staffChooseOption2(window, userstaff, classchosen, i);
                 }
 
             }
@@ -1484,7 +1484,7 @@ void staffChooseOption2(sf::RenderWindow& window, Staff& userstaff, std::string 
                     if (x_coor > 40 && x_coor < 77 && y_coor>887 && y_coor < 932) {
                         staffviewprofile(window, userstaff);
                     }
-                    if (numbersemester >0 and x_coor > 910 and x_coor < 1385 and y_coor >545 and y_coor < 645) {
+                    if (numbersemester > 0 and x_coor > 910 and x_coor < 1385 and y_coor >545 and y_coor < 645) {
                         //staffscoreboard    /////////////////////////////// 
                         staffviewstudentcoreboard(window, userstaff, classchosen, textofbutton, std::to_string(numbersemester));
                     }
@@ -1582,7 +1582,7 @@ void staffviewstudentcoreboard(sf::RenderWindow& window, Staff& userstaff, std::
     OutputTextBox semestertilte(22, sf::Color::Black, semeseter);
     semestertilte.setfont(Palatino);
     semestertilte.setTextPosition(sf::Vector2f(1280, 232));
-   
+
     //list of student
 
     Class curclass(classchosen);
@@ -1593,7 +1593,7 @@ void staffviewstudentcoreboard(sf::RenderWindow& window, Staff& userstaff, std::
 
     TextBox** studentTextBox = new TextBox * [n];
 
-    float Posx[6] = { 355,410,575,860,965,1200};
+    float Posx[6] = { 355,410,575,860,965,1200 };
     float Posy = 385;
     float distance = 60;
     float Posylimabove = 365;
@@ -1690,9 +1690,9 @@ void staffviewstudentcoreboard(sf::RenderWindow& window, Staff& userstaff, std::
                 logoutbut.changeTextColor(sf::Color::Transparent);
             }
 
-            
+
             if (event.type == event.MouseWheelScrolled and n > numberofbutton) {
-               
+
                 Posy = Posy + event.mouseWheelScroll.delta * 10.0f;
                 if (studentTextBox[n - 1][0].getPositionofTextbox().y <= Posylimunder - 10) {
                     std::cout << studentTextBox[n - 1][0].getPositionofTextbox().y;
@@ -1724,8 +1724,8 @@ void staffviewstudentcoreboard(sf::RenderWindow& window, Staff& userstaff, std::
                     kbuttonchose = i;
                 }
             }
-                
-            
+
+
         }
 
         window.clear();
