@@ -1157,10 +1157,6 @@ void staffviewstudentinclass(sf::RenderWindow& window, Staff& userstaff, std::st
 }
 
 
-
-
-
-
 void staffChooseOption(sf::RenderWindow& window, Staff& userstaff, std::string classchosen) {
 
     ///////////////////////////////////CODE HERE
@@ -1903,6 +1899,11 @@ void staffViewStudentScoreboard2(sf::RenderWindow& window, Staff& userstaff, std
         }
         cur2courselist = cur2courselist->next;
     }
+
+
+
+
+
     //for draw and position
     float Posx2[7] = { 355,425,585,875,1040,1180,1320 };
     float Posy2 = 685;
@@ -1932,6 +1933,8 @@ void staffViewStudentScoreboard2(sf::RenderWindow& window, Staff& userstaff, std
         scoreboards[i][6].setText(scorestudent[i].getTotalScore());
     }
 
+
+
     while (window.isOpen())
     {
         sf::Event event;
@@ -1951,6 +1954,9 @@ void staffViewStudentScoreboard2(sf::RenderWindow& window, Staff& userstaff, std
                     }
                     if (x_coor > 40 && x_coor < 77 && y_coor>887 && y_coor < 932) {
                         staffviewprofile(window, userstaff);
+                    }
+                    if (x_coor > 1380 && x_coor < 1427 && y_coor>212 && y_coor < 259) {
+                        staffChooseOption(window, userstaff,classchosen);
                     }
                 }
             }

@@ -66,7 +66,7 @@ void staffViewStudentScoreboard2(sf::RenderWindow& window, Staff& userstaff, std
 
 std::string filenametoimport();
 
-
+std::string exportFile();
 
 
 

@@ -574,6 +574,9 @@ void staffaddcourse(sf::RenderWindow& window, Staff& userstaff, std::string scho
                     if (x_coor > 40 && x_coor < 77 && y_coor>887 && y_coor < 932) {
                         staffviewprofile(window, userstaff);
                     }
+                    if (x_coor > 896 && x_coor < 1121 && y_coor>666 && y_coor < 708) {
+                        staffmanagecourse(window, userstaff, schoolyear, semester);
+                    }
                     if (x_coor > 1150 && x_coor < 1350 && y_coor>666 && y_coor < 706) {
                         courseID = addCourseID.getText();
                         courseName = addCourseName.getText();
@@ -785,6 +788,24 @@ void staffviewstudentofcourse(sf::RenderWindow& window, Staff& userstaff, std::s
                     if (x_coor > 636 && x_coor < 836 && y_coor>405 && y_coor < 475) {
                         userstaff.~Staff();
                         staffCourseScoreboard(window,userstaff,schoolyear,semester,coursechosen);
+                    }
+
+                    if (x_coor > 423 && x_coor < 623 && y_coor>405 && y_coor < 475) {
+                        std::string directory = exportFile();
+                        if (directory != "") {
+                            std::ofstream fout(directory+"/" + coursechosen+".csv");
+                            if (fout.is_open()) {
+                                fout << "No,studentID,lastName,firstName,midScore,finScore,otherScore,totalScore\n";
+                                int i = 1;
+                                Node<Course::Student>* cur = c.studentsInThisCourse.head;
+                                while (cur) {
+                                    fout << i++ << "," << cur->data.StudentID << "," << cur->data.name.lastName << "," << cur->data.name.firstName << ",,,," << '\n';
+                                    cur = cur->next;
+                                }
+                                announcement("Export successfully.");
+                            }
+                            fout.close();
+                        }
                     }
                 }
             }
@@ -1047,6 +1068,65 @@ void staffviewstudentofcourse(sf::RenderWindow& window, Staff& userstaff, std::s
 }
 
 
+std::string exportFile() {
+    sf::RenderWindow window(sf::VideoMode(800, 300), "Export Student List", sf::Style::Close);
+    sf::Texture exportTexture;
+    exportTexture.loadFromFile("Design UI/Export StudentList.png");
+    exportTexture.setSmooth(true);
+    sf::Sprite s_exportTexture;
+    s_exportTexture.setTexture(exportTexture);
+    sf::Font Palatino;
+    Palatino.loadFromFile("Font/Palatino.ttf");
+
+    TextBox directory(24, sf::Color::Black, false);
+    directory.setfont(Palatino);
+    directory.setTextPosition(sf::Vector2f(180, 220));
+
+    Button enterbut(sf::Color::Transparent, sf::Vector2f(306, 46), false, sf::Color::Transparent, "", 28, Palatino);
+    enterbut.setposition(sf::Vector2f(458, 54));
+
+    Button cancelbut(sf::Color::Transparent, sf::Vector2f(306, 46), false, sf::Color::Transparent, "", 28, Palatino);
+    cancelbut.setposition(sf::Vector2f(458, 120));
+
+    std::string filename = "";
+
+    while (window.isOpen())
+    {
+        sf::Event event;
+        while (window.pollEvent(event))
+        {
+            if (event.type == sf::Event::Closed)
+                window.close();
+
+            if (directory.isClick(event, 103, 208, 764, 259)) {
+                directory.setselected(true);
+            }
+            if (event.type == sf::Event::TextEntered) {
+                if (directory.isselectedbox()) {
+                    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Return))
+                        directory.setselected(false);
+                    else
+                        directory.typedText(event);
+                }
+            }
+            if (enterbut.isClick(event)) {
+                filename = directory.getText();
+                window.close();
+                return filename;
+            }
+            if (cancelbut.isClick(event)) {
+                window.close();
+                return filename;
+            }
+        }
+        window.clear();
+        window.draw(s_exportTexture);
+        directory.drawTextbox(window);
+        enterbut.drawbutton(window);
+        window.display();
+    }
+    return filename;
+}
 
 void staffCourseScoreboard(sf::RenderWindow& window, Staff& userstaff, std::string schoolyear, std::string semester, std::string coursechosen) {
 
