@@ -641,19 +641,22 @@ void staffmanagesemesterdisplay(sf::RenderWindow& window, Staff& userstaff, std:
                     //savebuttonclick
                     if (tmp) {
                         std::string start = semesterTextBox[i][1].getText();
+                       
+                     
                         std::string end = semesterTextBox[i][2].getText();
                         int foundday = start.find("/");
-                        std::cout << foundday;
+                      
                         int foundmonth = -1;
                         if (foundday > 0) 
-                            foundmonth = start.find("/");
-                        std::cout << foundmonth;
+                            foundmonth = start.find("/",foundday+1);
+                       
                         if (foundday > 0 and foundmonth > 0) {
                             tmp->data.startDay.day = std::stoi(start.substr(0, foundday));
                             if (foundday < foundmonth)
-                                tmp->data.startDay.month = std::stoi(start.substr(foundday + 2, foundmonth));
+                                tmp->data.startDay.month = std::stoi(start.substr(foundday + 1, foundmonth));
                             if (foundmonth + 2 < start.size())
-                                tmp->data.startDay.year = std::stoi(start.substr(foundmonth + 2, start.size()));
+                                tmp->data.startDay.year = std::stoi(start.substr(foundmonth + 1, start.size()));
+                        
                         }
 
                         foundday = end.find("/");
@@ -663,9 +666,9 @@ void staffmanagesemesterdisplay(sf::RenderWindow& window, Staff& userstaff, std:
                             if (foundday > 0 and foundmonth > 0) {
                                 tmp->data.endDay.day = std::stoi(end.substr(0, foundday));
                                 if (foundday < foundmonth)
-                                    tmp->data.endDay.month = std::stoi(end.substr(foundday + 2, foundmonth));
+                                    tmp->data.endDay.month = std::stoi(end.substr(foundday + 1, foundmonth));
                                 if (foundmonth + 1 < end.size())
-                                    tmp->data.endDay.year = std::stoi(end.substr(foundmonth + 2, end.size()));
+                                    tmp->data.endDay.year = std::stoi(end.substr(foundmonth + 1, end.size()));
                             }
                         }
                         tmp = tmp->next;
