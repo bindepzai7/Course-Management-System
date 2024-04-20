@@ -1045,6 +1045,9 @@ void staffviewstudentofcourse(sf::RenderWindow& window, Staff& userstaff, std::s
         cur_coursetextbox.drawTextbox(window);
         window.display();
     }
+    for (int i = 0; i < n; i++)
+        delete[] StudentTextBox[i];
+    delete[] StudentTextBox;
 }
 
 
