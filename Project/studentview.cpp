@@ -729,6 +729,70 @@ void studentScoreboard(sf::RenderWindow& window, Student& studentuser, std::stri
     cur_semestertextbox.setfont(Palatino);
     cur_semestertextbox.setTextPosition(sf::Vector2f(1215, 250));
 
+    float Posx[7] = { 380,472,585,945,1110,1250,1390 };
+    float Posy = 385;
+    float Posylimabove = 200;
+    float Posylimunder = 860;
+    float jumpsize = 1000;
+    int numberofbutton = 4;
+    float distance = 60;
+
+    //find how many course this student learn
+    Semester curSemester(semester);
+    curSemester.loadCourseListFromFileCourseList(schoolyear);
+    Node<Course>* courseList = curSemester.courseList.head;
+    Node<Course>* cur = curSemester.courseList.head;
+
+
+    int n = 0;
+    while (courseList) {
+        courseList->data.loadStudentsFromCsvFileStaffUpload("Data/" + schoolyear + "/" + semester + "/scoreOfEachCourse/" + courseList->data.courseID + ".csv");
+
+        if (courseList->data.findIfStudentIsInThisCourse(studentuser.studentID)) {
+            n++;
+        }
+        courseList = courseList->next;
+    }
+    std::cout << n << std::endl;
+    //find score
+    TextBox** scoreboards = new TextBox * [n];
+    Course::Student* scorestudent = new Course::Student[n];
+    std::string* courseid = new std::string[n];
+    std::string* coursename = new std::string[n];
+    courseList = curSemester.courseList.head;
+
+    n = 0;
+    while (courseList) {
+        if (courseList->data.findIfStudentIsInThisCourse(studentuser.studentID)) {
+            courseList->data.loadScoreFromCsvScoresFile(schoolyear, semester);
+            courseList->data.findAStudentOfThisCourse(studentuser.studentID, scorestudent[n]);
+            courseid[n] = courseList->data.courseID;
+            coursename[n] = courseList->data.courseName;
+            n++;
+        }
+        courseList = courseList->next;
+    }
+
+    std::cout << scorestudent[0].getStudentID();
+    for (int i = 0; i < n; i++) {
+        scoreboards[i] = new TextBox[7];
+        for (int j = 0; j < 7; j++) {
+            scoreboards[i][j].setsize(17);
+            scoreboards[i][j].setColor(sf::Color::Black);
+            scoreboards[i][j].setfont(Palatino);
+            scoreboards[i][j].setTextboxpostitionwithlimit(Posx[j], Posy + distance * i, Posylimabove, Posylimunder, jumpsize);
+        }
+        std::cout << courseid[i];
+        scoreboards[i][0].setText(std::to_string(i + 1));
+        scoreboards[i][1].setText(cur->data.courseID);
+        scoreboards[i][2].setText(coursename[i]);
+        scoreboards[i][3].setText(scorestudent[i].midScore);
+        scoreboards[i][4].setText(scorestudent[i].finScore);
+        scoreboards[i][5].setText(scorestudent[i].otherScore);
+        scoreboards[i][6].setText(scorestudent[i].totalScore);
+        cur = cur->next;
+    }
+
     while (window.isOpen())
     {
         sf::Event event;
@@ -780,6 +844,9 @@ void studentScoreboard(sf::RenderWindow& window, Student& studentuser, std::stri
         logoutbut.drawbutton(window);
         cur_schoolyeartextbox.drawTextbox(window);
         cur_semestertextbox.drawTextbox(window);
+        for (int i = 0; i < n; i++)
+            for (int j = 0; j < 7; j++)
+                scoreboards[i][j].drawTextbox(window);
         schoolyeartextbox.drawTextbox(window);
         semestertextbox.drawTextbox(window);
         window.display();
