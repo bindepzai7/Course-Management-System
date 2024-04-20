@@ -716,7 +716,7 @@ void studentScoreboard(sf::RenderWindow& window, Student& studentuser, std::stri
 
     OutputTextBox semestertextbox(22, sf::Color(119, 106, 92), getCurrentSemester());
     semestertextbox.setfont(Palatino);
-    semestertextbox.setTextPosition(sf::Vector2f(218, 750));
+    semestertextbox.setTextPosition(sf::Vector2f(218, 700));
 
 
     //school year current textbox
@@ -792,13 +792,24 @@ void studentScoreboard(sf::RenderWindow& window, Student& studentuser, std::stri
         scoreboards[i][6].setText(scorestudent[i].totalScore);
         cur = cur->next;
     }
+    float sum = 0;
+    for (int i = 0; i < n; i++) {
+        sum += std::stof(scorestudent[i].totalScore);
+    }
+    float semGPA = sum / n;
+    std::ostringstream oss;
+    oss << std::fixed << std::setprecision(1) << semGPA; 
+    std::string seGPA = oss.str();
+    OutputTextBox semesterGPA(29, sf::Color(119, 106, 92), seGPA);
+    semesterGPA.setfont(Palatino);
+    semesterGPA.setTextPosition(sf::Vector2f(1015, 250));
 
     while (window.isOpen())
     {
         sf::Event event;
         while (window.pollEvent(event))
         {
-            if (event.type == sf::Event::Closed) window.close();
+            /*if (event.type == sf::Event::Closed) window.close();*/
 
             if (event.type == sf::Event::MouseButtonPressed) {
                 if (event.mouseButton.button == sf::Mouse::Left)
@@ -847,10 +858,17 @@ void studentScoreboard(sf::RenderWindow& window, Student& studentuser, std::stri
         for (int i = 0; i < n; i++)
             for (int j = 0; j < 7; j++)
                 scoreboards[i][j].drawTextbox(window);
+        semesterGPA.drawTextbox(window);
         schoolyeartextbox.drawTextbox(window);
         semestertextbox.drawTextbox(window);
         window.display();
     }
+    for (int i = 0; i < n; i++)
+        delete[] scoreboards[i];
+    delete[] scoreboards;
+    delete[] scorestudent;
+    delete[] courseid;
+    delete[] coursename;
 }
 
 void studentAboutUs(sf::RenderWindow& window, Student& studentuser) {
