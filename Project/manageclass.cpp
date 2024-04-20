@@ -1036,7 +1036,7 @@ void staffviewstudentinclass(sf::RenderWindow& window, Staff& userstaff, std::st
                     {
                         if (studentTextBox[i][j].isClickwithoutPosagrument(event)) {
                             studentTextBox[i][j].setselected(true);
-                            setnotseleted(studentTextBox, n, i, j);
+                            setnotseleted(studentTextBox, n, i, j,6);
                         }
                         if (event.type == sf::Event::TextEntered) {
                             if (studentTextBox[i][j].isselectedbox()) {

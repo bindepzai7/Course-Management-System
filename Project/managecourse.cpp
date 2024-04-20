@@ -238,7 +238,7 @@ void staffmanagecourse(sf::RenderWindow& window, Staff& userstaff, std::string s
                     {
                         if (CourseTextBox[i][j].isClickwithoutPosagrument(event)) {
                             CourseTextBox[i][j].setselected(true);
-                            setnotseleted(CourseTextBox, n, i, j);
+                            setnotseleted(CourseTextBox, n, i, j,8);
                         }
                         if (event.type == sf::Event::TextEntered) {
                             if (CourseTextBox[i][j].isselectedbox()) {
@@ -974,7 +974,7 @@ void staffviewstudentofcourse(sf::RenderWindow& window, Staff& userstaff, std::s
                     {
                         if (StudentTextBox[i][j].isClickwithoutPosagrument(event)) {
                             StudentTextBox[i][j].setselected(true);
-                            setnotseleted(StudentTextBox, n, i, j);
+                            setnotseleted(StudentTextBox, n, i, j,3);
                         }
                         if (event.type == sf::Event::TextEntered) {
                             if (StudentTextBox[i][j].isselectedbox()) {

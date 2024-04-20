@@ -54,7 +54,7 @@ public:
             return this->StudentID;
         }
         std::string getName() {
-            return (this->name.lastName + " " + this->name.firstName);
+            return (this->name.lastName + "-" + this->name.firstName);
         }
         std::string getTotalScore() {
             return this->totalScore;
