@@ -1,7 +1,7 @@
 
 
 #include"displayfunction.h"
-
+#include"filesystem"
 
 void staffaddclasses(sf::RenderWindow& window, Staff& userstaff, std::string schoolyear) {
     sf::Texture Staffaddclasstexture;
@@ -197,12 +197,14 @@ void staffaddclasses(sf::RenderWindow& window, Staff& userstaff, std::string sch
             int x_coor = event.mouseButton.x;
             int y_coor = event.mouseButton.y;
             if (x_coor > 1150 && x_coor < 1350 && y_coor>575 && y_coor < 615) {
-                std::cout << "c";
-                std::string newschoolyeartext = addclasstxtbox.getText();
-                userstaff.addClassforNewSchoolYear(Class(newschoolyeartext));
-                LinkedList<std::string> classestext2 = userstaff.getclassescode();
-                userstaff.writeClasstoFile(schoolyear, classestext2);
-                staffaddclasses(window, userstaff, schoolyear);
+                if (userstaff.getmode()) {
+                    std::string newschoolyeartext = addclasstxtbox.getText();
+                    userstaff.addClassforNewSchoolYear(Class(newschoolyeartext));
+                    LinkedList<std::string> classestext2 = userstaff.getclassescode();
+                    userstaff.writeClasstoFile(schoolyear, classestext2);
+                    staffaddclasses(window, userstaff, schoolyear);
+                }
+                else announcement("this mode is not allow to add schoolyear!\nPlease move to edit mode");
             }
         }
 
@@ -415,6 +417,15 @@ void staffmanageclass(sf::RenderWindow& window, Staff& userstaff, std::string sc
                         staffChooseOption(window, userstaff, textofbutton);
                     }
                 }
+            }
+            if (userstaff.getmode() and deletebut.isClick(event)) {
+                std::string classdelete = classchosenbutton.getText();
+                userstaff.deleteClass(Class(classdelete));
+                LinkedList<std::string> classestext2 = userstaff.getclassescode();
+                userstaff.writeClasstoFile(schoolyear, classestext2);
+                std::filesystem::remove("Data/" + schoolyear + "/" + classdelete + ".csv");
+                if (Korderbut > classestext2.sizeoflist()) Korderbut = Korderbut - 1;
+                staffmanageclass(window, userstaff, schoolyear, Korderbut);
             }
         }
 

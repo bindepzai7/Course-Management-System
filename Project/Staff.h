@@ -95,6 +95,9 @@ public:
 	void deleteSchoolyear(SchoolYear schoolyear) {
 		schoolyearlist.removeNodeByData(schoolyear);
 	}
+	void deleteClass(Class classdelete) {
+		classlist.removeNodeByData(classdelete);
+	}
 
 	void readAllSchoolyear();
 	void writeSchoolyear2file(LinkedList<std::string> &schoolyearstext);
