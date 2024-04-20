@@ -73,7 +73,7 @@ public:
 
     //Constructor
     Course();
-    Course(const std::string courseID) {
+    Course(const std::string& courseID) {
         this->courseID = courseID;
         courseName = "";
         credits =0;
