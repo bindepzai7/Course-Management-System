@@ -572,6 +572,52 @@ void studentCourse(sf::RenderWindow& window, Student& studentuser, std::string s
     cur_semestertextbox.setfont(Palatino);
     cur_semestertextbox.setTextPosition(sf::Vector2f(1215, 250));
 
+    Semester curSemester(semester);
+    curSemester.loadCourseListFromFileCourseList(schoolyear);
+    Node<Course>* courseList = curSemester.courseList.head;
+    Node<Course>* cur = curSemester.courseList.head;
+
+    int n = 0;
+    while (courseList) {
+        courseList->data.loadStudentsFromCsvFileStaffUpload("Data/" + schoolyear + "/" + semester + "/studentOfEachCourse/" + courseList->data.courseID + ".csv");
+
+        if (courseList->data.findIfStudentIsInThisCourse(studentuser.studentID)) {
+            curSemester.loadCourseListFromFileCourseList(schoolyear);
+            n++;
+        }
+        courseList = courseList->next;
+    }
+
+    TextBox** studentTextBox = new TextBox * [n];
+
+    float Posx[6] = { 380,470,577,900,975,1230 };
+    float Posy = 385;
+    float distance = 60;
+    float Posylimabove = 365;
+    float Posylimunder = 810;
+    float jumpsize = 500;
+    int numberofbutton = 8;
+    for (int i = 0; i < n; i++)
+    {
+        studentTextBox[i] = new TextBox[6];
+        for (int j = 0; j < 6; j++)
+        {
+            studentTextBox[i][j].setsize(17);
+            studentTextBox[i][j].setColor(sf::Color::Black);
+            studentTextBox[i][j].setselected(false);
+            studentTextBox[i][j].setfont(Palatino);
+            studentTextBox[i][j].setTextboxpostitionwithlimit(Posx[j], Posy + distance * i, Posylimabove, Posylimunder, jumpsize);
+        }
+
+        studentTextBox[i][0].setText(std::to_string(i + 1)); // Assuming you want to set index 0 to an index value
+        studentTextBox[i][1].setText(cur->data.courseID);
+        studentTextBox[i][2].setText(cur->data.courseName);
+
+        studentTextBox[i][4].setText(cur->data.getTeacherName());
+        studentTextBox[i][3].setText(std::to_string(cur->data.credits));
+        studentTextBox[i][5].setText(cur->data.getSession());
+        cur = cur->next;
+    }
     while (window.isOpen())
     {
         sf::Event event;
@@ -615,7 +661,6 @@ void studentCourse(sf::RenderWindow& window, Student& studentuser, std::string s
                 logoutbut.changecolor(sf::Color::Transparent);
                 logoutbut.changeTextColor(sf::Color::Transparent);
             }
-
             
         }
 
@@ -625,10 +670,16 @@ void studentCourse(sf::RenderWindow& window, Student& studentuser, std::string s
         logoutbut.drawbutton(window);
         cur_schoolyeartextbox.drawTextbox(window);
         cur_semestertextbox.drawTextbox(window);
+        for (int i = 0; i < n; i++)
+            for (int j = 0; j < 6; j++)
+                studentTextBox[i][j].drawTextbox(window);
         schoolyeartextbox.drawTextbox(window);
         semestertextbox.drawTextbox(window);
         window.display();
     }
+    for (int i = 0; i < n; i++)
+        delete[] studentTextBox[i];
+    delete[] studentTextBox;
 
 }
 
