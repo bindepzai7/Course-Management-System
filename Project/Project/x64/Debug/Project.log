@@ -1,4 +1,115 @@
-﻿  manageclass.cpp
+﻿  aboutstaff.cpp
+D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\button.h(87,18): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+  (compiling source file 'aboutstaff.cpp')
+  
+D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\button.h(88,18): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+  (compiling source file 'aboutstaff.cpp')
+  
+D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\Textbox.h(208,14): warning C4244: 'initializing': conversion from 'const T' to 'int', possible loss of data
+D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\Textbox.h(208,14): warning C4244:         with
+D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\Textbox.h(208,14): warning C4244:         [
+D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\Textbox.h(208,14): warning C4244:             T=float
+D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\Textbox.h(208,14): warning C4244:         ]
+  (compiling source file 'aboutstaff.cpp')
+  
+D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\Textbox.h(209,14): warning C4244: 'initializing': conversion from 'const T' to 'int', possible loss of data
+D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\Textbox.h(209,14): warning C4244:         with
+D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\Textbox.h(209,14): warning C4244:         [
+D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\Textbox.h(209,14): warning C4244:             T=float
+D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\Textbox.h(209,14): warning C4244:         ]
+  (compiling source file 'aboutstaff.cpp')
+  
+D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\Textbox.h(210,17): warning C4244: 'initializing': conversion from 'T' to 'int', possible loss of data
+D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\Textbox.h(210,17): warning C4244:         with
+D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\Textbox.h(210,17): warning C4244:         [
+D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\Textbox.h(210,17): warning C4244:             T=float
+D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\Textbox.h(210,17): warning C4244:         ]
+  (compiling source file 'aboutstaff.cpp')
+  
+D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\Textbox.h(211,17): warning C4244: 'initializing': conversion from 'T' to 'int', possible loss of data
+D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\Textbox.h(211,17): warning C4244:         with
+D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\Textbox.h(211,17): warning C4244:         [
+D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\Textbox.h(211,17): warning C4244:             T=float
+D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\Textbox.h(211,17): warning C4244:         ]
+  (compiling source file 'aboutstaff.cpp')
+  
+D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\aboutstaff.cpp(188,41): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\aboutstaff.cpp(188,41): warning C4244:         with
+D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\aboutstaff.cpp(188,41): warning C4244:         [
+D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\aboutstaff.cpp(188,41): warning C4244:             T=float
+D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\aboutstaff.cpp(188,41): warning C4244:         ]
+  loginfunction.cpp
+D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\button.h(87,18): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+  (compiling source file 'loginfunction.cpp')
+  
+D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\button.h(88,18): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+  (compiling source file 'loginfunction.cpp')
+  
+D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\Textbox.h(208,14): warning C4244: 'initializing': conversion from 'const T' to 'int', possible loss of data
+D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\Textbox.h(208,14): warning C4244:         with
+D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\Textbox.h(208,14): warning C4244:         [
+D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\Textbox.h(208,14): warning C4244:             T=float
+D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\Textbox.h(208,14): warning C4244:         ]
+  (compiling source file 'loginfunction.cpp')
+  
+D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\Textbox.h(209,14): warning C4244: 'initializing': conversion from 'const T' to 'int', possible loss of data
+D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\Textbox.h(209,14): warning C4244:         with
+D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\Textbox.h(209,14): warning C4244:         [
+D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\Textbox.h(209,14): warning C4244:             T=float
+D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\Textbox.h(209,14): warning C4244:         ]
+  (compiling source file 'loginfunction.cpp')
+  
+D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\Textbox.h(210,17): warning C4244: 'initializing': conversion from 'T' to 'int', possible loss of data
+D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\Textbox.h(210,17): warning C4244:         with
+D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\Textbox.h(210,17): warning C4244:         [
+D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\Textbox.h(210,17): warning C4244:             T=float
+D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\Textbox.h(210,17): warning C4244:         ]
+  (compiling source file 'loginfunction.cpp')
+  
+D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\Textbox.h(211,17): warning C4244: 'initializing': conversion from 'T' to 'int', possible loss of data
+D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\Textbox.h(211,17): warning C4244:         with
+D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\Textbox.h(211,17): warning C4244:         [
+D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\Textbox.h(211,17): warning C4244:             T=float
+D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\Textbox.h(211,17): warning C4244:         ]
+  (compiling source file 'loginfunction.cpp')
+  
+D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\loginfunction.cpp(138,99): warning C4390: ';': empty controlled statement found; is this the intent?
+  main.cpp
+D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\button.h(87,18): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+  (compiling source file 'main.cpp')
+  
+D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\button.h(88,18): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+  (compiling source file 'main.cpp')
+  
+D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\Textbox.h(208,14): warning C4244: 'initializing': conversion from 'const T' to 'int', possible loss of data
+D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\Textbox.h(208,14): warning C4244:         with
+D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\Textbox.h(208,14): warning C4244:         [
+D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\Textbox.h(208,14): warning C4244:             T=float
+D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\Textbox.h(208,14): warning C4244:         ]
+  (compiling source file 'main.cpp')
+  
+D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\Textbox.h(209,14): warning C4244: 'initializing': conversion from 'const T' to 'int', possible loss of data
+D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\Textbox.h(209,14): warning C4244:         with
+D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\Textbox.h(209,14): warning C4244:         [
+D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\Textbox.h(209,14): warning C4244:             T=float
+D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\Textbox.h(209,14): warning C4244:         ]
+  (compiling source file 'main.cpp')
+  
+D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\Textbox.h(210,17): warning C4244: 'initializing': conversion from 'T' to 'int', possible loss of data
+D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\Textbox.h(210,17): warning C4244:         with
+D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\Textbox.h(210,17): warning C4244:         [
+D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\Textbox.h(210,17): warning C4244:             T=float
+D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\Textbox.h(210,17): warning C4244:         ]
+  (compiling source file 'main.cpp')
+  
+D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\Textbox.h(211,17): warning C4244: 'initializing': conversion from 'T' to 'int', possible loss of data
+D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\Textbox.h(211,17): warning C4244:         with
+D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\Textbox.h(211,17): warning C4244:         [
+D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\Textbox.h(211,17): warning C4244:             T=float
+D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\Textbox.h(211,17): warning C4244:         ]
+  (compiling source file 'main.cpp')
+  
+  manageclass.cpp
 D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\button.h(87,18): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
   (compiling source file 'manageclass.cpp')
   
@@ -43,4 +154,163 @@ D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\manageclass.cpp(1095,38):
 D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\manageclass.cpp(1097,40): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
 D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\manageclass.cpp(1288,35): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
 D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\manageclass.cpp(1501,35): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+  managecourse.cpp
+D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\button.h(87,18): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+  (compiling source file 'managecourse.cpp')
+  
+D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\button.h(88,18): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+  (compiling source file 'managecourse.cpp')
+  
+D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\Textbox.h(208,14): warning C4244: 'initializing': conversion from 'const T' to 'int', possible loss of data
+D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\Textbox.h(208,14): warning C4244:         with
+D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\Textbox.h(208,14): warning C4244:         [
+D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\Textbox.h(208,14): warning C4244:             T=float
+D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\Textbox.h(208,14): warning C4244:         ]
+  (compiling source file 'managecourse.cpp')
+  
+D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\Textbox.h(209,14): warning C4244: 'initializing': conversion from 'const T' to 'int', possible loss of data
+D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\Textbox.h(209,14): warning C4244:         with
+D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\Textbox.h(209,14): warning C4244:         [
+D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\Textbox.h(209,14): warning C4244:             T=float
+D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\Textbox.h(209,14): warning C4244:         ]
+  (compiling source file 'managecourse.cpp')
+  
+D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\Textbox.h(210,17): warning C4244: 'initializing': conversion from 'T' to 'int', possible loss of data
+D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\Textbox.h(210,17): warning C4244:         with
+D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\Textbox.h(210,17): warning C4244:         [
+D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\Textbox.h(210,17): warning C4244:             T=float
+D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\Textbox.h(210,17): warning C4244:         ]
+  (compiling source file 'managecourse.cpp')
+  
+D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\Textbox.h(211,17): warning C4244: 'initializing': conversion from 'T' to 'int', possible loss of data
+D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\Textbox.h(211,17): warning C4244:         with
+D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\Textbox.h(211,17): warning C4244:         [
+D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\Textbox.h(211,17): warning C4244:             T=float
+D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\Textbox.h(211,17): warning C4244:         ]
+  (compiling source file 'managecourse.cpp')
+  
+D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\managecourse.cpp(263,35): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\managecourse.cpp(589,39): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\managecourse.cpp(990,35): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\managecourse.cpp(1286,35): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+  manageschoolyear.cpp
+D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\button.h(87,18): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+  (compiling source file 'manageschoolyear.cpp')
+  
+D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\button.h(88,18): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+  (compiling source file 'manageschoolyear.cpp')
+  
+D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\Textbox.h(208,14): warning C4244: 'initializing': conversion from 'const T' to 'int', possible loss of data
+D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\Textbox.h(208,14): warning C4244:         with
+D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\Textbox.h(208,14): warning C4244:         [
+D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\Textbox.h(208,14): warning C4244:             T=float
+D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\Textbox.h(208,14): warning C4244:         ]
+  (compiling source file 'manageschoolyear.cpp')
+  
+D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\Textbox.h(209,14): warning C4244: 'initializing': conversion from 'const T' to 'int', possible loss of data
+D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\Textbox.h(209,14): warning C4244:         with
+D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\Textbox.h(209,14): warning C4244:         [
+D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\Textbox.h(209,14): warning C4244:             T=float
+D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\Textbox.h(209,14): warning C4244:         ]
+  (compiling source file 'manageschoolyear.cpp')
+  
+D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\Textbox.h(210,17): warning C4244: 'initializing': conversion from 'T' to 'int', possible loss of data
+D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\Textbox.h(210,17): warning C4244:         with
+D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\Textbox.h(210,17): warning C4244:         [
+D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\Textbox.h(210,17): warning C4244:             T=float
+D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\Textbox.h(210,17): warning C4244:         ]
+  (compiling source file 'manageschoolyear.cpp')
+  
+D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\Textbox.h(211,17): warning C4244: 'initializing': conversion from 'T' to 'int', possible loss of data
+D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\Textbox.h(211,17): warning C4244:         with
+D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\Textbox.h(211,17): warning C4244:         [
+D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\Textbox.h(211,17): warning C4244:             T=float
+D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\Textbox.h(211,17): warning C4244:         ]
+  (compiling source file 'manageschoolyear.cpp')
+  
+D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\manageschoolyear.cpp(170,35): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\manageschoolyear.cpp(375,35): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+  managesemester.cpp
+D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\button.h(87,18): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+  (compiling source file 'managesemester.cpp')
+  
+D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\button.h(88,18): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+  (compiling source file 'managesemester.cpp')
+  
+D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\Textbox.h(208,14): warning C4244: 'initializing': conversion from 'const T' to 'int', possible loss of data
+D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\Textbox.h(208,14): warning C4244:         with
+D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\Textbox.h(208,14): warning C4244:         [
+D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\Textbox.h(208,14): warning C4244:             T=float
+D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\Textbox.h(208,14): warning C4244:         ]
+  (compiling source file 'managesemester.cpp')
+  
+D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\Textbox.h(209,14): warning C4244: 'initializing': conversion from 'const T' to 'int', possible loss of data
+D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\Textbox.h(209,14): warning C4244:         with
+D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\Textbox.h(209,14): warning C4244:         [
+D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\Textbox.h(209,14): warning C4244:             T=float
+D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\Textbox.h(209,14): warning C4244:         ]
+  (compiling source file 'managesemester.cpp')
+  
+D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\Textbox.h(210,17): warning C4244: 'initializing': conversion from 'T' to 'int', possible loss of data
+D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\Textbox.h(210,17): warning C4244:         with
+D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\Textbox.h(210,17): warning C4244:         [
+D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\Textbox.h(210,17): warning C4244:             T=float
+D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\Textbox.h(210,17): warning C4244:         ]
+  (compiling source file 'managesemester.cpp')
+  
+D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\Textbox.h(211,17): warning C4244: 'initializing': conversion from 'T' to 'int', possible loss of data
+D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\Textbox.h(211,17): warning C4244:         with
+D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\Textbox.h(211,17): warning C4244:         [
+D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\Textbox.h(211,17): warning C4244:             T=float
+D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\Textbox.h(211,17): warning C4244:         ]
+  (compiling source file 'managesemester.cpp')
+  
+D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\managesemester.cpp(137,35): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\managesemester.cpp(309,35): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\managesemester.cpp(645,38): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\managesemester.cpp(649,52): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\managesemester.cpp(659,44): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\managesemester.cpp(662,50): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
+  studentview.cpp
+D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\button.h(87,18): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+  (compiling source file 'studentview.cpp')
+  
+D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\button.h(88,18): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+  (compiling source file 'studentview.cpp')
+  
+D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\Textbox.h(208,14): warning C4244: 'initializing': conversion from 'const T' to 'int', possible loss of data
+D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\Textbox.h(208,14): warning C4244:         with
+D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\Textbox.h(208,14): warning C4244:         [
+D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\Textbox.h(208,14): warning C4244:             T=float
+D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\Textbox.h(208,14): warning C4244:         ]
+  (compiling source file 'studentview.cpp')
+  
+D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\Textbox.h(209,14): warning C4244: 'initializing': conversion from 'const T' to 'int', possible loss of data
+D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\Textbox.h(209,14): warning C4244:         with
+D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\Textbox.h(209,14): warning C4244:         [
+D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\Textbox.h(209,14): warning C4244:             T=float
+D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\Textbox.h(209,14): warning C4244:         ]
+  (compiling source file 'studentview.cpp')
+  
+D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\Textbox.h(210,17): warning C4244: 'initializing': conversion from 'T' to 'int', possible loss of data
+D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\Textbox.h(210,17): warning C4244:         with
+D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\Textbox.h(210,17): warning C4244:         [
+D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\Textbox.h(210,17): warning C4244:             T=float
+D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\Textbox.h(210,17): warning C4244:         ]
+  (compiling source file 'studentview.cpp')
+  
+D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\Textbox.h(211,17): warning C4244: 'initializing': conversion from 'T' to 'int', possible loss of data
+D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\Textbox.h(211,17): warning C4244:         with
+D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\Textbox.h(211,17): warning C4244:         [
+D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\Textbox.h(211,17): warning C4244:             T=float
+D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\Textbox.h(211,17): warning C4244:         ]
+  (compiling source file 'studentview.cpp')
+  
+D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\studentview.cpp(153,41): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\studentview.cpp(153,41): warning C4244:         with
+D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\studentview.cpp(153,41): warning C4244:         [
+D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\studentview.cpp(153,41): warning C4244:             T=float
+D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\studentview.cpp(153,41): warning C4244:         ]
+  Generating Code...
+  LINK : D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\x64\Debug\Project.exe not found or not built by the last incremental link; performing full link
   Project.vcxproj -> D:\CS162\GroupProject_CS\Group_project_Cs162_2\Project\x64\Debug\Project.exe
