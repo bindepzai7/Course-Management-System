@@ -171,9 +171,11 @@ bool Course::loadStudentsFromCsvFileStaffUpload(const std::string& filename) {
 		getline(fin, student.StudentID, ',');
 		getline(fin, student.name.lastName, ',');
 		getline(fin, student.name.firstName, '\n');
-		int found = student.name.firstName.find(",");
-		if (found != std::string::npos) {
+		
+		int found = student.name.firstName.find_last_of(",");
+		while (found != std::string::npos) {
 			student.name.firstName = student.name.firstName.substr(0, found);
+			found = student.name.firstName.find_last_of(",");
 		}
 		studentsInThisCourse.addNodeInAscending(student);
 	}
@@ -265,7 +267,7 @@ void Course::createBlankScoreFile(const std::string& schoolYear, const std::stri
 		int i = 1;
 		Node<Student>* cur = studentsInThisCourse.head;
 		while (cur) {
-			fout << i++ << "," << cur->data.StudentID << "," << cur->data.name.lastName << "," << cur->data.name.firstName << '\n';
+			fout << i++ << "," << cur->data.StudentID << "," << cur->data.name.lastName << "," << cur->data.name.firstName << ",,,," << '\n';
 			cur = cur->next;
 		}
 	}
