@@ -1603,7 +1603,7 @@ void staffViewStudentScoreboard(sf::RenderWindow& window, Staff& userstaff, std:
 
     TextBox** studentTextBox = new TextBox * [n];
 
-    float Posx[6] = { 355,410,575,860,965,1200 };
+    float Posx[6] = { 378,431,600,900,1008,1223 };
     float Posy = 385;
     float distance = 60;
     float Posylimabove = 365;
@@ -1831,7 +1831,7 @@ void staffViewStudentScoreboard2(sf::RenderWindow& window, Staff& userstaff, std
 
     TextBox** studentTextBox = new TextBox * [n];
 
-    float Posx[6] = { 355,410,575,860,965,1200 };
+    float Posx[6] = { 378,431,600,900,1008,1223 };
     float Posy = 385;
     float distance = 60;
     float Posylimabove = 365;
@@ -1905,7 +1905,7 @@ void staffViewStudentScoreboard2(sf::RenderWindow& window, Staff& userstaff, std
 
 
     //for draw and position
-    float Posx2[7] = { 355,425,585,875,1040,1180,1320 };
+    float Posx2[7] = { 373,416,561,993,1130,1255,1380 };
     float Posy2 = 685;
     //float distance2 = 60;
     float Posylimabove2 = 680;

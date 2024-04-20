@@ -135,10 +135,6 @@ void studentprofileview(sf::RenderWindow& window, Student& studentuser) {
     fullname.setfont(Palatino);
     fullname.setTextPosition(sf::Vector2f(445, 590));
 
-    //Student class textbox
-    OutputTextBox className(22, sf::Color::Black, "23TT2");
-    className.setfont(Palatino);
-    className.setTextPosition(sf::Vector2f(445, 701));
 
     //Student dob textbox
     OutputTextBox dob(22, sf::Color::Black, studentuser.birthDay.getDate());
@@ -219,7 +215,6 @@ void studentprofileview(sf::RenderWindow& window, Student& studentuser) {
         ID.drawTextbox(window);
         fullname.drawTextbox(window);
         socialID.drawTextbox(window);
-        className.drawTextbox(window);
         dob.drawTextbox(window);
         gender.drawTextbox(window);
         username.drawTextbox(window);
