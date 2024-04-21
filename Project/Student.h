@@ -4,6 +4,9 @@
 #include <string>
 #include "AdditionalStruct.h"
 #include"LinkedList.h"
+#include"SchoolYear.h"
+#include"Semester.h"
+#include"Course.h"
 
 class Student {
 public:
@@ -40,4 +43,5 @@ public:
 };
 void LoadDataofStudent(LinkedList<Student>& studentlist, std::string filename);
 bool getDataStudentromlist(LinkedList<Student>&s, std::string username, Student& studentuser);
+std::string calculateOverall(std::string studentID);
 #endif

@@ -16,10 +16,7 @@ int main() {
         }
 
         window.clear();
-        Staff user;
-        staffSemesterLobby(window, user);
-        
-        //chooseRole(window);
+        chooseRole(window);
         window.display();
     }
     

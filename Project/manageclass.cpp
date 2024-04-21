@@ -1946,7 +1946,9 @@ void staffViewStudentScoreboard2(sf::RenderWindow& window, Staff& userstaff, std
     OutputTextBox semesterGPA(29, sf::Color(119, 106, 92), seGPA);
     semesterGPA.setfont(Palatino);
     semesterGPA.setTextPosition(sf::Vector2f(555, 875));
-    
+    OutputTextBox overallGPA(29, sf::Color(119, 106, 92), calculateOverall(studentTextBox[kstudentchosen][1].getText()));
+    overallGPA.setfont(Palatino);
+    overallGPA.setTextPosition(sf::Vector2f(835, 875));
     while (window.isOpen())
     {
         sf::Event event;
@@ -2123,6 +2125,7 @@ void staffViewStudentScoreboard2(sf::RenderWindow& window, Staff& userstaff, std
             for (int j = 0; j < 7; j++)
                 scoreboards[i][j].drawTextbox(window);
         semesterGPA.drawTextbox(window);
+        overallGPA.drawTextbox(window);
         window.display();
     }
     for (int i = 0; i < n; i++)

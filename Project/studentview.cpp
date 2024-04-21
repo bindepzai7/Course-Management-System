@@ -982,13 +982,9 @@ void studentScoreboard(sf::RenderWindow& window, Student& studentuser, std::stri
     semesterGPA.setfont(Palatino);
     semesterGPA.setTextPosition(sf::Vector2f(1017, 250));
     //overall GPA
-    float overallgpa = semGPA / 10 * 4;
-    std::ostringstream OSS;
-    OSS << std::fixed << std::setprecision(2) << overallgpa;
-    std::string OverallGPA = OSS.str();
-    OutputTextBox overallGPA(25, sf::Color(119, 106, 92), OverallGPA);
+    OutputTextBox overallGPA(25, sf::Color(119, 106, 92), calculateOverall(studentuser.studentID));
     overallGPA.setfont(Palatino);
-    overallGPA.setTextPosition(sf::Vector2f(1327, 250));
+    overallGPA.setTextPosition(sf::Vector2f(1337, 250));
 
 
     while (window.isOpen())
