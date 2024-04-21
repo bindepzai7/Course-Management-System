@@ -978,30 +978,17 @@ void studentScoreboard(sf::RenderWindow& window, Student& studentuser, std::stri
     std::ostringstream oss;
     oss << std::fixed << std::setprecision(1) << semGPA;
     std::string seGPA = oss.str();
-    OutputTextBox semesterGPA(29, sf::Color(119, 106, 92), seGPA);
+    OutputTextBox semesterGPA(25, sf::Color(119, 106, 92), seGPA);
     semesterGPA.setfont(Palatino);
-    semesterGPA.setTextPosition(sf::Vector2f(1015, 250));
+    semesterGPA.setTextPosition(sf::Vector2f(1017, 250));
     //overall GPA
-    float totalGPA = 0;
-    int numOfCourse = 1;
-    std::string tmp = studentuser.studentID.substr(0, 2);
-    std::istringstream iss(tmp);
-    int num;
-    iss >> num;
-    std::cout << num;
-    //
-
-
-
-
-
-    float overallgpa = totalGPA / numOfCourse;
+    float overallgpa = semGPA / 10 * 4;
     std::ostringstream OSS;
-    OSS << std::fixed << std::setprecision(1) << overallgpa;
+    OSS << std::fixed << std::setprecision(2) << overallgpa;
     std::string OverallGPA = OSS.str();
-    OutputTextBox overallGPA(29, sf::Color(119, 106, 92), OverallGPA);
+    OutputTextBox overallGPA(25, sf::Color(119, 106, 92), OverallGPA);
     overallGPA.setfont(Palatino);
-    overallGPA.setTextPosition(sf::Vector2f(1332, 250));
+    overallGPA.setTextPosition(sf::Vector2f(1327, 250));
 
 
     while (window.isOpen())
