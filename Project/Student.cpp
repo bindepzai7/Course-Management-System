@@ -50,13 +50,12 @@ std::string calculateOverall(std::string studentID) {
 	LinkedList<std::string> schoolyearstext;
 	std::string tmp = "20" + studentID.substr(0, 2);
 	int Kyear = std::stoi(tmp);
-	while (Kyear <= std::stoi(getCurrentSchoolyear().substr(0, 4))) {
+	while (Kyear <= std::stoi(getCurrentSchoolyear().substr(0, 4)) and Kyear<8+Kyear) {
 		schoolyearstext.addNodeInAscending(std::to_string(Kyear) + "-" + std::to_string(Kyear + 1));
 		Kyear++;
 	}
 	Node<std::string>* cur = schoolyearstext.head;
 	int numberofschoolyear = Kyear - std::stoi(tmp);
-	std::string** semester = new std::string * [numberofschoolyear];
 	int* numsemesterofyear = new int[numberofschoolyear];
 	for (int i = 0; i < numberofschoolyear; i++) {
 		if (cur) {
@@ -108,6 +107,7 @@ std::string calculateOverall(std::string studentID) {
 				oss << std::fixed << std::setprecision(1) << semGPA;
 				std::cout << semGPA;
 				overall += semGPA;
+				delete[] scorestudent;
 			}
 			overall = overall / numsemesterofyear[i];
 			cur2 = cur2->next;
@@ -117,6 +117,7 @@ std::string calculateOverall(std::string studentID) {
 	std::ostringstream OSS;
 	OSS << std::fixed << std::setprecision(1) << overall;
 	std::string OverallGPA = OSS.str();
+	delete[] numsemesterofyear;
 	return OverallGPA;
 }
 

@@ -580,7 +580,7 @@ void studentChooseOption2(sf::RenderWindow& window, Student& studentuser, int vi
     LinkedList<std::string> schoolyearstext;
     std::string tmp ="20"+ studentuser.studentID.substr(0, 2);
     int Kyear = std::stoi(tmp);
-    while (Kyear <= std::stoi(getCurrentSchoolyear().substr(0, 4))) {
+    while (Kyear <= std::stoi(getCurrentSchoolyear().substr(0, 4)) and Kyear<Kyear+8) {
               schoolyearstext.addNodeInAscending(std::to_string(Kyear) + "-" + std::to_string(Kyear + 1));
         Kyear++;
     }
@@ -646,7 +646,10 @@ void studentChooseOption2(sf::RenderWindow& window, Student& studentuser, int vi
                 studentAboutUs(window, studentuser);
 
             //click logout button
-            if (logoutbut.isClick(event)) chooseRole(window);
+            if (logoutbut.isClick(event)) {
+                studentuser.~Student();
+                chooseRole(window);
+            }
 
 
             //change color button when on cursor
@@ -828,8 +831,10 @@ void studentCourse(sf::RenderWindow& window, Student& studentuser, std::string s
                 studentAboutUs(window, studentuser);
 
             //click logout button
-            if (logoutbut.isClick(event)) chooseRole(window);
-
+            if (logoutbut.isClick(event)) {
+                studentuser.~Student();
+                chooseRole(window);
+            }
             //change color button when on cursor
             if (logoutbut.isonMousecursor(event)) {
                 logoutbut.changecolor(sf::Color(192, 200, 184));
@@ -1018,8 +1023,10 @@ void studentScoreboard(sf::RenderWindow& window, Student& studentuser, std::stri
             if (studenthomebuttonlist.isClickedKOrder(event, 5))
                 studentAboutUs(window, studentuser);
             //click logout button
-            if (logoutbut.isClick(event)) chooseRole(window);
-
+            if (logoutbut.isClick(event)) {
+                studentuser.~Student();
+                chooseRole(window);
+            }
             //change color button when on cursor
             if (logoutbut.isonMousecursor(event)) {
                 logoutbut.changecolor(sf::Color(192, 200, 184));
@@ -1118,8 +1125,10 @@ void studentAboutUs(sf::RenderWindow& window, Student& studentuser) {
                 studentAboutUs(window, studentuser);
 
             //click logout button
-            if (logoutbut.isClick(event)) chooseRole(window);
-
+            if (logoutbut.isClick(event)) {
+                studentuser.~Student();
+                chooseRole(window);
+            }
             //change color button when on cursor
             if (logoutbut.isonMousecursor(event)) {
                 logoutbut.changecolor(sf::Color(192, 200, 184));

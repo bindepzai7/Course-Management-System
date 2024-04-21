@@ -107,7 +107,10 @@ void staffmanageschoolyeardisplay(sf::RenderWindow& window, Staff& userstaff) {
 
 
             //click logout button
-            if (logoutbut.isClick(event)) chooseRole(window);
+            if (logoutbut.isClick(event)) {
+                userstaff.~Staff();
+                chooseRole(window);
+            }
             //click mode
             if (editmode.isClick(event)) {
                 editmode.setisClicked(true);
@@ -175,26 +178,26 @@ void staffmanageschoolyeardisplay(sf::RenderWindow& window, Staff& userstaff) {
                 }
                 schoolyears.setpostionlistbuttonwithlimit(475, newposy, 0, 65, Posylimabove, Posylimunder, jumpdistance); 
             }
-
-
-        }
-        //add school button is Press
-        if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
-            int x_coor = event.mouseButton.x;
-            int y_coor = event.mouseButton.y;
-            if (x_coor > 1150 && x_coor < 1350 && y_coor>575 && y_coor < 615 ) {
-                if (userstaff.getmode()) {
-                    std::string newschoolyeartext = addschoolyearbox.getText();
-                    int newstartyear = std::stoi(newschoolyeartext.substr(0, 4));
-                    int newsendyear = std::stoi(newschoolyeartext.substr(5, 8));
-                    userstaff.addNewSchoolyear(SchoolYear(newstartyear, newsendyear));
-                    LinkedList<std::string> schoolyearstext2 = userstaff.getschoolyearstext();
-                    userstaff.writeSchoolyear2file(schoolyearstext2);
-                    staffmanageschoolyeardisplay(window, userstaff);
+            //add school button is Press
+            if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
+                int x_coor = event.mouseButton.x;
+                int y_coor = event.mouseButton.y;
+                if (x_coor > 1150 && x_coor < 1350 && y_coor>575 && y_coor < 615) {
+                    if (userstaff.getmode()) {
+                        std::string newschoolyeartext = addschoolyearbox.getText();
+                        int newstartyear = std::stoi(newschoolyeartext.substr(0, 4));
+                        int newsendyear = std::stoi(newschoolyeartext.substr(5, 8));
+                        userstaff.addNewSchoolyear(SchoolYear(newstartyear, newsendyear));
+                        LinkedList<std::string> schoolyearstext2 = userstaff.getschoolyearstext();
+                        userstaff.writeSchoolyear2file(schoolyearstext2);
+                        staffmanageschoolyeardisplay(window, userstaff);
+                    }
+                    else announcement("this mode is not allow to add schoolyear!\nPlease move to edit mode");
                 }
-                else announcement("this mode is not allow to add schoolyear!\nPlease move to edit mode");
             }
+
         }
+       
         window.clear();
         window.draw(s_Schoolyeartexture);
         staffhomebuttonlist.drawButwithTextbox(window, event, sf::Color(168, 158, 146), sf::Color(239, 233, 222));
@@ -307,7 +310,10 @@ void staffmanageschoolyear2display(sf::RenderWindow& window, Staff& userstaff, i
                 staffaboutUs(window, userstaff);
 
             //click logout button
-            if (logoutbut.isClick(event)) chooseRole(window);
+            if (logoutbut.isClick(event)) {
+                userstaff.~Staff();
+                chooseRole(window);
+            }
             //click mode
             if (editmode.isClick(event)) {
                 editmode.setisClicked(true);

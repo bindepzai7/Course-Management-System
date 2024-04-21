@@ -249,7 +249,10 @@ void staffSemesterLobby2(sf::RenderWindow& window, Staff& userstaff, int Kordero
                 staffaboutUs(window, userstaff);
 
             //click logout button
-            if (logoutbut.isClick(event)) chooseRole(window);
+            if (logoutbut.isClick(event)) {
+                userstaff.~Staff();
+                chooseRole(window);
+            }
             //click mode
             if (editmode.isClick(event)) {
                 editmode.setisClicked(true);
@@ -483,7 +486,10 @@ void staffmanagesemesterdisplay(sf::RenderWindow& window, Staff& userstaff, std:
 
 
             //click logout button
-            if (logoutbut.isClick(event)) chooseRole(window);
+            if (logoutbut.isClick(event)) {
+                userstaff.~Staff();
+                chooseRole(window);
+            }
             //click mode
             if (editmode.isClick(event)) {
                 editmode.setisClicked(true);
@@ -617,7 +623,7 @@ void staffmanagesemesterdisplay(sf::RenderWindow& window, Staff& userstaff, std:
                 if (!userstaff.getmode()) {
                     if (semesterchosen.isClick(event)) {
                         std::string choice = semesterTextBox[i][0].getText();
-                        userstaff.~Staff();
+                     
                         staffmanagecourse(window, userstaff, schoolyear, choice);
                     }
                 }

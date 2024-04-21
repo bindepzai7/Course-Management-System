@@ -118,7 +118,6 @@ void staffHome(sf::RenderWindow& window, Staff& userstaff) {
         logoutbut.drawbutton(window);
         schoolyeartextbox.drawTextbox(window);
         semestertextbox.drawTextbox(window);
-
         window.display();
     }
 }
@@ -208,6 +207,7 @@ void staffviewprofile(sf::RenderWindow& window, Staff& userstaff) {
                     int x_coor = event.mouseButton.x;
                     int y_coor = event.mouseButton.y;
                     if (x_coor > 45 && x_coor < 100 && y_coor>47 && y_coor < 100) {
+                        userstaff.~Staff();
                         staffHome(window, userstaff);
                     }
                     if (x_coor > 1087 && x_coor < 1200 && y_coor> 370 && y_coor < 405) {
@@ -343,6 +343,7 @@ void staffChangePassword(sf::RenderWindow& window, Staff& userstaff) {
                     int x_coor = event.mouseButton.x;
                     int y_coor = event.mouseButton.y;
                     if (x_coor > 45 && x_coor < 100 && y_coor>47 && y_coor < 100) {
+                        userstaff.~Staff();
                         staffHome(window, userstaff);
                     }
                     if (x_coor > 40 && x_coor < 77 && y_coor>887 && y_coor < 932) {
@@ -364,7 +365,10 @@ void staffChangePassword(sf::RenderWindow& window, Staff& userstaff) {
 
 
             //click logout button
-            if (logoutbut.isClick(event)) chooseRole(window);
+            if (logoutbut.isClick(event)) {
+                userstaff.~Staff();
+                chooseRole(window);
+            }
             //click mode
             if (editmode.isClick(event)) {
                 editmode.setisClicked(true);
@@ -547,6 +551,7 @@ void staffaboutUs(sf::RenderWindow& window, Staff& userstaff) {
                     int x_coor = event.mouseButton.x;
                     int y_coor = event.mouseButton.y;
                     if (x_coor > 45 && x_coor < 100 && y_coor>47 && y_coor < 100) {
+                        userstaff.~Staff();
                         staffHome(window, userstaff);
                     }
                     if (x_coor > 40 && x_coor < 77 && y_coor>887 && y_coor < 932) {
@@ -580,7 +585,10 @@ void staffaboutUs(sf::RenderWindow& window, Staff& userstaff) {
 
 
             //click logout button
-            if (logoutbut.isClick(event)) chooseRole(window);
+            if (logoutbut.isClick(event)) { 
+                userstaff.~Staff();
+                chooseRole(window);
+            }
 
             //change color button when on cursor
             if (logoutbut.isonMousecursor(event)) {
