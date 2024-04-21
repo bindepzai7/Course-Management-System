@@ -530,6 +530,7 @@ void studentChooseOption(sf::RenderWindow& window, Student& studentuser, int vie
 
         window.clear();
         window.draw(s_StudentChooseOptionTexture);
+        studenthomebuttonlist.drawButwithTextbox(window, event, sf::Color(168, 158, 146), sf::Color(239, 233, 222));
         logoutbut.drawbutton(window);
         schoolyeartextbox.drawTextbox(window);
         semestertextbox.drawTextbox(window);
@@ -697,6 +698,7 @@ void studentChooseOption2(sf::RenderWindow& window, Student& studentuser, int vi
 
         window.clear();
         window.draw(s_StudentChooseOptionTexture);
+        studenthomebuttonlist.drawButwithTextbox(window, event, sf::Color(168, 158, 146), sf::Color(239, 233, 222));
         logoutbut.drawbutton(window);
         schoolyeartextbox.drawTextbox(window);
         semestertextbox.drawTextbox(window);
