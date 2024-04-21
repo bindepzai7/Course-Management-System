@@ -81,5 +81,6 @@ void studentChangePassword(sf::RenderWindow& window, Student& studentuser);
 void studentCourse(sf::RenderWindow& window, Student& studentuser, std::string schoolyear, std::string semester);
 void studentScoreboard(sf::RenderWindow& window, Student& studentuser, std::string schoolyear, std::string semester);
 void studentChooseOption(sf::RenderWindow& window, Student& studentuser, int viewType);
+void studentChooseOption2(sf::RenderWindow& window, Student& studentuser, int viewType,int korderbut);
 
 #endif // !_DISPLAYFUNCTION_H

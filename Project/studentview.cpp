@@ -64,9 +64,9 @@ void studenthome(sf::RenderWindow& window, Student& studentuser) {
             if (studenthomebuttonlist.isClickedKOrder(event, 2))
                 studentChangePassword(window, studentuser);
             if (studenthomebuttonlist.isClickedKOrder(event, 3))
-                studentCourse(window, studentuser, getCurrentSchoolyear(), getCurrentSemester());
+                studentChooseOption(window, studentuser, 0);
             if (studenthomebuttonlist.isClickedKOrder(event, 4))
-                studentScoreboard(window, studentuser, getCurrentSchoolyear(), getCurrentSemester());
+                studentChooseOption(window, studentuser, 1);
             if (studenthomebuttonlist.isClickedKOrder(event, 5))
                 studentAboutUs(window, studentuser);
 
@@ -187,9 +187,9 @@ void studentprofileview(sf::RenderWindow& window, Student& studentuser) {
             if (studenthomebuttonlist.isClickedKOrder(event, 2))
                 studentChangePassword(window, studentuser);
             if (studenthomebuttonlist.isClickedKOrder(event, 3))
-                studentCourse(window, studentuser, getCurrentSchoolyear(), getCurrentSemester());
+                studentChooseOption(window, studentuser, 0);
             if (studenthomebuttonlist.isClickedKOrder(event, 4))
-                studentScoreboard(window, studentuser, getCurrentSchoolyear(), getCurrentSemester());
+                studentChooseOption(window, studentuser, 1);
             if (studenthomebuttonlist.isClickedKOrder(event, 5))
                 studentAboutUs(window, studentuser);
 
@@ -300,9 +300,9 @@ void studentChangePassword(sf::RenderWindow& window, Student& studentuser) {
             if (studenthomebuttonlist.isClickedKOrder(event, 2))
                 studentChangePassword(window, studentuser);
             if (studenthomebuttonlist.isClickedKOrder(event, 3))
-                studentCourse(window, studentuser, getCurrentSchoolyear(), getCurrentSemester());
+                studentChooseOption(window, studentuser, 0);
             if (studenthomebuttonlist.isClickedKOrder(event, 4))
-                studentScoreboard(window, studentuser, getCurrentSchoolyear(), getCurrentSemester());
+                studentChooseOption(window, studentuser, 1);
             if (studenthomebuttonlist.isClickedKOrder(event, 5))
                 studentAboutUs(window, studentuser);
 
@@ -429,8 +429,116 @@ void studentChangePassword(sf::RenderWindow& window, Student& studentuser) {
     }
 
 }
-
 void studentChooseOption(sf::RenderWindow& window, Student& studentuser, int viewType) {
+    sf::Texture StudentChooseOptionTexture;
+    StudentChooseOptionTexture.loadFromFile("Design UI/[Student - 4] choosing to view.jpg");
+    StudentChooseOptionTexture.setSmooth(true);
+    sf::Sprite s_StudentChooseOptionTexture;
+    s_StudentChooseOptionTexture.setTexture(StudentChooseOptionTexture);
+    sf::Font Palatino;
+    Palatino.loadFromFile("Font/Palatino.ttf");
+
+
+    //list of button manage
+    LinkedList<std::string> studenttexthomebutton;
+    studenttexthomebutton.push_tail("my profile");
+    studenttexthomebutton.push_tail("change password");
+    studenttexthomebutton.push_tail("my courses");
+    studenttexthomebutton.push_tail("my scoreboard");
+    studenttexthomebutton.push_tail("about us");
+    dropdownlist studenthomebuttonlist(sf::Color(168, 158, 146), sf::Vector2f(280, 53), false, sf::Color(239, 233, 222), studenttexthomebutton, 30, Palatino);
+    studenthomebuttonlist.setpostionlistbutton(30, 143, 0, 95);
+
+    //navigation bar current textbox
+    OutputTextBox schoolyeartextbox(22, sf::Color(119, 106, 92), getCurrentSchoolyear());
+    schoolyeartextbox.setfont(Palatino);
+    schoolyeartextbox.setTextPosition(sf::Vector2f(181, 667));
+
+    OutputTextBox semestertextbox(22, sf::Color(119, 106, 92), getCurrentSemester());
+    semestertextbox.setfont(Palatino);
+    semestertextbox.setTextPosition(sf::Vector2f(218, 702));
+
+    //log out button
+    Button logoutbut(sf::Color(192, 200, 184), sf::Vector2f(90, 30), false, sf::Color::Black, "Log out", 20, Palatino);
+    logoutbut.setposition(sf::Vector2f(227, 895));
+
+    //CODE HERE
+
+    LinkedList<std::string> schoolyearstext;
+    std::string tmp = "20" + studentuser.studentID.substr(0, 2);
+    int Kyear = std::stoi(tmp);
+    while (Kyear <= std::stoi(getCurrentSchoolyear().substr(0, 4))) {
+        schoolyearstext.addNodeInAscending(std::to_string(Kyear) + "-" + std::to_string(Kyear + 1));
+        Kyear++;
+    }
+    dropdownlist schoolyears(sf::Color(168, 158, 146), sf::Vector2f(300, 50), false, sf::Color::Black, schoolyearstext, 30, Palatino);
+    schoolyears.setpostionlistbutton(475, 320, 0, 65);
+    while (window.isOpen())
+    {
+        sf::Event event;
+        while (window.pollEvent(event))
+        {
+            if (event.type == sf::Event::Closed)
+            {
+                window.close();
+            }
+            //menu button
+            if (event.type == sf::Event::MouseButtonPressed) {
+                if (event.mouseButton.button == sf::Mouse::Left)
+                {
+                    int x_coor = event.mouseButton.x;
+                    int y_coor = event.mouseButton.y;
+                    if (x_coor > 45 && x_coor < 100 && y_coor>47 && y_coor < 100) {
+                        studenthome(window, studentuser);
+                    }
+                    if (x_coor > 40 && x_coor < 77 && y_coor>887 && y_coor < 932) {
+                        studentprofileview(window, studentuser);
+                    }
+                }
+            }
+            if (studenthomebuttonlist.isClickedKOrder(event, 1))
+                studentprofileview(window, studentuser);
+            if (studenthomebuttonlist.isClickedKOrder(event, 2))
+                studentChangePassword(window, studentuser);
+            if (studenthomebuttonlist.isClickedKOrder(event, 3))
+                studentChooseOption(window, studentuser, 0);
+            if (studenthomebuttonlist.isClickedKOrder(event, 4))
+                studentChooseOption(window, studentuser, 1);
+            if (studenthomebuttonlist.isClickedKOrder(event, 5))
+                studentAboutUs(window, studentuser);
+
+            //click logout button
+            if (logoutbut.isClick(event)) chooseRole(window);
+
+
+            //change color button when on cursor
+            if (logoutbut.isonMousecursor(event)) {
+                logoutbut.changecolor(sf::Color(192, 200, 184));
+                logoutbut.changeTextColor(sf::Color::Black);
+            }
+            else {
+                logoutbut.changecolor(sf::Color::Transparent);
+                logoutbut.changeTextColor(sf::Color::Transparent);
+            }
+            for (int i = 1; i <= schoolyearstext.sizeoflist(); i++) {
+                if (schoolyears.isClickedKOrder(event, i)) {
+                    studentChooseOption2(window, studentuser, viewType, i);
+                }
+            }
+
+        }
+
+        window.clear();
+        window.draw(s_StudentChooseOptionTexture);
+        logoutbut.drawbutton(window);
+        schoolyeartextbox.drawTextbox(window);
+        semestertextbox.drawTextbox(window);
+        schoolyears.drawButwithoutchangeTextboxcolor(window, event, sf::Color(168, 158, 146));
+        window.display();
+    }
+}
+
+void studentChooseOption2(sf::RenderWindow& window, Student& studentuser, int viewType,int Korderbut) {
     sf::Texture StudentChooseOptionTexture;
     StudentChooseOptionTexture.loadFromFile("Design UI/[Student - 4] choosing to view.jpg");
     StudentChooseOptionTexture.setSmooth(true);
@@ -469,33 +577,33 @@ void studentChooseOption(sf::RenderWindow& window, Student& studentuser, int vie
     ///////////////////////////////////////////////////////////////////////////////
     //////////////////////////////////////////////////////////////////////////////////
     
-    //userstaff.readAllSchoolyear();
-    //LinkedList<std::string> schoolyearstext = studentuser.getschoolyearstext();
-    //dropdownlist schoolyears(sf::Color(168, 158, 146), sf::Vector2f(300, 50), false, sf::Color::Black, schoolyearstext, 30, Palatino);
-    //schoolyears.setpostionlistbuttonwithlimit(475, 320, 0, 65, 310, 830, 500);
-
-    //sf::Vector2f Posofschoolyearclicked = schoolyears.getpositionofKbut(Korderofbut);
-    //std::cout << Korderofbut;
-    //std::string textofbutton = schoolyears.getKoderButtonText(viewtup);
-    //std::cout << textofbutton;
-
-    //Button schoolyearclickbutton(sf::Color(192, 200, 184), sf::Vector2f(300, 50), false, sf::Color::Black, textofbutton, 30, Palatino);//Nen lay mau gi??
-    //schoolyearclickbutton.setposition(sf::Vector2f(Posofschoolyearclicked.x, Posofschoolyearclicked.y));
-    ////save and delete button
-    //Button savebut(sf::Color(186, 158, 146, 100), sf::Vector2f(133, 42), false);
-    //Button deletebut(sf::Color(186, 158, 146, 100), sf::Vector2f(133, 42), false);
-    //savebut.setposition(sf::Vector2f(182, 491));
-    //deletebut.setposition(sf::Vector2f(182, 537));
-    ////init newposy of list school years button
-    //float newposy = 320;
-    //float newposyofschoolyearclicked = Posofschoolyearclicked.y;
-
-
-
-
-    
-    //Find schoolyear student is in and choose semester
-
+    LinkedList<std::string> schoolyearstext;
+    std::string tmp ="20"+ studentuser.studentID.substr(0, 2);
+    int Kyear = std::stoi(tmp);
+    while (Kyear <= std::stoi(getCurrentSchoolyear().substr(0, 4))) {
+              schoolyearstext.addNodeInAscending(std::to_string(Kyear) + "-" + std::to_string(Kyear + 1));
+        Kyear++;
+    }
+    dropdownlist schoolyears(sf::Color(168, 158, 146), sf::Vector2f(300, 50), false, sf::Color::Black, schoolyearstext, 30, Palatino);
+    schoolyears.setpostionlistbutton(475, 320, 0, 65);
+    sf::Vector2f Posofschoolyearclicked = schoolyears.getpositionofKbut(Korderbut);
+    std::string textofbutton = schoolyears.getKoderButtonText(Korderbut);
+    Button schoolyearclickbutton(sf::Color(192, 200, 184), sf::Vector2f(300, 50), false, sf::Color::Black, textofbutton, 30, Palatino);//Nen lay mau gi??
+    schoolyearclickbutton.setposition(sf::Vector2f(Posofschoolyearclicked.x, Posofschoolyearclicked.y));
+    int startyear = std::stoi(textofbutton.substr(0, 4));
+    int endyear = std::stoi(textofbutton.substr(5, 8));
+    int numbersemester = -1;
+    SchoolYear schoolyearchosen(startyear, endyear);
+    schoolyearchosen.loadSemesterListFromSemesterList();
+    int n = schoolyearchosen.getnumberofsemeseter();
+    Button* semesterbut = new Button[n];
+    for (int i = 0; i < n; i++) {
+        semesterbut[i].changecolor(sf::Color(192, 200, 184, 100));
+        semesterbut[i].changesize(sf::Vector2f(55, 55));
+        semesterbut[i].setButposition(sf::Vector2f(1093 + i * 100.0f, 454));
+    }
+    Button semesterbutchosen(sf::Color::Transparent, sf::Vector2f(56, 56), false);
+    semesterbutchosen.setButposition(sf::Vector2f(1093, 455));
 
     while (window.isOpen())
     {
@@ -518,6 +626,12 @@ void studentChooseOption(sf::RenderWindow& window, Student& studentuser, int vie
                     if (x_coor > 40 && x_coor < 77 && y_coor>887 && y_coor < 932) {
                         studentprofileview(window, studentuser);
                     }
+                    if (numbersemester > 0 and x_coor > 910 and x_coor < 1385 and y_coor >545 and y_coor < 645) {
+                        //staffscoreboard    /////////////////////////////// 
+                        std::cout << semesterbutchosen.getText();
+                        if (viewType == 0) studentCourse(window, studentuser, textofbutton, std::to_string(numbersemester));
+                        if(viewType==1) studentScoreboard(window, studentuser, textofbutton, std::to_string(numbersemester));
+                    }
                 }
             }
             if (studenthomebuttonlist.isClickedKOrder(event, 1))
@@ -525,9 +639,9 @@ void studentChooseOption(sf::RenderWindow& window, Student& studentuser, int vie
             if (studenthomebuttonlist.isClickedKOrder(event, 2))
                 studentChangePassword(window, studentuser);
             if (studenthomebuttonlist.isClickedKOrder(event, 3))
-                studentCourse(window, studentuser, getCurrentSchoolyear(), getCurrentSemester());   //////////////////should change
+                studentChooseOption(window, studentuser, 0);
             if (studenthomebuttonlist.isClickedKOrder(event, 4))
-                studentScoreboard(window, studentuser, getCurrentSchoolyear(), getCurrentSemester());
+                studentChooseOption(window, studentuser, 1);
             if (studenthomebuttonlist.isClickedKOrder(event, 5))
                 studentAboutUs(window, studentuser);
 
@@ -544,7 +658,38 @@ void studentChooseOption(sf::RenderWindow& window, Student& studentuser, int vie
                 logoutbut.changecolor(sf::Color::Transparent);
                 logoutbut.changeTextColor(sf::Color::Transparent);
             }
+            for (int i = 1; i <= schoolyearstext.sizeoflist(); i++) {
+                for (int i = 1; i <= schoolyearstext.sizeoflist(); i++) {
+                    if (schoolyearclickbutton.isClick(event))
+                        studentChooseOption(window,studentuser,viewType);
+                    if (schoolyears.isClickedKOrder(event, i)) {
+                        studentChooseOption2(window, studentuser,viewType,i);
+                    }
 
+                }
+            }
+            for (int i = 0; i < n; i++) {
+                if (semesterbut[i].isClick(event)) {
+                    if (semesterbut[i].getisClick() == false) {
+                        semesterbut[i].setisClicked(true);
+                        semesterbutchosen.setButposition(semesterbut[i].getpositionofbutton());
+                        semesterbutchosen.changecolor(sf::Color(250, 128, 114, 50));
+                        semesterbutchosen.setoutlinecolor(sf::Color(250, 128, 114));
+                        numbersemester = i + 1;
+                    }
+                    else {
+                        semesterbut[i].setisClicked(false);
+                        semesterbutchosen.changecolor(sf::Color::Transparent);
+                        semesterbutchosen.setoutlinecolor(sf::Color::Transparent);
+                        numbersemester = -1;
+                    }
+                }
+                if (semesterbut[i].isonMousecursor(event)) {
+                    semesterbut[i].changecolor(sf::Color(186, 158, 146, 100));
+                }
+                else
+                    semesterbut[i].changecolor(sf::Color(192, 200, 184, 100));
+            }
         }
 
         window.clear();
@@ -552,8 +697,14 @@ void studentChooseOption(sf::RenderWindow& window, Student& studentuser, int vie
         logoutbut.drawbutton(window);
         schoolyeartextbox.drawTextbox(window);
         semestertextbox.drawTextbox(window);
+        schoolyears.drawButwithoutchangeTextboxcolor(window, event, sf::Color(168, 158, 146));
+        schoolyearclickbutton.drawbutton(window);
+        for (int i = 0; i < n; i++)
+            semesterbut[i].drawbutton(window);
+        semesterbutchosen.drawbutton(window);
         window.display();
     }
+    delete[] semesterbut;
 }
 
 void studentCourse(sf::RenderWindow& window, Student& studentuser, std::string schoolyear, std::string semester) {
@@ -670,9 +821,9 @@ void studentCourse(sf::RenderWindow& window, Student& studentuser, std::string s
             if (studenthomebuttonlist.isClickedKOrder(event, 2))
                 studentChangePassword(window, studentuser);
             if (studenthomebuttonlist.isClickedKOrder(event, 3))
-                studentCourse(window, studentuser, getCurrentSchoolyear(), getCurrentSemester());
+                studentChooseOption(window, studentuser, 0);
             if (studenthomebuttonlist.isClickedKOrder(event, 4))
-                studentScoreboard(window, studentuser, getCurrentSchoolyear(), getCurrentSemester());
+                studentChooseOption(window, studentuser, 1);
             if (studenthomebuttonlist.isClickedKOrder(event, 5))
                 studentAboutUs(window, studentuser);
 
@@ -878,12 +1029,11 @@ void studentScoreboard(sf::RenderWindow& window, Student& studentuser, std::stri
             if (studenthomebuttonlist.isClickedKOrder(event, 2))
                 studentChangePassword(window, studentuser);
             if (studenthomebuttonlist.isClickedKOrder(event, 3))
-                studentCourse(window, studentuser, getCurrentSchoolyear(), getCurrentSemester());
+                studentChooseOption(window, studentuser, 0);
             if (studenthomebuttonlist.isClickedKOrder(event, 4))
-                studentScoreboard(window, studentuser, getCurrentSchoolyear(), getCurrentSemester());
+                studentChooseOption(window, studentuser, 1);
             if (studenthomebuttonlist.isClickedKOrder(event, 5))
                 studentAboutUs(window, studentuser);
-
             //click logout button
             if (logoutbut.isClick(event)) chooseRole(window);
 
@@ -978,9 +1128,9 @@ void studentAboutUs(sf::RenderWindow& window, Student& studentuser) {
             if (studenthomebuttonlist.isClickedKOrder(event, 2))
                 studentChangePassword(window, studentuser);
             if (studenthomebuttonlist.isClickedKOrder(event, 3))
-                studentCourse(window, studentuser, getCurrentSchoolyear(), getCurrentSemester());
+                studentChooseOption(window, studentuser, 0);
             if (studenthomebuttonlist.isClickedKOrder(event, 4))
-                studentScoreboard(window, studentuser, getCurrentSchoolyear(), getCurrentSemester());
+                studentChooseOption(window, studentuser, 1);
             if (studenthomebuttonlist.isClickedKOrder(event, 5))
                 studentAboutUs(window, studentuser);
 
