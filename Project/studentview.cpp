@@ -468,6 +468,32 @@ void studentChooseOption(sf::RenderWindow& window, Student& studentuser, int vie
     /////////////////////////////////////////////////////////////////////////////////
     ///////////////////////////////////////////////////////////////////////////////
     //////////////////////////////////////////////////////////////////////////////////
+    
+    //userstaff.readAllSchoolyear();
+    //LinkedList<std::string> schoolyearstext = studentuser.getschoolyearstext();
+    //dropdownlist schoolyears(sf::Color(168, 158, 146), sf::Vector2f(300, 50), false, sf::Color::Black, schoolyearstext, 30, Palatino);
+    //schoolyears.setpostionlistbuttonwithlimit(475, 320, 0, 65, 310, 830, 500);
+
+    //sf::Vector2f Posofschoolyearclicked = schoolyears.getpositionofKbut(Korderofbut);
+    //std::cout << Korderofbut;
+    //std::string textofbutton = schoolyears.getKoderButtonText(viewtup);
+    //std::cout << textofbutton;
+
+    //Button schoolyearclickbutton(sf::Color(192, 200, 184), sf::Vector2f(300, 50), false, sf::Color::Black, textofbutton, 30, Palatino);//Nen lay mau gi??
+    //schoolyearclickbutton.setposition(sf::Vector2f(Posofschoolyearclicked.x, Posofschoolyearclicked.y));
+    ////save and delete button
+    //Button savebut(sf::Color(186, 158, 146, 100), sf::Vector2f(133, 42), false);
+    //Button deletebut(sf::Color(186, 158, 146, 100), sf::Vector2f(133, 42), false);
+    //savebut.setposition(sf::Vector2f(182, 491));
+    //deletebut.setposition(sf::Vector2f(182, 537));
+    ////init newposy of list school years button
+    //float newposy = 320;
+    //float newposyofschoolyearclicked = Posofschoolyearclicked.y;
+
+
+
+
+    
     //Find schoolyear student is in and choose semester
 
 
@@ -804,13 +830,35 @@ void studentScoreboard(sf::RenderWindow& window, Student& studentuser, std::stri
     OutputTextBox semesterGPA(29, sf::Color(119, 106, 92), seGPA);
     semesterGPA.setfont(Palatino);
     semesterGPA.setTextPosition(sf::Vector2f(1015, 250));
+    //overall GPA
+    float totalGPA = 0;
+    int numOfCourse = 1;
+    std::string tmp = studentuser.studentID.substr(0, 2);
+    std::istringstream iss(tmp);
+    int num;
+    iss >> num;
+    std::cout << num;
+    //
+
+
+
+
+
+    float overallgpa = totalGPA / numOfCourse;
+    std::ostringstream OSS;
+    OSS << std::fixed << std::setprecision(1) << overallgpa;
+    std::string OverallGPA = OSS.str();
+    OutputTextBox overallGPA(29, sf::Color(119, 106, 92), OverallGPA);
+    overallGPA.setfont(Palatino);
+    overallGPA.setTextPosition(sf::Vector2f(1332, 250));
+
 
     while (window.isOpen())
     {
         sf::Event event;
         while (window.pollEvent(event))
         {
-            /*if (event.type == sf::Event::Closed) window.close();*/
+            if (event.type == sf::Event::Closed) window.close();
 
             if (event.type == sf::Event::MouseButtonPressed) {
                 if (event.mouseButton.button == sf::Mouse::Left)
@@ -860,6 +908,7 @@ void studentScoreboard(sf::RenderWindow& window, Student& studentuser, std::stri
             for (int j = 0; j < 7; j++)
                 scoreboards[i][j].drawTextbox(window);
         semesterGPA.drawTextbox(window);
+        overallGPA.drawTextbox(window);
         schoolyeartextbox.drawTextbox(window);
         semestertextbox.drawTextbox(window);
         window.display();
