@@ -41,7 +41,7 @@ void staffaboutUs(Staff& userstaff);
 
 //manage schoolyear 
 void staffmanageschoolyeardisplay(Staff& userstaff);
-void staffmanageschoolyear2display(sf::RenderWindow& window, Staff& userstaff, int Korderofbut);//schoolyear with button to add class or view semester;
+void staffmanageschoolyear2display(sf::RenderWindow& window,Staff& userstaff, int Korderofbut);//schoolyear with button to add class or view semester;
 
 //Manage semester
 void staffSemesterLobby(Staff& userstaff);

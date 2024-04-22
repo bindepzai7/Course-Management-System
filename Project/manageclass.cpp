@@ -354,7 +354,6 @@ void staffmanageclass(sf::RenderWindow& window, Staff& userstaff, std::string sc
                     classesbutton.~dropdownlist();
                     staffhomebuttonlist.~dropdownlist();
                     textstaffhomebutton.~LinkedList();
-                    Coursetexture.~Texture();
                     classestext.~LinkedList();
                     staffmanageclass(window, userstaff, schoolyear, i);
                 }
@@ -1126,11 +1125,6 @@ void staffviewstudentinclass(sf::RenderWindow& window, Staff& userstaff, std::st
                             studentdeleted.socialID = studentTextBox[kbuttonchose][5].getText();
                             curclass.removeStudent(studentdeleted);
                             curclass.saveStudent(schoolyear, classchosen);
-                        
-                        staffhomebuttonlist.~dropdownlist();
-                        textstaffhomebutton.~LinkedList();
-                        StudentsButton.~dropdownlist();
-                        AboutUstexture.~Texture();
                         staffviewstudentinclass(window, userstaff, schoolyear, classchosen);
                     }
                 }
@@ -1139,10 +1133,6 @@ void staffviewstudentinclass(sf::RenderWindow& window, Staff& userstaff, std::st
             if (savebut.isClick(event)) {
                 //curclass.savechangestudentsdata();
                 curclass.saveStudent(schoolyear, classchosen);
-                staffhomebuttonlist.~dropdownlist();
-                textstaffhomebutton.~LinkedList();
-                StudentsButton.~dropdownlist();
-                AboutUstexture.~Texture();
                 staffviewstudentinclass(window, userstaff, schoolyear, classchosen);
             }
         }
@@ -1492,13 +1482,11 @@ void staffChooseOption2(sf::RenderWindow& window, Staff& userstaff, std::string 
             //list of year button
             for (int i = 1; i <= schoolyearstext.sizeoflist(); i++) {
                 if (schoolyearclickbutton.isClick(event)) {
-                    staffChooseOption2texture.~Texture();
                     staffhomebuttonlist.~dropdownlist();
                     textstaffhomebutton.~LinkedList();
                     staffChooseOption(window, userstaff, classchosen);
                 }
                 if (schoolyears.isClickedKOrder(event, i)) {
-                    staffChooseOption2texture.~Texture();
                     staffhomebuttonlist.~dropdownlist();
                     textstaffhomebutton.~LinkedList();
                     staffChooseOption2(window, userstaff, classchosen, i);
