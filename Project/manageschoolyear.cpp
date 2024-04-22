@@ -122,6 +122,7 @@ void staffmanageschoolyeardisplay( Staff& userstaff) {
             if (logoutbut.isClick(event)) {
                 userstaff.~Staff();
                 chooseRole(window);
+                break;
             }
             //click mode
             if (editmode.isClick(event)) {
@@ -157,11 +158,9 @@ void staffmanageschoolyeardisplay( Staff& userstaff) {
             //list of year button
             for (int i = 1; i <= schoolyearstext.sizeoflist(); i++) {
                 if (schoolyears.isClickedKOrder(event, i)) {
-                    /*std::string textofbutton=schoolyears.getKoderButtonText(i);
-                    std::cout << textofbutton;*/
-                    //std::cout << schoolyears.getpositionofKbut(i).y;
-                    std::cout << i;
+                 
                     staffmanageschoolyear2display(window, userstaff, i);
+                    break;
                 }
             }
 
@@ -222,7 +221,6 @@ void staffmanageschoolyeardisplay( Staff& userstaff) {
         addschoolyearbox.drawTextbox(window);
         schoolyeartextbox.drawTextbox(window);
         semestertextbox.drawTextbox(window);
-
         deletebut.drawbutton(window);
         savebut.drawbutton(window);
         window.display();
@@ -375,6 +373,7 @@ void staffmanageschoolyear2display(sf::RenderWindow& window, Staff& userstaff, i
                     staffhomebuttonlist.~dropdownlist();
                     schoolyears.~dropdownlist();
                     staffmanageschoolyear2display(window, userstaff, i);
+                    break;
                 }
                 
             }
@@ -390,6 +389,7 @@ void staffmanageschoolyear2display(sf::RenderWindow& window, Staff& userstaff, i
                     }
                     if (x_coor > 40 && x_coor < 77 && y_coor>887 && y_coor < 932) {
                         staffviewprofile(window, userstaff);
+                        break;
                     }
                     if (x_coor > 910 and x_coor < 1385 and y_coor >390 and y_coor < 490) {
                         window.close();
@@ -397,6 +397,7 @@ void staffmanageschoolyear2display(sf::RenderWindow& window, Staff& userstaff, i
                     }
                     if (x_coor > 910 and x_coor < 1385 and y_coor >545 and y_coor < 645) {
                         staffmanagesemesterdisplay(window, userstaff, textofbutton);
+                        break;
                     }
                 }
             }
@@ -431,6 +432,7 @@ void staffmanageschoolyear2display(sf::RenderWindow& window, Staff& userstaff, i
                 staffhomebuttonlist.~dropdownlist();
                 schoolyears.~dropdownlist();
                 staffmanageschoolyear2display(window, userstaff,Korderofbut);
+                break;
             }
 
         }
