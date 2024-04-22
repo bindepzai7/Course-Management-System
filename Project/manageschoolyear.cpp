@@ -201,6 +201,7 @@ void staffmanageschoolyeardisplay( Staff& userstaff) {
                         userstaff.addNewSchoolyear(SchoolYear(newstartyear, newsendyear));
                         LinkedList<std::string> schoolyearstext2 = userstaff.getschoolyearstext();
                         userstaff.writeSchoolyear2file(schoolyearstext2);
+                        userstaff.readAllClassinSchoolYear(newschoolyeartext);
                         window.close();
                         staffmanageschoolyeardisplay( userstaff);
                     }
