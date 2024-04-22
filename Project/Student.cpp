@@ -79,7 +79,7 @@ std::string calculateOverall(std::string studentID) {
 				Node<Course>* courseList = curSemester.courseList.head;
 				int n = 0;
 				while (courseList) {
-					courseList->data.loadStudentsFromCsvFileStaffUpload("Data/" + cur2->data + "/" + std::to_string(j + 1) + "/scoreOfEachCourse/" + courseList->data.courseID + ".csv");
+					courseList->data.loadScoreFromCsvScoresFile(cur2->data,std::to_string(j + 1));
 					if (courseList->data.findIfStudentIsInThisCourse(studentID)) {
 						n++;
 					}
@@ -91,7 +91,6 @@ std::string calculateOverall(std::string studentID) {
 				n = 0;
 				while (courseList) {
 					if (courseList->data.findIfStudentIsInThisCourse(studentID)) {
-						courseList->data.loadScoreFromCsvScoresFile(cur2->data, std::to_string(j + 1));
 						courseList->data.findAStudentOfThisCourse(studentID, scorestudent[n]);
 
 						n++;

@@ -1967,9 +1967,8 @@ void staffViewStudentScoreboard2(sf::RenderWindow& window, Staff& userstaff, std
     // std::cout << curcourselist->data.courseID;
     int numbercousestudy = 0;
     while (curcourselist) {
-        curcourselist->data.loadStudentsFromCsvFileStaffUpload(("Data/" + schoolyear + "/" + semeseter + "/studentOfEachCourse/" + curcourselist->data.courseID + ".csv"));
+        curcourselist->data.loadScoreFromCsvScoresFile(schoolyear, semeseter);
         if (curcourselist->data.findIfStudentIsInThisCourse(studentTextBox[kstudentchosen][1].getText())) {
-            curcourselist->data.loadScoreFromCsvScoresFile(schoolyear, semeseter);
             numbercousestudy++;
         }
         curcourselist = curcourselist->next;

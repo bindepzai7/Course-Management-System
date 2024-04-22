@@ -826,7 +826,7 @@ void studentCourse(sf::RenderWindow& window, Student& studentuser, std::string s
 
     int n = 0;
     while (courseList) {
-        courseList->data.loadStudentsFromCsvFileStaffUpload("Data/" + schoolyear + "/" + semester + "/studentOfEachCourse/" + courseList->data.courseID + ".csv");
+        courseList->data.loadScoreFromCsvScoresFile(schoolyear,semester);
 
         if (courseList->data.findIfStudentIsInThisCourse(studentuser.studentID)) {
             curSemester.loadCourseListFromFileCourseList(schoolyear);
@@ -1006,7 +1006,7 @@ void studentScoreboard(sf::RenderWindow& window, Student& studentuser, std::stri
 
     int n = 0;
     while (courseList) {
-        courseList->data.loadStudentsFromCsvFileStaffUpload("Data/" + schoolyear + "/" + semester + "/scoreOfEachCourse/" + courseList->data.courseID + ".csv");
+        courseList->data.loadScoreFromCsvScoresFile(schoolyear, semester);
 
         if (courseList->data.findIfStudentIsInThisCourse(studentuser.studentID)) {
             n++;
@@ -1024,7 +1024,7 @@ void studentScoreboard(sf::RenderWindow& window, Student& studentuser, std::stri
     n = 0;
     while (courseList) {
         if (courseList->data.findIfStudentIsInThisCourse(studentuser.studentID)) {
-            courseList->data.loadScoreFromCsvScoresFile(schoolyear, semester);
+          
             courseList->data.findAStudentOfThisCourse(studentuser.studentID, scorestudent[n]);
             courseid[n] = courseList->data.courseID;
             coursename[n] = courseList->data.courseName;
