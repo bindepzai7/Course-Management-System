@@ -34,28 +34,28 @@ void announcement(std::string announcement);
 
 
 //about staff
-void staffHome(sf::RenderWindow& window, Staff& userstaff);
+void staffHome(Staff& userstaff);
 void staffviewprofile(sf::RenderWindow& window, Staff& userstaff);
 void staffChangePassword(sf::RenderWindow& window, Staff& userstaff);
-void staffaboutUs(sf::RenderWindow& window, Staff& userstaff);
+void staffaboutUs(Staff& userstaff);
 
 //manage schoolyear 
-void staffmanageschoolyeardisplay(sf::RenderWindow& window, Staff& userstaff);
+void staffmanageschoolyeardisplay(Staff& userstaff);
 void staffmanageschoolyear2display(sf::RenderWindow& window, Staff& userstaff, int Korderofbut);//schoolyear with button to add class or view semester;
 
 //Manage semester
-void staffSemesterLobby(sf::RenderWindow& window, Staff& userstaff);
+void staffSemesterLobby(Staff& userstaff);
 void staffSemesterLobby2(sf::RenderWindow& window, Staff& userstaff, int Korderofbut);
 void staffmanagesemesterdisplay(sf::RenderWindow& window,Staff &userstaff, std::string schoolyear);
 
 //manage course
-void staffmanagecourse(sf::RenderWindow& window,Staff &userstaff, std::string schoolyear, std::string semester);
+void staffmanagecourse(Staff &userstaff, std::string schoolyear, std::string semester);
 void staffaddcourse(sf::RenderWindow& window, Staff& userstaff, std::string schoolyear, std::string semester);
 void staffviewstudentofcourse(sf::RenderWindow& window, Staff& userstaff, std::string schoolyear, std::string semester, std::string coursechosen);
 void staffCourseScoreboard(sf::RenderWindow& window, Staff& userstaff, std::string schoolyear, std::string semester, std::string coursechosen);
 
 //manage class
-void staffaddclasses(sf::RenderWindow& window, Staff& userstaff, std::string schoolyear);
+void staffaddclasses(Staff& userstaff, std::string schoolyear);
 void staffmanageclass(sf::RenderWindow& window, Staff& userstaff, std::string schoolyear, int Korderbut);
 void staffaddfirstyearstudent(sf::RenderWindow& window, Staff& userstaff,std::string schoolyear, std::string addtoclass);
 void staffviewstudentinclass(sf::RenderWindow& window, Staff& userstaff, std::string schoolyear, std::string classchosen);
@@ -74,13 +74,13 @@ std::string exportFile();
 
 
 
-void studenthome(sf::RenderWindow& window, Student& studentuser);
-void studentprofileview(sf::RenderWindow& window, Student& studentuser);
-void studentAboutUs(sf::RenderWindow& window, Student& studentuser);
-void studentChangePassword(sf::RenderWindow& window, Student& studentuser);
+void studenthome( Student& studentuser);
+void studentprofileview( Student& studentuser);
+void studentAboutUs( Student& studentuser);
+void studentChangePassword( Student& studentuser);
 void studentCourse(sf::RenderWindow& window, Student& studentuser, std::string schoolyear, std::string semester);
 void studentScoreboard(sf::RenderWindow& window, Student& studentuser, std::string schoolyear, std::string semester);
-void studentChooseOption(sf::RenderWindow& window, Student& studentuser, int viewType);
+void studentChooseOption(Student& studentuser, int viewType);
 void studentChooseOption2(sf::RenderWindow& window, Student& studentuser, int viewType,int korderbut);
 
 #endif // !_DISPLAYFUNCTION_H

@@ -26,7 +26,14 @@ public:
 			cur = cur->next;
 		}
 	}
-	~dropdownlist() {};
+	~dropdownlist() {
+		Node<Button>* curbut = buttonlist.head;
+		while (curbut) {
+			curbut->data.~Button();
+			curbut = curbut->next;
+		}
+		buttonlist.~LinkedList();
+	};
 	void setpostionlistbutton(float Posx, float Posy, int i,float size) {
 		Node<Button>* curbut = buttonlist.head;
 		while (curbut) {

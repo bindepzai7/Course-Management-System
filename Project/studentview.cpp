@@ -9,7 +9,8 @@
 #include<iostream>
 #include<SFML/Graphics.hpp>
 
-void studenthome(sf::RenderWindow& window, Student& studentuser) {
+void studenthome( Student& studentuser) {
+    sf::RenderWindow window(sf::VideoMode(1470, 950), "Login window", sf::Style::Close);
     sf::Texture Studenthometexture;
     Studenthometexture.loadFromFile("Design UI/[Student - 1] Home.jpg");
     Studenthometexture.setSmooth(true);
@@ -55,21 +56,31 @@ void studenthome(sf::RenderWindow& window, Student& studentuser) {
                     int x_coor = event.mouseButton.x;
                     int y_coor = event.mouseButton.y;
                     if (x_coor > 40 && x_coor < 77 && y_coor>887 && y_coor < 932) {
-                        studentprofileview(window, studentuser);
+                        window.close();
+                        studentprofileview( studentuser);
                     }
                 }
             }
-            if (studenthomebuttonlist.isClickedKOrder(event, 1))
-                studentprofileview(window, studentuser);
-            if (studenthomebuttonlist.isClickedKOrder(event, 2))
-                studentChangePassword(window, studentuser);
-            if (studenthomebuttonlist.isClickedKOrder(event, 3))
-                studentChooseOption(window, studentuser, 0);
-            if (studenthomebuttonlist.isClickedKOrder(event, 4))
-                studentChooseOption(window, studentuser, 1);
-            if (studenthomebuttonlist.isClickedKOrder(event, 5))
-                studentAboutUs(window, studentuser);
-
+            if (studenthomebuttonlist.isClickedKOrder(event, 1)) {
+                window.close();
+                studentprofileview( studentuser);
+            }
+            if (studenthomebuttonlist.isClickedKOrder(event, 2)) {
+                window.close();
+                studentChangePassword( studentuser);
+            }
+            if (studenthomebuttonlist.isClickedKOrder(event, 3)) {
+                window.close();
+                studentChooseOption( studentuser, 0);
+            }
+            if (studenthomebuttonlist.isClickedKOrder(event, 4)) {
+                window.close();
+                studentChooseOption(studentuser, 1);
+            }
+            if (studenthomebuttonlist.isClickedKOrder(event, 5)) {
+                window.close();
+                studentAboutUs(studentuser);
+            }
             //click logout button
             if (logoutbut.isClick(event)) chooseRole(window);
 
@@ -95,7 +106,8 @@ void studenthome(sf::RenderWindow& window, Student& studentuser) {
 
 }
 
-void studentprofileview(sf::RenderWindow& window, Student& studentuser) {
+void studentprofileview( Student& studentuser) {
+    sf::RenderWindow window(sf::VideoMode(1470, 950), "Login window", sf::Style::Close);
     sf::Texture studentprofileviewtexture;
     studentprofileviewtexture.loadFromFile("Design UI/[Student - 2] Profile.jpg");
     studentprofileviewtexture.setSmooth(true);
@@ -175,23 +187,35 @@ void studentprofileview(sf::RenderWindow& window, Student& studentuser) {
                     int x_coor = event.mouseButton.x;
                     int y_coor = event.mouseButton.y;
                     if (x_coor > 45 && x_coor < 100 && y_coor>47 && y_coor < 100) {
-                        studenthome(window, studentuser);
+                        window.close();
+                        studenthome(studentuser);
                     }
                     if (x_coor > 1087 && x_coor < 1200 && y_coor> 370 && y_coor < 405) {
-                        studentChangePassword(window, studentuser);
+                        window.close();
+                        studentChangePassword(studentuser);
                     }
                 }
             }
-            if (studenthomebuttonlist.isClickedKOrder(event, 1))
-                studentprofileview(window, studentuser);
-            if (studenthomebuttonlist.isClickedKOrder(event, 2))
-                studentChangePassword(window, studentuser);
-            if (studenthomebuttonlist.isClickedKOrder(event, 3))
-                studentChooseOption(window, studentuser, 0);
-            if (studenthomebuttonlist.isClickedKOrder(event, 4))
-                studentChooseOption(window, studentuser, 1);
-            if (studenthomebuttonlist.isClickedKOrder(event, 5))
-                studentAboutUs(window, studentuser);
+            if (studenthomebuttonlist.isClickedKOrder(event, 1)) {
+                window.close();
+                studentprofileview(studentuser);
+            }
+            if (studenthomebuttonlist.isClickedKOrder(event, 2)) {
+                window.close();
+                studentChangePassword(studentuser);
+            }
+            if (studenthomebuttonlist.isClickedKOrder(event, 3)) {
+                window.close();
+                studentChooseOption(studentuser, 0);
+            }
+            if (studenthomebuttonlist.isClickedKOrder(event, 4)) {
+                window.close();
+                studentChooseOption(studentuser, 1);
+            }
+            if (studenthomebuttonlist.isClickedKOrder(event, 5)) {
+                window.close();
+                studentAboutUs(studentuser);
+            }
 
 
             //click logout button
@@ -224,7 +248,8 @@ void studentprofileview(sf::RenderWindow& window, Student& studentuser) {
     }
 }
 
-void studentChangePassword(sf::RenderWindow& window, Student& studentuser) {
+void studentChangePassword( Student& studentuser) {
+    sf::RenderWindow window(sf::VideoMode(1470, 950), "Login window", sf::Style::Close);
     sf::Texture studentChangePasswordTexture;
     studentChangePasswordTexture.loadFromFile("Design UI/[Student - 3] Change Password.jpg");
     studentChangePasswordTexture.setSmooth(true);
@@ -288,23 +313,35 @@ void studentChangePassword(sf::RenderWindow& window, Student& studentuser) {
                     int x_coor = event.mouseButton.x;
                     int y_coor = event.mouseButton.y;
                     if (x_coor > 45 && x_coor < 100 && y_coor>47 && y_coor < 100) {
-                        studenthome(window, studentuser);
+                        window.close();
+                        studenthome(studentuser);
                     }
                     if (x_coor > 40 && x_coor < 77 && y_coor>887 && y_coor < 932) {
-                        studentprofileview(window, studentuser);
+                        window.close();
+                        studentprofileview(studentuser);
                     }
                 }
             }
-            if (studenthomebuttonlist.isClickedKOrder(event, 1))
-                studentprofileview(window, studentuser);
-            if (studenthomebuttonlist.isClickedKOrder(event, 2))
-                studentChangePassword(window, studentuser);
-            if (studenthomebuttonlist.isClickedKOrder(event, 3))
-                studentChooseOption(window, studentuser, 0);
-            if (studenthomebuttonlist.isClickedKOrder(event, 4))
-                studentChooseOption(window, studentuser, 1);
-            if (studenthomebuttonlist.isClickedKOrder(event, 5))
-                studentAboutUs(window, studentuser);
+            if (studenthomebuttonlist.isClickedKOrder(event, 1)) {
+                window.close();
+                studentprofileview(studentuser);
+            }
+            if (studenthomebuttonlist.isClickedKOrder(event, 2)) {
+                window.close();
+                studentChangePassword(studentuser);
+            }
+            if (studenthomebuttonlist.isClickedKOrder(event, 3)) {
+                window.close();
+                studentChooseOption(studentuser, 0);
+            }
+            if (studenthomebuttonlist.isClickedKOrder(event, 4)) {
+                window.close();
+                studentChooseOption(studentuser, 1);
+            }
+            if (studenthomebuttonlist.isClickedKOrder(event, 5)) {
+                window.close();
+                studentAboutUs(studentuser);
+            }
 
             //click logout button
             if (logoutbut.isClick(event)) chooseRole(window);
@@ -429,7 +466,8 @@ void studentChangePassword(sf::RenderWindow& window, Student& studentuser) {
     }
 
 }
-void studentChooseOption(sf::RenderWindow& window, Student& studentuser, int viewType) {
+void studentChooseOption( Student& studentuser, int viewType) {
+    sf::RenderWindow window(sf::VideoMode(1470, 950), "Login window", sf::Style::Close);
     sf::Texture StudentChooseOptionTexture;
     StudentChooseOptionTexture.loadFromFile("Design UI/[Student - 4] choosing to view.jpg");
     StudentChooseOptionTexture.setSmooth(true);
@@ -489,23 +527,35 @@ void studentChooseOption(sf::RenderWindow& window, Student& studentuser, int vie
                     int x_coor = event.mouseButton.x;
                     int y_coor = event.mouseButton.y;
                     if (x_coor > 45 && x_coor < 100 && y_coor>47 && y_coor < 100) {
-                        studenthome(window, studentuser);
+                        window.close();
+                        studenthome( studentuser);
                     }
                     if (x_coor > 40 && x_coor < 77 && y_coor>887 && y_coor < 932) {
-                        studentprofileview(window, studentuser);
+                        window.close();
+                        studentprofileview( studentuser);
                     }
                 }
             }
-            if (studenthomebuttonlist.isClickedKOrder(event, 1))
-                studentprofileview(window, studentuser);
-            if (studenthomebuttonlist.isClickedKOrder(event, 2))
-                studentChangePassword(window, studentuser);
-            if (studenthomebuttonlist.isClickedKOrder(event, 3))
-                studentChooseOption(window, studentuser, 0);
-            if (studenthomebuttonlist.isClickedKOrder(event, 4))
-                studentChooseOption(window, studentuser, 1);
-            if (studenthomebuttonlist.isClickedKOrder(event, 5))
-                studentAboutUs(window, studentuser);
+            if (studenthomebuttonlist.isClickedKOrder(event, 1)) {
+                window.close();
+                studentprofileview(studentuser);
+            }
+            if (studenthomebuttonlist.isClickedKOrder(event, 2)) {
+                window.close();
+                studentChangePassword(studentuser);
+            }
+            if (studenthomebuttonlist.isClickedKOrder(event, 3)) {
+                window.close();
+                studentChooseOption(studentuser, 0);
+            }
+            if (studenthomebuttonlist.isClickedKOrder(event, 4)) {
+                window.close();
+                studentChooseOption(studentuser, 1);
+            }
+            if (studenthomebuttonlist.isClickedKOrder(event, 5)) {
+                window.close();
+                studentAboutUs(studentuser);
+            }
 
             //click logout button
             if (logoutbut.isClick(event)) chooseRole(window);
@@ -622,10 +672,12 @@ void studentChooseOption2(sf::RenderWindow& window, Student& studentuser, int vi
                     int x_coor = event.mouseButton.x;
                     int y_coor = event.mouseButton.y;
                     if (x_coor > 45 && x_coor < 100 && y_coor>47 && y_coor < 100) {
-                        studenthome(window, studentuser);
+                        window.close();
+                        studenthome( studentuser);
                     }
                     if (x_coor > 40 && x_coor < 77 && y_coor>887 && y_coor < 932) {
-                        studentprofileview(window, studentuser);
+                        window.close();
+                        studentprofileview( studentuser);
                     }
                     if (numbersemester > 0 and x_coor > 910 and x_coor < 1385 and y_coor >545 and y_coor < 645) {
                         //staffscoreboard    /////////////////////////////// 
@@ -635,16 +687,26 @@ void studentChooseOption2(sf::RenderWindow& window, Student& studentuser, int vi
                     }
                 }
             }
-            if (studenthomebuttonlist.isClickedKOrder(event, 1))
-                studentprofileview(window, studentuser);
-            if (studenthomebuttonlist.isClickedKOrder(event, 2))
-                studentChangePassword(window, studentuser);
-            if (studenthomebuttonlist.isClickedKOrder(event, 3))
-                studentChooseOption(window, studentuser, 0);
-            if (studenthomebuttonlist.isClickedKOrder(event, 4))
-                studentChooseOption(window, studentuser, 1);
-            if (studenthomebuttonlist.isClickedKOrder(event, 5))
-                studentAboutUs(window, studentuser);
+            if (studenthomebuttonlist.isClickedKOrder(event, 1)) {
+                window.close();
+                studentprofileview(studentuser);
+            }
+            if (studenthomebuttonlist.isClickedKOrder(event, 2)) {
+                window.close();
+                studentChangePassword(studentuser);
+            }
+            if (studenthomebuttonlist.isClickedKOrder(event, 3)) {
+                window.close();
+                studentChooseOption(studentuser, 0);
+            }
+            if (studenthomebuttonlist.isClickedKOrder(event, 4)) {
+                window.close();
+                studentChooseOption(studentuser, 1);
+            }
+            if (studenthomebuttonlist.isClickedKOrder(event, 5)) {
+                window.close();
+                studentAboutUs(studentuser);
+            }
 
             //click logout button
             if (logoutbut.isClick(event)) {
@@ -664,8 +726,10 @@ void studentChooseOption2(sf::RenderWindow& window, Student& studentuser, int vi
             }
             for (int i = 1; i <= schoolyearstext.sizeoflist(); i++) {
                 for (int i = 1; i <= schoolyearstext.sizeoflist(); i++) {
-                    if (schoolyearclickbutton.isClick(event))
-                        studentChooseOption(window,studentuser,viewType);
+                    if (schoolyearclickbutton.isClick(event)) {
+                        window.close();
+                        studentChooseOption(studentuser, viewType);
+                    }
                     if (schoolyears.isClickedKOrder(event, i)) {
                         studentChooseOption2(window, studentuser,viewType,i);
                     }
@@ -814,24 +878,35 @@ void studentCourse(sf::RenderWindow& window, Student& studentuser, std::string s
                     int x_coor = event.mouseButton.x;
                     int y_coor = event.mouseButton.y;
                     if (x_coor > 45 && x_coor < 100 && y_coor>47 && y_coor < 100) {
-                        studenthome(window, studentuser);
+                        window.close();
+                        studenthome(studentuser);
                     }
                     if (x_coor > 40 && x_coor < 77 && y_coor>887 && y_coor < 932) {
-                        studentprofileview(window, studentuser);
+                        window.close();
+                        studentprofileview(studentuser);
                     }
                 }
             }
-            if (studenthomebuttonlist.isClickedKOrder(event, 1))
-                studentprofileview(window, studentuser);
-            if (studenthomebuttonlist.isClickedKOrder(event, 2))
-                studentChangePassword(window, studentuser);
-            if (studenthomebuttonlist.isClickedKOrder(event, 3))
-                studentChooseOption(window, studentuser, 0);
-            if (studenthomebuttonlist.isClickedKOrder(event, 4))
-                studentChooseOption(window, studentuser, 1);
-            if (studenthomebuttonlist.isClickedKOrder(event, 5))
-                studentAboutUs(window, studentuser);
-
+            if (studenthomebuttonlist.isClickedKOrder(event, 1)) {
+                window.close();
+                studentprofileview(studentuser);
+            }
+            if (studenthomebuttonlist.isClickedKOrder(event, 2)) {
+                window.close();
+                studentChangePassword(studentuser);
+            }
+            if (studenthomebuttonlist.isClickedKOrder(event, 3)) {
+                window.close();
+                studentChooseOption(studentuser, 0);
+            }
+            if (studenthomebuttonlist.isClickedKOrder(event, 4)) {
+                window.close();
+                studentChooseOption(studentuser, 1);
+            }
+            if (studenthomebuttonlist.isClickedKOrder(event, 5)) {
+                window.close();
+                studentAboutUs(studentuser);
+            }
             //click logout button
             if (logoutbut.isClick(event)) {
                 studentuser.~Student();
@@ -1007,23 +1082,35 @@ void studentScoreboard(sf::RenderWindow& window, Student& studentuser, std::stri
                     int x_coor = event.mouseButton.x;
                     int y_coor = event.mouseButton.y;
                     if (x_coor > 45 && x_coor < 100 && y_coor>47 && y_coor < 100) {
-                        studenthome(window, studentuser);
+                        window.close();
+                        studenthome(studentuser);
                     }
                     if (x_coor > 40 && x_coor < 77 && y_coor>887 && y_coor < 932) {
-                        studentprofileview(window, studentuser);
+                        window.close();
+                        studentprofileview(studentuser);
                     }
                 }
             }
-            if (studenthomebuttonlist.isClickedKOrder(event, 1))
-                studentprofileview(window, studentuser);
-            if (studenthomebuttonlist.isClickedKOrder(event, 2))
-                studentChangePassword(window, studentuser);
-            if (studenthomebuttonlist.isClickedKOrder(event, 3))
-                studentChooseOption(window, studentuser, 0);
-            if (studenthomebuttonlist.isClickedKOrder(event, 4))
-                studentChooseOption(window, studentuser, 1);
-            if (studenthomebuttonlist.isClickedKOrder(event, 5))
-                studentAboutUs(window, studentuser);
+            if (studenthomebuttonlist.isClickedKOrder(event, 1)) {
+                window.close();
+                studentprofileview(studentuser);
+            }
+            if (studenthomebuttonlist.isClickedKOrder(event, 2)) {
+                window.close();
+                studentChangePassword(studentuser);
+            }
+            if (studenthomebuttonlist.isClickedKOrder(event, 3)) {
+                window.close();
+                studentChooseOption(studentuser, 0);
+            }
+            if (studenthomebuttonlist.isClickedKOrder(event, 4)) {
+                window.close();
+                studentChooseOption(studentuser, 1);
+            }
+            if (studenthomebuttonlist.isClickedKOrder(event, 5)) {
+                window.close();
+                studentAboutUs(studentuser);
+            }
             //click logout button
             if (logoutbut.isClick(event)) {
                 studentuser.~Student();
@@ -1063,7 +1150,8 @@ void studentScoreboard(sf::RenderWindow& window, Student& studentuser, std::stri
     delete[] coursename;
 }
 
-void studentAboutUs(sf::RenderWindow& window, Student& studentuser) {
+void studentAboutUs( Student& studentuser) {
+    sf::RenderWindow window(sf::VideoMode(1470, 950), "Login window", sf::Style::Close);
     sf::Texture studentAboutUsTexture;
     studentAboutUsTexture.loadFromFile("Design UI/[Student - 6] About us.jpg");
     studentAboutUsTexture.setSmooth(true);
@@ -1108,23 +1196,35 @@ void studentAboutUs(sf::RenderWindow& window, Student& studentuser) {
                     int x_coor = event.mouseButton.x;
                     int y_coor = event.mouseButton.y;
                     if (x_coor > 45 && x_coor < 100 && y_coor>47 && y_coor < 100) {
-                        studenthome(window, studentuser);
+                        window.close();
+                        studenthome(studentuser);
                     }
                     if (x_coor > 40 && x_coor < 77 && y_coor>887 && y_coor < 932) {
-                        studentprofileview(window, studentuser);
+                        window.close();
+                        studentprofileview(studentuser);
                     }
                 }
             }
-            if (studenthomebuttonlist.isClickedKOrder(event, 1))
-                studentprofileview(window, studentuser);
-            if (studenthomebuttonlist.isClickedKOrder(event, 2))
-                studentChangePassword(window, studentuser);
-            if (studenthomebuttonlist.isClickedKOrder(event, 3))
-                studentChooseOption(window, studentuser, 0);
-            if (studenthomebuttonlist.isClickedKOrder(event, 4))
-                studentChooseOption(window, studentuser, 1);
-            if (studenthomebuttonlist.isClickedKOrder(event, 5))
-                studentAboutUs(window, studentuser);
+            if (studenthomebuttonlist.isClickedKOrder(event, 1)) {
+                window.close();
+                studentprofileview(studentuser);
+            }
+            if (studenthomebuttonlist.isClickedKOrder(event, 2)) {
+                window.close();
+                studentChangePassword(studentuser);
+            }
+            if (studenthomebuttonlist.isClickedKOrder(event, 3)) {
+                window.close();
+                studentChooseOption(studentuser, 0);
+            }
+            if (studenthomebuttonlist.isClickedKOrder(event, 4)) {
+                window.close();
+                studentChooseOption(studentuser, 1);
+            }
+            if (studenthomebuttonlist.isClickedKOrder(event, 5)) {
+                window.close();
+                studentAboutUs(studentuser);
+            }
 
             //click logout button
             if (logoutbut.isClick(event)) {

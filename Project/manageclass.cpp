@@ -3,7 +3,8 @@
 #include"displayfunction.h"
 #include"filesystem"
 
-void staffaddclasses(sf::RenderWindow& window, Staff& userstaff, std::string schoolyear) {
+void staffaddclasses( Staff& userstaff, std::string schoolyear) {
+    sf::RenderWindow window(sf::VideoMode(1470, 950), "Login window", sf::Style::Close);
     sf::Texture Staffaddclasstexture;
     Staffaddclasstexture.loadFromFile("Design UI/[Staff - 6.1] View classes.jpg");
     Staffaddclasstexture.setSmooth(true);
@@ -93,7 +94,8 @@ void staffaddclasses(sf::RenderWindow& window, Staff& userstaff, std::string sch
                     int y_coor = event.mouseButton.y;
                     if (x_coor > 45 && x_coor < 100 && y_coor>47 && y_coor < 100) {
                         userstaff.~Staff();
-                        staffHome(window, userstaff);
+                        window.close();
+                        staffHome(userstaff);
                     }
                     if (x_coor > 40 && x_coor < 77 && y_coor>887 && y_coor < 932) {
                         staffviewprofile(window, userstaff);
@@ -101,19 +103,24 @@ void staffaddclasses(sf::RenderWindow& window, Staff& userstaff, std::string sch
                 }
             }
             if (staffhomebuttonlist.isClickedKOrder(event, 1)) {
-                staffmanageschoolyeardisplay(window, userstaff);
+                window.close();
+                staffmanageschoolyeardisplay(userstaff);
             }
             if (staffhomebuttonlist.isClickedKOrder(event, 2)) {
-                staffSemesterLobby(window, userstaff);
+                window.close();
+                staffSemesterLobby(userstaff);
             }
             if (staffhomebuttonlist.isClickedKOrder(event, 3)) {
-                staffmanagecourse(window, userstaff, getCurrentSchoolyear(), getCurrentSemester());
+                window.close();
+                staffmanagecourse(userstaff, getCurrentSchoolyear(), getCurrentSemester());
             }
             if (staffhomebuttonlist.isClickedKOrder(event, 4)) {
-                staffaddclasses(window, userstaff, getCurrentSchoolyear());
+                window.close();
+                staffaddclasses(userstaff, getCurrentSchoolyear());
             }
             if (staffhomebuttonlist.isClickedKOrder(event, 5)) {
-                staffaboutUs(window, userstaff);
+                window.close();
+                staffaboutUs(userstaff);
             }
 
 
@@ -196,7 +203,8 @@ void staffaddclasses(sf::RenderWindow& window, Staff& userstaff, std::string sch
                         userstaff.addClassforNewSchoolYear(Class(newschoolyeartext));
                         LinkedList<std::string> classestext2 = userstaff.getclassescode();
                         userstaff.writeClasstoFile(schoolyear, classestext2);
-                        staffaddclasses(window, userstaff, schoolyear);
+                        window.close();
+                        staffaddclasses( userstaff, schoolyear);
                     }
                     else announcement("this mode is not allow to add schoolyear!\nPlease move to edit mode");
                 }
@@ -307,7 +315,8 @@ void staffmanageclass(sf::RenderWindow& window, Staff& userstaff, std::string sc
                     int y_coor = event.mouseButton.y;
                     if (x_coor > 45 && x_coor < 100 && y_coor>47 && y_coor < 100) {
                         userstaff.~Staff();
-                        staffHome(window, userstaff);
+                        window.close();
+                        staffHome(userstaff);
                     }
                     if (x_coor > 40 && x_coor < 77 && y_coor>887 && y_coor < 932) {
                         staffviewprofile(window, userstaff);
@@ -315,27 +324,40 @@ void staffmanageclass(sf::RenderWindow& window, Staff& userstaff, std::string sc
                 }
             }
             if (staffhomebuttonlist.isClickedKOrder(event, 1)) {
-                staffmanageschoolyeardisplay(window, userstaff);
+                window.close();
+                staffmanageschoolyeardisplay(userstaff);
             }
             if (staffhomebuttonlist.isClickedKOrder(event, 2)) {
-                staffSemesterLobby(window, userstaff);
+                window.close();
+                staffSemesterLobby(userstaff);
             }
             if (staffhomebuttonlist.isClickedKOrder(event, 3)) {
-                staffmanagecourse(window, userstaff, getCurrentSchoolyear(), getCurrentSemester());
+                window.close();
+                staffmanagecourse(userstaff, getCurrentSchoolyear(), getCurrentSemester());
             }
             if (staffhomebuttonlist.isClickedKOrder(event, 4)) {
-                staffaddclasses(window, userstaff, getCurrentSchoolyear());
+                window.close();
+                staffaddclasses(userstaff, getCurrentSchoolyear());
             }
             if (staffhomebuttonlist.isClickedKOrder(event, 5)) {
-                staffaboutUs(window, userstaff);
+                window.close();
+                staffaboutUs(userstaff);
             }
 
             //click class button
             for (int i = 1; i <= classestext.sizeoflist(); i++) {
-                if (classchosenbutton.isClick(event))
-                    staffaddclasses(window, userstaff, schoolyear);
-                if (classesbutton.isClickedKOrder(event, i))
+                if (classchosenbutton.isClick(event)) {
+                    window.close();
+                    staffaddclasses(userstaff, schoolyear);
+                }
+                if (classesbutton.isClickedKOrder(event, i)) {
+                    classesbutton.~dropdownlist();
+                    staffhomebuttonlist.~dropdownlist();
+                    textstaffhomebutton.~LinkedList();
+                    Coursetexture.~Texture();
+                    classestext.~LinkedList();
                     staffmanageclass(window, userstaff, schoolyear, i);
+                }
 
             }
 
@@ -533,7 +555,8 @@ void staffaddfirstyearstudent(sf::RenderWindow& window, Staff& userstaff, std::s
                     int x_coor = event.mouseButton.x;
                     int y_coor = event.mouseButton.y;
                     if (x_coor > 45 && x_coor < 100 && y_coor>47 && y_coor < 100) {
-                        staffHome(window, userstaff);
+                        window.close();
+                        staffHome(userstaff);
                     }
                     if (x_coor > 40 && x_coor < 77 && y_coor>887 && y_coor < 932) {
                         staffviewprofile(window, userstaff);
@@ -545,19 +568,24 @@ void staffaddfirstyearstudent(sf::RenderWindow& window, Staff& userstaff, std::s
                 }
             }
             if (staffhomebuttonlist.isClickedKOrder(event, 1)) {
-                staffmanageschoolyeardisplay(window, userstaff);
+                window.close();
+                staffmanageschoolyeardisplay(userstaff);
             }
             if (staffhomebuttonlist.isClickedKOrder(event, 2)) {
-                staffSemesterLobby(window, userstaff);
+                window.close();
+                staffSemesterLobby(userstaff);
             }
             if (staffhomebuttonlist.isClickedKOrder(event, 3)) {
-                staffmanagecourse(window, userstaff, getCurrentSchoolyear(), getCurrentSemester());
+                window.close();
+                staffmanagecourse(userstaff, getCurrentSchoolyear(), getCurrentSemester());
             }
             if (staffhomebuttonlist.isClickedKOrder(event, 4)) {
-                staffaddclasses(window, userstaff, getCurrentSchoolyear());
+                window.close();
+                staffaddclasses(userstaff, getCurrentSchoolyear());
             }
             if (staffhomebuttonlist.isClickedKOrder(event, 5)) {
-                staffaboutUs(window, userstaff);
+                window.close();
+                staffaboutUs(userstaff);
             }
 
 
@@ -920,8 +948,8 @@ void staffviewstudentinclass(sf::RenderWindow& window, Staff& userstaff, std::st
                     int x_coor = event.mouseButton.x;
                     int y_coor = event.mouseButton.y;
                     if (x_coor > 45 && x_coor < 100 && y_coor>47 && y_coor < 100) {
-                        userstaff.~Staff();
-                        staffHome(window, userstaff);
+                        window.close();
+                        staffHome( userstaff);
                     }
                     if (x_coor > 40 && x_coor < 77 && y_coor>887 && y_coor < 932) {
                         staffviewprofile(window, userstaff);
@@ -932,21 +960,24 @@ void staffviewstudentinclass(sf::RenderWindow& window, Staff& userstaff, std::st
                 }
             }
             if (staffhomebuttonlist.isClickedKOrder(event, 1)) {
-                
-                staffmanageschoolyeardisplay(window, userstaff);
+                window.close();
+                staffmanageschoolyeardisplay(userstaff);
             }
             if (staffhomebuttonlist.isClickedKOrder(event, 2)) {
-                staffSemesterLobby(window, userstaff);
+                window.close();
+                staffSemesterLobby(userstaff);
             }
             if (staffhomebuttonlist.isClickedKOrder(event, 3)) {
-                staffmanagecourse(window, userstaff, getCurrentSchoolyear(), getCurrentSemester());
+                window.close();
+                staffmanagecourse(userstaff, getCurrentSchoolyear(), getCurrentSemester());
             }
             if (staffhomebuttonlist.isClickedKOrder(event, 4)) {
-
-                staffaddclasses(window, userstaff, getCurrentSchoolyear());
+                window.close();
+                staffaddclasses(userstaff, getCurrentSchoolyear());
             }
             if (staffhomebuttonlist.isClickedKOrder(event, 5)) {
-                staffaboutUs(window, userstaff);
+                window.close();
+                staffaboutUs(userstaff);
             }
 
 
@@ -1081,28 +1112,37 @@ void staffviewstudentinclass(sf::RenderWindow& window, Staff& userstaff, std::st
                         else studentdeleted.studentGender = 1;
                         std::string dob = studentTextBox[kbuttonchose][4].getText();
                         int foundday = dob.find("/");
-                        studentdeleted.birthDay.day = std::stoi(dob.substr(0, foundday));
-                        int foundmonth = dob.find("/", foundday + 1);
-                        //std::cout << foundmonth;
-                        //std::cout << studentdeleted.birthDay.day;
-                        studentdeleted.birthDay.month = std::stoi(dob.substr(foundday + 1, foundmonth));
-                        //std::cout << studentdeleted.birthDay.month;
-                        studentdeleted.birthDay.year = std::stoi(dob.substr(foundmonth + 1, dob.size()));
-                        //std::cout << studentdeleted.birthDay.year;
-                        studentdeleted.socialID = studentTextBox[kbuttonchose][5].getText();
-                        curclass.removeStudent(studentdeleted);
-                        curclass.saveStudent(schoolyear, classchosen);
+                       
+                        int foundmonth = -1;
+                        if (foundday > 0)  foundmonth = dob.find("/", foundday + 1);
+                        
+                        if (found > 0 and foundday > 0 and foundmonth > 0) {
+                            studentdeleted.birthDay.day = std::stoi(dob.substr(0, foundday));
+                            if (foundday < foundmonth)
+                                studentdeleted.birthDay.month = std::stoi(dob.substr(foundday + 1, foundmonth));
+                            if (foundmonth + 1 < dob.size())
+                                studentdeleted.birthDay.year = std::stoi(dob.substr(foundmonth + 1, dob.size()));
+                        }
+                            studentdeleted.socialID = studentTextBox[kbuttonchose][5].getText();
+                            curclass.removeStudent(studentdeleted);
+                            curclass.saveStudent(schoolyear, classchosen);
+                        
+                        staffhomebuttonlist.~dropdownlist();
+                        textstaffhomebutton.~LinkedList();
+                        StudentsButton.~dropdownlist();
+                        AboutUstexture.~Texture();
                         staffviewstudentinclass(window, userstaff, schoolyear, classchosen);
                     }
-                }
-                else {
-                    //view score
                 }
 
             }
             if (savebut.isClick(event)) {
                 //curclass.savechangestudentsdata();
                 curclass.saveStudent(schoolyear, classchosen);
+                staffhomebuttonlist.~dropdownlist();
+                textstaffhomebutton.~LinkedList();
+                StudentsButton.~dropdownlist();
+                AboutUstexture.~Texture();
                 staffviewstudentinclass(window, userstaff, schoolyear, classchosen);
             }
         }
@@ -1210,25 +1250,34 @@ void staffChooseOption(sf::RenderWindow& window, Staff& userstaff, std::string c
                     int x_coor = event.mouseButton.x;
                     int y_coor = event.mouseButton.y;
                     if (x_coor > 45 && x_coor < 100 && y_coor>47 && y_coor < 100) {
-                        staffHome(window, userstaff);
+                        window.close();
+                        staffHome( userstaff);
                     }
                     if (x_coor > 40 && x_coor < 77 && y_coor>887 && y_coor < 932) {
                         staffviewprofile(window, userstaff);
                     }
                 }
             }
-            if (staffhomebuttonlist.isClickedKOrder(event, 1))
-                staffmanageschoolyeardisplay(window, userstaff);
-            if (staffhomebuttonlist.isClickedKOrder(event, 2))
-                staffSemesterLobby(window, userstaff);
-            if (staffhomebuttonlist.isClickedKOrder(event, 3))
-                staffmanagecourse(window, userstaff, getCurrentSchoolyear(), getCurrentSemester());
-            if (staffhomebuttonlist.isClickedKOrder(event, 4)) {
-                staffaddclasses(window, userstaff, getCurrentSchoolyear());
+            if (staffhomebuttonlist.isClickedKOrder(event, 1)) {
+                window.close();
+                staffmanageschoolyeardisplay(userstaff);
             }
-            if (staffhomebuttonlist.isClickedKOrder(event, 5))
-                staffaboutUs(window, userstaff);
-
+            if (staffhomebuttonlist.isClickedKOrder(event, 2)) {
+                window.close();
+                staffSemesterLobby(userstaff);
+            }
+            if (staffhomebuttonlist.isClickedKOrder(event, 3)) {
+                window.close();
+                staffmanagecourse(userstaff, getCurrentSchoolyear(), getCurrentSemester());
+            }
+            if (staffhomebuttonlist.isClickedKOrder(event, 4)) {
+                window.close();
+                staffaddclasses(userstaff, getCurrentSchoolyear());
+            }
+            if (staffhomebuttonlist.isClickedKOrder(event, 5)) {
+                window.close();
+                staffaboutUs(userstaff);
+            }
 
             //click logout button
             if (logoutbut.isClick(event)) {
@@ -1392,17 +1441,26 @@ void staffChooseOption2(sf::RenderWindow& window, Staff& userstaff, std::string 
                 window.close();
             }
 
-            if (staffhomebuttonlist.isClickedKOrder(event, 1))
-                staffmanageschoolyeardisplay(window, userstaff);
-            if (staffhomebuttonlist.isClickedKOrder(event, 2))
-                staffSemesterLobby(window, userstaff);
-            if (staffhomebuttonlist.isClickedKOrder(event, 3))
-                staffmanagecourse(window, userstaff, getCurrentSchoolyear(), getCurrentSemester());
-            if (staffhomebuttonlist.isClickedKOrder(event, 4)) {
-                staffaddclasses(window, userstaff, getCurrentSchoolyear());
+            if (staffhomebuttonlist.isClickedKOrder(event, 1)) {
+                window.close();
+                staffmanageschoolyeardisplay(userstaff);
             }
-            if (staffhomebuttonlist.isClickedKOrder(event, 5))
-                staffaboutUs(window, userstaff);
+            if (staffhomebuttonlist.isClickedKOrder(event, 2)) {
+                window.close();
+                staffSemesterLobby(userstaff);
+            }
+            if (staffhomebuttonlist.isClickedKOrder(event, 3)) {
+                window.close();
+                staffmanagecourse(userstaff, getCurrentSchoolyear(), getCurrentSemester());
+            }
+            if (staffhomebuttonlist.isClickedKOrder(event, 4)) {
+                window.close();
+                staffaddclasses(userstaff, getCurrentSchoolyear());
+            }
+            if (staffhomebuttonlist.isClickedKOrder(event, 5)) {
+                window.close();
+                staffaboutUs(userstaff);
+            }
 
             //click logout button
             if (logoutbut.isClick(event)) {
@@ -1433,9 +1491,16 @@ void staffChooseOption2(sf::RenderWindow& window, Staff& userstaff, std::string 
 
             //list of year button
             for (int i = 1; i <= schoolyearstext.sizeoflist(); i++) {
-                if (schoolyearclickbutton.isClick(event))
+                if (schoolyearclickbutton.isClick(event)) {
+                    staffChooseOption2texture.~Texture();
+                    staffhomebuttonlist.~dropdownlist();
+                    textstaffhomebutton.~LinkedList();
                     staffChooseOption(window, userstaff, classchosen);
+                }
                 if (schoolyears.isClickedKOrder(event, i)) {
+                    staffChooseOption2texture.~Texture();
+                    staffhomebuttonlist.~dropdownlist();
+                    textstaffhomebutton.~LinkedList();
                     staffChooseOption2(window, userstaff, classchosen, i);
                 }
 
@@ -1468,7 +1533,8 @@ void staffChooseOption2(sf::RenderWindow& window, Staff& userstaff, std::string 
                     int x_coor = event.mouseButton.x;
                     int y_coor = event.mouseButton.y;
                     if (x_coor > 45 && x_coor < 100 && y_coor>47 && y_coor < 100) {
-                        staffHome(window, userstaff);
+                        window.close();
+                        staffHome( userstaff);
                     }
                     if (x_coor > 40 && x_coor < 77 && y_coor>887 && y_coor < 932) {
                         staffviewprofile(window, userstaff);
@@ -1635,8 +1701,8 @@ void staffViewStudentScoreboard(sf::RenderWindow& window, Staff& userstaff, std:
                     int x_coor = event.mouseButton.x;
                     int y_coor = event.mouseButton.y;
                     if (x_coor > 45 && x_coor < 100 && y_coor>47 && y_coor < 100) {
-                        userstaff.~Staff();
-                        staffHome(window, userstaff);
+                        window.close();
+                        staffHome( userstaff);
                     }
                     if (x_coor > 40 && x_coor < 77 && y_coor>887 && y_coor < 932) {
                         staffviewprofile(window, userstaff);
@@ -1646,17 +1712,26 @@ void staffViewStudentScoreboard(sf::RenderWindow& window, Staff& userstaff, std:
                     }
                 }
             }
-            if (staffhomebuttonlist.isClickedKOrder(event, 1))
-                staffmanageschoolyeardisplay(window, userstaff);
-            if (staffhomebuttonlist.isClickedKOrder(event, 2))
-                staffSemesterLobby(window, userstaff);
-            if (staffhomebuttonlist.isClickedKOrder(event, 3))
-                staffmanagecourse(window, userstaff, getCurrentSchoolyear(), getCurrentSemester());
-            if (staffhomebuttonlist.isClickedKOrder(event, 4)) {
-                staffaddclasses(window, userstaff, getCurrentSchoolyear());
+            if (staffhomebuttonlist.isClickedKOrder(event, 1)) {
+                window.close();
+                staffmanageschoolyeardisplay(userstaff);
             }
-            if (staffhomebuttonlist.isClickedKOrder(event, 5))
-                staffaboutUs(window, userstaff);
+            if (staffhomebuttonlist.isClickedKOrder(event, 2)) {
+                window.close();
+                staffSemesterLobby(userstaff);
+            }
+            if (staffhomebuttonlist.isClickedKOrder(event, 3)) {
+                window.close();
+                staffmanagecourse(userstaff, getCurrentSchoolyear(), getCurrentSemester());
+            }
+            if (staffhomebuttonlist.isClickedKOrder(event, 4)) {
+                window.close();
+                staffaddclasses(userstaff, getCurrentSchoolyear());
+            }
+            if (staffhomebuttonlist.isClickedKOrder(event, 5)) {
+                window.close();
+                staffaboutUs(userstaff);
+            }
 
             //click mode
             if (editmode.isClick(event)) {
@@ -1721,6 +1796,7 @@ void staffViewStudentScoreboard(sf::RenderWindow& window, Staff& userstaff, std:
                     kstudentchosen = i;
                     studentchosen.changecolor(sf::Color(186, 158, 146, 100));
                     studentchosen.setButposition(StudentsButton.getpositionofKbut(kstudentchosen + 1));
+
                     staffViewStudentScoreboard2(window, userstaff, classchosen, schoolyear, semeseter, kstudentchosen);
                 }
             }
@@ -1948,7 +2024,8 @@ void staffViewStudentScoreboard2(sf::RenderWindow& window, Staff& userstaff, std
                     int x_coor = event.mouseButton.x;
                     int y_coor = event.mouseButton.y;
                     if (x_coor > 45 && x_coor < 100 && y_coor>47 && y_coor < 100) {
-                        staffHome(window, userstaff);
+                        window.close();
+                        staffHome(userstaff);
                     }
                     if (x_coor > 40 && x_coor < 77 && y_coor>887 && y_coor < 932) {
                         staffviewprofile(window, userstaff);
@@ -1958,17 +2035,26 @@ void staffViewStudentScoreboard2(sf::RenderWindow& window, Staff& userstaff, std
                     }
                 }
             }
-            if (staffhomebuttonlist.isClickedKOrder(event, 1))
-                staffmanageschoolyeardisplay(window, userstaff);
-            if (staffhomebuttonlist.isClickedKOrder(event, 2))
-                staffSemesterLobby(window, userstaff);
-            if (staffhomebuttonlist.isClickedKOrder(event, 3))
-                staffmanagecourse(window, userstaff, getCurrentSchoolyear(), getCurrentSemester());
-            if (staffhomebuttonlist.isClickedKOrder(event, 4)) {
-                staffaddclasses(window, userstaff, getCurrentSchoolyear());
+            if (staffhomebuttonlist.isClickedKOrder(event, 1)) {
+                window.close();
+                staffmanageschoolyeardisplay(userstaff);
             }
-            if (staffhomebuttonlist.isClickedKOrder(event, 5))
-                staffaboutUs(window, userstaff);
+            if (staffhomebuttonlist.isClickedKOrder(event, 2)) {
+                window.close();
+                staffSemesterLobby(userstaff);
+            }
+            if (staffhomebuttonlist.isClickedKOrder(event, 3)) {
+                window.close();
+                staffmanagecourse(userstaff, getCurrentSchoolyear(), getCurrentSemester());
+            }
+            if (staffhomebuttonlist.isClickedKOrder(event, 4)) {
+                window.close();
+                staffaddclasses(userstaff, getCurrentSchoolyear());
+            }
+            if (staffhomebuttonlist.isClickedKOrder(event, 5)) {
+                window.close();
+                staffaboutUs(userstaff);
+            }
 
             //click mode
             if (editmode.isClick(event)) {
