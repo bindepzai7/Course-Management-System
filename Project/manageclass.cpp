@@ -1823,9 +1823,12 @@ void staffViewStudentScoreboard(sf::RenderWindow& window, Staff& userstaff, std:
                     kstudentchosen = i;
                     studentchosen.changecolor(sf::Color(186, 158, 146, 100));
                     studentchosen.setButposition(StudentsButton.getpositionofKbut(kstudentchosen + 1));
-
-                    staffViewStudentScoreboard2(window, userstaff, classchosen, schoolyear, semeseter, kstudentchosen);
-                    break;
+                    Semester cursemester(semeseter);
+                    cursemester.loadCourseListFromFileCourseList(schoolyear);
+                    if (cursemester.courseList.sizeoflist() > 0) {
+                        staffViewStudentScoreboard2(window, userstaff, classchosen, schoolyear, semeseter, kstudentchosen);
+                        break;
+                    }
                 }
             }
         }

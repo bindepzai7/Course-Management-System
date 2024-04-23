@@ -682,8 +682,16 @@ void studentChooseOption2(sf::RenderWindow& window, Student& studentuser, int vi
                     if (numbersemester > 0 and x_coor > 910 and x_coor < 1385 and y_coor >545 and y_coor < 645) {
                         //staffscoreboard    /////////////////////////////// 
                         std::cout << semesterbutchosen.getText();
+                        
+                        
                         if (viewType == 0) studentCourse(window, studentuser, textofbutton, std::to_string(numbersemester));
-                        if(viewType==1) studentScoreboard(window, studentuser, textofbutton, std::to_string(numbersemester));
+                        if (viewType == 1) {
+                            Semester cursemester(std::to_string(numbersemester));
+                            cursemester.loadCourseListFromFileCourseList(textofbutton);
+                            if (cursemester.courseList.sizeoflist() > 0)
+                                studentScoreboard(window, studentuser, textofbutton, std::to_string(numbersemester));
+                            else announcement("No information");
+                        }
                     }
                 }
             }
@@ -1003,12 +1011,12 @@ void studentScoreboard(sf::RenderWindow& window, Student& studentuser, std::stri
     Node<Course>* courseList = curSemester.courseList.head;
     Node<Course>* cur = curSemester.courseList.head;
 
-
+    Course::Student stu;
     int n = 0;
     while (courseList) {
         courseList->data.loadScoreFromCsvScoresFile(schoolyear, semester);
 
-        if (courseList->data.findIfStudentIsInThisCourse(studentuser.studentID)) {
+        if (courseList->data.findIfStudentIsInThisCourse(studentuser.studentID) and courseList->data.findAStudentOfThisCourse(studentuser.studentID, stu)) {
             n++;
         }
         courseList = courseList->next;
@@ -1025,10 +1033,12 @@ void studentScoreboard(sf::RenderWindow& window, Student& studentuser, std::stri
     while (courseList) {
         if (courseList->data.findIfStudentIsInThisCourse(studentuser.studentID)) {
           
-            courseList->data.findAStudentOfThisCourse(studentuser.studentID, scorestudent[n]);
-            courseid[n] = courseList->data.getCourseID();
-            coursename[n] = courseList->data.getCourseName();
-            n++;
+            if (courseList->data.findAStudentOfThisCourse(studentuser.studentID, scorestudent[n])) {
+                ;
+                courseid[n] = courseList->data.getCourseID();
+                coursename[n] = courseList->data.getCourseName();
+                n++;
+            }
         }
         courseList = courseList->next;
     }
