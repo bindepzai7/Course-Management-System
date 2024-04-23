@@ -1255,10 +1255,32 @@ void staffCourseScoreboard(sf::RenderWindow& window, Staff& userstaff, std::stri
                     }
                     if (x_coor > 400 and x_coor < 625 and y_coor>870 and y_coor < 910) {
                         std::string filename = filenametoimport();
-                        if(filename!="")
-                        c.importScorefromCSVfile(filename);
-                        c.saveScore2CsvScoresFile(schoolyear, semester);
-                        staffCourseScoreboard(window, userstaff, schoolyear, semester, coursechosen);
+                        if (filename != "") {
+                            std::ifstream fin(filename);
+                            if (fin.is_open()) {
+                                std::string input = "";
+                                getline(fin, input); //Ignore the fisrt line
+                                while (!fin.eof()) {
+                                    getline(fin, input, ',');
+                                    if (input == "") break;
+                                    else getline(fin, input, ',');
+                                    Node<Course::Student>* pos = c.findAStudentPosOfThisCourse(input);
+                                    if (pos) {
+                                        getline(fin, input, ',');
+                                        getline(fin, input, ',');
+                                        getline(fin, pos->data.midScore, ',');
+                                        getline(fin, pos->data.finScore, ',');
+                                        getline(fin, pos->data.otherScore, ',');
+                                        getline(fin, pos->data.totalScore, '\n');
+                                    }
+                                    else getline(fin,input);
+                                }
+                            }
+                            fin.close();
+                            c.saveScore2CsvScoresFile(schoolyear, semester);
+                            staffCourseScoreboard(window, userstaff, schoolyear, semester, coursechosen);
+                        }
+                        
                     }
                 }
             }

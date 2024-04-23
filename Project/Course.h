@@ -163,6 +163,8 @@ public:
 
     bool findAStudentOfThisCourse(const std::string& studentID, Student& s);    //checked
 
+    Node<Course::Student>* findAStudentPosOfThisCourse(const std::string& studentID);
+
     bool updateAStudentScoreOfThisCourse(const std::string& studentID, const std::string& totalScore, const std::string& finScore, const std::string& midScore, const std::string& otherScore);  //checked
 
     void saveScore2CsvScoresFile(const std::string& schoolYear, const std::string& semester);    //checked

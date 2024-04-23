@@ -298,7 +298,7 @@ void Course::loadScoreFromCsvScoresFile(const std::string& schoolYear, const std
 }
 
 bool Course::findAStudentOfThisCourse(const std::string& studentID, Course::Student& s) {
-	Node<Student>* cur = studentsInThisCourse.head;
+	Node<Course::Student>* cur = studentsInThisCourse.head;
 	while (cur) {
 		if (cur->data.StudentID == studentID) {
 			s = cur->data;
@@ -308,6 +308,18 @@ bool Course::findAStudentOfThisCourse(const std::string& studentID, Course::Stud
 	}
 
 	return false;
+}
+
+Node<Course::Student>* Course::findAStudentPosOfThisCourse(const std::string& studentID) {
+	Node<Course::Student>* cur = studentsInThisCourse.head;
+	while (cur) {
+		if (cur->data.StudentID == studentID) {
+			return cur;
+		}
+		cur = cur->next;
+	}
+
+	return nullptr;
 }
 
 bool Course::updateAStudentScoreOfThisCourse(const std::string& studentID, const std::string& totalScore, const std::string& finScore, const std::string& midScore, const std::string& otherScore) {
