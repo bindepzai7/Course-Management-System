@@ -77,42 +77,50 @@ std::string calculateOverall(std::string studentID) {
 				Semester curSemester(std::to_string(j + 1));
 				curSemester.loadCourseListFromFileCourseList(cur2->data);
 				Node<Course>* courseList = curSemester.courseList.head;
+				Course::Student stu;
 				int n = 0;
 				while (courseList) {
 					courseList->data.loadScoreFromCsvScoresFile(cur2->data,std::to_string(j + 1));
-					if (courseList->data.findIfStudentIsInThisCourse(studentID)) {
+					if (courseList->data.findIfStudentIsInThisCourse(studentID) and courseList->data.findAStudentOfThisCourse(studentID,stu)) {
 						n++;
 					}
 					courseList = courseList->next;
 				}
-
-				Course::Student* scorestudent = new Course::Student[n];
-				courseList = curSemester.courseList.head;
-				n = 0;
-				while (courseList) {
-					if (courseList->data.findIfStudentIsInThisCourse(studentID)) {
-						courseList->data.findAStudentOfThisCourse(studentID, scorestudent[n]);
-
-						n++;
+				if (n > 0) {
+					Course::Student* scorestudent = new Course::Student[n];
+					courseList = curSemester.courseList.head;
+					n = 0;
+					while (courseList) {
+						if (courseList->data.findIfStudentIsInThisCourse(studentID)) {
+							if(courseList->data.findAStudentOfThisCourse(studentID, scorestudent[n]));
+							n++;
+						}
+						courseList = courseList->next;
 					}
-					courseList = courseList->next;
+					if (n > 0) {
+						float sum = 0;
+						for (int i = 0; i < n; i++) {
+							if (scorestudent[i].getTotalScore() != "")
+								sum += std::stof(scorestudent[i].totalScore);
+						}
+						float semGPA = sum / n;
+						std::ostringstream oss;
+						oss << std::fixed << std::setprecision(1) << semGPA;
+						std::cout << semGPA;
+						overall += semGPA;
+						delete[] scorestudent;
+					}
+					else numsemesterofyear[i]--;
 				}
-				float sum = 0;
-				for (int i = 0; i < n; i++) {
-					sum += std::stof(scorestudent[i].totalScore);
-				}
-				float semGPA = sum / n;
-				std::ostringstream oss;
-				oss << std::fixed << std::setprecision(1) << semGPA;
-				std::cout << semGPA;
-				overall += semGPA;
-				delete[] scorestudent;
+				else numsemesterofyear[i]--;
 			}
 			overall = overall / numsemesterofyear[i];
 			cur2 = cur2->next;
 		}
 	}
+	
 	overall = overall * 4 / 10;
+	std::cout << overall;
 	std::ostringstream OSS;
 	OSS << std::fixed << std::setprecision(1) << overall;
 	std::string OverallGPA = OSS.str();

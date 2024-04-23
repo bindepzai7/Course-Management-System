@@ -242,7 +242,7 @@ void Course::loadScoreFromCsvScoresFile(const std::string& schoolYear, const std
 bool Course::findAStudentOfThisCourse(const std::string& studentID, Course::Student& s) {
 	Node<Course::Student>* cur = studentsInThisCourse.head;
 	while (cur) {
-		if (cur->data.StudentID == studentID) {
+		if (cur->data.StudentID == studentID and cur->data.getFinalScore()!="") {
 			s = cur->data;
 			return true;
 		}
