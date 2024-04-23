@@ -159,6 +159,7 @@
     <ClCompile Include="manageschoolyear.cpp" />
     <ClCompile Include="managesemester.cpp" />
     <ClCompile Include="ReadCSVfile.cpp" />
+    <ClCompile Include="Schoolyear.cpp" />
     <ClCompile Include="Semester.cpp" />
     <ClCompile Include="Staff.cpp" />
     <ClCompile Include="aboutstaff.cpp" />

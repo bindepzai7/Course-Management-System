@@ -857,11 +857,11 @@ void studentCourse(sf::RenderWindow& window, Student& studentuser, std::string s
         }
 
         studentTextBox[i][0].setText(std::to_string(i + 1)); // Assuming you want to set index 0 to an index value
-        studentTextBox[i][1].setText(cur->data.courseID);
-        studentTextBox[i][2].setText(cur->data.courseName);
+        studentTextBox[i][1].setText(cur->data.getCourseID());
+        studentTextBox[i][2].setText(cur->data.getCourseName());
 
         studentTextBox[i][4].setText(cur->data.getTeacherName());
-        studentTextBox[i][3].setText(std::to_string(cur->data.credits));
+        studentTextBox[i][3].setText(std::to_string(cur->data.getCredit()));
         studentTextBox[i][5].setText(cur->data.getSession());
         cur = cur->next;
     }
@@ -1026,8 +1026,8 @@ void studentScoreboard(sf::RenderWindow& window, Student& studentuser, std::stri
         if (courseList->data.findIfStudentIsInThisCourse(studentuser.studentID)) {
           
             courseList->data.findAStudentOfThisCourse(studentuser.studentID, scorestudent[n]);
-            courseid[n] = courseList->data.courseID;
-            coursename[n] = courseList->data.courseName;
+            courseid[n] = courseList->data.getCourseID();
+            coursename[n] = courseList->data.getCourseName();
             n++;
         }
         courseList = courseList->next;
@@ -1044,7 +1044,7 @@ void studentScoreboard(sf::RenderWindow& window, Student& studentuser, std::stri
         }
         std::cout << courseid[i];
         scoreboards[i][0].setText(std::to_string(i + 1));
-        scoreboards[i][1].setText(cur->data.courseID);
+        scoreboards[i][1].setText(cur->data.getCourseID());
         scoreboards[i][2].setText(coursename[i]);
         scoreboards[i][3].setText(scorestudent[i].midScore);
         scoreboards[i][4].setText(scorestudent[i].finScore);

@@ -1983,8 +1983,8 @@ void staffViewStudentScoreboard2(sf::RenderWindow& window, Staff& userstaff, std
         if (cur2courselist->data.findIfStudentIsInThisCourse(studentTextBox[kstudentchosen][1].getText()))
         {
             cur2courselist->data.findAStudentOfThisCourse(studentTextBox[kstudentchosen][1].getText(), scorestudent[count]);
-            courseid[count] = cur2courselist->data.courseID;
-            coursename[count] = cur2courselist->data.courseName;
+            courseid[count] = cur2courselist->data.getCourseID();
+            coursename[count] = cur2courselist->data.getCourseName();
             count++;
         }
         cur2courselist = cur2courselist->next;

@@ -247,25 +247,23 @@ void staffmanagecourse( Staff& userstaff, std::string schoolyear, std::string se
                     }
                     //savebuttonclick
                     if (tmp) {
-                        tmp->data.courseID = CourseTextBox[i][1].getText();
+                        tmp->data.setCourseID(CourseTextBox[i][1].getText());
 
-                        tmp->data.courseName = CourseTextBox[i][2].getText();
+                        tmp->data.setCourseName(CourseTextBox[i][2].getText());
 
-                        tmp->data.credits = std::stoi(CourseTextBox[i][3].getText());
+                        tmp->data.setCredit(std::stoi(CourseTextBox[i][3].getText()));
 
-                        tmp->data.maxStudent = std::stoi(CourseTextBox[i][4].getText());
+                        tmp->data.setMaxStudent(std::stoi(CourseTextBox[i][4].getText()));
 
-                        tmp->data.className = CourseTextBox[i][5].getText();
+                        tmp->data.setClassName(CourseTextBox[i][5].getText());
 
-                        tmp->data.session = CourseTextBox[i][7].getText();
+                        tmp->data.setSession(CourseTextBox[i][7].getText());
 
                         std::string fullname = CourseTextBox[i][6].getText();
                         int found = fullname.find("-");
                         if (found > 0) {
-                            tmp->data.teacherName.lastName = fullname.substr(0, found);
-                            tmp->data.teacherName.firstName = fullname.substr(found + 1, fullname.size());
+                            tmp->data.setTeacherName(fullname.substr(found + 1, fullname.size()), fullname.substr(0, found));
                         }
-                        
                         tmp = tmp->next;
                     }
 
@@ -953,7 +951,6 @@ void staffviewstudentofcourse(sf::RenderWindow& window, Staff& userstaff, std::s
                 std::string filename = filenametoimport();
                 if (filename != "") {
                     c.loadStudentsFromCsvFileStaffUpload(filename);
-                    c.saveStudentsToCsvFile(schoolyear, semester);
                     c.saveScore2CsvScoresFile(schoolyear, semester);
                     staffviewstudentofcourse(window, userstaff, schoolyear, semester, coursechosen);
                 }
@@ -1042,11 +1039,7 @@ void staffviewstudentofcourse(sf::RenderWindow& window, Staff& userstaff, std::s
                 }
             }
 
-
         }
-
-        
-
         window.clear();
         window.draw(s_staffviewstudentofcourseTexture);
         staffhomebuttonlist.drawButwithTextbox(window, event, sf::Color(168, 158, 146), sf::Color(239, 233, 222));

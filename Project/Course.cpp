@@ -1,15 +1,6 @@
 
 #include "Course.h"
 
-//Add truong hop head rong
-//Do sth with valid spot
-//Check if there is already a course like that
-//sua lai ham delete dung delete node at data
-//Dung ham adjust string to standardize it
-//Lam 1 button de co the chon luu thay doi
-//update khi delete add hocj sinh scorefile
-//Can return int so that we know why we cant add this student for ADD STUDENT
-
 
 //								Basic constructor
 
@@ -19,21 +10,6 @@ Course::Course() {
 	this->courseID = "";
 	this->validSlot = maxStudent;
 }
-
-Course::Course(const std::string& courseID, const std::string& courseName, const std::string& session, const int& credits, const int& maxStudent, const Name& teacherName, const std::string& className) {
-	if (maxStudent == NULL) {
-		this->maxStudent = 50; //Default maxStudent
-	}
-	else this->maxStudent = maxStudent;
-	this->courseID = courseID;
-	this->className = className;
-	this->courseName = courseName;
-	this->teacherName = teacherName;
-	this->validSlot = maxStudent;
-	this->session = session;
-	this->credits = credits;
-}
-
 
 
 
@@ -183,24 +159,6 @@ bool Course::loadStudentsFromCsvFileStaffUpload(const std::string& filename) {
 	if ( !fin.eof()) return false;
 	return true;
 }
-
-bool Course::saveStudentsToCsvFile(const std::string& schoolYear, const std::string& semester) {
-	std::ofstream fout("Data/" + schoolYear + "/" + semester + "/studentOfEachCourse/" + this->courseID + ".csv");
-	if (fout.is_open()) {
-		Node<Student>* cur = studentsInThisCourse.head;
-		int i = 0;
-		fout << "No,studentID,lastName,firstName\n";
-		while (cur) {
-			fout << ++i << "," << cur->data.StudentID << "," << cur->data.name.lastName << "," << cur->data.name.firstName << '\n';
-			cur = cur->next;
-		}
-		fout.close();
-		return true;
-	}
-	fout.close();
-	return false;
-}
-
 		
 bool Course::deleteStudentFromThisCourse(const std::string& studentID) {
 	Node<Student>* cur = studentsInThisCourse.head;
@@ -224,22 +182,6 @@ bool Course::addStudentToThisCourse(const std::string& studentID, const Name& na
 		student.name = name;
 		studentsInThisCourse.addNodeInAscending(student);
 		return true;
-	}
-	return false;
-}
-
-
-bool Course::updateStudentOfThisCourse(const std::string& studentID, const std::string& newID, const Name& name) {
-	Node<Student>* cur = studentsInThisCourse.head;
-	while (cur) {
-		if (cur->data.StudentID == studentID) {
-			if (newID != "") {
-				cur->data.StudentID = studentID;
-			}
-			cur->data.name = name;
-			return true;
-		}
-		cur = cur->next;
 	}
 	return false;
 }
@@ -359,25 +301,4 @@ void Course::saveScore2CsvScoresFile(const std::string& schoolYear, const std::s
 	}
 	fout.close();
 }
-void Course::importScorefromCSVfile(const std::string& filename) {
-	studentsInThisCourse.empty();
-	std::ifstream fin(filename);
-	if (fin.is_open()) {
-		std::string input = "";
-		getline(fin, input); //Ignore the fisrt line
-		while (!fin.eof()) {
-			Student student;
-			getline(fin, input, ',');
-			if (input == "") break;
-			getline(fin, student.StudentID, ',');
-			getline(fin, student.name.lastName, ',');
-			getline(fin, student.name.firstName, ',');
-			getline(fin, student.midScore, ',');
-			getline(fin, student.finScore, ',');
-			getline(fin, student.otherScore, ',');
-			getline(fin, student.totalScore, '\n');
-			studentsInThisCourse.addNodeInAscending(student);
-		}
-	}
-	fin.close();
-}
+

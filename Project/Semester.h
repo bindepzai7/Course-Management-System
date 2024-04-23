@@ -9,11 +9,11 @@
 using namespace std::filesystem;
 
 class Semester {
-public:
+private:
 	std::string semester;
 	Date startDay;
 	Date endDay;
-
+public:
 	LinkedList<Course> courseList;
 	//default constructor
 	Semester() : semester(""), startDay(Date(0, 0, 0)), endDay(Date(0, 0, 0)) {}
@@ -41,6 +41,16 @@ public:
 	}
 	std::string getEndDate() {
 		return endDay.getDate();
+	}
+
+	void setSemester(const std::string& semester) {
+		this->semester = semester;
+	}
+	void setStartDate(const Date& startDate) {
+		this->startDay = startDate;
+	}
+	void setEndDate(const Date& endDate) {
+		this->endDay = endDate;
 	}
 
 	bool addNewSemesterFolder(const std::string& schoolYear, const std::string& newSemester);   //checked

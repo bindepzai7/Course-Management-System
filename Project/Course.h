@@ -9,13 +9,12 @@
 
 
 class Course {
-
-public:
+private:
     //Course basic information
     std::string courseID, courseName, session, className;
     int credits, maxStudent, validSlot;
     Name teacherName;
-
+public:
     //Course's students' info and score struct
     struct Student {
         std::string StudentID;
@@ -69,6 +68,8 @@ public:
             return this->otherScore;
         }
     };
+
+
     LinkedList<Student> studentsInThisCourse;
 
     //Constructor
@@ -83,8 +84,6 @@ public:
         className = "";
 
     }
-    Course(const std::string& courseID, const std::string& courseName, const std::string& session, const int& credits, const int& maxStudent, const Name& teacherName, const std::string& className);
-
     //operator
     void operator=(const Course& c) {
         courseID = c.courseID;
@@ -106,29 +105,40 @@ public:
     }
 
     //About this course's info
-
-                /*
-                File: CourseList.csv
-                This File should Have the format:
-                 courseID,courseName,teacherlastName,teacherfirstName,credits,maxStudent,session
-                 This function will read only one course
-                  if there is no more course to read it will return false
-
-                 If used, must read the first line out first
-                 */
     bool readACourseFromFileCourseList(std::ifstream& fin); //checked
-
-             std::string getSession(); //checked
-             std::string getCourseID(); //checked
-             std::string getCourseName(); //checked
-             std::string getTeacherName(); //checked
-             std::string getClassName();
-             int getCredit(); //checked
-             int getMaxStudent(); //checked
-             int getValidSlot();
+    
+    std::string getSession(); //checked
+    std::string getCourseID(); //checked
+    std::string getCourseName(); //checked
+    std::string getTeacherName(); //checked
+    std::string getClassName();
+    int getCredit(); //checked
+    int getMaxStudent(); //checked
+    int getValidSlot();
+    void setSession(const std::string& session) {
+        this->session = session;
+    }
+    void setCourseID(const std::string& courseID) {
+        this->courseID = courseID;
+    }
+    void setCourseName(const std::string& courseName) {
+        this->courseName = courseName;
+    }
+    void setTeacherName(const std::string& firstName, const std::string& lastName) {
+        this->teacherName.firstName = firstName;
+        this->teacherName.lastName = lastName;
+    }
+    void setClassName(const std::string& className) {
+        this->className = className;
+    }
+    void setCredit(const int& credits) {
+        this->credits = credits;
+    }
+    void setMaxStudent(const int& maxStudent) {
+        this->maxStudent = maxStudent;
+    }
 
     void setCourse(const std::string& courseID, const std::string& courseName, const std::string& session, const int& credits, const int& maxStudent, const Name& teacherName, const std::string& className);
-
 
     bool updateCourseInfo(const std::string& className, const std::string& courseID, const std::string& courseName, const Name& teacher, const int& MaxStudent, const int& credits, const std::string& session);  //checked
 
@@ -145,7 +155,6 @@ public:
 
     bool loadStudentsFromCsvFileStaffUpload(const std::string& filename);    //checked
 
-    bool saveStudentsToCsvFile(const std::string& schoolYear, const std::string& semester);
    
     bool deleteStudentFromThisCourse(const std::string& studentID);   //checked
 
@@ -153,7 +162,6 @@ public:
 
     bool findIfStudentIsInThisCourse(const std::string& studentID);    //checked
 
-    bool updateStudentOfThisCourse(const std::string& studentID, const std::string& newID, const Name& name); //checked
 
     //About this course's students' score
 
@@ -169,7 +177,6 @@ public:
 
     void saveScore2CsvScoresFile(const std::string& schoolYear, const std::string& semester);    //checked
 
-    void importScorefromCSVfile(const std::string& filename);
    
 };
 

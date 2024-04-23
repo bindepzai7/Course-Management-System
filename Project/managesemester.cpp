@@ -690,12 +690,9 @@ void staffmanagesemesterdisplay(sf::RenderWindow& window, Staff& userstaff, std:
                             foundmonth = start.find("/",foundday+1);
                        
                         if (foundday > 0 and foundmonth > 0) {
-                            tmp->data.startDay.day = std::stoi(start.substr(0, foundday));
-                            if (foundday < foundmonth)
-                                tmp->data.startDay.month = std::stoi(start.substr(foundday + 1, foundmonth));
-                            if (foundmonth + 2 < start.size())
-                                tmp->data.startDay.year = std::stoi(start.substr(foundmonth + 1, start.size()));
-                        
+                            Date startDate(std::stoi(start.substr(0, foundday)), std::stoi(start.substr(foundday + 1, foundmonth)), std::stoi(start.substr(foundmonth + 1, start.size())));
+                            tmp->data.setStartDate(startDate);
+
                         }
 
                         foundday = end.find("/");
@@ -703,14 +700,11 @@ void staffmanagesemesterdisplay(sf::RenderWindow& window, Staff& userstaff, std:
                         if (foundday > 0) {
                             foundmonth = end.find("/", foundday + 1);
                             if (foundday > 0 and foundmonth > 0) {
-                                tmp->data.endDay.day = std::stoi(end.substr(0, foundday));
-                                if (foundday < foundmonth)
-                                    tmp->data.endDay.month = std::stoi(end.substr(foundday + 1, foundmonth));
-                                if (foundmonth + 1 < end.size())
-                                    tmp->data.endDay.year = std::stoi(end.substr(foundmonth + 1, end.size()));
+                                Date endDate(std::stoi(end.substr(0, foundday)), std::stoi(end.substr(foundday + 1, foundmonth)), std::stoi(end.substr(foundmonth + 1, end.size())));
+                                tmp->data.setEndDate(endDate);
                             }
+                            tmp = tmp->next;
                         }
-                        tmp = tmp->next;
                     }
                     
 
