@@ -58,7 +58,7 @@ void staffCourseScoreboard(sf::RenderWindow& window, Staff& userstaff, std::stri
 void staffaddclasses(Staff& userstaff, std::string schoolyear);
 void staffmanageclass(sf::RenderWindow& window, Staff& userstaff, std::string schoolyear, int Korderbut);
 void staffaddfirstyearstudent(sf::RenderWindow& window, Staff& userstaff,std::string schoolyear, std::string addtoclass);
-void staffviewstudentinclass(sf::RenderWindow& window, Staff& userstaff, std::string schoolyear, std::string classchosen);
+void staffviewstudentinclass(sf::RenderWindow& window, Staff& userstaff, std::string schoolyearchoose, std::string classchosen);
 void staffChooseOption(sf::RenderWindow& window, Staff& userstaff, std::string classchosen);
 void staffChooseOption2(sf::RenderWindow& window, Staff& userstaff, std::string classchosen, int Korderofbut);
 void staffViewStudentScoreboard(sf::RenderWindow& window, Staff& userstaff, std::string classchosen, std::string schoolyear, std::string semeseter);

@@ -1021,7 +1021,7 @@ void studentScoreboard(sf::RenderWindow& window, Student& studentuser, std::stri
         }
         courseList = courseList->next;
     }
-    std::cout << n << std::endl;
+
     //find score
     TextBox** scoreboards = new TextBox * [n];
     Course::Student* scorestudent = new Course::Student[n];
@@ -1034,7 +1034,6 @@ void studentScoreboard(sf::RenderWindow& window, Student& studentuser, std::stri
         if (courseList->data.findIfStudentIsInThisCourse(studentuser.studentID)) {
           
             if (courseList->data.findAStudentOfThisCourse(studentuser.studentID, scorestudent[n])) {
-                ;
                 courseid[n] = courseList->data.getCourseID();
                 coursename[n] = courseList->data.getCourseName();
                 n++;
@@ -1042,8 +1041,8 @@ void studentScoreboard(sf::RenderWindow& window, Student& studentuser, std::stri
         }
         courseList = courseList->next;
     }
-
-    std::cout << scorestudent[0].getStudentID();
+    
+ 
     for (int i = 0; i < n; i++) {
         scoreboards[i] = new TextBox[7];
         for (int j = 0; j < 7; j++) {
@@ -1146,7 +1145,7 @@ void studentScoreboard(sf::RenderWindow& window, Student& studentuser, std::stri
         for (int i = 0; i < n; i++)
             for (int j = 0; j < 7; j++)
                 scoreboards[i][j].drawTextbox(window);
-        semesterGPA.drawTextbox(window);
+        if(n>0) semesterGPA.drawTextbox(window);
         overallGPA.drawTextbox(window);
         schoolyeartextbox.drawTextbox(window);
         semestertextbox.drawTextbox(window);

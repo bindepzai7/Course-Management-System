@@ -845,7 +845,7 @@ std::string filenametoimport() {
     return filename;
 }
 
-void staffviewstudentinclass(sf::RenderWindow& window, Staff& userstaff, std::string schoolyear, std::string classchosen) {
+void staffviewstudentinclass(sf::RenderWindow& window, Staff& userstaff, std::string schoolyearchoose, std::string classchosen) {
     sf::Texture AboutUstexture;
     AboutUstexture.loadFromFile("Design UI/[Staff - 6.2.1] View Students in Class.jpg");
     AboutUstexture.setSmooth(true);
@@ -900,7 +900,10 @@ void staffviewstudentinclass(sf::RenderWindow& window, Staff& userstaff, std::st
     //list of student
 
     Class curclass(classchosen);
+    int kyear = std::stoi(classchosen.substr(0, 2));
+    std::string schoolyear = "20" +std::to_string(kyear) + "-20" + std::to_string(kyear+1);
     curclass.loadStudentfromCSV("Data/" + schoolyear + "/" + classchosen + ".csv");
+    curclass.saveStudent(schoolyearchoose, classchosen);
     int n = curclass.getnumberofstudentinclass();
     //LinkedList<Student> studentlist = curclass.getstudentlist();
     //Node<Student>* head = curclass.getstudentnode();
@@ -970,9 +973,11 @@ void staffviewstudentinclass(sf::RenderWindow& window, Staff& userstaff, std::st
                         break;
                     }
                     if (x_coor > 390 && x_coor < 640 && y_coor>867 && y_coor < 917) {
-                        staffaddfirstyearstudent(window, userstaff, schoolyear, classchosen);
-                        break;
+                        if (schoolyear == getCurrentSchoolyear())
+                            staffaddfirstyearstudent(window, userstaff, schoolyear, classchosen);
+                        else announcement("This class is not first year class\nso it's not allowed to add students ");
                     }
+
                 }
             }
             if (staffhomebuttonlist.isClickedKOrder(event, 1)) {
@@ -1664,6 +1669,7 @@ void staffViewStudentScoreboard(sf::RenderWindow& window, Staff& userstaff, std:
     //list of student
 
     Class curclass(classchosen);
+  
     curclass.loadStudentfromCSV("Data/" + schoolyear + "/" + classchosen + ".csv");
     int n = curclass.getnumberofstudentinclass();
     Node<Student>* cur = curclass.studentList.head;
@@ -1918,6 +1924,7 @@ void staffViewStudentScoreboard2(sf::RenderWindow& window, Staff& userstaff, std
     //list of student
 
     Class curclass(classchosen);
+
     curclass.loadStudentfromCSV("Data/" + schoolyear + "/" + classchosen + ".csv");
     int n = curclass.getnumberofstudentinclass();
     Node<Student>* cur = curclass.studentList.head;
@@ -1967,11 +1974,11 @@ void staffViewStudentScoreboard2(sf::RenderWindow& window, Staff& userstaff, std
     Semester cursemester(semeseter);
     cursemester.loadCourseListFromFileCourseList(schoolyear);
     Node<Course>* curcourselist = cursemester.courseList.head;
-    // std::cout << curcourselist->data.courseID;
     int numbercousestudy = 0;
+    Course::Student stu;
     while (curcourselist) {
         curcourselist->data.loadScoreFromCsvScoresFile(schoolyear, semeseter);
-        if (curcourselist->data.findIfStudentIsInThisCourse(studentTextBox[kstudentchosen][1].getText())) {
+        if (curcourselist->data.findIfStudentIsInThisCourse(studentTextBox[kstudentchosen][1].getText()) and curcourselist->data.findAStudentOfThisCourse(studentTextBox[kstudentchosen][1].getText(), stu)) {
             numbercousestudy++;
         }
         curcourselist = curcourselist->next;
@@ -1981,14 +1988,16 @@ void staffViewStudentScoreboard2(sf::RenderWindow& window, Staff& userstaff, std
     std::string* courseid = new std::string[numbercousestudy];
     std::string* coursename = new std::string[numbercousestudy];
     Node<Course>* cur2courselist = cursemester.courseList.head;
-    int count = 0;
+ 
+    numbercousestudy = 0;
     while (cur2courselist) {
         if (cur2courselist->data.findIfStudentIsInThisCourse(studentTextBox[kstudentchosen][1].getText()))
         {
-            cur2courselist->data.findAStudentOfThisCourse(studentTextBox[kstudentchosen][1].getText(), scorestudent[count]);
-            courseid[count] = cur2courselist->data.getCourseID();
-            coursename[count] = cur2courselist->data.getCourseName();
-            count++;
+            if(cur2courselist->data.findAStudentOfThisCourse(studentTextBox[kstudentchosen][1].getText(), scorestudent[numbercousestudy])){
+            courseid[numbercousestudy] = cur2courselist->data.getCourseID();
+            coursename[numbercousestudy] = cur2courselist->data.getCourseName();
+            numbercousestudy++;
+            }
         }
         cur2courselist = cur2courselist->next;
     }
@@ -2006,7 +2015,6 @@ void staffViewStudentScoreboard2(sf::RenderWindow& window, Staff& userstaff, std
     //float jumpsize2 = 1000;
     int numberofbutton2 = 3;
     TextBox** scoreboards = new TextBox * [numbercousestudy];
-    std::cout << scorestudent[0].getStudentID();
     for (int i = 0; i < numbercousestudy; i++) {
         scoreboards[i] = new TextBox[7];
         for (int j = 0; j < 7; j++) {
@@ -2232,7 +2240,7 @@ void staffViewStudentScoreboard2(sf::RenderWindow& window, Staff& userstaff, std
         for (int i = 0; i < numbercousestudy; i++)
             for (int j = 0; j < 7; j++)
                 scoreboards[i][j].drawTextbox(window);
-        semesterGPA.drawTextbox(window);
+       if(numbercousestudy>0) semesterGPA.drawTextbox(window);
         overallGPA.drawTextbox(window);
         window.display();
     }

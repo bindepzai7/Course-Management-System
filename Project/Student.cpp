@@ -72,7 +72,6 @@ std::string calculateOverall(std::string studentID) {
 	Node < std::string>* cur2 = schoolyearstext.head;
 	for (int i = 0; i < numberofschoolyear; i++)
 	{
-		std::cout << cur2->data<<"?";
 		if (cur2) {
 			for (int j = 0; j < numsemesterofyear[i]; j++) {
 				Semester curSemester(std::to_string(j + 1));
@@ -98,17 +97,20 @@ std::string calculateOverall(std::string studentID) {
 						}
 						courseList = courseList->next;
 					}
-					float sum = 0;
-					for (int i = 0; i < n; i++) {
-						if(scorestudent[i].getTotalScore()!="")
-						sum += std::stof(scorestudent[i].totalScore);
+					if (n > 0) {
+						float sum = 0;
+						for (int i = 0; i < n; i++) {
+							if (scorestudent[i].getTotalScore() != "")
+								sum += std::stof(scorestudent[i].totalScore);
+						}
+						float semGPA = sum / n;
+						std::ostringstream oss;
+						oss << std::fixed << std::setprecision(1) << semGPA;
+						std::cout << semGPA;
+						overall += semGPA;
+						delete[] scorestudent;
 					}
-					float semGPA = sum / n;
-					std::ostringstream oss;
-					oss << std::fixed << std::setprecision(1) << semGPA;
-					std::cout << semGPA;
-					overall += semGPA;
-					delete[] scorestudent;
+					else numsemesterofyear[i]--;
 				}
 				else numsemesterofyear[i]--;
 			}
