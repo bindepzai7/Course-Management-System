@@ -82,8 +82,8 @@ public:
         validSlot = 0;
         session = "";
         className = "";
-
     }
+    ~Course() {}
     //operator
     void operator=(const Course& c) {
         courseID = c.courseID;

@@ -30,7 +30,7 @@ public:
 		if (this->semester < s.semester) return true;
 		else return false;
 	}
-
+	~Semester() {}
 	//				About this semester's info
 
 	std::string getSemester() {
