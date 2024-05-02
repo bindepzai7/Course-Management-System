@@ -109,7 +109,7 @@ void staffaddclasses( Staff& userstaff, std::string schoolyear) {
                 break;
             }
             if (staffhomebuttonlist.isClickedKOrder(event, 2)) {
-                window.close();
+                window.close();        
                 staffSemesterLobby(userstaff);
                 break;
             }
