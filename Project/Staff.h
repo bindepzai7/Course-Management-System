@@ -98,6 +98,11 @@ public:
 	void deleteClass(Class classdelete) {
 		classlist.removeNodeByData(classdelete);
 	}
+	void emptyclasseslist() {
+		if (classlist.head != nullptr) {
+			classlist.empty();
+		}
+	}
 
 	void readAllSchoolyear();
 	void writeSchoolyear2file(LinkedList<std::string> &schoolyearstext);

@@ -39,9 +39,6 @@
     <ClInclude Include="Staff.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="ReadCSVfile.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="AdditionalStruct.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -90,9 +87,6 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="User.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="ReadCSVfile.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Class.cpp">

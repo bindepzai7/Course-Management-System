@@ -53,7 +53,7 @@ void staffaddclasses( Staff& userstaff, std::string schoolyear) {
     cur_schoolyeartextbox.setTextPosition(sf::Vector2f(1110, 357));
 
     //list of class at current schoolyear
-    std::cout << schoolyear;
+    userstaff.emptyclasseslist();
     int yearstart = stoi(schoolyear.substr(0, 4));
     int yearend = stoi(schoolyear.substr(5, schoolyear.size()));
     for (int i = 0; i < 4; i++)

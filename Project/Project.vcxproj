@@ -141,7 +141,6 @@
     <ClInclude Include="displayfunction.h" />
     <ClInclude Include="dropdownlist.h" />
     <ClInclude Include="LinkedList.h" />
-    <ClInclude Include="ReadCSVfile.h" />
     <ClInclude Include="SchoolYear.h" />
     <ClInclude Include="Semester.h" />
     <ClInclude Include="Staff.h" />
@@ -158,7 +157,6 @@
     <ClCompile Include="managecourse.cpp" />
     <ClCompile Include="manageschoolyear.cpp" />
     <ClCompile Include="managesemester.cpp" />
-    <ClCompile Include="ReadCSVfile.cpp" />
     <ClCompile Include="Schoolyear.cpp" />
     <ClCompile Include="Semester.cpp" />
     <ClCompile Include="Staff.cpp" />

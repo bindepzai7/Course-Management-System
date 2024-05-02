@@ -37,9 +37,6 @@ public:
     bool operator<(const Student& s2) const {
         return studentID < s2.studentID;
     }
-   /* bool operator!=(const Student& s2) const {
-        return studentID != s2.studentID || password!=s2.password;
-    }*/
 };
 void LoadDataofStudent(LinkedList<Student>& studentlist, std::string filename);
 bool getDataStudentromlist(LinkedList<Student>&s, std::string username, Student& studentuser);

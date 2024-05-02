@@ -19,28 +19,5 @@ int main() {
         chooseRole(window);
         window.display();
     }
-    
-
-
-    //std::string filename = "Data/studentuser.csv";
-    //LinkedList<User> userList = readUserFromCSV(filename);
-    //Node<User>* head = userList.head;
-    ///*while (head) {
-    //    head->data.password = string_hashing(head->data.password);
-    //    head = head->next;
-    //}*/
-    ////need to update 2 times
-    //updateUser2CSVfile(filename, userList);
-    //if (check_login(userList, "23125001", "12345678")) std::cout << "Login successfully" << std::endl;
-    //else std::cout << "password or username wrong" << std::endl;
-
-    /*std::string filename = "Data/staffAccount.txt";
-    LinkedList<Staff> staffList;
-    LoadDataofStaff(staffList, filename);
-    Node<Staff>* head = staffList.head;
-    while (head) {
-        std::cout << head->data.getStaffID() << std::endl;
-        head = head->next;
-    }*/
     return 0;
 }
