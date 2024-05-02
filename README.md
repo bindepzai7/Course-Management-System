@@ -3,12 +3,17 @@
 </h1>
 
 User manual: 
-- [To get started with CMS](**ADD LINK YOUTUBE**)
+- [To get started with CMS](https://www.youtube.com/playlist?list=PLwzfwqxsz--obu3_fJM2CgAv33Szg-5Na)
 
 ## Introduction
 
 `CMS` is an application project designed to bring academic staff members, students, and course information together `in one place`, reduce managing costs, and allow easy access and efficient/effective administration of information in a user-friendly environment. We strive to `prevent human errors` and provide comfortable working space for higher accuracy.
 
+### Developers
+1. Nguyen Thu Uyen - 34%
+2. Tran Trong Nguyen - 36%
+3. Doan Duc Tuan - 30%
+   
 ### Background
 Over the last few years, *elearning* has shown `significant growth` in demands due to the rise of digital technologies. The ability to create, manage, and update learning content such as courses has become crucial for schools and universities to provide easy access for staffs and students. Thus, this is the **objective** of this project.
 
@@ -37,38 +42,25 @@ Over the last few years, *elearning* has shown `significant growth` in demands d
 UI Designs
 </summary> <br />
 <p align="center">
-    <img width="49%" src="https://github.com/bindepzai7/Group_project_Cs162_2/assets/161124872/89a8f4fe-e420-43b0-81d1-4f232ebbd345" alt="login1"/>
+    <img width="49%" src="https://github.com/bindepzai7/Group_project_Cs162_2/assets/161124872/ea4fd991-eaa5-4bdc-8ec3-49799d1232bd" alt="login1"/>
 &nbsp;
-    <img width="49%" src="https://github.com/bindepzai7/Group_project_Cs162_2/assets/161124872/751815f6-1f24-4b8b-8c85-88d4de21bd4b" alt="login2"/>
+    <img width="49%" src="https://github.com/bindepzai7/Group_project_Cs162_2/assets/161124872/d64bf707-8ba8-4f2a-a788-e3f4a079040e" alt="login2"/>
 </p>
 
 <p align="center">
-    <img width="49%" src="https://github.com/bindepzai7/Group_project_Cs162_2/assets/161124872/cc5ecb20-e8c1-403f-bf5f-073800b8a2bf" alt="Student Home"/>
+    <img width="49%" src="https://github.com/bindepzai7/Group_project_Cs162_2/assets/161124872/2e254ab6-c5e3-4b2e-8873-92c35b9b5679" alt="Student Home"/>
 &nbsp;
-    <img width="49%" src="https://github.com/bindepzai7/Group_project_Cs162_2/assets/161124872/dbbd90bf-3f21-4cff-8049-f403cc61ebc8" alt="Student Profile"/>
+    <img width="49%" src="https://github.com/bindepzai7/Group_project_Cs162_2/assets/161124872/4f48dc62-d990-464e-b516-782aaafe980d" alt="Student Profile"/>
 </p>
 <p align="center">
-    <img width="49%" src="https://github.com/bindepzai7/Group_project_Cs162_2/assets/161124872/f04f92fd-bf9f-46e2-b2f6-ac9994481aee" alt="Staff Home"/>
+    <img width="49%" src="https://github.com/bindepzai7/Group_project_Cs162_2/assets/161124872/4b9ea6fe-b012-418f-93a2-9d746b391983" alt="Staff Home"/>
 &nbsp;
-    <img width="49%" src="https://github.com/bindepzai7/Group_project_Cs162_2/assets/161124872/39bdd548-5d14-42fb-b002-9b77022f3440" alt="Staff Profile"/>
+    <img width="49%" src="https://github.com/bindepzai7/Group_project_Cs162_2/assets/161124872/bde0c03b-a5cc-4d5f-8662-313262a80135" alt="Staff Password"/>
 </p>
 <p align="center">
-    <img width="49%" src="https://github.com/bindepzai7/Group_project_Cs162_2/assets/161124872/58e184ab-1af2-4307-a828-d3dfcca40e7f" alt="Staff School year"/>
+    <img width="49%" src="https://github.com/bindepzai7/Group_project_Cs162_2/assets/161124872/068984bf-e405-47f7-b4c7-7443e784dd03" alt="Staff School year"/>
 &nbsp;
-    <img width="49%" src="https://github.com/bindepzai7/Group_project_Cs162_2/assets/161124872/a63c79e7-799e-4991-9414-876048ddc9e4" alt="Staff Semester"/>
-</p>
-<p align="center">
-    <img width="49%" src="https://github.com/bindepzai7/Group_project_Cs162_2/assets/161124872/9e7e307a-2286-4ff0-b61a-c6556afd8b73" alt="Student Change password"/>
-&nbsp;
-    <img width="49%" src="https://github.com/bindepzai7/Group_project_Cs162_2/assets/161124872/ed88a7dc-dbb5-4e47-8b30-fc2a9c2e25ba" alt="Staff Add 1st year"/>
-</p>
-
-<p align="center">
-    <img width="49%" src="https://github.com/bindepzai7/Group_project_Cs162_2/assets/161124872/7267679a-6fd9-48f2-bb7e-d329f3b6e609" alt="About us"/>
+    <img width="49%" src="https://github.com/bindepzai7/Group_project_Cs162_2/assets/161124872/055b0d2a-a51d-4b83-a337-e67a0602d1b1" alt="Staff Semester"/>
 </p>
 </details>
 
-### Developers
-1. Nguyen Thu Uyen
-2. Tran Trong Nguyen
-3. Doan Duc Tuan
