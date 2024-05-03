@@ -1,5 +1,6 @@
 No,courseID,courseNam,teacher_lastName,teacher_firstName,credits,max_student,dayAndSession,classes
-1,MTH251,Calculus 1,Phan Thi My,Duyen,4,50,Friday 7:30-11:30,23TT2
+1,1,11,,1,11,1,1,11
 2,CM102,Critical Thinking,Duong Nguyen,Vu,4,100,MON 13:30-16:30,23TT1
 3,CS161,Introduction to Computer Science I,Dinh Ba,Tien,4,50,WED 7:30-9:10,23TT2
-4,PH212,General Physics II,Vu Thi Hanh,Thu,4,50,THU 9:30-11:10,23TT1
+4,MTH251,Calculus 1,Phan Thi My,Duyen,4,50,Friday 7:30-11:30,23TT2
+5,PH212,General Physics II,Vu Thi Hanh,Thu,4,50,THU 9:30-11:10,23TT1

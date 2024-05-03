@@ -912,7 +912,7 @@ void staffviewstudentinclass(sf::RenderWindow& window, Staff& userstaff, std::st
 
     TextBox** studentTextBox = new TextBox * [n];
 
-    float Posx[6] = { 355,410,575,860,965,1200 };
+    float Posx[6] = { 355,410,575,870,965,1200 };
     float Posy = 385;
     float distance = 60;
     float Posylimabove = 365;
@@ -938,7 +938,7 @@ void staffviewstudentinclass(sf::RenderWindow& window, Staff& userstaff, std::st
         if (cur->data.studentGender == 0)
             studentTextBox[i][3].setText("X");
         else
-            studentTextBox[i][3].setText("");
+            studentTextBox[i][3].setText("O");
         studentTextBox[i][4].setText(std::to_string(cur->data.birthDay.day) + "/" + std::to_string(cur->data.birthDay.month) + "/" + std::to_string(cur->data.birthDay.year));
         studentTextBox[i][5].setText(cur->data.socialID);
         cur = cur->next;
