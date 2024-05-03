@@ -118,7 +118,7 @@ std::string calculateOverall(std::string studentID) {
 			cur2 = cur2->next;
 		}
 	}
-	
+	overall = overall / numberofschoolyear;
 	overall = overall * 4 / 10;
 	std::cout << overall;
 	std::ostringstream OSS;
